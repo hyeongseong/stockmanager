@@ -1,0 +1,6 @@
+{
+    "logger": {
+        "name": "stock_importer",
+        "debug": 5
+    }
+}

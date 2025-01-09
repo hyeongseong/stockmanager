@@ -1,0 +1,141 @@
+
+
+평창 땅 3억
+이천 땅 10억
+
+엄마 집 7 억
+형성 집 2 억
+형   집 2 억 
+
+
+
+
+최진기 차트 분석
+
+주가 상승시
+
+거래량 적다 = 매도세가 약하다
+거래량 많아 = 매수세가 강하다
+
+
+PER = 10 ( 주식 2배 만드는데 10년 걸린다는 소리임 )  , 낮을수록 좋은 주식
+
+은행금리가 = 7.2% ( 예금 2배만드는데 10년 걸린다는 소리임 )
+
+은행금리가 9% 이고 PER 가 10이면 은행에다 돈을 넣어라
+은행금리가 4.5% 이고 PER 가 10 이면 주식하라.
+
+
+주가 하락시
+
+거래량 적다 = 매수세가 약하다
+거래량 많아 = 매도세가 강하다
+
+
+Jerry Robinson
+. 트렌드를 흐름을 타고 같이올라가라. 다우, SP500 상승트렌드일때 주식 4개중에 3개는 올라감
+. 전문가 분석 참고하라  YChart, Zacks ..
+. He has auto trade software - Trigger Trade Pro
+
+Sasha Evdakov
+
+. 트래이드 할때 $350불을 만드는 이론적인 방법, This is reference guide
+
+. 150 shares of a stock that goes up $3
+. 200 shares of a stock that goes up $2
+. 500 shares of a stock that goes up $.70
+
+. Stock movement
+. $60 stocks may move $1.00 - $2.00
+. $200 stocks may move $2.00 - $5.00 
+. $400 stocks may move $4.00 - $7.00 
+. $500 stocks may move $5.00 - $10.00 
+. $800 stocks may move $6.00 - $20.00 
+
+. How much capital you need if you are looking to make $3000 per month
+. $50 stock, moves $1, need 350 shares
+. Total cost: 350 * $50 per share = $17,500
+
+. $200 stock, moves $2, need 200 shares
+. Total cost: 200 * $200 per share = $40,000
+
+. $400 stock, moves $3-$4, need 50 shares
+. Total cost: 50 * $400 per share = $20,000
+
+. 100불이상 짜리 큰 회사 주식을 산다 더 안전함. 
+
+. if you have 100.000$ buy at most 5 stocks, focus and put them in your control
+. if you have less than 100.000$ buy two, three stocks and focus and get familar with it.
+
+
+
+일본 주식부자 카미오 료우
+. https://www.youtube.com/watch?v=JXy0hHQOhU8&t=694s
+. 거미투자 
+. 우리의 승패는 4승6패이다
+. 1000만원치 주식이 -2%되면 20만원 손실이지만 반드시 판다.
+. 1000만원에서 10프로 오르면 반드시 판다. (100만원 이득)
+. 4번이기고 ( 400만원 이득 ) 6번 져도 ( 120만원 손해 )
+. 결국 280 만원 이득 
+. 동종업종의 주식밖에 사지 않느것
+
+남석관 대표 3년 누적수익률 2500%
+. 한주를 사도 시장의 중심 대장주를 매수해라. 
+. 시간과의 싸뭉에서 이겨라
+. 주식을 알고 나를 알면 백전불패
+. 돈 벌기 쉬운 계절주를 공략하라.
+. 시장을 예측하고 두 가지 대응법을 세워라.
+. 실전 투자 종목 추천
+. 급등락주 추격 매수 금지
+. 선취매후 적정 수익률에서 매도
+. 하수의 조건. 손해를 안보는것.
+. 자기절제 제일 중요
+. 오픈된 마음으로 시장의 흐름에 맞게 매매습관을 리셋하라
+. 계좌를 분산해라. 1000만원 계좌 5000만원 목표를 달정하면. 다신 분산해서 계좌를 계설
+. 2000만원 3000만원 이런식으로 나눠서 분산운용하라.
+. 현금화가 많이 돼 있을수록 유리하다
+. 수익난 돈으로 재투자하지 않고 무조건 인출
+. 주식이 저점일 때를 평가하는 기준은? -> 이동평균선(moving average)를 가장 신뢰
+. 이동평균선의 이격이 너무 크면 매수 금지. <— 이건 기본주의 기본
+. 주식에 있어서 가장중요한것 두가지 -> 예측과 대응 이건 중수 이상
+. 에측으로 산 다음 대응한다. 즉 올라갈때와 내려갈때 시나리오를 생각하고 대응해야한다. 그래야 손실을 최소화함.
+
+
+어떤 슈퍼개미 원칙
+. 한번 산 주식인 6개월 이상보유한다는 원칙.
+
+
+나의 주식투자 원칙
+
+1. macd oversold cross signal 을 확인
+2. 3개월 주식 history graph 를 보고 너무 가파른지 아닌지 확인
+3. 3개월 주식 history graph 를 보고 3개월 하락중이면 사지말기.
+
+
+
+
+Buy Limit Order : ㅎㅎ 현재가 보다 더 내려갈것 같네 이만큼 내려가면 여기서 사야지.  ( 더 내려가면 사야지 )        
+Buy Stop Order : 어? 현재가 보다 더 올라가네? 빨리 사야지!  ( 더 올라가면 사야지 )
+
+Sell Limit Order : 와! 많이 올랐네 이 만큼 도달할때 빨리 팔아야지 ㅎㅎ ( 이 만큼 도달하면 팔아야지 )
+Sell Stop Order : 어? 더 내려가네 여기 마지노선에서 팔아야지. ( 이 만큼 내려가면 팔아야지 )
+
+
+머리자를때 456번으로 잘라수세요
+
+https://www.labsterx.com/blog/fundamental-analysis-using-yahoo-finance/
+
+
+
+
+
+
+Set up REST API Methods in API Gateway
+https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-method-settings.html
+
+
+
+Investigate how to setup an API Gateway AWS instance which will support REST and WebSocket APIs. Create an instance of API Gateway. Can start with Amazon documentation:
+https://docs.aws.amazon.com/apigateway/latest/developerguide/how-to-method-settings.html
+Create a lambda function that will receive a REST call and call a BREC API function (through bre_test_client)
+https://docs.aws.amazon.com/apigateway/latest/developerguide/integrating-api-with-aws-services-lambda.html
