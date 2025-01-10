@@ -1,0 +1,1739 @@
+Jan 10 18:32:08 (I) Logger initialized with debug level: 5 
+Jan 10 18:32:08 (I) ################### Main Start !! ####################### 
+Jan 10 18:32:08 (I) Database initialized and table created. 
+Jan 10 18:32:08 (I) Fetching stocks for Day Gainers (day_gainers) 
+Jan 10 18:32:09 (I) Fetching stocks for Day Losers (day_losers) 
+Jan 10 18:32:10 (I) Fetching stocks for Most Actives (most_actives) 
+Jan 10 18:32:10 (I) Fetching stocks for High Yield Bonds (high_yield_bond) 
+Jan 10 18:32:11 (I) Fetching stocks for Most Shorted Stocks (most_shorted_stocks) 
+Jan 10 18:32:11 (I) Fetching stocks for Undervalued Large Caps (undervalued_large_caps) 
+Jan 10 18:32:11 (I) Fetching stocks for Aggressive Small Caps (aggressive_small_caps) 
+Jan 10 18:32:12 (I) Fetching stocks for Growth Technology Stocks (growth_technology_stocks) 
+Jan 10 18:32:12 (I) Fetching stocks for Small Cap Gainers (small_cap_gainers) 
+Jan 10 18:32:12 (I) Fetching stocks for Portfolio Anchors (portfolio_anchors) 
+Jan 10 18:32:12 (I) Fetching stocks for Conservative Foreign Funds (conservative_foreign_funds) 
+Jan 10 18:32:12 (I) Upserted stock: symbol=CPRX, category_id=day_gainers, category_name=Day Gainers 
+Jan 10 18:32:12 (I) Inserted/Updated: CPRX in category Day Gainers 
+Jan 10 18:32:13 (I) Upserted stock: symbol=EBAY, category_id=day_gainers, category_name=Day Gainers 
+Jan 10 18:32:13 (I) Inserted/Updated: EBAY in category Day Gainers 
+Jan 10 18:32:13 (I) Upserted stock: symbol=EQX, category_id=day_gainers, category_name=Day Gainers 
+Jan 10 18:32:13 (I) Inserted/Updated: EQX in category Day Gainers 
+Jan 10 18:32:13 (I) Upserted stock: symbol=GDS, category_id=day_gainers, category_name=Day Gainers 
+Jan 10 18:32:13 (I) Inserted/Updated: GDS in category Day Gainers 
+Jan 10 18:32:13 (I) Upserted stock: symbol=AIR, category_id=day_gainers, category_name=Day Gainers 
+Jan 10 18:32:13 (I) Inserted/Updated: AIR in category Day Gainers 
+Jan 10 18:32:13 (I) Upserted stock: symbol=ARLTF, category_id=day_gainers, category_name=Day Gainers 
+Jan 10 18:32:13 (I) Inserted/Updated: ARLTF in category Day Gainers 
+Jan 10 18:32:13 (I) Upserted stock: symbol=GEO, category_id=day_gainers, category_name=Day Gainers 
+Jan 10 18:32:13 (I) Inserted/Updated: GEO in category Day Gainers 
+Jan 10 18:32:13 (I) Upserted stock: symbol=ALTM, category_id=day_gainers, category_name=Day Gainers 
+Jan 10 18:32:13 (I) Inserted/Updated: ALTM in category Day Gainers 
+Jan 10 18:32:13 (I) Upserted stock: symbol=ROKU, category_id=day_gainers, category_name=Day Gainers 
+Jan 10 18:32:13 (I) Inserted/Updated: ROKU in category Day Gainers 
+Jan 10 18:32:13 (I) Upserted stock: symbol=OSCR, category_id=day_gainers, category_name=Day Gainers 
+Jan 10 18:32:13 (I) Inserted/Updated: OSCR in category Day Gainers 
+Jan 10 18:32:13 (I) Upserted stock: symbol=PAA, category_id=day_gainers, category_name=Day Gainers 
+Jan 10 18:32:13 (I) Inserted/Updated: PAA in category Day Gainers 
+Jan 10 18:32:13 (I) Upserted stock: symbol=PAGP, category_id=day_gainers, category_name=Day Gainers 
+Jan 10 18:32:13 (I) Inserted/Updated: PAGP in category Day Gainers 
+Jan 10 18:32:13 (I) Upserted stock: symbol=FTAI, category_id=day_gainers, category_name=Day Gainers 
+Jan 10 18:32:13 (I) Inserted/Updated: FTAI in category Day Gainers 
+Jan 10 18:32:13 (I) Upserted stock: symbol=TAL, category_id=day_gainers, category_name=Day Gainers 
+Jan 10 18:32:13 (I) Inserted/Updated: TAL in category Day Gainers 
+Jan 10 18:32:13 (I) Upserted stock: symbol=CALX, category_id=day_gainers, category_name=Day Gainers 
+Jan 10 18:32:13 (I) Inserted/Updated: CALX in category Day Gainers 
+Jan 10 18:32:13 (I) Upserted stock: symbol=CDE, category_id=day_gainers, category_name=Day Gainers 
+Jan 10 18:32:13 (I) Inserted/Updated: CDE in category Day Gainers 
+Jan 10 18:32:13 (I) Upserted stock: symbol=HALO, category_id=day_gainers, category_name=Day Gainers 
+Jan 10 18:32:13 (I) Inserted/Updated: HALO in category Day Gainers 
+Jan 10 18:32:13 (I) Upserted stock: symbol=KGC, category_id=day_gainers, category_name=Day Gainers 
+Jan 10 18:32:13 (I) Inserted/Updated: KGC in category Day Gainers 
+Jan 10 18:32:13 (I) Upserted stock: symbol=CXW, category_id=day_gainers, category_name=Day Gainers 
+Jan 10 18:32:13 (I) Inserted/Updated: CXW in category Day Gainers 
+Jan 10 18:32:13 (I) Upserted stock: symbol=UNF, category_id=day_gainers, category_name=Day Gainers 
+Jan 10 18:32:13 (I) Inserted/Updated: UNF in category Day Gainers 
+Jan 10 18:32:13 (I) Upserted stock: symbol=CART, category_id=day_gainers, category_name=Day Gainers 
+Jan 10 18:32:13 (I) Inserted/Updated: CART in category Day Gainers 
+Jan 10 18:32:13 (I) Upserted stock: symbol=EGO, category_id=day_gainers, category_name=Day Gainers 
+Jan 10 18:32:13 (I) Inserted/Updated: EGO in category Day Gainers 
+Jan 10 18:32:13 (I) Upserted stock: symbol=CRK, category_id=day_gainers, category_name=Day Gainers 
+Jan 10 18:32:13 (I) Inserted/Updated: CRK in category Day Gainers 
+Jan 10 18:32:13 (I) Upserted stock: symbol=BSX, category_id=day_gainers, category_name=Day Gainers 
+Jan 10 18:32:13 (I) Inserted/Updated: BSX in category Day Gainers 
+Jan 10 18:32:13 (I) Upserted stock: symbol=CLS, category_id=day_gainers, category_name=Day Gainers 
+Jan 10 18:32:13 (I) Inserted/Updated: CLS in category Day Gainers 
+Jan 10 18:32:13 (I) Upserted stock: symbol=ACVA, category_id=day_gainers, category_name=Day Gainers 
+Jan 10 18:32:13 (I) Inserted/Updated: ACVA in category Day Gainers 
+Jan 10 18:32:13 (I) Upserted stock: symbol=BVN, category_id=day_gainers, category_name=Day Gainers 
+Jan 10 18:32:13 (I) Inserted/Updated: BVN in category Day Gainers 
+Jan 10 18:32:13 (I) Upserted stock: symbol=SNRE, category_id=day_gainers, category_name=Day Gainers 
+Jan 10 18:32:13 (I) Inserted/Updated: SNRE in category Day Gainers 
+Jan 10 18:32:13 (I) Upserted stock: symbol=JBLU, category_id=day_gainers, category_name=Day Gainers 
+Jan 10 18:32:13 (I) Inserted/Updated: JBLU in category Day Gainers 
+Jan 10 18:32:13 (I) Upserted stock: symbol=VCTR, category_id=day_gainers, category_name=Day Gainers 
+Jan 10 18:32:13 (I) Inserted/Updated: VCTR in category Day Gainers 
+Jan 10 18:32:13 (I) Upserted stock: symbol=DV, category_id=day_gainers, category_name=Day Gainers 
+Jan 10 18:32:13 (I) Inserted/Updated: DV in category Day Gainers 
+Jan 10 18:32:13 (I) Upserted stock: symbol=SMTC, category_id=day_gainers, category_name=Day Gainers 
+Jan 10 18:32:13 (I) Inserted/Updated: SMTC in category Day Gainers 
+Jan 10 18:32:13 (I) Upserted stock: symbol=GMED, category_id=day_gainers, category_name=Day Gainers 
+Jan 10 18:32:13 (I) Inserted/Updated: GMED in category Day Gainers 
+Jan 10 18:32:13 (I) Upserted stock: symbol=AGX, category_id=day_gainers, category_name=Day Gainers 
+Jan 10 18:32:13 (I) Inserted/Updated: AGX in category Day Gainers 
+Jan 10 18:32:13 (I) Upserted stock: symbol=NTRA, category_id=day_gainers, category_name=Day Gainers 
+Jan 10 18:32:13 (I) Inserted/Updated: NTRA in category Day Gainers 
+Jan 10 18:32:13 (I) Upserted stock: symbol=SMMT, category_id=day_gainers, category_name=Day Gainers 
+Jan 10 18:32:13 (I) Inserted/Updated: SMMT in category Day Gainers 
+Jan 10 18:32:13 (I) Upserted stock: symbol=MUR, category_id=day_gainers, category_name=Day Gainers 
+Jan 10 18:32:13 (I) Inserted/Updated: MUR in category Day Gainers 
+Jan 10 18:32:14 (I) Upserted stock: symbol=KMX, category_id=day_gainers, category_name=Day Gainers 
+Jan 10 18:32:14 (I) Inserted/Updated: KMX in category Day Gainers 
+Jan 10 18:32:14 (I) Upserted stock: symbol=MDT, category_id=day_gainers, category_name=Day Gainers 
+Jan 10 18:32:14 (I) Inserted/Updated: MDT in category Day Gainers 
+Jan 10 18:32:14 (I) Upserted stock: symbol=TOELY, category_id=day_gainers, category_name=Day Gainers 
+Jan 10 18:32:14 (I) Inserted/Updated: TOELY in category Day Gainers 
+Jan 10 18:32:14 (I) Upserted stock: symbol=MSM, category_id=day_gainers, category_name=Day Gainers 
+Jan 10 18:32:14 (I) Inserted/Updated: MSM in category Day Gainers 
+Jan 10 18:32:14 (I) Upserted stock: symbol=AGYS, category_id=day_gainers, category_name=Day Gainers 
+Jan 10 18:32:14 (I) Inserted/Updated: AGYS in category Day Gainers 
+Jan 10 18:32:14 (I) Upserted stock: symbol=GEHC, category_id=day_gainers, category_name=Day Gainers 
+Jan 10 18:32:14 (I) Inserted/Updated: GEHC in category Day Gainers 
+Jan 10 18:32:14 (I) Upserted stock: symbol=DRS, category_id=day_gainers, category_name=Day Gainers 
+Jan 10 18:32:14 (I) Inserted/Updated: DRS in category Day Gainers 
+Jan 10 18:32:14 (I) Upserted stock: symbol=SPOT, category_id=day_gainers, category_name=Day Gainers 
+Jan 10 18:32:14 (I) Inserted/Updated: SPOT in category Day Gainers 
+Jan 10 18:32:14 (I) Upserted stock: symbol=SYM, category_id=day_gainers, category_name=Day Gainers 
+Jan 10 18:32:14 (I) Inserted/Updated: SYM in category Day Gainers 
+Jan 10 18:32:14 (I) Upserted stock: symbol=FNV, category_id=day_gainers, category_name=Day Gainers 
+Jan 10 18:32:14 (I) Inserted/Updated: FNV in category Day Gainers 
+Jan 10 18:32:14 (I) Upserted stock: symbol=PJT, category_id=day_gainers, category_name=Day Gainers 
+Jan 10 18:32:14 (I) Inserted/Updated: PJT in category Day Gainers 
+Jan 10 18:32:14 (I) Upserted stock: symbol=AR, category_id=day_gainers, category_name=Day Gainers 
+Jan 10 18:32:14 (I) Inserted/Updated: AR in category Day Gainers 
+Jan 10 18:32:14 (I) Upserted stock: symbol=AYI, category_id=day_gainers, category_name=Day Gainers 
+Jan 10 18:32:14 (I) Inserted/Updated: AYI in category Day Gainers 
+Jan 10 18:32:14 (I) Upserted stock: symbol=BAM, category_id=day_gainers, category_name=Day Gainers 
+Jan 10 18:32:14 (I) Inserted/Updated: BAM in category Day Gainers 
+Jan 10 18:32:14 (I) Upserted stock: symbol=AGI, category_id=day_gainers, category_name=Day Gainers 
+Jan 10 18:32:14 (I) Inserted/Updated: AGI in category Day Gainers 
+Jan 10 18:32:14 (I) Upserted stock: symbol=MRCY, category_id=day_gainers, category_name=Day Gainers 
+Jan 10 18:32:14 (I) Inserted/Updated: MRCY in category Day Gainers 
+Jan 10 18:32:14 (I) Upserted stock: symbol=MDGL, category_id=day_gainers, category_name=Day Gainers 
+Jan 10 18:32:14 (I) Inserted/Updated: MDGL in category Day Gainers 
+Jan 10 18:32:14 (I) Upserted stock: symbol=ESLT, category_id=day_gainers, category_name=Day Gainers 
+Jan 10 18:32:14 (I) Inserted/Updated: ESLT in category Day Gainers 
+Jan 10 18:32:14 (I) Upserted stock: symbol=CVLT, category_id=day_gainers, category_name=Day Gainers 
+Jan 10 18:32:14 (I) Inserted/Updated: CVLT in category Day Gainers 
+Jan 10 18:32:14 (I) Upserted stock: symbol=PRVA, category_id=day_gainers, category_name=Day Gainers 
+Jan 10 18:32:14 (I) Inserted/Updated: PRVA in category Day Gainers 
+Jan 10 18:32:14 (I) Upserted stock: symbol=IAG, category_id=day_gainers, category_name=Day Gainers 
+Jan 10 18:32:14 (I) Inserted/Updated: IAG in category Day Gainers 
+Jan 10 18:32:14 (I) Upserted stock: symbol=ALL, category_id=day_gainers, category_name=Day Gainers 
+Jan 10 18:32:14 (I) Inserted/Updated: ALL in category Day Gainers 
+Jan 10 18:32:14 (I) Upserted stock: symbol=VCYT, category_id=day_gainers, category_name=Day Gainers 
+Jan 10 18:32:14 (I) Inserted/Updated: VCYT in category Day Gainers 
+Jan 10 18:32:14 (I) Upserted stock: symbol=HWM, category_id=day_gainers, category_name=Day Gainers 
+Jan 10 18:32:14 (I) Inserted/Updated: HWM in category Day Gainers 
+Jan 10 18:32:14 (I) Upserted stock: symbol=SATS, category_id=day_gainers, category_name=Day Gainers 
+Jan 10 18:32:14 (I) Inserted/Updated: SATS in category Day Gainers 
+Jan 10 18:32:14 (I) Upserted stock: symbol=RGTI, category_id=day_losers, category_name=Day Losers 
+Jan 10 18:32:14 (I) Inserted/Updated: RGTI in category Day Losers 
+Jan 10 18:32:14 (I) Upserted stock: symbol=IONQ, category_id=day_losers, category_name=Day Losers 
+Jan 10 18:32:14 (I) Inserted/Updated: IONQ in category Day Losers 
+Jan 10 18:32:14 (I) Upserted stock: symbol=SOUN, category_id=day_losers, category_name=Day Losers 
+Jan 10 18:32:14 (I) Inserted/Updated: SOUN in category Day Losers 
+Jan 10 18:32:14 (I) Upserted stock: symbol=ENVX, category_id=day_losers, category_name=Day Losers 
+Jan 10 18:32:14 (I) Inserted/Updated: ENVX in category Day Losers 
+Jan 10 18:32:14 (I) Upserted stock: symbol=MBLY, category_id=day_losers, category_name=Day Losers 
+Jan 10 18:32:14 (I) Inserted/Updated: MBLY in category Day Losers 
+Jan 10 18:32:14 (I) Upserted stock: symbol=RUM, category_id=day_losers, category_name=Day Losers 
+Jan 10 18:32:14 (I) Inserted/Updated: RUM in category Day Losers 
+Jan 10 18:32:14 (I) Upserted stock: symbol=JANX, category_id=day_losers, category_name=Day Losers 
+Jan 10 18:32:14 (I) Inserted/Updated: JANX in category Day Losers 
+Jan 10 18:32:15 (I) Upserted stock: symbol=OKLO, category_id=day_losers, category_name=Day Losers 
+Jan 10 18:32:15 (I) Inserted/Updated: OKLO in category Day Losers 
+Jan 10 18:32:15 (I) Upserted stock: symbol=PONY, category_id=day_losers, category_name=Day Losers 
+Jan 10 18:32:15 (I) Inserted/Updated: PONY in category Day Losers 
+Jan 10 18:32:15 (I) Upserted stock: symbol=EIX, category_id=day_losers, category_name=Day Losers 
+Jan 10 18:32:15 (I) Inserted/Updated: EIX in category Day Losers 
+Jan 10 18:32:15 (I) Upserted stock: symbol=WULF, category_id=day_losers, category_name=Day Losers 
+Jan 10 18:32:15 (I) Inserted/Updated: WULF in category Day Losers 
+Jan 10 18:32:15 (I) Upserted stock: symbol=MRNA, category_id=day_losers, category_name=Day Losers 
+Jan 10 18:32:15 (I) Inserted/Updated: MRNA in category Day Losers 
+Jan 10 18:32:15 (I) Upserted stock: symbol=QS, category_id=day_losers, category_name=Day Losers 
+Jan 10 18:32:15 (I) Inserted/Updated: QS in category Day Losers 
+Jan 10 18:32:15 (I) Upserted stock: symbol=BOLSY, category_id=day_losers, category_name=Day Losers 
+Jan 10 18:32:15 (I) Inserted/Updated: BOLSY in category Day Losers 
+Jan 10 18:32:15 (I) Upserted stock: symbol=TMDX, category_id=day_losers, category_name=Day Losers 
+Jan 10 18:32:15 (I) Inserted/Updated: TMDX in category Day Losers 
+Jan 10 18:32:15 (I) Upserted stock: symbol=IREN, category_id=day_losers, category_name=Day Losers 
+Jan 10 18:32:15 (I) Inserted/Updated: IREN in category Day Losers 
+Jan 10 18:32:15 (I) Upserted stock: symbol=JOBY, category_id=day_losers, category_name=Day Losers 
+Jan 10 18:32:15 (I) Inserted/Updated: JOBY in category Day Losers 
+Jan 10 18:32:15 (I) Upserted stock: symbol=PCVX, category_id=day_losers, category_name=Day Losers 
+Jan 10 18:32:15 (I) Inserted/Updated: PCVX in category Day Losers 
+Jan 10 18:32:15 (I) Upserted stock: symbol=ON, category_id=day_losers, category_name=Day Losers 
+Jan 10 18:32:15 (I) Inserted/Updated: ON in category Day Losers 
+Jan 10 18:32:15 (I) Upserted stock: symbol=CNTA, category_id=day_losers, category_name=Day Losers 
+Jan 10 18:32:15 (I) Inserted/Updated: CNTA in category Day Losers 
+Jan 10 18:32:15 (I) Upserted stock: symbol=AI, category_id=day_losers, category_name=Day Losers 
+Jan 10 18:32:15 (I) Inserted/Updated: AI in category Day Losers 
+Jan 10 18:32:15 (I) Upserted stock: symbol=HIMS, category_id=day_losers, category_name=Day Losers 
+Jan 10 18:32:15 (I) Inserted/Updated: HIMS in category Day Losers 
+Jan 10 18:32:15 (I) Upserted stock: symbol=VRNA, category_id=day_losers, category_name=Day Losers 
+Jan 10 18:32:15 (I) Inserted/Updated: VRNA in category Day Losers 
+Jan 10 18:32:15 (I) Upserted stock: symbol=SIRI, category_id=day_losers, category_name=Day Losers 
+Jan 10 18:32:15 (I) Inserted/Updated: SIRI in category Day Losers 
+Jan 10 18:32:15 (I) Upserted stock: symbol=LYFT, category_id=day_losers, category_name=Day Losers 
+Jan 10 18:32:15 (I) Inserted/Updated: LYFT in category Day Losers 
+Jan 10 18:32:15 (I) Upserted stock: symbol=FORM, category_id=day_losers, category_name=Day Losers 
+Jan 10 18:32:15 (I) Inserted/Updated: FORM in category Day Losers 
+Jan 10 18:32:15 (I) Upserted stock: symbol=MCY, category_id=day_losers, category_name=Day Losers 
+Jan 10 18:32:15 (I) Inserted/Updated: MCY in category Day Losers 
+Jan 10 18:32:15 (I) Upserted stock: symbol=ACLX, category_id=day_losers, category_name=Day Losers 
+Jan 10 18:32:15 (I) Inserted/Updated: ACLX in category Day Losers 
+Jan 10 18:32:15 (I) Upserted stock: symbol=ACHR, category_id=day_losers, category_name=Day Losers 
+Jan 10 18:32:15 (I) Inserted/Updated: ACHR in category Day Losers 
+Jan 10 18:32:15 (I) Upserted stock: symbol=ZLAB, category_id=day_losers, category_name=Day Losers 
+Jan 10 18:32:15 (I) Inserted/Updated: ZLAB in category Day Losers 
+Jan 10 18:32:15 (I) Upserted stock: symbol=MP, category_id=day_losers, category_name=Day Losers 
+Jan 10 18:32:15 (I) Inserted/Updated: MP in category Day Losers 
+Jan 10 18:32:15 (I) Upserted stock: symbol=CLSK, category_id=day_losers, category_name=Day Losers 
+Jan 10 18:32:15 (I) Inserted/Updated: CLSK in category Day Losers 
+Jan 10 18:32:15 (I) Upserted stock: symbol=BTDR, category_id=day_losers, category_name=Day Losers 
+Jan 10 18:32:15 (I) Inserted/Updated: BTDR in category Day Losers 
+Jan 10 18:32:15 (I) Upserted stock: symbol=XPEV, category_id=day_losers, category_name=Day Losers 
+Jan 10 18:32:15 (I) Inserted/Updated: XPEV in category Day Losers 
+Jan 10 18:32:15 (I) Upserted stock: symbol=WMG, category_id=day_losers, category_name=Day Losers 
+Jan 10 18:32:15 (I) Inserted/Updated: WMG in category Day Losers 
+Jan 10 18:32:15 (I) Upserted stock: symbol=CEPU, category_id=day_losers, category_name=Day Losers 
+Jan 10 18:32:15 (I) Inserted/Updated: CEPU in category Day Losers 
+Jan 10 18:32:15 (I) Upserted stock: symbol=BEPC, category_id=day_losers, category_name=Day Losers 
+Jan 10 18:32:15 (I) Inserted/Updated: BEPC in category Day Losers 
+Jan 10 18:32:15 (I) Upserted stock: symbol=RUN, category_id=day_losers, category_name=Day Losers 
+Jan 10 18:32:15 (I) Inserted/Updated: RUN in category Day Losers 
+Jan 10 18:32:15 (I) Upserted stock: symbol=HUT, category_id=day_losers, category_name=Day Losers 
+Jan 10 18:32:15 (I) Inserted/Updated: HUT in category Day Losers 
+Jan 10 18:32:15 (I) Upserted stock: symbol=WRD, category_id=day_losers, category_name=Day Losers 
+Jan 10 18:32:15 (I) Inserted/Updated: WRD in category Day Losers 
+Jan 10 18:32:15 (I) Upserted stock: symbol=AEIS, category_id=day_losers, category_name=Day Losers 
+Jan 10 18:32:15 (I) Inserted/Updated: AEIS in category Day Losers 
+Jan 10 18:32:15 (I) Upserted stock: symbol=ENPH, category_id=day_losers, category_name=Day Losers 
+Jan 10 18:32:15 (I) Inserted/Updated: ENPH in category Day Losers 
+Jan 10 18:32:15 (I) Upserted stock: symbol=ZI, category_id=day_losers, category_name=Day Losers 
+Jan 10 18:32:15 (I) Inserted/Updated: ZI in category Day Losers 
+Jan 10 18:32:15 (I) Upserted stock: symbol=SMCI, category_id=day_losers, category_name=Day Losers 
+Jan 10 18:32:15 (I) Inserted/Updated: SMCI in category Day Losers 
+Jan 10 18:32:15 (I) Upserted stock: symbol=RIVN, category_id=day_losers, category_name=Day Losers 
+Jan 10 18:32:15 (I) Inserted/Updated: RIVN in category Day Losers 
+Jan 10 18:32:15 (I) Upserted stock: symbol=INGM, category_id=day_losers, category_name=Day Losers 
+Jan 10 18:32:15 (I) Inserted/Updated: INGM in category Day Losers 
+Jan 10 18:32:15 (I) Upserted stock: symbol=ATKR, category_id=day_losers, category_name=Day Losers 
+Jan 10 18:32:15 (I) Inserted/Updated: ATKR in category Day Losers 
+Jan 10 18:32:16 (I) Upserted stock: symbol=APLS, category_id=day_losers, category_name=Day Losers 
+Jan 10 18:32:16 (I) Inserted/Updated: APLS in category Day Losers 
+Jan 10 18:32:16 (I) Upserted stock: symbol=LMND, category_id=day_losers, category_name=Day Losers 
+Jan 10 18:32:16 (I) Inserted/Updated: LMND in category Day Losers 
+Jan 10 18:32:16 (I) Upserted stock: symbol=WBA, category_id=day_losers, category_name=Day Losers 
+Jan 10 18:32:16 (I) Inserted/Updated: WBA in category Day Losers 
+Jan 10 18:32:16 (I) Upserted stock: symbol=PII, category_id=day_losers, category_name=Day Losers 
+Jan 10 18:32:16 (I) Inserted/Updated: PII in category Day Losers 
+Jan 10 18:32:16 (I) Upserted stock: symbol=CEG, category_id=day_losers, category_name=Day Losers 
+Jan 10 18:32:16 (I) Inserted/Updated: CEG in category Day Losers 
+Jan 10 18:32:16 (I) Upserted stock: symbol=CC, category_id=day_losers, category_name=Day Losers 
+Jan 10 18:32:16 (I) Inserted/Updated: CC in category Day Losers 
+Jan 10 18:32:16 (I) Upserted stock: symbol=GFS, category_id=day_losers, category_name=Day Losers 
+Jan 10 18:32:16 (I) Inserted/Updated: GFS in category Day Losers 
+Jan 10 18:32:16 (I) Upserted stock: symbol=ROIV, category_id=day_losers, category_name=Day Losers 
+Jan 10 18:32:16 (I) Inserted/Updated: ROIV in category Day Losers 
+Jan 10 18:32:16 (I) Upserted stock: symbol=AMD, category_id=day_losers, category_name=Day Losers 
+Jan 10 18:32:16 (I) Inserted/Updated: AMD in category Day Losers 
+Jan 10 18:32:16 (I) Upserted stock: symbol=WBD, category_id=day_losers, category_name=Day Losers 
+Jan 10 18:32:16 (I) Inserted/Updated: WBD in category Day Losers 
+Jan 10 18:32:16 (I) Upserted stock: symbol=STM, category_id=day_losers, category_name=Day Losers 
+Jan 10 18:32:16 (I) Inserted/Updated: STM in category Day Losers 
+Jan 10 18:32:16 (I) Upserted stock: symbol=AFRM, category_id=day_losers, category_name=Day Losers 
+Jan 10 18:32:16 (I) Inserted/Updated: AFRM in category Day Losers 
+Jan 10 18:32:16 (I) Upserted stock: symbol=AES, category_id=day_losers, category_name=Day Losers 
+Jan 10 18:32:16 (I) Inserted/Updated: AES in category Day Losers 
+Jan 10 18:32:16 (I) Upserted stock: symbol=BEP, category_id=day_losers, category_name=Day Losers 
+Jan 10 18:32:16 (I) Inserted/Updated: BEP in category Day Losers 
+Jan 10 18:32:16 (I) Upserted stock: symbol=IMVT, category_id=day_losers, category_name=Day Losers 
+Jan 10 18:32:16 (I) Inserted/Updated: IMVT in category Day Losers 
+Jan 10 18:32:16 (I) Upserted stock: symbol=KC, category_id=day_losers, category_name=Day Losers 
+Jan 10 18:32:16 (I) Inserted/Updated: KC in category Day Losers 
+Jan 10 18:32:16 (I) Upserted stock: symbol=SNAP, category_id=day_losers, category_name=Day Losers 
+Jan 10 18:32:16 (I) Inserted/Updated: SNAP in category Day Losers 
+Jan 10 18:32:16 (I) Upserted stock: symbol=MLTX, category_id=day_losers, category_name=Day Losers 
+Jan 10 18:32:16 (I) Inserted/Updated: MLTX in category Day Losers 
+Jan 10 18:32:16 (I) Upserted stock: symbol=DLTR, category_id=day_losers, category_name=Day Losers 
+Jan 10 18:32:16 (I) Inserted/Updated: DLTR in category Day Losers 
+Jan 10 18:32:16 (I) Upserted stock: symbol=VTMX, category_id=day_losers, category_name=Day Losers 
+Jan 10 18:32:16 (I) Inserted/Updated: VTMX in category Day Losers 
+Jan 10 18:32:16 (I) Upserted stock: symbol=AUR, category_id=day_losers, category_name=Day Losers 
+Jan 10 18:32:16 (I) Inserted/Updated: AUR in category Day Losers 
+Jan 10 18:32:16 (I) Upserted stock: symbol=MEOH, category_id=day_losers, category_name=Day Losers 
+Jan 10 18:32:16 (I) Inserted/Updated: MEOH in category Day Losers 
+Jan 10 18:32:16 (I) Upserted stock: symbol=LGGNY, category_id=day_losers, category_name=Day Losers 
+Jan 10 18:32:16 (I) Inserted/Updated: LGGNY in category Day Losers 
+Jan 10 18:32:16 (I) Upserted stock: symbol=STNE, category_id=day_losers, category_name=Day Losers 
+Jan 10 18:32:16 (I) Inserted/Updated: STNE in category Day Losers 
+Jan 10 18:32:16 (I) Upserted stock: symbol=BPMC, category_id=day_losers, category_name=Day Losers 
+Jan 10 18:32:16 (I) Inserted/Updated: BPMC in category Day Losers 
+Jan 10 18:32:16 (I) Upserted stock: symbol=COHR, category_id=day_losers, category_name=Day Losers 
+Jan 10 18:32:16 (I) Inserted/Updated: COHR in category Day Losers 
+Jan 10 18:32:16 (I) Upserted stock: symbol=MARA, category_id=day_losers, category_name=Day Losers 
+Jan 10 18:32:16 (I) Inserted/Updated: MARA in category Day Losers 
+Jan 10 18:32:16 (I) Upserted stock: symbol=BKGFY, category_id=day_losers, category_name=Day Losers 
+Jan 10 18:32:16 (I) Inserted/Updated: BKGFY in category Day Losers 
+Jan 10 18:32:16 (I) Upserted stock: symbol=QXO, category_id=day_losers, category_name=Day Losers 
+Jan 10 18:32:16 (I) Inserted/Updated: QXO in category Day Losers 
+Jan 10 18:32:16 (I) Upserted stock: symbol=CSAN, category_id=day_losers, category_name=Day Losers 
+Jan 10 18:32:16 (I) Inserted/Updated: CSAN in category Day Losers 
+Jan 10 18:32:16 (I) Upserted stock: symbol=PENN, category_id=day_losers, category_name=Day Losers 
+Jan 10 18:32:16 (I) Inserted/Updated: PENN in category Day Losers 
+Jan 10 18:32:16 (I) Upserted stock: symbol=NOMD, category_id=day_losers, category_name=Day Losers 
+Jan 10 18:32:16 (I) Inserted/Updated: NOMD in category Day Losers 
+Jan 10 18:32:16 (I) Upserted stock: symbol=BNTX, category_id=day_losers, category_name=Day Losers 
+Jan 10 18:32:16 (I) Inserted/Updated: BNTX in category Day Losers 
+Jan 10 18:32:16 (I) Upserted stock: symbol=BILI, category_id=day_losers, category_name=Day Losers 
+Jan 10 18:32:16 (I) Inserted/Updated: BILI in category Day Losers 
+Jan 10 18:32:16 (I) Upserted stock: symbol=ZIM, category_id=day_losers, category_name=Day Losers 
+Jan 10 18:32:16 (I) Inserted/Updated: ZIM in category Day Losers 
+Jan 10 18:32:16 (I) Upserted stock: symbol=PCG, category_id=day_losers, category_name=Day Losers 
+Jan 10 18:32:16 (I) Inserted/Updated: PCG in category Day Losers 
+Jan 10 18:32:16 (I) Upserted stock: symbol=UAA, category_id=day_losers, category_name=Day Losers 
+Jan 10 18:32:16 (I) Inserted/Updated: UAA in category Day Losers 
+Jan 10 18:32:16 (I) Upserted stock: symbol=WFRD, category_id=day_losers, category_name=Day Losers 
+Jan 10 18:32:16 (I) Inserted/Updated: WFRD in category Day Losers 
+Jan 10 18:32:17 (I) Upserted stock: symbol=RYTM, category_id=day_losers, category_name=Day Losers 
+Jan 10 18:32:17 (I) Inserted/Updated: RYTM in category Day Losers 
+Jan 10 18:32:17 (I) Upserted stock: symbol=MGA, category_id=day_losers, category_name=Day Losers 
+Jan 10 18:32:17 (I) Inserted/Updated: MGA in category Day Losers 
+Jan 10 18:32:17 (I) Upserted stock: symbol=TEM, category_id=day_losers, category_name=Day Losers 
+Jan 10 18:32:17 (I) Inserted/Updated: TEM in category Day Losers 
+Jan 10 18:32:17 (I) Upserted stock: symbol=ECG, category_id=day_losers, category_name=Day Losers 
+Jan 10 18:32:17 (I) Inserted/Updated: ECG in category Day Losers 
+Jan 10 18:32:17 (I) Upserted stock: symbol=OSIS, category_id=day_losers, category_name=Day Losers 
+Jan 10 18:32:17 (I) Inserted/Updated: OSIS in category Day Losers 
+Jan 10 18:32:17 (I) Upserted stock: symbol=PUK, category_id=day_losers, category_name=Day Losers 
+Jan 10 18:32:17 (I) Inserted/Updated: PUK in category Day Losers 
+Jan 10 18:32:17 (I) Upserted stock: symbol=TEO, category_id=day_losers, category_name=Day Losers 
+Jan 10 18:32:17 (I) Inserted/Updated: TEO in category Day Losers 
+Jan 10 18:32:17 (I) Upserted stock: symbol=ASAN, category_id=day_losers, category_name=Day Losers 
+Jan 10 18:32:17 (I) Inserted/Updated: ASAN in category Day Losers 
+Jan 10 18:32:17 (I) Upserted stock: symbol=DG, category_id=day_losers, category_name=Day Losers 
+Jan 10 18:32:17 (I) Inserted/Updated: DG in category Day Losers 
+Jan 10 18:32:17 (I) Upserted stock: symbol=OS, category_id=day_losers, category_name=Day Losers 
+Jan 10 18:32:17 (I) Inserted/Updated: OS in category Day Losers 
+Jan 10 18:32:17 (I) Upserted stock: symbol=WFG, category_id=day_losers, category_name=Day Losers 
+Jan 10 18:32:17 (I) Inserted/Updated: WFG in category Day Losers 
+Jan 10 18:32:17 (I) Upserted stock: symbol=SIG, category_id=day_losers, category_name=Day Losers 
+Jan 10 18:32:17 (I) Inserted/Updated: SIG in category Day Losers 
+Jan 10 18:32:17 (I) Upserted stock: symbol=DYN, category_id=day_losers, category_name=Day Losers 
+Jan 10 18:32:17 (I) Inserted/Updated: DYN in category Day Losers 
+Jan 10 18:32:17 (I) Upserted stock: symbol=FSLR, category_id=day_losers, category_name=Day Losers 
+Jan 10 18:32:17 (I) Inserted/Updated: FSLR in category Day Losers 
+Jan 10 18:32:17 (I) Upserted stock: symbol=AMX, category_id=day_losers, category_name=Day Losers 
+Jan 10 18:32:17 (I) Inserted/Updated: AMX in category Day Losers 
+Jan 10 18:32:17 (I) Upserted stock: symbol=RGTI, category_id=most_actives, category_name=Most Actives 
+Jan 10 18:32:17 (I) Inserted/Updated: RGTI in category Most Actives 
+Jan 10 18:32:17 (I) Upserted stock: symbol=NVDA, category_id=most_actives, category_name=Most Actives 
+Jan 10 18:32:17 (I) Inserted/Updated: NVDA in category Most Actives 
+Jan 10 18:32:17 (I) Upserted stock: symbol=IONQ, category_id=most_actives, category_name=Most Actives 
+Jan 10 18:32:17 (I) Inserted/Updated: IONQ in category Most Actives 
+Jan 10 18:32:17 (I) Upserted stock: symbol=ALTM, category_id=most_actives, category_name=Most Actives 
+Jan 10 18:32:17 (I) Inserted/Updated: ALTM in category Most Actives 
+Jan 10 18:32:17 (I) Upserted stock: symbol=PLTR, category_id=most_actives, category_name=Most Actives 
+Jan 10 18:32:17 (I) Inserted/Updated: PLTR in category Most Actives 
+Jan 10 18:32:17 (I) Upserted stock: symbol=SOUN, category_id=most_actives, category_name=Most Actives 
+Jan 10 18:32:17 (I) Inserted/Updated: SOUN in category Most Actives 
+Jan 10 18:32:17 (I) Upserted stock: symbol=LCID, category_id=most_actives, category_name=Most Actives 
+Jan 10 18:32:17 (I) Inserted/Updated: LCID in category Most Actives 
+Jan 10 18:32:17 (I) Upserted stock: symbol=TSLA, category_id=most_actives, category_name=Most Actives 
+Jan 10 18:32:17 (I) Inserted/Updated: TSLA in category Most Actives 
+Jan 10 18:32:17 (I) Upserted stock: symbol=PLUG, category_id=most_actives, category_name=Most Actives 
+Jan 10 18:32:17 (I) Inserted/Updated: PLUG in category Most Actives 
+Jan 10 18:32:17 (I) Upserted stock: symbol=F, category_id=most_actives, category_name=Most Actives 
+Jan 10 18:32:17 (I) Inserted/Updated: F in category Most Actives 
+Jan 10 18:32:17 (I) Upserted stock: symbol=BBD, category_id=most_actives, category_name=Most Actives 
+Jan 10 18:32:17 (I) Inserted/Updated: BBD in category Most Actives 
+Jan 10 18:32:17 (I) Upserted stock: symbol=INTC, category_id=most_actives, category_name=Most Actives 
+Jan 10 18:32:17 (I) Inserted/Updated: INTC in category Most Actives 
+Jan 10 18:32:17 (I) Upserted stock: symbol=NIO, category_id=most_actives, category_name=Most Actives 
+Jan 10 18:32:17 (I) Inserted/Updated: NIO in category Most Actives 
+Jan 10 18:32:17 (I) Upserted stock: symbol=AMD, category_id=most_actives, category_name=Most Actives 
+Jan 10 18:32:17 (I) Inserted/Updated: AMD in category Most Actives 
+Jan 10 18:32:17 (I) Upserted stock: symbol=BAC, category_id=most_actives, category_name=Most Actives 
+Jan 10 18:32:17 (I) Inserted/Updated: BAC in category Most Actives 
+Jan 10 18:32:17 (I) Upserted stock: symbol=AAPL, category_id=most_actives, category_name=Most Actives 
+Jan 10 18:32:17 (I) Inserted/Updated: AAPL in category Most Actives 
+Jan 10 18:32:17 (I) Upserted stock: symbol=T, category_id=most_actives, category_name=Most Actives 
+Jan 10 18:32:17 (I) Inserted/Updated: T in category Most Actives 
+Jan 10 18:32:17 (I) Upserted stock: symbol=PFE, category_id=most_actives, category_name=Most Actives 
+Jan 10 18:32:17 (I) Inserted/Updated: PFE in category Most Actives 
+Jan 10 18:32:17 (I) Upserted stock: symbol=WULF, category_id=most_actives, category_name=Most Actives 
+Jan 10 18:32:17 (I) Inserted/Updated: WULF in category Most Actives 
+Jan 10 18:32:17 (I) Upserted stock: symbol=ABEV, category_id=most_actives, category_name=Most Actives 
+Jan 10 18:32:17 (I) Inserted/Updated: ABEV in category Most Actives 
+Jan 10 18:32:17 (I) Upserted stock: symbol=WBD, category_id=most_actives, category_name=Most Actives 
+Jan 10 18:32:17 (I) Inserted/Updated: WBD in category Most Actives 
+Jan 10 18:32:18 (I) Upserted stock: symbol=RIVN, category_id=most_actives, category_name=Most Actives 
+Jan 10 18:32:18 (I) Inserted/Updated: RIVN in category Most Actives 
+Jan 10 18:32:18 (I) Upserted stock: symbol=MU, category_id=most_actives, category_name=Most Actives 
+Jan 10 18:32:18 (I) Inserted/Updated: MU in category Most Actives 
+Jan 10 18:32:18 (I) Upserted stock: symbol=PCG, category_id=most_actives, category_name=Most Actives 
+Jan 10 18:32:18 (I) Inserted/Updated: PCG in category Most Actives 
+Jan 10 18:32:18 (I) Upserted stock: symbol=RIG, category_id=most_actives, category_name=Most Actives 
+Jan 10 18:32:18 (I) Inserted/Updated: RIG in category Most Actives 
+Jan 10 18:32:18 (I) Upserted stock: symbol=ACHR, category_id=most_actives, category_name=Most Actives 
+Jan 10 18:32:18 (I) Inserted/Updated: ACHR in category Most Actives 
+Jan 10 18:32:18 (I) Upserted stock: symbol=MARA, category_id=most_actives, category_name=Most Actives 
+Jan 10 18:32:18 (I) Inserted/Updated: MARA in category Most Actives 
+Jan 10 18:32:18 (I) Upserted stock: symbol=KGC, category_id=most_actives, category_name=Most Actives 
+Jan 10 18:32:18 (I) Inserted/Updated: KGC in category Most Actives 
+Jan 10 18:32:18 (I) Upserted stock: symbol=SOFI, category_id=most_actives, category_name=Most Actives 
+Jan 10 18:32:18 (I) Inserted/Updated: SOFI in category Most Actives 
+Jan 10 18:32:18 (I) Upserted stock: symbol=ITUB, category_id=most_actives, category_name=Most Actives 
+Jan 10 18:32:18 (I) Inserted/Updated: ITUB in category Most Actives 
+Jan 10 18:32:18 (I) Upserted stock: symbol=QS, category_id=most_actives, category_name=Most Actives 
+Jan 10 18:32:18 (I) Inserted/Updated: QS in category Most Actives 
+Jan 10 18:32:18 (I) Upserted stock: symbol=SMCI, category_id=most_actives, category_name=Most Actives 
+Jan 10 18:32:18 (I) Inserted/Updated: SMCI in category Most Actives 
+Jan 10 18:32:18 (I) Upserted stock: symbol=CMCSA, category_id=most_actives, category_name=Most Actives 
+Jan 10 18:32:18 (I) Inserted/Updated: CMCSA in category Most Actives 
+Jan 10 18:32:18 (I) Upserted stock: symbol=SNAP, category_id=most_actives, category_name=Most Actives 
+Jan 10 18:32:18 (I) Inserted/Updated: SNAP in category Most Actives 
+Jan 10 18:32:18 (I) Upserted stock: symbol=GOOGL, category_id=most_actives, category_name=Most Actives 
+Jan 10 18:32:18 (I) Inserted/Updated: GOOGL in category Most Actives 
+Jan 10 18:32:18 (I) Upserted stock: symbol=UBER, category_id=most_actives, category_name=Most Actives 
+Jan 10 18:32:18 (I) Inserted/Updated: UBER in category Most Actives 
+Jan 10 18:32:18 (I) Upserted stock: symbol=VALE, category_id=most_actives, category_name=Most Actives 
+Jan 10 18:32:18 (I) Inserted/Updated: VALE in category Most Actives 
+Jan 10 18:32:18 (I) Upserted stock: symbol=AMZN, category_id=most_actives, category_name=Most Actives 
+Jan 10 18:32:18 (I) Inserted/Updated: AMZN in category Most Actives 
+Jan 10 18:32:18 (I) Upserted stock: symbol=AAL, category_id=most_actives, category_name=Most Actives 
+Jan 10 18:32:18 (I) Inserted/Updated: AAL in category Most Actives 
+Jan 10 18:32:18 (I) Upserted stock: symbol=GRAB, category_id=most_actives, category_name=Most Actives 
+Jan 10 18:32:18 (I) Inserted/Updated: GRAB in category Most Actives 
+Jan 10 18:32:18 (I) Upserted stock: symbol=AUR, category_id=most_actives, category_name=Most Actives 
+Jan 10 18:32:18 (I) Inserted/Updated: AUR in category Most Actives 
+Jan 10 18:32:18 (I) Upserted stock: symbol=GOLD, category_id=most_actives, category_name=Most Actives 
+Jan 10 18:32:18 (I) Inserted/Updated: GOLD in category Most Actives 
+Jan 10 18:32:18 (I) Upserted stock: symbol=ERIC, category_id=most_actives, category_name=Most Actives 
+Jan 10 18:32:18 (I) Inserted/Updated: ERIC in category Most Actives 
+Jan 10 18:32:18 (I) Upserted stock: symbol=VZ, category_id=most_actives, category_name=Most Actives 
+Jan 10 18:32:18 (I) Inserted/Updated: VZ in category Most Actives 
+Jan 10 18:32:18 (I) Upserted stock: symbol=BB, category_id=most_actives, category_name=Most Actives 
+Jan 10 18:32:18 (I) Inserted/Updated: BB in category Most Actives 
+Jan 10 18:32:18 (I) Upserted stock: symbol=EBAY, category_id=most_actives, category_name=Most Actives 
+Jan 10 18:32:18 (I) Inserted/Updated: EBAY in category Most Actives 
+Jan 10 18:32:18 (I) Upserted stock: symbol=WBA, category_id=most_actives, category_name=Most Actives 
+Jan 10 18:32:18 (I) Inserted/Updated: WBA in category Most Actives 
+Jan 10 18:32:18 (I) Upserted stock: symbol=RIOT, category_id=most_actives, category_name=Most Actives 
+Jan 10 18:32:18 (I) Inserted/Updated: RIOT in category Most Actives 
+Jan 10 18:32:18 (I) Upserted stock: symbol=MBLY, category_id=most_actives, category_name=Most Actives 
+Jan 10 18:32:18 (I) Inserted/Updated: MBLY in category Most Actives 
+Jan 10 18:32:18 (I) Upserted stock: symbol=NU, category_id=most_actives, category_name=Most Actives 
+Jan 10 18:32:18 (I) Inserted/Updated: NU in category Most Actives 
+Jan 10 18:32:18 (I) Upserted stock: symbol=GSAT, category_id=most_actives, category_name=Most Actives 
+Jan 10 18:32:18 (I) Inserted/Updated: GSAT in category Most Actives 
+Jan 10 18:32:18 (I) Upserted stock: symbol=BTE, category_id=most_actives, category_name=Most Actives 
+Jan 10 18:32:18 (I) Inserted/Updated: BTE in category Most Actives 
+Jan 10 18:32:18 (I) Upserted stock: symbol=CLSK, category_id=most_actives, category_name=Most Actives 
+Jan 10 18:32:18 (I) Inserted/Updated: CLSK in category Most Actives 
+Jan 10 18:32:18 (I) Upserted stock: symbol=CCL, category_id=most_actives, category_name=Most Actives 
+Jan 10 18:32:18 (I) Inserted/Updated: CCL in category Most Actives 
+Jan 10 18:32:18 (I) Upserted stock: symbol=RKLB, category_id=most_actives, category_name=Most Actives 
+Jan 10 18:32:18 (I) Inserted/Updated: RKLB in category Most Actives 
+Jan 10 18:32:18 (I) Upserted stock: symbol=MSTR, category_id=most_actives, category_name=Most Actives 
+Jan 10 18:32:18 (I) Inserted/Updated: MSTR in category Most Actives 
+Jan 10 18:32:18 (I) Upserted stock: symbol=AVGO, category_id=most_actives, category_name=Most Actives 
+Jan 10 18:32:18 (I) Inserted/Updated: AVGO in category Most Actives 
+Jan 10 18:32:18 (I) Upserted stock: symbol=JOBY, category_id=most_actives, category_name=Most Actives 
+Jan 10 18:32:18 (I) Inserted/Updated: JOBY in category Most Actives 
+Jan 10 18:32:18 (I) Upserted stock: symbol=XOM, category_id=most_actives, category_name=Most Actives 
+Jan 10 18:32:18 (I) Inserted/Updated: XOM in category Most Actives 
+Jan 10 18:32:18 (I) Upserted stock: symbol=AES, category_id=most_actives, category_name=Most Actives 
+Jan 10 18:32:18 (I) Inserted/Updated: AES in category Most Actives 
+Jan 10 18:32:18 (I) Upserted stock: symbol=PSLV, category_id=most_actives, category_name=Most Actives 
+Jan 10 18:32:18 (I) Inserted/Updated: PSLV in category Most Actives 
+Jan 10 18:32:18 (I) Upserted stock: symbol=BCS, category_id=most_actives, category_name=Most Actives 
+Jan 10 18:32:18 (I) Inserted/Updated: BCS in category Most Actives 
+Jan 10 18:32:18 (I) Upserted stock: symbol=MPW, category_id=most_actives, category_name=Most Actives 
+Jan 10 18:32:18 (I) Inserted/Updated: MPW in category Most Actives 
+Jan 10 18:32:18 (I) Upserted stock: symbol=LYFT, category_id=most_actives, category_name=Most Actives 
+Jan 10 18:32:18 (I) Inserted/Updated: LYFT in category Most Actives 
+Jan 10 18:32:18 (I) Upserted stock: symbol=HBAN, category_id=most_actives, category_name=Most Actives 
+Jan 10 18:32:18 (I) Inserted/Updated: HBAN in category Most Actives 
+Jan 10 18:32:18 (I) Upserted stock: symbol=OKLO, category_id=most_actives, category_name=Most Actives 
+Jan 10 18:32:18 (I) Inserted/Updated: OKLO in category Most Actives 
+Jan 10 18:32:18 (I) Upserted stock: symbol=CLF, category_id=most_actives, category_name=Most Actives 
+Jan 10 18:32:18 (I) Inserted/Updated: CLF in category Most Actives 
+Jan 10 18:32:19 (I) Upserted stock: symbol=WFC, category_id=most_actives, category_name=Most Actives 
+Jan 10 18:32:19 (I) Inserted/Updated: WFC in category Most Actives 
+Jan 10 18:32:19 (I) Upserted stock: symbol=AGNC, category_id=most_actives, category_name=Most Actives 
+Jan 10 18:32:19 (I) Inserted/Updated: AGNC in category Most Actives 
+Jan 10 18:32:19 (I) Upserted stock: symbol=ENVX, category_id=most_actives, category_name=Most Actives 
+Jan 10 18:32:19 (I) Inserted/Updated: ENVX in category Most Actives 
+Jan 10 18:32:19 (I) Upserted stock: symbol=HL, category_id=most_actives, category_name=Most Actives 
+Jan 10 18:32:19 (I) Inserted/Updated: HL in category Most Actives 
+Jan 10 18:32:19 (I) Upserted stock: symbol=FCX, category_id=most_actives, category_name=Most Actives 
+Jan 10 18:32:19 (I) Inserted/Updated: FCX in category Most Actives 
+Jan 10 18:32:19 (I) Upserted stock: symbol=MSFT, category_id=most_actives, category_name=Most Actives 
+Jan 10 18:32:19 (I) Inserted/Updated: MSFT in category Most Actives 
+Jan 10 18:32:19 (I) Upserted stock: symbol=ON, category_id=most_actives, category_name=Most Actives 
+Jan 10 18:32:19 (I) Inserted/Updated: ON in category Most Actives 
+Jan 10 18:32:19 (I) Upserted stock: symbol=IREN, category_id=most_actives, category_name=Most Actives 
+Jan 10 18:32:19 (I) Inserted/Updated: IREN in category Most Actives 
+Jan 10 18:32:19 (I) Upserted stock: symbol=KO, category_id=most_actives, category_name=Most Actives 
+Jan 10 18:32:19 (I) Inserted/Updated: KO in category Most Actives 
+Jan 10 18:32:19 (I) Upserted stock: symbol=CSCO, category_id=most_actives, category_name=Most Actives 
+Jan 10 18:32:19 (I) Inserted/Updated: CSCO in category Most Actives 
+Jan 10 18:32:19 (I) Upserted stock: symbol=GOOG, category_id=most_actives, category_name=Most Actives 
+Jan 10 18:32:19 (I) Inserted/Updated: GOOG in category Most Actives 
+Jan 10 18:32:19 (I) Upserted stock: symbol=BTG, category_id=most_actives, category_name=Most Actives 
+Jan 10 18:32:19 (I) Inserted/Updated: BTG in category Most Actives 
+Jan 10 18:32:19 (I) Upserted stock: symbol=HOOD, category_id=most_actives, category_name=Most Actives 
+Jan 10 18:32:19 (I) Inserted/Updated: HOOD in category Most Actives 
+Jan 10 18:32:19 (I) Upserted stock: symbol=C, category_id=most_actives, category_name=Most Actives 
+Jan 10 18:32:19 (I) Inserted/Updated: C in category Most Actives 
+Jan 10 18:32:19 (I) Upserted stock: symbol=ZI, category_id=most_actives, category_name=Most Actives 
+Jan 10 18:32:19 (I) Inserted/Updated: ZI in category Most Actives 
+Jan 10 18:32:19 (I) Upserted stock: symbol=MRNA, category_id=most_actives, category_name=Most Actives 
+Jan 10 18:32:19 (I) Inserted/Updated: MRNA in category Most Actives 
+Jan 10 18:32:19 (I) Upserted stock: symbol=WMT, category_id=most_actives, category_name=Most Actives 
+Jan 10 18:32:19 (I) Inserted/Updated: WMT in category Most Actives 
+Jan 10 18:32:19 (I) Upserted stock: symbol=BP, category_id=most_actives, category_name=Most Actives 
+Jan 10 18:32:19 (I) Inserted/Updated: BP in category Most Actives 
+Jan 10 18:32:19 (I) Upserted stock: symbol=RXRX, category_id=most_actives, category_name=Most Actives 
+Jan 10 18:32:19 (I) Inserted/Updated: RXRX in category Most Actives 
+Jan 10 18:32:19 (I) Upserted stock: symbol=HPE, category_id=most_actives, category_name=Most Actives 
+Jan 10 18:32:19 (I) Inserted/Updated: HPE in category Most Actives 
+Jan 10 18:32:19 (I) Upserted stock: symbol=VRN, category_id=most_actives, category_name=Most Actives 
+Jan 10 18:32:19 (I) Inserted/Updated: VRN in category Most Actives 
+Jan 10 18:32:19 (I) Upserted stock: symbol=JBLU, category_id=most_actives, category_name=Most Actives 
+Jan 10 18:32:19 (I) Inserted/Updated: JBLU in category Most Actives 
+Jan 10 18:32:19 (I) Upserted stock: symbol=PTON, category_id=most_actives, category_name=Most Actives 
+Jan 10 18:32:19 (I) Inserted/Updated: PTON in category Most Actives 
+Jan 10 18:32:19 (I) Upserted stock: symbol=TSM, category_id=most_actives, category_name=Most Actives 
+Jan 10 18:32:19 (I) Inserted/Updated: TSM in category Most Actives 
+Jan 10 18:32:19 (I) Upserted stock: symbol=CVS, category_id=most_actives, category_name=Most Actives 
+Jan 10 18:32:19 (I) Inserted/Updated: CVS in category Most Actives 
+Jan 10 18:32:19 (I) Upserted stock: symbol=CX, category_id=most_actives, category_name=Most Actives 
+Jan 10 18:32:19 (I) Inserted/Updated: CX in category Most Actives 
+Jan 10 18:32:19 (I) Upserted stock: symbol=LYG, category_id=most_actives, category_name=Most Actives 
+Jan 10 18:32:19 (I) Inserted/Updated: LYG in category Most Actives 
+Jan 10 18:32:19 (I) Upserted stock: symbol=EIX, category_id=most_actives, category_name=Most Actives 
+Jan 10 18:32:19 (I) Inserted/Updated: EIX in category Most Actives 
+Jan 10 18:32:19 (I) Upserted stock: symbol=NKE, category_id=most_actives, category_name=Most Actives 
+Jan 10 18:32:19 (I) Inserted/Updated: NKE in category Most Actives 
+Jan 10 18:32:19 (I) Upserted stock: symbol=NGD, category_id=most_actives, category_name=Most Actives 
+Jan 10 18:32:19 (I) Inserted/Updated: NGD in category Most Actives 
+Jan 10 18:32:19 (I) Upserted stock: symbol=NARI, category_id=most_actives, category_name=Most Actives 
+Jan 10 18:32:19 (I) Inserted/Updated: NARI in category Most Actives 
+Jan 10 18:32:19 (I) Upserted stock: symbol=AMCR, category_id=most_actives, category_name=Most Actives 
+Jan 10 18:32:19 (I) Inserted/Updated: AMCR in category Most Actives 
+Jan 10 18:32:19 (I) Upserted stock: symbol=EQX, category_id=most_actives, category_name=Most Actives 
+Jan 10 18:32:19 (I) Inserted/Updated: EQX in category Most Actives 
+Jan 10 18:32:19 (I) Upserted stock: symbol=BHYSX, category_id=high_yield_bond, category_name=High Yield Bonds 
+Jan 10 18:32:19 (I) Inserted/Updated: BHYSX in category High Yield Bonds 
+Jan 10 18:32:19 (I) Upserted stock: symbol=BHYAX, category_id=high_yield_bond, category_name=High Yield Bonds 
+Jan 10 18:32:19 (I) Inserted/Updated: BHYAX in category High Yield Bonds 
+Jan 10 18:32:19 (I) Upserted stock: symbol=BHYIX, category_id=high_yield_bond, category_name=High Yield Bonds 
+Jan 10 18:32:19 (I) Inserted/Updated: BHYIX in category High Yield Bonds 
+Jan 10 18:32:19 (I) Upserted stock: symbol=BRHYX, category_id=high_yield_bond, category_name=High Yield Bonds 
+Jan 10 18:32:19 (I) Inserted/Updated: BRHYX in category High Yield Bonds 
+Jan 10 18:32:20 (I) Upserted stock: symbol=AHIFX, category_id=high_yield_bond, category_name=High Yield Bonds 
+Jan 10 18:32:20 (I) Inserted/Updated: AHIFX in category High Yield Bonds 
+Jan 10 18:32:20 (I) Upserted stock: symbol=FTAHX, category_id=high_yield_bond, category_name=High Yield Bonds 
+Jan 10 18:32:20 (I) Inserted/Updated: FTAHX in category High Yield Bonds 
+Jan 10 18:32:20 (I) Upserted stock: symbol=RITFX, category_id=high_yield_bond, category_name=High Yield Bonds 
+Jan 10 18:32:20 (I) Inserted/Updated: RITFX in category High Yield Bonds 
+Jan 10 18:32:20 (I) Upserted stock: symbol=RITGX, category_id=high_yield_bond, category_name=High Yield Bonds 
+Jan 10 18:32:20 (I) Inserted/Updated: RITGX in category High Yield Bonds 
+Jan 10 18:32:20 (I) Upserted stock: symbol=RITHX, category_id=high_yield_bond, category_name=High Yield Bonds 
+Jan 10 18:32:20 (I) Inserted/Updated: RITHX in category High Yield Bonds 
+Jan 10 18:32:20 (I) Upserted stock: symbol=HIGFX, category_id=high_yield_bond, category_name=High Yield Bonds 
+Jan 10 18:32:20 (I) Inserted/Updated: HIGFX in category High Yield Bonds 
+Jan 10 18:32:20 (I) Upserted stock: symbol=FAHHX, category_id=high_yield_bond, category_name=High Yield Bonds 
+Jan 10 18:32:20 (I) Inserted/Updated: FAHHX in category High Yield Bonds 
+Jan 10 18:32:20 (I) Upserted stock: symbol=PHYQX, category_id=high_yield_bond, category_name=High Yield Bonds 
+Jan 10 18:32:20 (I) Inserted/Updated: PHYQX in category High Yield Bonds 
+Jan 10 18:32:20 (I) Upserted stock: symbol=APDFX, category_id=high_yield_bond, category_name=High Yield Bonds 
+Jan 10 18:32:20 (I) Inserted/Updated: APDFX in category High Yield Bonds 
+Jan 10 18:32:20 (I) Upserted stock: symbol=ARTFX, category_id=high_yield_bond, category_name=High Yield Bonds 
+Jan 10 18:32:20 (I) Inserted/Updated: ARTFX in category High Yield Bonds 
+Jan 10 18:32:20 (I) Upserted stock: symbol=CPHYX, category_id=high_yield_bond, category_name=High Yield Bonds 
+Jan 10 18:32:20 (I) Inserted/Updated: CPHYX in category High Yield Bonds 
+Jan 10 18:32:20 (I) Upserted stock: symbol=PHYFX, category_id=high_yield_bond, category_name=High Yield Bonds 
+Jan 10 18:32:20 (I) Inserted/Updated: PHYFX in category High Yield Bonds 
+Jan 10 18:32:20 (I) Upserted stock: symbol=PHYTX, category_id=high_yield_bond, category_name=High Yield Bonds 
+Jan 10 18:32:20 (I) Inserted/Updated: PHYTX in category High Yield Bonds 
+Jan 10 18:32:20 (I) Upserted stock: symbol=FHQRX, category_id=high_yield_bond, category_name=High Yield Bonds 
+Jan 10 18:32:20 (I) Inserted/Updated: FHQRX in category High Yield Bonds 
+Jan 10 18:32:20 (I) Upserted stock: symbol=FVHIX, category_id=high_yield_bond, category_name=High Yield Bonds 
+Jan 10 18:32:20 (I) Inserted/Updated: FVHIX in category High Yield Bonds 
+Jan 10 18:32:20 (I) Upserted stock: symbol=FHIRX, category_id=high_yield_bond, category_name=High Yield Bonds 
+Jan 10 18:32:20 (I) Inserted/Updated: FHIRX in category High Yield Bonds 
+Jan 10 18:32:20 (I) Upserted stock: symbol=FHAIX, category_id=high_yield_bond, category_name=High Yield Bonds 
+Jan 10 18:32:20 (I) Inserted/Updated: FHAIX in category High Yield Bonds 
+Jan 10 18:32:20 (I) Upserted stock: symbol=BGISX, category_id=high_yield_bond, category_name=High Yield Bonds 
+Jan 10 18:32:20 (I) Inserted/Updated: BGISX in category High Yield Bonds 
+Jan 10 18:32:20 (I) Upserted stock: symbol=BCGIX, category_id=high_yield_bond, category_name=High Yield Bonds 
+Jan 10 18:32:20 (I) Inserted/Updated: BCGIX in category High Yield Bonds 
+Jan 10 18:32:20 (I) Upserted stock: symbol=BCAAX, category_id=high_yield_bond, category_name=High Yield Bonds 
+Jan 10 18:32:20 (I) Inserted/Updated: BCAAX in category High Yield Bonds 
+Jan 10 18:32:20 (I) Upserted stock: symbol=BGGCX, category_id=high_yield_bond, category_name=High Yield Bonds 
+Jan 10 18:32:20 (I) Inserted/Updated: BGGCX in category High Yield Bonds 
+Jan 10 18:32:20 (I) Upserted stock: symbol=RSHRX, category_id=high_yield_bond, category_name=High Yield Bonds 
+Jan 10 18:32:20 (I) Inserted/Updated: RSHRX in category High Yield Bonds 
+Jan 10 18:32:20 (I) Upserted stock: symbol=CHYYX, category_id=high_yield_bond, category_name=High Yield Bonds 
+Jan 10 18:32:20 (I) Inserted/Updated: CHYYX in category High Yield Bonds 
+Jan 10 18:32:20 (I) Upserted stock: symbol=CHYEX, category_id=high_yield_bond, category_name=High Yield Bonds 
+Jan 10 18:32:20 (I) Inserted/Updated: CHYEX in category High Yield Bonds 
+Jan 10 18:32:20 (I) Upserted stock: symbol=MHYZX, category_id=high_yield_bond, category_name=High Yield Bonds 
+Jan 10 18:32:20 (I) Inserted/Updated: MHYZX in category High Yield Bonds 
+Jan 10 18:32:20 (I) Upserted stock: symbol=MHYWX, category_id=high_yield_bond, category_name=High Yield Bonds 
+Jan 10 18:32:20 (I) Inserted/Updated: MHYWX in category High Yield Bonds 
+Jan 10 18:32:20 (I) Upserted stock: symbol=MNHAX, category_id=high_yield_bond, category_name=High Yield Bonds 
+Jan 10 18:32:20 (I) Inserted/Updated: MNHAX in category High Yield Bonds 
+Jan 10 18:32:20 (I) Upserted stock: symbol=MNHYX, category_id=high_yield_bond, category_name=High Yield Bonds 
+Jan 10 18:32:20 (I) Inserted/Updated: MNHYX in category High Yield Bonds 
+Jan 10 18:32:20 (I) Upserted stock: symbol=FPIOX, category_id=high_yield_bond, category_name=High Yield Bonds 
+Jan 10 18:32:20 (I) Inserted/Updated: FPIOX in category High Yield Bonds 
+Jan 10 18:32:20 (I) Upserted stock: symbol=PYHRX, category_id=high_yield_bond, category_name=High Yield Bonds 
+Jan 10 18:32:20 (I) Inserted/Updated: PYHRX in category High Yield Bonds 
+Jan 10 18:32:20 (I) Upserted stock: symbol=RHYAX, category_id=high_yield_bond, category_name=High Yield Bonds 
+Jan 10 18:32:20 (I) Inserted/Updated: RHYAX in category High Yield Bonds 
+Jan 10 18:32:20 (I) Upserted stock: symbol=RGHYX, category_id=high_yield_bond, category_name=High Yield Bonds 
+Jan 10 18:32:20 (I) Inserted/Updated: RGHYX in category High Yield Bonds 
+Jan 10 18:32:20 (I) Upserted stock: symbol=TARBX, category_id=high_yield_bond, category_name=High Yield Bonds 
+Jan 10 18:32:20 (I) Inserted/Updated: TARBX in category High Yield Bonds 
+Jan 10 18:32:20 (I) Upserted stock: symbol=TMAYX, category_id=high_yield_bond, category_name=High Yield Bonds 
+Jan 10 18:32:20 (I) Inserted/Updated: TMAYX in category High Yield Bonds 
+Jan 10 18:32:20 (I) Upserted stock: symbol=TMARX, category_id=high_yield_bond, category_name=High Yield Bonds 
+Jan 10 18:32:20 (I) Inserted/Updated: TMARX in category High Yield Bonds 
+Jan 10 18:32:20 (I) Upserted stock: symbol=TMACX, category_id=high_yield_bond, category_name=High Yield Bonds 
+Jan 10 18:32:20 (I) Inserted/Updated: TMACX in category High Yield Bonds 
+Jan 10 18:32:20 (I) Upserted stock: symbol=ASHSX, category_id=high_yield_bond, category_name=High Yield Bonds 
+Jan 10 18:32:20 (I) Inserted/Updated: ASHSX in category High Yield Bonds 
+Jan 10 18:32:20 (I) Upserted stock: symbol=ASHIX, category_id=high_yield_bond, category_name=High Yield Bonds 
+Jan 10 18:32:20 (I) Inserted/Updated: ASHIX in category High Yield Bonds 
+Jan 10 18:32:20 (I) Upserted stock: symbol=ASHAX, category_id=high_yield_bond, category_name=High Yield Bonds 
+Jan 10 18:32:20 (I) Inserted/Updated: ASHAX in category High Yield Bonds 
+Jan 10 18:32:20 (I) Upserted stock: symbol=BUIHX, category_id=high_yield_bond, category_name=High Yield Bonds 
+Jan 10 18:32:20 (I) Inserted/Updated: BUIHX in category High Yield Bonds 
+Jan 10 18:32:20 (I) Upserted stock: symbol=HYIZX, category_id=high_yield_bond, category_name=High Yield Bonds 
+Jan 10 18:32:20 (I) Inserted/Updated: HYIZX in category High Yield Bonds 
+Jan 10 18:32:20 (I) Upserted stock: symbol=SAMHX, category_id=high_yield_bond, category_name=High Yield Bonds 
+Jan 10 18:32:20 (I) Inserted/Updated: SAMHX in category High Yield Bonds 
+Jan 10 18:32:20 (I) Upserted stock: symbol=MPHLX, category_id=high_yield_bond, category_name=High Yield Bonds 
+Jan 10 18:32:20 (I) Inserted/Updated: MPHLX in category High Yield Bonds 
+Jan 10 18:32:20 (I) Upserted stock: symbol=MPHSX, category_id=high_yield_bond, category_name=High Yield Bonds 
+Jan 10 18:32:20 (I) Inserted/Updated: MPHSX in category High Yield Bonds 
+Jan 10 18:32:21 (I) Upserted stock: symbol=MPHAX, category_id=high_yield_bond, category_name=High Yield Bonds 
+Jan 10 18:32:21 (I) Inserted/Updated: MPHAX in category High Yield Bonds 
+Jan 10 18:32:21 (I) Upserted stock: symbol=BXHCX, category_id=high_yield_bond, category_name=High Yield Bonds 
+Jan 10 18:32:21 (I) Inserted/Updated: BXHCX in category High Yield Bonds 
+Jan 10 18:32:21 (I) Upserted stock: symbol=MPHRX, category_id=high_yield_bond, category_name=High Yield Bonds 
+Jan 10 18:32:21 (I) Inserted/Updated: MPHRX in category High Yield Bonds 
+Jan 10 18:32:21 (I) Upserted stock: symbol=MPHNX, category_id=high_yield_bond, category_name=High Yield Bonds 
+Jan 10 18:32:21 (I) Inserted/Updated: MPHNX in category High Yield Bonds 
+Jan 10 18:32:21 (I) Upserted stock: symbol=MPHZX, category_id=high_yield_bond, category_name=High Yield Bonds 
+Jan 10 18:32:21 (I) Inserted/Updated: MPHZX in category High Yield Bonds 
+Jan 10 18:32:21 (I) Upserted stock: symbol=BXHYX, category_id=high_yield_bond, category_name=High Yield Bonds 
+Jan 10 18:32:21 (I) Inserted/Updated: BXHYX in category High Yield Bonds 
+Jan 10 18:32:21 (I) Upserted stock: symbol=PHSIX, category_id=high_yield_bond, category_name=High Yield Bonds 
+Jan 10 18:32:21 (I) Inserted/Updated: PHSIX in category High Yield Bonds 
+Jan 10 18:32:21 (I) Upserted stock: symbol=PHFNX, category_id=high_yield_bond, category_name=High Yield Bonds 
+Jan 10 18:32:21 (I) Inserted/Updated: PHFNX in category High Yield Bonds 
+Jan 10 18:32:21 (I) Upserted stock: symbol=PHSAX, category_id=high_yield_bond, category_name=High Yield Bonds 
+Jan 10 18:32:21 (I) Inserted/Updated: PHSAX in category High Yield Bonds 
+Jan 10 18:32:21 (I) Upserted stock: symbol=PHSPX, category_id=high_yield_bond, category_name=High Yield Bonds 
+Jan 10 18:32:21 (I) Inserted/Updated: PHSPX in category High Yield Bonds 
+Jan 10 18:32:21 (I) Upserted stock: symbol=MGHYX, category_id=high_yield_bond, category_name=High Yield Bonds 
+Jan 10 18:32:21 (I) Inserted/Updated: MGHYX in category High Yield Bonds 
+Jan 10 18:32:21 (I) Upserted stock: symbol=SGHSX, category_id=high_yield_bond, category_name=High Yield Bonds 
+Jan 10 18:32:21 (I) Inserted/Updated: SGHSX in category High Yield Bonds 
+Jan 10 18:32:21 (I) Upserted stock: symbol=PRCPX, category_id=high_yield_bond, category_name=High Yield Bonds 
+Jan 10 18:32:21 (I) Inserted/Updated: PRCPX in category High Yield Bonds 
+Jan 10 18:32:21 (I) Upserted stock: symbol=TCRRX, category_id=high_yield_bond, category_name=High Yield Bonds 
+Jan 10 18:32:21 (I) Inserted/Updated: TCRRX in category High Yield Bonds 
+Jan 10 18:32:21 (I) Upserted stock: symbol=PAOPX, category_id=high_yield_bond, category_name=High Yield Bonds 
+Jan 10 18:32:21 (I) Inserted/Updated: PAOPX in category High Yield Bonds 
+Jan 10 18:32:21 (I) Upserted stock: symbol=DNHYX, category_id=high_yield_bond, category_name=High Yield Bonds 
+Jan 10 18:32:21 (I) Inserted/Updated: DNHYX in category High Yield Bonds 
+Jan 10 18:32:21 (I) Upserted stock: symbol=NMHYX, category_id=high_yield_bond, category_name=High Yield Bonds 
+Jan 10 18:32:21 (I) Inserted/Updated: NMHYX in category High Yield Bonds 
+Jan 10 18:32:21 (I) Upserted stock: symbol=PIAMX, category_id=high_yield_bond, category_name=High Yield Bonds 
+Jan 10 18:32:21 (I) Inserted/Updated: PIAMX in category High Yield Bonds 
+Jan 10 18:32:21 (I) Upserted stock: symbol=VRHYX, category_id=high_yield_bond, category_name=High Yield Bonds 
+Jan 10 18:32:21 (I) Inserted/Updated: VRHYX in category High Yield Bonds 
+Jan 10 18:32:21 (I) Upserted stock: symbol=PHCIX, category_id=high_yield_bond, category_name=High Yield Bonds 
+Jan 10 18:32:21 (I) Inserted/Updated: PHCIX in category High Yield Bonds 
+Jan 10 18:32:21 (I) Upserted stock: symbol=FHYSX, category_id=high_yield_bond, category_name=High Yield Bonds 
+Jan 10 18:32:21 (I) Inserted/Updated: FHYSX in category High Yield Bonds 
+Jan 10 18:32:21 (I) Upserted stock: symbol=CETX, category_id=most_shorted_stocks, category_name=Most Shorted Stocks 
+Jan 10 18:32:21 (I) Inserted/Updated: CETX in category Most Shorted Stocks 
+Jan 10 18:32:21 (I) Upserted stock: symbol=PALI, category_id=most_shorted_stocks, category_name=Most Shorted Stocks 
+Jan 10 18:32:21 (I) Inserted/Updated: PALI in category Most Shorted Stocks 
+Jan 10 18:32:21 (I) Upserted stock: symbol=APVO, category_id=most_shorted_stocks, category_name=Most Shorted Stocks 
+Jan 10 18:32:21 (I) Inserted/Updated: APVO in category Most Shorted Stocks 
+Jan 10 18:32:21 (I) Upserted stock: symbol=KSS, category_id=most_shorted_stocks, category_name=Most Shorted Stocks 
+Jan 10 18:32:21 (I) Inserted/Updated: KSS in category Most Shorted Stocks 
+Jan 10 18:32:21 (I) Upserted stock: symbol=BYND, category_id=most_shorted_stocks, category_name=Most Shorted Stocks 
+Jan 10 18:32:21 (I) Inserted/Updated: BYND in category Most Shorted Stocks 
+Jan 10 18:32:21 (I) Upserted stock: symbol=MPW, category_id=most_shorted_stocks, category_name=Most Shorted Stocks 
+Jan 10 18:32:21 (I) Inserted/Updated: MPW in category Most Shorted Stocks 
+Jan 10 18:32:21 (I) Upserted stock: symbol=SEDG, category_id=most_shorted_stocks, category_name=Most Shorted Stocks 
+Jan 10 18:32:21 (I) Inserted/Updated: SEDG in category Most Shorted Stocks 
+Jan 10 18:32:21 (I) Upserted stock: symbol=WHLR, category_id=most_shorted_stocks, category_name=Most Shorted Stocks 
+Jan 10 18:32:21 (I) Inserted/Updated: WHLR in category Most Shorted Stocks 
+Jan 10 18:32:21 (I) Upserted stock: symbol=SYTA, category_id=most_shorted_stocks, category_name=Most Shorted Stocks 
+Jan 10 18:32:21 (I) Inserted/Updated: SYTA in category Most Shorted Stocks 
+Jan 10 18:32:21 (I) Upserted stock: symbol=SAVA, category_id=most_shorted_stocks, category_name=Most Shorted Stocks 
+Jan 10 18:32:21 (I) Inserted/Updated: SAVA in category Most Shorted Stocks 
+Jan 10 18:32:21 (I) Upserted stock: symbol=EVGO, category_id=most_shorted_stocks, category_name=Most Shorted Stocks 
+Jan 10 18:32:21 (I) Inserted/Updated: EVGO in category Most Shorted Stocks 
+Jan 10 18:32:21 (I) Upserted stock: symbol=ALT, category_id=most_shorted_stocks, category_name=Most Shorted Stocks 
+Jan 10 18:32:21 (I) Inserted/Updated: ALT in category Most Shorted Stocks 
+Jan 10 18:32:21 (I) Upserted stock: symbol=XPON, category_id=most_shorted_stocks, category_name=Most Shorted Stocks 
+Jan 10 18:32:21 (I) Inserted/Updated: XPON in category Most Shorted Stocks 
+Jan 10 18:32:21 (I) Upserted stock: symbol=RILY, category_id=most_shorted_stocks, category_name=Most Shorted Stocks 
+Jan 10 18:32:21 (I) Inserted/Updated: RILY in category Most Shorted Stocks 
+Jan 10 18:32:21 (I) Upserted stock: symbol=CRVO, category_id=most_shorted_stocks, category_name=Most Shorted Stocks 
+Jan 10 18:32:21 (I) Inserted/Updated: CRVO in category Most Shorted Stocks 
+Jan 10 18:32:21 (I) Upserted stock: symbol=BMEA, category_id=most_shorted_stocks, category_name=Most Shorted Stocks 
+Jan 10 18:32:21 (I) Inserted/Updated: BMEA in category Most Shorted Stocks 
+Jan 10 18:32:22 (I) Upserted stock: symbol=ABR, category_id=most_shorted_stocks, category_name=Most Shorted Stocks 
+Jan 10 18:32:22 (I) Inserted/Updated: ABR in category Most Shorted Stocks 
+Jan 10 18:32:22 (I) Upserted stock: symbol=WOLF, category_id=most_shorted_stocks, category_name=Most Shorted Stocks 
+Jan 10 18:32:22 (I) Inserted/Updated: WOLF in category Most Shorted Stocks 
+Jan 10 18:32:22 (I) Upserted stock: symbol=CHPT, category_id=most_shorted_stocks, category_name=Most Shorted Stocks 
+Jan 10 18:32:22 (I) Inserted/Updated: CHPT in category Most Shorted Stocks 
+Jan 10 18:32:22 (I) Upserted stock: symbol=NOVA, category_id=most_shorted_stocks, category_name=Most Shorted Stocks 
+Jan 10 18:32:22 (I) Inserted/Updated: NOVA in category Most Shorted Stocks 
+Jan 10 18:32:22 (I) Upserted stock: symbol=CHRS, category_id=most_shorted_stocks, category_name=Most Shorted Stocks 
+Jan 10 18:32:22 (I) Inserted/Updated: CHRS in category Most Shorted Stocks 
+Jan 10 18:32:22 (I) Upserted stock: symbol=EOSE, category_id=most_shorted_stocks, category_name=Most Shorted Stocks 
+Jan 10 18:32:22 (I) Inserted/Updated: EOSE in category Most Shorted Stocks 
+Jan 10 18:32:22 (I) Upserted stock: symbol=BLUE, category_id=most_shorted_stocks, category_name=Most Shorted Stocks 
+Jan 10 18:32:22 (I) Inserted/Updated: BLUE in category Most Shorted Stocks 
+Jan 10 18:32:22 (I) Upserted stock: symbol=ENVX, category_id=most_shorted_stocks, category_name=Most Shorted Stocks 
+Jan 10 18:32:22 (I) Inserted/Updated: ENVX in category Most Shorted Stocks 
+Jan 10 18:32:22 (I) Upserted stock: symbol=SPCE, category_id=most_shorted_stocks, category_name=Most Shorted Stocks 
+Jan 10 18:32:22 (I) Inserted/Updated: SPCE in category Most Shorted Stocks 
+Jan 10 18:32:22 (I) Upserted stock: symbol=TMDX, category_id=most_shorted_stocks, category_name=Most Shorted Stocks 
+Jan 10 18:32:22 (I) Inserted/Updated: TMDX in category Most Shorted Stocks 
+Jan 10 18:32:22 (I) Upserted stock: symbol=RVPH, category_id=most_shorted_stocks, category_name=Most Shorted Stocks 
+Jan 10 18:32:22 (I) Inserted/Updated: RVPH in category Most Shorted Stocks 
+Jan 10 18:32:22 (I) Upserted stock: symbol=FCEL, category_id=most_shorted_stocks, category_name=Most Shorted Stocks 
+Jan 10 18:32:22 (I) Inserted/Updated: FCEL in category Most Shorted Stocks 
+Jan 10 18:32:22 (I) Upserted stock: symbol=LOVE, category_id=most_shorted_stocks, category_name=Most Shorted Stocks 
+Jan 10 18:32:22 (I) Inserted/Updated: LOVE in category Most Shorted Stocks 
+Jan 10 18:32:22 (I) Upserted stock: symbol=NKLA, category_id=most_shorted_stocks, category_name=Most Shorted Stocks 
+Jan 10 18:32:22 (I) Inserted/Updated: NKLA in category Most Shorted Stocks 
+Jan 10 18:32:22 (I) Upserted stock: symbol=ADD, category_id=most_shorted_stocks, category_name=Most Shorted Stocks 
+Jan 10 18:32:22 (I) Inserted/Updated: ADD in category Most Shorted Stocks 
+Jan 10 18:32:22 (I) Upserted stock: symbol=AVXL, category_id=most_shorted_stocks, category_name=Most Shorted Stocks 
+Jan 10 18:32:22 (I) Inserted/Updated: AVXL in category Most Shorted Stocks 
+Jan 10 18:32:22 (I) Upserted stock: symbol=NVAX, category_id=most_shorted_stocks, category_name=Most Shorted Stocks 
+Jan 10 18:32:22 (I) Inserted/Updated: NVAX in category Most Shorted Stocks 
+Jan 10 18:32:22 (I) Upserted stock: symbol=FFIE, category_id=most_shorted_stocks, category_name=Most Shorted Stocks 
+Jan 10 18:32:22 (I) Inserted/Updated: FFIE in category Most Shorted Stocks 
+Jan 10 18:32:22 (I) Upserted stock: symbol=PLCE, category_id=most_shorted_stocks, category_name=Most Shorted Stocks 
+Jan 10 18:32:22 (I) Inserted/Updated: PLCE in category Most Shorted Stocks 
+Jan 10 18:32:22 (I) Upserted stock: symbol=SBFM, category_id=most_shorted_stocks, category_name=Most Shorted Stocks 
+Jan 10 18:32:22 (I) Inserted/Updated: SBFM in category Most Shorted Stocks 
+Jan 10 18:32:22 (I) Upserted stock: symbol=INDI, category_id=most_shorted_stocks, category_name=Most Shorted Stocks 
+Jan 10 18:32:22 (I) Inserted/Updated: INDI in category Most Shorted Stocks 
+Jan 10 18:32:22 (I) Upserted stock: symbol=RUN, category_id=most_shorted_stocks, category_name=Most Shorted Stocks 
+Jan 10 18:32:22 (I) Inserted/Updated: RUN in category Most Shorted Stocks 
+Jan 10 18:32:22 (I) Upserted stock: symbol=PLUG, category_id=most_shorted_stocks, category_name=Most Shorted Stocks 
+Jan 10 18:32:22 (I) Inserted/Updated: PLUG in category Most Shorted Stocks 
+Jan 10 18:32:22 (I) Upserted stock: symbol=MARA, category_id=most_shorted_stocks, category_name=Most Shorted Stocks 
+Jan 10 18:32:22 (I) Inserted/Updated: MARA in category Most Shorted Stocks 
+Jan 10 18:32:22 (I) Upserted stock: symbol=ANAB, category_id=most_shorted_stocks, category_name=Most Shorted Stocks 
+Jan 10 18:32:22 (I) Inserted/Updated: ANAB in category Most Shorted Stocks 
+Jan 10 18:32:22 (I) Upserted stock: symbol=MVIS, category_id=most_shorted_stocks, category_name=Most Shorted Stocks 
+Jan 10 18:32:22 (I) Inserted/Updated: MVIS in category Most Shorted Stocks 
+Jan 10 18:32:22 (I) Upserted stock: symbol=BLNK, category_id=most_shorted_stocks, category_name=Most Shorted Stocks 
+Jan 10 18:32:22 (I) Inserted/Updated: BLNK in category Most Shorted Stocks 
+Jan 10 18:32:22 (I) Upserted stock: symbol=UPST, category_id=most_shorted_stocks, category_name=Most Shorted Stocks 
+Jan 10 18:32:22 (I) Inserted/Updated: UPST in category Most Shorted Stocks 
+Jan 10 18:32:22 (I) Upserted stock: symbol=LAZR, category_id=most_shorted_stocks, category_name=Most Shorted Stocks 
+Jan 10 18:32:22 (I) Inserted/Updated: LAZR in category Most Shorted Stocks 
+Jan 10 18:32:22 (I) Upserted stock: symbol=AEHR, category_id=most_shorted_stocks, category_name=Most Shorted Stocks 
+Jan 10 18:32:22 (I) Inserted/Updated: AEHR in category Most Shorted Stocks 
+Jan 10 18:32:22 (I) Upserted stock: symbol=CRBP, category_id=most_shorted_stocks, category_name=Most Shorted Stocks 
+Jan 10 18:32:22 (I) Inserted/Updated: CRBP in category Most Shorted Stocks 
+Jan 10 18:32:22 (I) Upserted stock: symbol=MDGL, category_id=most_shorted_stocks, category_name=Most Shorted Stocks 
+Jan 10 18:32:22 (I) Inserted/Updated: MDGL in category Most Shorted Stocks 
+Jan 10 18:32:22 (I) Upserted stock: symbol=PCT, category_id=most_shorted_stocks, category_name=Most Shorted Stocks 
+Jan 10 18:32:22 (I) Inserted/Updated: PCT in category Most Shorted Stocks 
+Jan 10 18:32:22 (I) Upserted stock: symbol=LMND, category_id=most_shorted_stocks, category_name=Most Shorted Stocks 
+Jan 10 18:32:22 (I) Inserted/Updated: LMND in category Most Shorted Stocks 
+Jan 10 18:32:22 (I) Upserted stock: symbol=SPHR, category_id=most_shorted_stocks, category_name=Most Shorted Stocks 
+Jan 10 18:32:22 (I) Inserted/Updated: SPHR in category Most Shorted Stocks 
+Jan 10 18:32:22 (I) Upserted stock: symbol=CRSP, category_id=most_shorted_stocks, category_name=Most Shorted Stocks 
+Jan 10 18:32:22 (I) Inserted/Updated: CRSP in category Most Shorted Stocks 
+Jan 10 18:32:22 (I) Upserted stock: symbol=AAOI, category_id=most_shorted_stocks, category_name=Most Shorted Stocks 
+Jan 10 18:32:22 (I) Inserted/Updated: AAOI in category Most Shorted Stocks 
+Jan 10 18:32:22 (I) Upserted stock: symbol=TNYA, category_id=most_shorted_stocks, category_name=Most Shorted Stocks 
+Jan 10 18:32:22 (I) Inserted/Updated: TNYA in category Most Shorted Stocks 
+Jan 10 18:32:22 (I) Upserted stock: symbol=LEU, category_id=most_shorted_stocks, category_name=Most Shorted Stocks 
+Jan 10 18:32:22 (I) Inserted/Updated: LEU in category Most Shorted Stocks 
+Jan 10 18:32:22 (I) Upserted stock: symbol=GXAI, category_id=most_shorted_stocks, category_name=Most Shorted Stocks 
+Jan 10 18:32:22 (I) Inserted/Updated: GXAI in category Most Shorted Stocks 
+Jan 10 18:32:22 (I) Upserted stock: symbol=PHAT, category_id=most_shorted_stocks, category_name=Most Shorted Stocks 
+Jan 10 18:32:22 (I) Inserted/Updated: PHAT in category Most Shorted Stocks 
+Jan 10 18:32:22 (I) Upserted stock: symbol=SOUN, category_id=most_shorted_stocks, category_name=Most Shorted Stocks 
+Jan 10 18:32:22 (I) Inserted/Updated: SOUN in category Most Shorted Stocks 
+Jan 10 18:32:22 (I) Upserted stock: symbol=BTBT, category_id=most_shorted_stocks, category_name=Most Shorted Stocks 
+Jan 10 18:32:22 (I) Inserted/Updated: BTBT in category Most Shorted Stocks 
+Jan 10 18:32:22 (I) Upserted stock: symbol=CLSK, category_id=most_shorted_stocks, category_name=Most Shorted Stocks 
+Jan 10 18:32:22 (I) Inserted/Updated: CLSK in category Most Shorted Stocks 
+Jan 10 18:32:22 (I) Upserted stock: symbol=EDIT, category_id=most_shorted_stocks, category_name=Most Shorted Stocks 
+Jan 10 18:32:22 (I) Inserted/Updated: EDIT in category Most Shorted Stocks 
+Jan 10 18:32:22 (I) Upserted stock: symbol=GRPN, category_id=most_shorted_stocks, category_name=Most Shorted Stocks 
+Jan 10 18:32:22 (I) Inserted/Updated: GRPN in category Most Shorted Stocks 
+Jan 10 18:32:22 (I) Upserted stock: symbol=TRUP, category_id=most_shorted_stocks, category_name=Most Shorted Stocks 
+Jan 10 18:32:22 (I) Inserted/Updated: TRUP in category Most Shorted Stocks 
+Jan 10 18:32:22 (I) Upserted stock: symbol=VMAR, category_id=most_shorted_stocks, category_name=Most Shorted Stocks 
+Jan 10 18:32:22 (I) Inserted/Updated: VMAR in category Most Shorted Stocks 
+Jan 10 18:32:22 (I) Upserted stock: symbol=APLD, category_id=most_shorted_stocks, category_name=Most Shorted Stocks 
+Jan 10 18:32:22 (I) Inserted/Updated: APLD in category Most Shorted Stocks 
+Jan 10 18:32:22 (I) Upserted stock: symbol=FVRR, category_id=most_shorted_stocks, category_name=Most Shorted Stocks 
+Jan 10 18:32:22 (I) Inserted/Updated: FVRR in category Most Shorted Stocks 
+Jan 10 18:32:22 (I) Upserted stock: symbol=CNK, category_id=most_shorted_stocks, category_name=Most Shorted Stocks 
+Jan 10 18:32:22 (I) Inserted/Updated: CNK in category Most Shorted Stocks 
+Jan 10 18:32:22 (I) Upserted stock: symbol=TRNR, category_id=most_shorted_stocks, category_name=Most Shorted Stocks 
+Jan 10 18:32:22 (I) Inserted/Updated: TRNR in category Most Shorted Stocks 
+Jan 10 18:32:23 (I) Upserted stock: symbol=ARQT, category_id=most_shorted_stocks, category_name=Most Shorted Stocks 
+Jan 10 18:32:23 (I) Inserted/Updated: ARQT in category Most Shorted Stocks 
+Jan 10 18:32:23 (I) Upserted stock: symbol=TARS, category_id=most_shorted_stocks, category_name=Most Shorted Stocks 
+Jan 10 18:32:23 (I) Inserted/Updated: TARS in category Most Shorted Stocks 
+Jan 10 18:32:23 (I) Upserted stock: symbol=HRTX, category_id=most_shorted_stocks, category_name=Most Shorted Stocks 
+Jan 10 18:32:23 (I) Inserted/Updated: HRTX in category Most Shorted Stocks 
+Jan 10 18:32:23 (I) Upserted stock: symbol=HIMS, category_id=most_shorted_stocks, category_name=Most Shorted Stocks 
+Jan 10 18:32:23 (I) Inserted/Updated: HIMS in category Most Shorted Stocks 
+Jan 10 18:32:23 (I) Upserted stock: symbol=IOVA, category_id=most_shorted_stocks, category_name=Most Shorted Stocks 
+Jan 10 18:32:23 (I) Inserted/Updated: IOVA in category Most Shorted Stocks 
+Jan 10 18:32:23 (I) Upserted stock: symbol=NTLA, category_id=most_shorted_stocks, category_name=Most Shorted Stocks 
+Jan 10 18:32:23 (I) Inserted/Updated: NTLA in category Most Shorted Stocks 
+Jan 10 18:32:23 (I) Upserted stock: symbol=DBI, category_id=most_shorted_stocks, category_name=Most Shorted Stocks 
+Jan 10 18:32:23 (I) Inserted/Updated: DBI in category Most Shorted Stocks 
+Jan 10 18:32:23 (I) Upserted stock: symbol=FDMT, category_id=most_shorted_stocks, category_name=Most Shorted Stocks 
+Jan 10 18:32:23 (I) Inserted/Updated: FDMT in category Most Shorted Stocks 
+Jan 10 18:32:23 (I) Upserted stock: symbol=HPP, category_id=most_shorted_stocks, category_name=Most Shorted Stocks 
+Jan 10 18:32:23 (I) Inserted/Updated: HPP in category Most Shorted Stocks 
+Jan 10 18:32:23 (I) Upserted stock: symbol=SNDX, category_id=most_shorted_stocks, category_name=Most Shorted Stocks 
+Jan 10 18:32:23 (I) Inserted/Updated: SNDX in category Most Shorted Stocks 
+Jan 10 18:32:23 (I) Upserted stock: symbol=DNTH, category_id=most_shorted_stocks, category_name=Most Shorted Stocks 
+Jan 10 18:32:23 (I) Inserted/Updated: DNTH in category Most Shorted Stocks 
+Jan 10 18:32:23 (I) Upserted stock: symbol=VERV, category_id=most_shorted_stocks, category_name=Most Shorted Stocks 
+Jan 10 18:32:23 (I) Inserted/Updated: VERV in category Most Shorted Stocks 
+Jan 10 18:32:23 (I) Upserted stock: symbol=CNX, category_id=most_shorted_stocks, category_name=Most Shorted Stocks 
+Jan 10 18:32:23 (I) Inserted/Updated: CNX in category Most Shorted Stocks 
+Jan 10 18:32:23 (I) Upserted stock: symbol=COLL, category_id=most_shorted_stocks, category_name=Most Shorted Stocks 
+Jan 10 18:32:23 (I) Inserted/Updated: COLL in category Most Shorted Stocks 
+Jan 10 18:32:23 (I) Upserted stock: symbol=VSAT, category_id=most_shorted_stocks, category_name=Most Shorted Stocks 
+Jan 10 18:32:23 (I) Inserted/Updated: VSAT in category Most Shorted Stocks 
+Jan 10 18:32:23 (I) Upserted stock: symbol=PACB, category_id=most_shorted_stocks, category_name=Most Shorted Stocks 
+Jan 10 18:32:23 (I) Inserted/Updated: PACB in category Most Shorted Stocks 
+Jan 10 18:32:23 (I) Upserted stock: symbol=INMB, category_id=most_shorted_stocks, category_name=Most Shorted Stocks 
+Jan 10 18:32:23 (I) Inserted/Updated: INMB in category Most Shorted Stocks 
+Jan 10 18:32:23 (I) Upserted stock: symbol=QMCO, category_id=most_shorted_stocks, category_name=Most Shorted Stocks 
+Jan 10 18:32:23 (I) Inserted/Updated: QMCO in category Most Shorted Stocks 
+Jan 10 18:32:23 (I) Upserted stock: symbol=BE, category_id=most_shorted_stocks, category_name=Most Shorted Stocks 
+Jan 10 18:32:23 (I) Inserted/Updated: BE in category Most Shorted Stocks 
+Jan 10 18:32:23 (I) Upserted stock: symbol=DAWN, category_id=most_shorted_stocks, category_name=Most Shorted Stocks 
+Jan 10 18:32:23 (I) Inserted/Updated: DAWN in category Most Shorted Stocks 
+Jan 10 18:32:23 (I) Upserted stock: symbol=PLAY, category_id=most_shorted_stocks, category_name=Most Shorted Stocks 
+Jan 10 18:32:23 (I) Inserted/Updated: PLAY in category Most Shorted Stocks 
+Jan 10 18:32:23 (I) Upserted stock: symbol=VTLE, category_id=most_shorted_stocks, category_name=Most Shorted Stocks 
+Jan 10 18:32:23 (I) Inserted/Updated: VTLE in category Most Shorted Stocks 
+Jan 10 18:32:23 (I) Upserted stock: symbol=MGPI, category_id=most_shorted_stocks, category_name=Most Shorted Stocks 
+Jan 10 18:32:23 (I) Inserted/Updated: MGPI in category Most Shorted Stocks 
+Jan 10 18:32:23 (I) Upserted stock: symbol=GPCR, category_id=most_shorted_stocks, category_name=Most Shorted Stocks 
+Jan 10 18:32:23 (I) Inserted/Updated: GPCR in category Most Shorted Stocks 
+Jan 10 18:32:23 (I) Upserted stock: symbol=SMR, category_id=most_shorted_stocks, category_name=Most Shorted Stocks 
+Jan 10 18:32:23 (I) Inserted/Updated: SMR in category Most Shorted Stocks 
+Jan 10 18:32:23 (I) Upserted stock: symbol=ESTA, category_id=most_shorted_stocks, category_name=Most Shorted Stocks 
+Jan 10 18:32:23 (I) Inserted/Updated: ESTA in category Most Shorted Stocks 
+Jan 10 18:32:23 (I) Upserted stock: symbol=TGTX, category_id=most_shorted_stocks, category_name=Most Shorted Stocks 
+Jan 10 18:32:23 (I) Inserted/Updated: TGTX in category Most Shorted Stocks 
+Jan 10 18:32:23 (I) Upserted stock: symbol=RIOT, category_id=most_shorted_stocks, category_name=Most Shorted Stocks 
+Jan 10 18:32:23 (I) Inserted/Updated: RIOT in category Most Shorted Stocks 
+Jan 10 18:32:23 (I) Upserted stock: symbol=BLBD, category_id=most_shorted_stocks, category_name=Most Shorted Stocks 
+Jan 10 18:32:23 (I) Inserted/Updated: BLBD in category Most Shorted Stocks 
+Jan 10 18:32:23 (I) Upserted stock: symbol=ETSY, category_id=most_shorted_stocks, category_name=Most Shorted Stocks 
+Jan 10 18:32:23 (I) Inserted/Updated: ETSY in category Most Shorted Stocks 
+Jan 10 18:32:23 (I) Upserted stock: symbol=INO, category_id=most_shorted_stocks, category_name=Most Shorted Stocks 
+Jan 10 18:32:23 (I) Inserted/Updated: INO in category Most Shorted Stocks 
+Jan 10 18:32:23 (I) Upserted stock: symbol=RXRX, category_id=most_shorted_stocks, category_name=Most Shorted Stocks 
+Jan 10 18:32:23 (I) Inserted/Updated: RXRX in category Most Shorted Stocks 
+Jan 10 18:32:23 (I) Upserted stock: symbol=F, category_id=undervalued_large_caps, category_name=Undervalued Large Caps 
+Jan 10 18:32:23 (I) Inserted/Updated: F in category Undervalued Large Caps 
+Jan 10 18:32:23 (I) Upserted stock: symbol=BBD, category_id=undervalued_large_caps, category_name=Undervalued Large Caps 
+Jan 10 18:32:23 (I) Inserted/Updated: BBD in category Undervalued Large Caps 
+Jan 10 18:32:23 (I) Upserted stock: symbol=ITUB, category_id=undervalued_large_caps, category_name=Undervalued Large Caps 
+Jan 10 18:32:23 (I) Inserted/Updated: ITUB in category Undervalued Large Caps 
+Jan 10 18:32:23 (I) Upserted stock: symbol=PBR, category_id=undervalued_large_caps, category_name=Undervalued Large Caps 
+Jan 10 18:32:23 (I) Inserted/Updated: PBR in category Undervalued Large Caps 
+Jan 10 18:32:23 (I) Upserted stock: symbol=UAL, category_id=undervalued_large_caps, category_name=Undervalued Large Caps 
+Jan 10 18:32:23 (I) Inserted/Updated: UAL in category Undervalued Large Caps 
+Jan 10 18:32:23 (I) Upserted stock: symbol=VALE, category_id=undervalued_large_caps, category_name=Undervalued Large Caps 
+Jan 10 18:32:23 (I) Inserted/Updated: VALE in category Undervalued Large Caps 
+Jan 10 18:32:23 (I) Upserted stock: symbol=OXY, category_id=undervalued_large_caps, category_name=Undervalued Large Caps 
+Jan 10 18:32:23 (I) Inserted/Updated: OXY in category Undervalued Large Caps 
+Jan 10 18:32:23 (I) Upserted stock: symbol=GM, category_id=undervalued_large_caps, category_name=Undervalued Large Caps 
+Jan 10 18:32:23 (I) Inserted/Updated: GM in category Undervalued Large Caps 
+Jan 10 18:32:23 (I) Upserted stock: symbol=UMC, category_id=undervalued_large_caps, category_name=Undervalued Large Caps 
+Jan 10 18:32:23 (I) Inserted/Updated: UMC in category Undervalued Large Caps 
+Jan 10 18:32:23 (I) Upserted stock: symbol=ET, category_id=undervalued_large_caps, category_name=Undervalued Large Caps 
+Jan 10 18:32:23 (I) Inserted/Updated: ET in category Undervalued Large Caps 
+Jan 10 18:32:23 (I) Upserted stock: symbol=SLB, category_id=undervalued_large_caps, category_name=Undervalued Large Caps 
+Jan 10 18:32:23 (I) Inserted/Updated: SLB in category Undervalued Large Caps 
+Jan 10 18:32:23 (I) Upserted stock: symbol=HST, category_id=undervalued_large_caps, category_name=Undervalued Large Caps 
+Jan 10 18:32:23 (I) Inserted/Updated: HST in category Undervalued Large Caps 
+Jan 10 18:32:23 (I) Upserted stock: symbol=CVE, category_id=undervalued_large_caps, category_name=Undervalued Large Caps 
+Jan 10 18:32:23 (I) Inserted/Updated: CVE in category Undervalued Large Caps 
+Jan 10 18:32:23 (I) Upserted stock: symbol=KGC, category_id=undervalued_large_caps, category_name=Undervalued Large Caps 
+Jan 10 18:32:23 (I) Inserted/Updated: KGC in category Undervalued Large Caps 
+Jan 10 18:32:23 (I) Upserted stock: symbol=PBR-A, category_id=undervalued_large_caps, category_name=Undervalued Large Caps 
+Jan 10 18:32:23 (I) Inserted/Updated: PBR-A in category Undervalued Large Caps 
+Jan 10 18:32:23 (I) Upserted stock: symbol=LYG, category_id=undervalued_large_caps, category_name=Undervalued Large Caps 
+Jan 10 18:32:23 (I) Inserted/Updated: LYG in category Undervalued Large Caps 
+Jan 10 18:32:23 (I) Upserted stock: symbol=BKR, category_id=undervalued_large_caps, category_name=Undervalued Large Caps 
+Jan 10 18:32:23 (I) Inserted/Updated: BKR in category Undervalued Large Caps 
+Jan 10 18:32:23 (I) Upserted stock: symbol=MPC, category_id=undervalued_large_caps, category_name=Undervalued Large Caps 
+Jan 10 18:32:23 (I) Inserted/Updated: MPC in category Undervalued Large Caps 
+Jan 10 18:32:24 (I) Upserted stock: symbol=CVS, category_id=undervalued_large_caps, category_name=Undervalued Large Caps 
+Jan 10 18:32:24 (I) Inserted/Updated: CVS in category Undervalued Large Caps 
+Jan 10 18:32:24 (I) Upserted stock: symbol=FTI, category_id=undervalued_large_caps, category_name=Undervalued Large Caps 
+Jan 10 18:32:24 (I) Inserted/Updated: FTI in category Undervalued Large Caps 
+Jan 10 18:32:24 (I) Upserted stock: symbol=AIG, category_id=undervalued_large_caps, category_name=Undervalued Large Caps 
+Jan 10 18:32:24 (I) Inserted/Updated: AIG in category Undervalued Large Caps 
+Jan 10 18:32:24 (I) Upserted stock: symbol=VLO, category_id=undervalued_large_caps, category_name=Undervalued Large Caps 
+Jan 10 18:32:24 (I) Inserted/Updated: VLO in category Undervalued Large Caps 
+Jan 10 18:32:24 (I) Upserted stock: symbol=BK, category_id=undervalued_large_caps, category_name=Undervalued Large Caps 
+Jan 10 18:32:24 (I) Inserted/Updated: BK in category Undervalued Large Caps 
+Jan 10 18:32:24 (I) Upserted stock: symbol=SYF, category_id=undervalued_large_caps, category_name=Undervalued Large Caps 
+Jan 10 18:32:24 (I) Inserted/Updated: SYF in category Undervalued Large Caps 
+Jan 10 18:32:24 (I) Upserted stock: symbol=NUE, category_id=undervalued_large_caps, category_name=Undervalued Large Caps 
+Jan 10 18:32:24 (I) Inserted/Updated: NUE in category Undervalued Large Caps 
+Jan 10 18:32:24 (I) Upserted stock: symbol=PAA, category_id=undervalued_large_caps, category_name=Undervalued Large Caps 
+Jan 10 18:32:24 (I) Inserted/Updated: PAA in category Undervalued Large Caps 
+Jan 10 18:32:24 (I) Upserted stock: symbol=AU, category_id=undervalued_large_caps, category_name=Undervalued Large Caps 
+Jan 10 18:32:24 (I) Inserted/Updated: AU in category Undervalued Large Caps 
+Jan 10 18:32:24 (I) Upserted stock: symbol=MET, category_id=undervalued_large_caps, category_name=Undervalued Large Caps 
+Jan 10 18:32:24 (I) Inserted/Updated: MET in category Undervalued Large Caps 
+Jan 10 18:32:24 (I) Upserted stock: symbol=FLEX, category_id=undervalued_large_caps, category_name=Undervalued Large Caps 
+Jan 10 18:32:24 (I) Inserted/Updated: FLEX in category Undervalued Large Caps 
+Jan 10 18:32:24 (I) Upserted stock: symbol=TS, category_id=undervalued_large_caps, category_name=Undervalued Large Caps 
+Jan 10 18:32:24 (I) Inserted/Updated: TS in category Undervalued Large Caps 
+Jan 10 18:32:24 (I) Upserted stock: symbol=STLA, category_id=undervalued_large_caps, category_name=Undervalued Large Caps 
+Jan 10 18:32:24 (I) Inserted/Updated: STLA in category Undervalued Large Caps 
+Jan 10 18:32:24 (I) Upserted stock: symbol=CNQ, category_id=undervalued_large_caps, category_name=Undervalued Large Caps 
+Jan 10 18:32:24 (I) Inserted/Updated: CNQ in category Undervalued Large Caps 
+Jan 10 18:32:24 (I) Upserted stock: symbol=PSX, category_id=undervalued_large_caps, category_name=Undervalued Large Caps 
+Jan 10 18:32:24 (I) Inserted/Updated: PSX in category Undervalued Large Caps 
+Jan 10 18:32:24 (I) Upserted stock: symbol=SAN, category_id=undervalued_large_caps, category_name=Undervalued Large Caps 
+Jan 10 18:32:24 (I) Inserted/Updated: SAN in category Undervalued Large Caps 
+Jan 10 18:32:24 (I) Upserted stock: symbol=COF, category_id=undervalued_large_caps, category_name=Undervalued Large Caps 
+Jan 10 18:32:24 (I) Inserted/Updated: COF in category Undervalued Large Caps 
+Jan 10 18:32:24 (I) Upserted stock: symbol=STM, category_id=undervalued_large_caps, category_name=Undervalued Large Caps 
+Jan 10 18:32:24 (I) Inserted/Updated: STM in category Undervalued Large Caps 
+Jan 10 18:32:24 (I) Upserted stock: symbol=MMM, category_id=undervalued_large_caps, category_name=Undervalued Large Caps 
+Jan 10 18:32:24 (I) Inserted/Updated: MMM in category Undervalued Large Caps 
+Jan 10 18:32:24 (I) Upserted stock: symbol=UNM, category_id=undervalued_large_caps, category_name=Undervalued Large Caps 
+Jan 10 18:32:24 (I) Inserted/Updated: UNM in category Undervalued Large Caps 
+Jan 10 18:32:24 (I) Upserted stock: symbol=ALLY, category_id=undervalued_large_caps, category_name=Undervalued Large Caps 
+Jan 10 18:32:24 (I) Inserted/Updated: ALLY in category Undervalued Large Caps 
+Jan 10 18:32:24 (I) Upserted stock: symbol=DFS, category_id=undervalued_large_caps, category_name=Undervalued Large Caps 
+Jan 10 18:32:24 (I) Inserted/Updated: DFS in category Undervalued Large Caps 
+Jan 10 18:32:24 (I) Upserted stock: symbol=OVV, category_id=undervalued_large_caps, category_name=Undervalued Large Caps 
+Jan 10 18:32:24 (I) Inserted/Updated: OVV in category Undervalued Large Caps 
+Jan 10 18:32:24 (I) Upserted stock: symbol=ACGL, category_id=undervalued_large_caps, category_name=Undervalued Large Caps 
+Jan 10 18:32:24 (I) Inserted/Updated: ACGL in category Undervalued Large Caps 
+Jan 10 18:32:24 (I) Upserted stock: symbol=CF, category_id=undervalued_large_caps, category_name=Undervalued Large Caps 
+Jan 10 18:32:24 (I) Inserted/Updated: CF in category Undervalued Large Caps 
+Jan 10 18:32:24 (I) Upserted stock: symbol=BBVA, category_id=undervalued_large_caps, category_name=Undervalued Large Caps 
+Jan 10 18:32:24 (I) Inserted/Updated: BBVA in category Undervalued Large Caps 
+Jan 10 18:32:24 (I) Upserted stock: symbol=BSBR, category_id=undervalued_large_caps, category_name=Undervalued Large Caps 
+Jan 10 18:32:24 (I) Inserted/Updated: BSBR in category Undervalued Large Caps 
+Jan 10 18:32:24 (I) Upserted stock: symbol=CNC, category_id=undervalued_large_caps, category_name=Undervalued Large Caps 
+Jan 10 18:32:24 (I) Inserted/Updated: CNC in category Undervalued Large Caps 
+Jan 10 18:32:24 (I) Upserted stock: symbol=HIG, category_id=undervalued_large_caps, category_name=Undervalued Large Caps 
+Jan 10 18:32:24 (I) Inserted/Updated: HIG in category Undervalued Large Caps 
+Jan 10 18:32:24 (I) Upserted stock: symbol=ARCC, category_id=undervalued_large_caps, category_name=Undervalued Large Caps 
+Jan 10 18:32:24 (I) Inserted/Updated: ARCC in category Undervalued Large Caps 
+Jan 10 18:32:24 (I) Upserted stock: symbol=LNG, category_id=undervalued_large_caps, category_name=Undervalued Large Caps 
+Jan 10 18:32:24 (I) Inserted/Updated: LNG in category Undervalued Large Caps 
+Jan 10 18:32:24 (I) Upserted stock: symbol=STLD, category_id=undervalued_large_caps, category_name=Undervalued Large Caps 
+Jan 10 18:32:24 (I) Inserted/Updated: STLD in category Undervalued Large Caps 
+Jan 10 18:32:24 (I) Upserted stock: symbol=ALL, category_id=undervalued_large_caps, category_name=Undervalued Large Caps 
+Jan 10 18:32:24 (I) Inserted/Updated: ALL in category Undervalued Large Caps 
+Jan 10 18:32:24 (I) Upserted stock: symbol=APTV, category_id=undervalued_large_caps, category_name=Undervalued Large Caps 
+Jan 10 18:32:24 (I) Inserted/Updated: APTV in category Undervalued Large Caps 
+Jan 10 18:32:24 (I) Upserted stock: symbol=GDDY, category_id=undervalued_large_caps, category_name=Undervalued Large Caps 
+Jan 10 18:32:24 (I) Inserted/Updated: GDDY in category Undervalued Large Caps 
+Jan 10 18:32:24 (I) Upserted stock: symbol=BG, category_id=undervalued_large_caps, category_name=Undervalued Large Caps 
+Jan 10 18:32:24 (I) Inserted/Updated: BG in category Undervalued Large Caps 
+Jan 10 18:32:24 (I) Upserted stock: symbol=TRV, category_id=undervalued_large_caps, category_name=Undervalued Large Caps 
+Jan 10 18:32:24 (I) Inserted/Updated: TRV in category Undervalued Large Caps 
+Jan 10 18:32:24 (I) Upserted stock: symbol=EC, category_id=undervalued_large_caps, category_name=Undervalued Large Caps 
+Jan 10 18:32:24 (I) Inserted/Updated: EC in category Undervalued Large Caps 
+Jan 10 18:32:24 (I) Upserted stock: symbol=FOX, category_id=undervalued_large_caps, category_name=Undervalued Large Caps 
+Jan 10 18:32:24 (I) Inserted/Updated: FOX in category Undervalued Large Caps 
+Jan 10 18:32:25 (I) Upserted stock: symbol=L, category_id=undervalued_large_caps, category_name=Undervalued Large Caps 
+Jan 10 18:32:25 (I) Inserted/Updated: L in category Undervalued Large Caps 
+Jan 10 18:32:25 (I) Upserted stock: symbol=PBA, category_id=undervalued_large_caps, category_name=Undervalued Large Caps 
+Jan 10 18:32:25 (I) Inserted/Updated: PBA in category Undervalued Large Caps 
+Jan 10 18:32:25 (I) Upserted stock: symbol=CHTR, category_id=undervalued_large_caps, category_name=Undervalued Large Caps 
+Jan 10 18:32:25 (I) Inserted/Updated: CHTR in category Undervalued Large Caps 
+Jan 10 18:32:25 (I) Upserted stock: symbol=TRP, category_id=undervalued_large_caps, category_name=Undervalued Large Caps 
+Jan 10 18:32:25 (I) Inserted/Updated: TRP in category Undervalued Large Caps 
+Jan 10 18:32:25 (I) Upserted stock: symbol=FSLR, category_id=undervalued_large_caps, category_name=Undervalued Large Caps 
+Jan 10 18:32:25 (I) Inserted/Updated: FSLR in category Undervalued Large Caps 
+Jan 10 18:32:25 (I) Upserted stock: symbol=SKX, category_id=undervalued_large_caps, category_name=Undervalued Large Caps 
+Jan 10 18:32:25 (I) Inserted/Updated: SKX in category Undervalued Large Caps 
+Jan 10 18:32:25 (I) Upserted stock: symbol=PPC, category_id=undervalued_large_caps, category_name=Undervalued Large Caps 
+Jan 10 18:32:25 (I) Inserted/Updated: PPC in category Undervalued Large Caps 
+Jan 10 18:32:25 (I) Upserted stock: symbol=HMC, category_id=undervalued_large_caps, category_name=Undervalued Large Caps 
+Jan 10 18:32:25 (I) Inserted/Updated: HMC in category Undervalued Large Caps 
+Jan 10 18:32:25 (I) Upserted stock: symbol=THC, category_id=undervalued_large_caps, category_name=Undervalued Large Caps 
+Jan 10 18:32:25 (I) Inserted/Updated: THC in category Undervalued Large Caps 
+Jan 10 18:32:25 (I) Upserted stock: symbol=UHS, category_id=undervalued_large_caps, category_name=Undervalued Large Caps 
+Jan 10 18:32:25 (I) Inserted/Updated: UHS in category Undervalued Large Caps 
+Jan 10 18:32:25 (I) Upserted stock: symbol=LBRDK, category_id=undervalued_large_caps, category_name=Undervalued Large Caps 
+Jan 10 18:32:25 (I) Inserted/Updated: LBRDK in category Undervalued Large Caps 
+Jan 10 18:32:25 (I) Upserted stock: symbol=E, category_id=undervalued_large_caps, category_name=Undervalued Large Caps 
+Jan 10 18:32:25 (I) Inserted/Updated: E in category Undervalued Large Caps 
+Jan 10 18:32:25 (I) Upserted stock: symbol=SNA, category_id=undervalued_large_caps, category_name=Undervalued Large Caps 
+Jan 10 18:32:25 (I) Inserted/Updated: SNA in category Undervalued Large Caps 
+Jan 10 18:32:25 (I) Upserted stock: symbol=DVA, category_id=undervalued_large_caps, category_name=Undervalued Large Caps 
+Jan 10 18:32:25 (I) Inserted/Updated: DVA in category Undervalued Large Caps 
+Jan 10 18:32:25 (I) Upserted stock: symbol=NMR, category_id=undervalued_large_caps, category_name=Undervalued Large Caps 
+Jan 10 18:32:25 (I) Inserted/Updated: NMR in category Undervalued Large Caps 
+Jan 10 18:32:25 (I) Upserted stock: symbol=CQP, category_id=undervalued_large_caps, category_name=Undervalued Large Caps 
+Jan 10 18:32:25 (I) Inserted/Updated: CQP in category Undervalued Large Caps 
+Jan 10 18:32:25 (I) Upserted stock: symbol=WES, category_id=undervalued_large_caps, category_name=Undervalued Large Caps 
+Jan 10 18:32:25 (I) Inserted/Updated: WES in category Undervalued Large Caps 
+Jan 10 18:32:25 (I) Upserted stock: symbol=UTHR, category_id=undervalued_large_caps, category_name=Undervalued Large Caps 
+Jan 10 18:32:25 (I) Inserted/Updated: UTHR in category Undervalued Large Caps 
+Jan 10 18:32:25 (I) Upserted stock: symbol=TLK, category_id=undervalued_large_caps, category_name=Undervalued Large Caps 
+Jan 10 18:32:25 (I) Inserted/Updated: TLK in category Undervalued Large Caps 
+Jan 10 18:32:25 (I) Upserted stock: symbol=PKX, category_id=undervalued_large_caps, category_name=Undervalued Large Caps 
+Jan 10 18:32:25 (I) Inserted/Updated: PKX in category Undervalued Large Caps 
+Jan 10 18:32:25 (I) Upserted stock: symbol=SMCI, category_id=undervalued_large_caps, category_name=Undervalued Large Caps 
+Jan 10 18:32:25 (I) Inserted/Updated: SMCI in category Undervalued Large Caps 
+Jan 10 18:32:25 (I) Upserted stock: symbol=LBRDA, category_id=undervalued_large_caps, category_name=Undervalued Large Caps 
+Jan 10 18:32:25 (I) Inserted/Updated: LBRDA in category Undervalued Large Caps 
+Jan 10 18:32:25 (I) Upserted stock: symbol=FCNCA, category_id=undervalued_large_caps, category_name=Undervalued Large Caps 
+Jan 10 18:32:25 (I) Inserted/Updated: FCNCA in category Undervalued Large Caps 
+Jan 10 18:32:25 (I) Upserted stock: symbol=MKL, category_id=undervalued_large_caps, category_name=Undervalued Large Caps 
+Jan 10 18:32:25 (I) Inserted/Updated: MKL in category Undervalued Large Caps 
+Jan 10 18:32:25 (I) Upserted stock: symbol=SHG, category_id=undervalued_large_caps, category_name=Undervalued Large Caps 
+Jan 10 18:32:25 (I) Inserted/Updated: SHG in category Undervalued Large Caps 
+Jan 10 18:32:25 (I) Upserted stock: symbol=BCH, category_id=undervalued_large_caps, category_name=Undervalued Large Caps 
+Jan 10 18:32:25 (I) Inserted/Updated: BCH in category Undervalued Large Caps 
+Jan 10 18:32:25 (I) Upserted stock: symbol=IX, category_id=undervalued_large_caps, category_name=Undervalued Large Caps 
+Jan 10 18:32:25 (I) Inserted/Updated: IX in category Undervalued Large Caps 
+Jan 10 18:32:25 (I) Upserted stock: symbol=KSPI, category_id=undervalued_large_caps, category_name=Undervalued Large Caps 
+Jan 10 18:32:25 (I) Inserted/Updated: KSPI in category Undervalued Large Caps 
+Jan 10 18:32:25 (I) Upserted stock: symbol=CNH, category_id=undervalued_large_caps, category_name=Undervalued Large Caps 
+Jan 10 18:32:25 (I) Inserted/Updated: CNH in category Undervalued Large Caps 
+Jan 10 18:32:25 (I) Upserted stock: symbol=EG, category_id=undervalued_large_caps, category_name=Undervalued Large Caps 
+Jan 10 18:32:25 (I) Inserted/Updated: EG in category Undervalued Large Caps 
+Jan 10 18:32:25 (I) Upserted stock: symbol=PR, category_id=undervalued_large_caps, category_name=Undervalued Large Caps 
+Jan 10 18:32:25 (I) Inserted/Updated: PR in category Undervalued Large Caps 
+Jan 10 18:32:25 (I) Upserted stock: symbol=SOLV, category_id=undervalued_large_caps, category_name=Undervalued Large Caps 
+Jan 10 18:32:25 (I) Inserted/Updated: SOLV in category Undervalued Large Caps 
+Jan 10 18:32:25 (I) Upserted stock: symbol=ATUS, category_id=aggressive_small_caps, category_name=Aggressive Small Caps 
+Jan 10 18:32:25 (I) Inserted/Updated: ATUS in category Aggressive Small Caps 
+Jan 10 18:32:25 (I) Upserted stock: symbol=SID, category_id=aggressive_small_caps, category_name=Aggressive Small Caps 
+Jan 10 18:32:25 (I) Inserted/Updated: SID in category Aggressive Small Caps 
+Jan 10 18:32:25 (I) Upserted stock: symbol=KOS, category_id=aggressive_small_caps, category_name=Aggressive Small Caps 
+Jan 10 18:32:25 (I) Inserted/Updated: KOS in category Aggressive Small Caps 
+Jan 10 18:32:25 (I) Upserted stock: symbol=MPLN, category_id=aggressive_small_caps, category_name=Aggressive Small Caps 
+Jan 10 18:32:25 (I) Inserted/Updated: MPLN in category Aggressive Small Caps 
+Jan 10 18:32:25 (I) Upserted stock: symbol=DOLE, category_id=aggressive_small_caps, category_name=Aggressive Small Caps 
+Jan 10 18:32:25 (I) Inserted/Updated: DOLE in category Aggressive Small Caps 
+Jan 10 18:32:25 (I) Upserted stock: symbol=AVIR, category_id=aggressive_small_caps, category_name=Aggressive Small Caps 
+Jan 10 18:32:25 (I) Inserted/Updated: AVIR in category Aggressive Small Caps 
+Jan 10 18:32:25 (I) Upserted stock: symbol=LAC, category_id=aggressive_small_caps, category_name=Aggressive Small Caps 
+Jan 10 18:32:25 (I) Inserted/Updated: LAC in category Aggressive Small Caps 
+Jan 10 18:32:25 (I) Upserted stock: symbol=SONO, category_id=aggressive_small_caps, category_name=Aggressive Small Caps 
+Jan 10 18:32:25 (I) Inserted/Updated: SONO in category Aggressive Small Caps 
+Jan 10 18:32:26 (I) Upserted stock: symbol=VMEO, category_id=aggressive_small_caps, category_name=Aggressive Small Caps 
+Jan 10 18:32:26 (I) Inserted/Updated: VMEO in category Aggressive Small Caps 
+Jan 10 18:32:26 (I) Upserted stock: symbol=GPRO, category_id=aggressive_small_caps, category_name=Aggressive Small Caps 
+Jan 10 18:32:26 (I) Inserted/Updated: GPRO in category Aggressive Small Caps 
+Jan 10 18:32:26 (I) Upserted stock: symbol=INFN, category_id=aggressive_small_caps, category_name=Aggressive Small Caps 
+Jan 10 18:32:26 (I) Inserted/Updated: INFN in category Aggressive Small Caps 
+Jan 10 18:32:26 (I) Upserted stock: symbol=PBI, category_id=aggressive_small_caps, category_name=Aggressive Small Caps 
+Jan 10 18:32:26 (I) Inserted/Updated: PBI in category Aggressive Small Caps 
+Jan 10 18:32:26 (I) Upserted stock: symbol=BFLY, category_id=aggressive_small_caps, category_name=Aggressive Small Caps 
+Jan 10 18:32:26 (I) Inserted/Updated: BFLY in category Aggressive Small Caps 
+Jan 10 18:32:26 (I) Upserted stock: symbol=USA, category_id=aggressive_small_caps, category_name=Aggressive Small Caps 
+Jan 10 18:32:26 (I) Inserted/Updated: USA in category Aggressive Small Caps 
+Jan 10 18:32:26 (I) Upserted stock: symbol=PLYA, category_id=aggressive_small_caps, category_name=Aggressive Small Caps 
+Jan 10 18:32:26 (I) Inserted/Updated: PLYA in category Aggressive Small Caps 
+Jan 10 18:32:26 (I) Upserted stock: symbol=ABCL, category_id=aggressive_small_caps, category_name=Aggressive Small Caps 
+Jan 10 18:32:26 (I) Inserted/Updated: ABCL in category Aggressive Small Caps 
+Jan 10 18:32:26 (I) Upserted stock: symbol=CHGG, category_id=aggressive_small_caps, category_name=Aggressive Small Caps 
+Jan 10 18:32:26 (I) Inserted/Updated: CHGG in category Aggressive Small Caps 
+Jan 10 18:32:26 (I) Upserted stock: symbol=PGRE, category_id=aggressive_small_caps, category_name=Aggressive Small Caps 
+Jan 10 18:32:26 (I) Inserted/Updated: PGRE in category Aggressive Small Caps 
+Jan 10 18:32:26 (I) Upserted stock: symbol=BMBL, category_id=aggressive_small_caps, category_name=Aggressive Small Caps 
+Jan 10 18:32:26 (I) Inserted/Updated: BMBL in category Aggressive Small Caps 
+Jan 10 18:32:26 (I) Upserted stock: symbol=NOVA, category_id=aggressive_small_caps, category_name=Aggressive Small Caps 
+Jan 10 18:32:26 (I) Inserted/Updated: NOVA in category Aggressive Small Caps 
+Jan 10 18:32:26 (I) Upserted stock: symbol=BDN, category_id=aggressive_small_caps, category_name=Aggressive Small Caps 
+Jan 10 18:32:26 (I) Inserted/Updated: BDN in category Aggressive Small Caps 
+Jan 10 18:32:26 (I) Upserted stock: symbol=WW, category_id=aggressive_small_caps, category_name=Aggressive Small Caps 
+Jan 10 18:32:26 (I) Inserted/Updated: WW in category Aggressive Small Caps 
+Jan 10 18:32:26 (I) Upserted stock: symbol=YQ, category_id=aggressive_small_caps, category_name=Aggressive Small Caps 
+Jan 10 18:32:26 (I) Inserted/Updated: YQ in category Aggressive Small Caps 
+Jan 10 18:32:26 (I) Upserted stock: symbol=PAGS, category_id=aggressive_small_caps, category_name=Aggressive Small Caps 
+Jan 10 18:32:26 (I) Inserted/Updated: PAGS in category Aggressive Small Caps 
+Jan 10 18:32:26 (I) Upserted stock: symbol=STEM, category_id=aggressive_small_caps, category_name=Aggressive Small Caps 
+Jan 10 18:32:26 (I) Inserted/Updated: STEM in category Aggressive Small Caps 
+Jan 10 18:32:26 (I) Upserted stock: symbol=SAND, category_id=aggressive_small_caps, category_name=Aggressive Small Caps 
+Jan 10 18:32:26 (I) Inserted/Updated: SAND in category Aggressive Small Caps 
+Jan 10 18:32:26 (I) Upserted stock: symbol=BKD, category_id=aggressive_small_caps, category_name=Aggressive Small Caps 
+Jan 10 18:32:26 (I) Inserted/Updated: BKD in category Aggressive Small Caps 
+Jan 10 18:32:26 (I) Upserted stock: symbol=CIM, category_id=aggressive_small_caps, category_name=Aggressive Small Caps 
+Jan 10 18:32:26 (I) Inserted/Updated: CIM in category Aggressive Small Caps 
+Jan 10 18:32:26 (I) Upserted stock: symbol=SCS, category_id=aggressive_small_caps, category_name=Aggressive Small Caps 
+Jan 10 18:32:26 (I) Inserted/Updated: SCS in category Aggressive Small Caps 
+Jan 10 18:32:26 (I) Upserted stock: symbol=EVCM, category_id=aggressive_small_caps, category_name=Aggressive Small Caps 
+Jan 10 18:32:26 (I) Inserted/Updated: EVCM in category Aggressive Small Caps 
+Jan 10 18:32:26 (I) Upserted stock: symbol=INVA, category_id=aggressive_small_caps, category_name=Aggressive Small Caps 
+Jan 10 18:32:26 (I) Inserted/Updated: INVA in category Aggressive Small Caps 
+Jan 10 18:32:26 (I) Upserted stock: symbol=HPP, category_id=aggressive_small_caps, category_name=Aggressive Small Caps 
+Jan 10 18:32:26 (I) Inserted/Updated: HPP in category Aggressive Small Caps 
+Jan 10 18:32:26 (I) Upserted stock: symbol=AGL, category_id=aggressive_small_caps, category_name=Aggressive Small Caps 
+Jan 10 18:32:26 (I) Inserted/Updated: AGL in category Aggressive Small Caps 
+Jan 10 18:32:26 (I) Upserted stock: symbol=JQC, category_id=aggressive_small_caps, category_name=Aggressive Small Caps 
+Jan 10 18:32:26 (I) Inserted/Updated: JQC in category Aggressive Small Caps 
+Jan 10 18:32:26 (I) Upserted stock: symbol=SFL, category_id=aggressive_small_caps, category_name=Aggressive Small Caps 
+Jan 10 18:32:26 (I) Inserted/Updated: SFL in category Aggressive Small Caps 
+Jan 10 18:32:26 (I) Upserted stock: symbol=NABL, category_id=aggressive_small_caps, category_name=Aggressive Small Caps 
+Jan 10 18:32:26 (I) Inserted/Updated: NABL in category Aggressive Small Caps 
+Jan 10 18:32:26 (I) Upserted stock: symbol=MXL, category_id=aggressive_small_caps, category_name=Aggressive Small Caps 
+Jan 10 18:32:26 (I) Inserted/Updated: MXL in category Aggressive Small Caps 
+Jan 10 18:32:26 (I) Upserted stock: symbol=SB, category_id=aggressive_small_caps, category_name=Aggressive Small Caps 
+Jan 10 18:32:26 (I) Inserted/Updated: SB in category Aggressive Small Caps 
+Jan 10 18:32:26 (I) Upserted stock: symbol=SXC, category_id=aggressive_small_caps, category_name=Aggressive Small Caps 
+Jan 10 18:32:26 (I) Inserted/Updated: SXC in category Aggressive Small Caps 
+Jan 10 18:32:26 (I) Upserted stock: symbol=PRTS, category_id=aggressive_small_caps, category_name=Aggressive Small Caps 
+Jan 10 18:32:26 (I) Inserted/Updated: PRTS in category Aggressive Small Caps 
+Jan 10 18:32:26 (I) Upserted stock: symbol=KW, category_id=aggressive_small_caps, category_name=Aggressive Small Caps 
+Jan 10 18:32:26 (I) Inserted/Updated: KW in category Aggressive Small Caps 
+Jan 10 18:32:26 (I) Upserted stock: symbol=FREY, category_id=aggressive_small_caps, category_name=Aggressive Small Caps 
+Jan 10 18:32:26 (I) Inserted/Updated: FREY in category Aggressive Small Caps 
+Jan 10 18:32:26 (I) Upserted stock: symbol=GNK, category_id=aggressive_small_caps, category_name=Aggressive Small Caps 
+Jan 10 18:32:26 (I) Inserted/Updated: GNK in category Aggressive Small Caps 
+Jan 10 18:32:26 (I) Upserted stock: symbol=DHC, category_id=aggressive_small_caps, category_name=Aggressive Small Caps 
+Jan 10 18:32:26 (I) Inserted/Updated: DHC in category Aggressive Small Caps 
+Jan 10 18:32:26 (I) Upserted stock: symbol=HCSG, category_id=aggressive_small_caps, category_name=Aggressive Small Caps 
+Jan 10 18:32:26 (I) Inserted/Updated: HCSG in category Aggressive Small Caps 
+Jan 10 18:32:26 (I) Upserted stock: symbol=TASK, category_id=aggressive_small_caps, category_name=Aggressive Small Caps 
+Jan 10 18:32:26 (I) Inserted/Updated: TASK in category Aggressive Small Caps 
+Jan 10 18:32:26 (I) Upserted stock: symbol=NCZ, category_id=aggressive_small_caps, category_name=Aggressive Small Caps 
+Jan 10 18:32:26 (I) Inserted/Updated: NCZ in category Aggressive Small Caps 
+Jan 10 18:32:26 (I) Upserted stock: symbol=DNOW, category_id=aggressive_small_caps, category_name=Aggressive Small Caps 
+Jan 10 18:32:26 (I) Inserted/Updated: DNOW in category Aggressive Small Caps 
+Jan 10 18:32:26 (I) Upserted stock: symbol=NEP, category_id=aggressive_small_caps, category_name=Aggressive Small Caps 
+Jan 10 18:32:26 (I) Inserted/Updated: NEP in category Aggressive Small Caps 
+Jan 10 18:32:26 (I) Upserted stock: symbol=SVC, category_id=aggressive_small_caps, category_name=Aggressive Small Caps 
+Jan 10 18:32:26 (I) Inserted/Updated: SVC in category Aggressive Small Caps 
+Jan 10 18:32:26 (I) Upserted stock: symbol=MBI, category_id=aggressive_small_caps, category_name=Aggressive Small Caps 
+Jan 10 18:32:27 (I) Inserted/Updated: MBI in category Aggressive Small Caps 
+Jan 10 18:32:27 (I) Upserted stock: symbol=LZ, category_id=aggressive_small_caps, category_name=Aggressive Small Caps 
+Jan 10 18:32:27 (I) Inserted/Updated: LZ in category Aggressive Small Caps 
+Jan 10 18:32:27 (I) Upserted stock: symbol=BALY, category_id=aggressive_small_caps, category_name=Aggressive Small Caps 
+Jan 10 18:32:27 (I) Inserted/Updated: BALY in category Aggressive Small Caps 
+Jan 10 18:32:27 (I) Upserted stock: symbol=HLIT, category_id=aggressive_small_caps, category_name=Aggressive Small Caps 
+Jan 10 18:32:27 (I) Inserted/Updated: HLIT in category Aggressive Small Caps 
+Jan 10 18:32:27 (I) Upserted stock: symbol=NUVB, category_id=aggressive_small_caps, category_name=Aggressive Small Caps 
+Jan 10 18:32:27 (I) Inserted/Updated: NUVB in category Aggressive Small Caps 
+Jan 10 18:32:27 (I) Upserted stock: symbol=MIN, category_id=aggressive_small_caps, category_name=Aggressive Small Caps 
+Jan 10 18:32:27 (I) Inserted/Updated: MIN in category Aggressive Small Caps 
+Jan 10 18:32:27 (I) Upserted stock: symbol=CRNC, category_id=aggressive_small_caps, category_name=Aggressive Small Caps 
+Jan 10 18:32:27 (I) Inserted/Updated: CRNC in category Aggressive Small Caps 
+Jan 10 18:32:27 (I) Upserted stock: symbol=ARI, category_id=aggressive_small_caps, category_name=Aggressive Small Caps 
+Jan 10 18:32:27 (I) Inserted/Updated: ARI in category Aggressive Small Caps 
+Jan 10 18:32:27 (I) Upserted stock: symbol=SVRA, category_id=aggressive_small_caps, category_name=Aggressive Small Caps 
+Jan 10 18:32:27 (I) Inserted/Updated: SVRA in category Aggressive Small Caps 
+Jan 10 18:32:27 (I) Upserted stock: symbol=GTN, category_id=aggressive_small_caps, category_name=Aggressive Small Caps 
+Jan 10 18:32:27 (I) Inserted/Updated: GTN in category Aggressive Small Caps 
+Jan 10 18:32:27 (I) Upserted stock: symbol=IAS, category_id=aggressive_small_caps, category_name=Aggressive Small Caps 
+Jan 10 18:32:27 (I) Inserted/Updated: IAS in category Aggressive Small Caps 
+Jan 10 18:32:27 (I) Upserted stock: symbol=UCTT, category_id=aggressive_small_caps, category_name=Aggressive Small Caps 
+Jan 10 18:32:27 (I) Inserted/Updated: UCTT in category Aggressive Small Caps 
+Jan 10 18:32:27 (I) Upserted stock: symbol=SNDX, category_id=aggressive_small_caps, category_name=Aggressive Small Caps 
+Jan 10 18:32:27 (I) Inserted/Updated: SNDX in category Aggressive Small Caps 
+Jan 10 18:32:27 (I) Upserted stock: symbol=TILE, category_id=aggressive_small_caps, category_name=Aggressive Small Caps 
+Jan 10 18:32:27 (I) Inserted/Updated: TILE in category Aggressive Small Caps 
+Jan 10 18:32:27 (I) Upserted stock: symbol=GPMT, category_id=aggressive_small_caps, category_name=Aggressive Small Caps 
+Jan 10 18:32:27 (I) Inserted/Updated: GPMT in category Aggressive Small Caps 
+Jan 10 18:32:27 (I) Upserted stock: symbol=BAND, category_id=aggressive_small_caps, category_name=Aggressive Small Caps 
+Jan 10 18:32:27 (I) Inserted/Updated: BAND in category Aggressive Small Caps 
+Jan 10 18:32:27 (I) Upserted stock: symbol=RFL, category_id=aggressive_small_caps, category_name=Aggressive Small Caps 
+Jan 10 18:32:27 (I) Inserted/Updated: RFL in category Aggressive Small Caps 
+Jan 10 18:32:27 (I) Upserted stock: symbol=ETV, category_id=aggressive_small_caps, category_name=Aggressive Small Caps 
+Jan 10 18:32:27 (I) Inserted/Updated: ETV in category Aggressive Small Caps 
+Jan 10 18:32:27 (I) Upserted stock: symbol=MTLS, category_id=aggressive_small_caps, category_name=Aggressive Small Caps 
+Jan 10 18:32:27 (I) Inserted/Updated: MTLS in category Aggressive Small Caps 
+Jan 10 18:32:27 (I) Upserted stock: symbol=IMMR, category_id=aggressive_small_caps, category_name=Aggressive Small Caps 
+Jan 10 18:32:27 (I) Inserted/Updated: IMMR in category Aggressive Small Caps 
+Jan 10 18:32:27 (I) Upserted stock: symbol=DX, category_id=aggressive_small_caps, category_name=Aggressive Small Caps 
+Jan 10 18:32:27 (I) Inserted/Updated: DX in category Aggressive Small Caps 
+Jan 10 18:32:27 (I) Upserted stock: symbol=TEI, category_id=aggressive_small_caps, category_name=Aggressive Small Caps 
+Jan 10 18:32:27 (I) Inserted/Updated: TEI in category Aggressive Small Caps 
+Jan 10 18:32:27 (I) Upserted stock: symbol=CNNE, category_id=aggressive_small_caps, category_name=Aggressive Small Caps 
+Jan 10 18:32:27 (I) Inserted/Updated: CNNE in category Aggressive Small Caps 
+Jan 10 18:32:27 (I) Upserted stock: symbol=BRY, category_id=aggressive_small_caps, category_name=Aggressive Small Caps 
+Jan 10 18:32:27 (I) Inserted/Updated: BRY in category Aggressive Small Caps 
+Jan 10 18:32:27 (I) Upserted stock: symbol=MSGE, category_id=aggressive_small_caps, category_name=Aggressive Small Caps 
+Jan 10 18:32:27 (I) Inserted/Updated: MSGE in category Aggressive Small Caps 
+Jan 10 18:32:27 (I) Upserted stock: symbol=PBYI, category_id=aggressive_small_caps, category_name=Aggressive Small Caps 
+Jan 10 18:32:27 (I) Inserted/Updated: PBYI in category Aggressive Small Caps 
+Jan 10 18:32:27 (I) Upserted stock: symbol=GBX, category_id=aggressive_small_caps, category_name=Aggressive Small Caps 
+Jan 10 18:32:27 (I) Inserted/Updated: GBX in category Aggressive Small Caps 
+Jan 10 18:32:27 (I) Upserted stock: symbol=PRTA, category_id=aggressive_small_caps, category_name=Aggressive Small Caps 
+Jan 10 18:32:27 (I) Inserted/Updated: PRTA in category Aggressive Small Caps 
+Jan 10 18:32:27 (I) Upserted stock: symbol=IGD, category_id=aggressive_small_caps, category_name=Aggressive Small Caps 
+Jan 10 18:32:27 (I) Inserted/Updated: IGD in category Aggressive Small Caps 
+Jan 10 18:32:27 (I) Upserted stock: symbol=DLX, category_id=aggressive_small_caps, category_name=Aggressive Small Caps 
+Jan 10 18:32:27 (I) Inserted/Updated: DLX in category Aggressive Small Caps 
+Jan 10 18:32:27 (I) Upserted stock: symbol=JBGS, category_id=aggressive_small_caps, category_name=Aggressive Small Caps 
+Jan 10 18:32:27 (I) Inserted/Updated: JBGS in category Aggressive Small Caps 
+Jan 10 18:32:27 (I) Upserted stock: symbol=CHEF, category_id=aggressive_small_caps, category_name=Aggressive Small Caps 
+Jan 10 18:32:27 (I) Inserted/Updated: CHEF in category Aggressive Small Caps 
+Jan 10 18:32:27 (I) Upserted stock: symbol=BJRI, category_id=aggressive_small_caps, category_name=Aggressive Small Caps 
+Jan 10 18:32:27 (I) Inserted/Updated: BJRI in category Aggressive Small Caps 
+Jan 10 18:32:27 (I) Upserted stock: symbol=ATEN, category_id=aggressive_small_caps, category_name=Aggressive Small Caps 
+Jan 10 18:32:27 (I) Inserted/Updated: ATEN in category Aggressive Small Caps 
+Jan 10 18:32:27 (I) Upserted stock: symbol=REVG, category_id=aggressive_small_caps, category_name=Aggressive Small Caps 
+Jan 10 18:32:27 (I) Inserted/Updated: REVG in category Aggressive Small Caps 
+Jan 10 18:32:27 (I) Upserted stock: symbol=UIS, category_id=aggressive_small_caps, category_name=Aggressive Small Caps 
+Jan 10 18:32:27 (I) Inserted/Updated: UIS in category Aggressive Small Caps 
+Jan 10 18:32:27 (I) Upserted stock: symbol=COLL, category_id=aggressive_small_caps, category_name=Aggressive Small Caps 
+Jan 10 18:32:27 (I) Inserted/Updated: COLL in category Aggressive Small Caps 
+Jan 10 18:32:27 (I) Upserted stock: symbol=NCV, category_id=aggressive_small_caps, category_name=Aggressive Small Caps 
+Jan 10 18:32:27 (I) Inserted/Updated: NCV in category Aggressive Small Caps 
+Jan 10 18:32:27 (I) Upserted stock: symbol=ADTN, category_id=aggressive_small_caps, category_name=Aggressive Small Caps 
+Jan 10 18:32:27 (I) Inserted/Updated: ADTN in category Aggressive Small Caps 
+Jan 10 18:32:27 (I) Upserted stock: symbol=EGY, category_id=aggressive_small_caps, category_name=Aggressive Small Caps 
+Jan 10 18:32:27 (I) Inserted/Updated: EGY in category Aggressive Small Caps 
+Jan 10 18:32:27 (I) Upserted stock: symbol=DIN, category_id=aggressive_small_caps, category_name=Aggressive Small Caps 
+Jan 10 18:32:27 (I) Inserted/Updated: DIN in category Aggressive Small Caps 
+Jan 10 18:32:27 (I) Upserted stock: symbol=AKRO, category_id=aggressive_small_caps, category_name=Aggressive Small Caps 
+Jan 10 18:32:27 (I) Inserted/Updated: AKRO in category Aggressive Small Caps 
+Jan 10 18:32:27 (I) Upserted stock: symbol=ARAY, category_id=aggressive_small_caps, category_name=Aggressive Small Caps 
+Jan 10 18:32:27 (I) Inserted/Updated: ARAY in category Aggressive Small Caps 
+Jan 10 18:32:27 (I) Upserted stock: symbol=SRG, category_id=aggressive_small_caps, category_name=Aggressive Small Caps 
+Jan 10 18:32:27 (I) Inserted/Updated: SRG in category Aggressive Small Caps 
+Jan 10 18:32:27 (I) Upserted stock: symbol=PETS, category_id=aggressive_small_caps, category_name=Aggressive Small Caps 
+Jan 10 18:32:27 (I) Inserted/Updated: PETS in category Aggressive Small Caps 
+Jan 10 18:32:27 (I) Upserted stock: symbol=CODI, category_id=aggressive_small_caps, category_name=Aggressive Small Caps 
+Jan 10 18:32:27 (I) Inserted/Updated: CODI in category Aggressive Small Caps 
+Jan 10 18:32:27 (I) Upserted stock: symbol=TBI, category_id=aggressive_small_caps, category_name=Aggressive Small Caps 
+Jan 10 18:32:27 (I) Inserted/Updated: TBI in category Aggressive Small Caps 
+Jan 10 18:32:27 (I) Upserted stock: symbol=ICHR, category_id=aggressive_small_caps, category_name=Aggressive Small Caps 
+Jan 10 18:32:27 (I) Inserted/Updated: ICHR in category Aggressive Small Caps 
+Jan 10 18:32:28 (I) Upserted stock: symbol=RYAM, category_id=aggressive_small_caps, category_name=Aggressive Small Caps 
+Jan 10 18:32:28 (I) Inserted/Updated: RYAM in category Aggressive Small Caps 
+Jan 10 18:32:28 (I) Upserted stock: symbol=NUV, category_id=aggressive_small_caps, category_name=Aggressive Small Caps 
+Jan 10 18:32:28 (I) Inserted/Updated: NUV in category Aggressive Small Caps 
+Jan 10 18:32:28 (I) Upserted stock: symbol=PLTR, category_id=growth_technology_stocks, category_name=Growth Technology Stocks 
+Jan 10 18:32:28 (I) Inserted/Updated: PLTR in category Growth Technology Stocks 
+Jan 10 18:32:28 (I) Upserted stock: symbol=APP, category_id=growth_technology_stocks, category_name=Growth Technology Stocks 
+Jan 10 18:32:28 (I) Inserted/Updated: APP in category Growth Technology Stocks 
+Jan 10 18:32:28 (I) Upserted stock: symbol=HLIT, category_id=growth_technology_stocks, category_name=Growth Technology Stocks 
+Jan 10 18:32:28 (I) Inserted/Updated: HLIT in category Growth Technology Stocks 
+Jan 10 18:32:28 (I) Upserted stock: symbol=BAND, category_id=growth_technology_stocks, category_name=Growth Technology Stocks 
+Jan 10 18:32:28 (I) Inserted/Updated: BAND in category Growth Technology Stocks 
+Jan 10 18:32:28 (I) Upserted stock: symbol=IMMR, category_id=growth_technology_stocks, category_name=Growth Technology Stocks 
+Jan 10 18:32:28 (I) Inserted/Updated: IMMR in category Growth Technology Stocks 
+Jan 10 18:32:28 (I) Upserted stock: symbol=PAY, category_id=growth_technology_stocks, category_name=Growth Technology Stocks 
+Jan 10 18:32:28 (I) Inserted/Updated: PAY in category Growth Technology Stocks 
+Jan 10 18:32:28 (I) Upserted stock: symbol=SMCI, category_id=growth_technology_stocks, category_name=Growth Technology Stocks 
+Jan 10 18:32:28 (I) Inserted/Updated: SMCI in category Growth Technology Stocks 
+Jan 10 18:32:28 (I) Upserted stock: symbol=NVMI, category_id=growth_technology_stocks, category_name=Growth Technology Stocks 
+Jan 10 18:32:28 (I) Inserted/Updated: NVMI in category Growth Technology Stocks 
+Jan 10 18:32:28 (I) Upserted stock: symbol=APLD, category_id=growth_technology_stocks, category_name=Growth Technology Stocks 
+Jan 10 18:32:28 (I) Inserted/Updated: APLD in category Growth Technology Stocks 
+Jan 10 18:32:28 (I) Upserted stock: symbol=GRND, category_id=growth_technology_stocks, category_name=Growth Technology Stocks 
+Jan 10 18:32:28 (I) Inserted/Updated: GRND in category Growth Technology Stocks 
+Jan 10 18:32:28 (I) Upserted stock: symbol=CLBT, category_id=growth_technology_stocks, category_name=Growth Technology Stocks 
+Jan 10 18:32:28 (I) Inserted/Updated: CLBT in category Growth Technology Stocks 
+Jan 10 18:32:28 (I) Upserted stock: symbol=RBRK, category_id=growth_technology_stocks, category_name=Growth Technology Stocks 
+Jan 10 18:32:28 (I) Inserted/Updated: RBRK in category Growth Technology Stocks 
+Jan 10 18:32:28 (I) Upserted stock: symbol=VIR, category_id=small_cap_gainers, category_name=Small Cap Gainers 
+Jan 10 18:32:28 (I) Inserted/Updated: VIR in category Small Cap Gainers 
+Jan 10 18:32:28 (I) Upserted stock: symbol=DNMR, category_id=small_cap_gainers, category_name=Small Cap Gainers 
+Jan 10 18:32:28 (I) Inserted/Updated: DNMR in category Small Cap Gainers 
+Jan 10 18:32:28 (I) Upserted stock: symbol=EVH, category_id=small_cap_gainers, category_name=Small Cap Gainers 
+Jan 10 18:32:28 (I) Inserted/Updated: EVH in category Small Cap Gainers 
+Jan 10 18:32:28 (I) Upserted stock: symbol=NAUT, category_id=small_cap_gainers, category_name=Small Cap Gainers 
+Jan 10 18:32:28 (I) Inserted/Updated: NAUT in category Small Cap Gainers 
+Jan 10 18:32:28 (I) Upserted stock: symbol=SANA, category_id=small_cap_gainers, category_name=Small Cap Gainers 
+Jan 10 18:32:28 (I) Inserted/Updated: SANA in category Small Cap Gainers 
+Jan 10 18:32:28 (I) Upserted stock: symbol=FOSL, category_id=small_cap_gainers, category_name=Small Cap Gainers 
+Jan 10 18:32:28 (I) Inserted/Updated: FOSL in category Small Cap Gainers 
+Jan 10 18:32:28 (I) Upserted stock: symbol=PHR, category_id=small_cap_gainers, category_name=Small Cap Gainers 
+Jan 10 18:32:28 (I) Inserted/Updated: PHR in category Small Cap Gainers 
+Jan 10 18:32:28 (I) Upserted stock: symbol=ACCD, category_id=small_cap_gainers, category_name=Small Cap Gainers 
+Jan 10 18:32:28 (I) Inserted/Updated: ACCD in category Small Cap Gainers 
+Jan 10 18:32:28 (I) Upserted stock: symbol=COLL, category_id=small_cap_gainers, category_name=Small Cap Gainers 
+Jan 10 18:32:28 (I) Inserted/Updated: COLL in category Small Cap Gainers 
+Jan 10 18:32:28 (I) Upserted stock: symbol=HCAT, category_id=small_cap_gainers, category_name=Small Cap Gainers 
+Jan 10 18:32:28 (I) Inserted/Updated: HCAT in category Small Cap Gainers 
+Jan 10 18:32:28 (I) Upserted stock: symbol=ADTN, category_id=small_cap_gainers, category_name=Small Cap Gainers 
+Jan 10 18:32:28 (I) Inserted/Updated: ADTN in category Small Cap Gainers 
+Jan 10 18:32:28 (I) Upserted stock: symbol=OLMA, category_id=small_cap_gainers, category_name=Small Cap Gainers 
+Jan 10 18:32:28 (I) Inserted/Updated: OLMA in category Small Cap Gainers 
+Jan 10 18:32:28 (I) Upserted stock: symbol=BMEA, category_id=small_cap_gainers, category_name=Small Cap Gainers 
+Jan 10 18:32:28 (I) Inserted/Updated: BMEA in category Small Cap Gainers 
+Jan 10 18:32:28 (I) Upserted stock: symbol=ANGO, category_id=small_cap_gainers, category_name=Small Cap Gainers 
+Jan 10 18:32:28 (I) Inserted/Updated: ANGO in category Small Cap Gainers 
+Jan 10 18:32:28 (I) Upserted stock: symbol=ASPS, category_id=small_cap_gainers, category_name=Small Cap Gainers 
+Jan 10 18:32:28 (I) Inserted/Updated: ASPS in category Small Cap Gainers 
+Jan 10 18:32:28 (I) Upserted stock: symbol=OPFI, category_id=small_cap_gainers, category_name=Small Cap Gainers 
+Jan 10 18:32:28 (I) Inserted/Updated: OPFI in category Small Cap Gainers 
+Jan 10 18:32:28 (I) Upserted stock: symbol=MATW, category_id=small_cap_gainers, category_name=Small Cap Gainers 
+Jan 10 18:32:28 (I) Inserted/Updated: MATW in category Small Cap Gainers 
+Jan 10 18:32:28 (I) Upserted stock: symbol=NEXA, category_id=small_cap_gainers, category_name=Small Cap Gainers 
+Jan 10 18:32:28 (I) Inserted/Updated: NEXA in category Small Cap Gainers 
+Jan 10 18:32:28 (I) Upserted stock: symbol=KMDA, category_id=small_cap_gainers, category_name=Small Cap Gainers 
+Jan 10 18:32:28 (I) Inserted/Updated: KMDA in category Small Cap Gainers 
+Jan 10 18:32:28 (I) Upserted stock: symbol=CNF, category_id=small_cap_gainers, category_name=Small Cap Gainers 
+Jan 10 18:32:28 (I) Inserted/Updated: CNF in category Small Cap Gainers 
+Jan 10 18:32:28 (I) Upserted stock: symbol=VLGEA, category_id=small_cap_gainers, category_name=Small Cap Gainers 
+Jan 10 18:32:28 (I) Inserted/Updated: VLGEA in category Small Cap Gainers 
+Jan 10 18:32:28 (I) Upserted stock: symbol=NRT, category_id=small_cap_gainers, category_name=Small Cap Gainers 
+Jan 10 18:32:28 (I) Inserted/Updated: NRT in category Small Cap Gainers 
+Jan 10 18:32:28 (I) Upserted stock: symbol=CCM, category_id=small_cap_gainers, category_name=Small Cap Gainers 
+Jan 10 18:32:28 (I) Inserted/Updated: CCM in category Small Cap Gainers 
+Jan 10 18:32:28 (I) Upserted stock: symbol=QTI, category_id=small_cap_gainers, category_name=Small Cap Gainers 
+Jan 10 18:32:28 (I) Inserted/Updated: QTI in category Small Cap Gainers 
+Jan 10 18:32:28 (I) Upserted stock: symbol=PNST, category_id=small_cap_gainers, category_name=Small Cap Gainers 
+Jan 10 18:32:28 (I) Inserted/Updated: PNST in category Small Cap Gainers 
+Jan 10 18:32:29 (I) Upserted stock: symbol=VLN, category_id=small_cap_gainers, category_name=Small Cap Gainers 
+Jan 10 18:32:29 (I) Inserted/Updated: VLN in category Small Cap Gainers 
+Jan 10 18:32:29 (I) Upserted stock: symbol=GROV, category_id=small_cap_gainers, category_name=Small Cap Gainers 
+Jan 10 18:32:29 (I) Inserted/Updated: GROV in category Small Cap Gainers 
+Jan 10 18:32:29 (I) Upserted stock: symbol=FIP, category_id=small_cap_gainers, category_name=Small Cap Gainers 
+Jan 10 18:32:29 (I) Inserted/Updated: FIP in category Small Cap Gainers 
+Jan 10 18:32:29 (I) Upserted stock: symbol=XLO, category_id=small_cap_gainers, category_name=Small Cap Gainers 
+Jan 10 18:32:29 (I) Inserted/Updated: XLO in category Small Cap Gainers 
+Jan 10 18:32:29 (I) Upserted stock: symbol=VITSX, category_id=portfolio_anchors, category_name=Portfolio Anchors 
+Jan 10 18:32:29 (I) Inserted/Updated: VITSX in category Portfolio Anchors 
+Jan 10 18:32:29 (I) Upserted stock: symbol=VFIAX, category_id=portfolio_anchors, category_name=Portfolio Anchors 
+Jan 10 18:32:29 (I) Inserted/Updated: VFIAX in category Portfolio Anchors 
+Jan 10 18:32:29 (I) Upserted stock: symbol=VFINX, category_id=portfolio_anchors, category_name=Portfolio Anchors 
+Jan 10 18:32:29 (I) Inserted/Updated: VFINX in category Portfolio Anchors 
+Jan 10 18:32:29 (I) Upserted stock: symbol=VFFSX, category_id=portfolio_anchors, category_name=Portfolio Anchors 
+Jan 10 18:32:29 (I) Inserted/Updated: VFFSX in category Portfolio Anchors 
+Jan 10 18:32:29 (I) Upserted stock: symbol=FXAIX, category_id=portfolio_anchors, category_name=Portfolio Anchors 
+Jan 10 18:32:29 (I) Inserted/Updated: FXAIX in category Portfolio Anchors 
+Jan 10 18:32:29 (I) Upserted stock: symbol=CICFX, category_id=portfolio_anchors, category_name=Portfolio Anchors 
+Jan 10 18:32:29 (I) Inserted/Updated: CICFX in category Portfolio Anchors 
+Jan 10 18:32:29 (I) Upserted stock: symbol=FFICX, category_id=portfolio_anchors, category_name=Portfolio Anchors 
+Jan 10 18:32:29 (I) Inserted/Updated: FFICX in category Portfolio Anchors 
+Jan 10 18:32:29 (I) Upserted stock: symbol=RICGX, category_id=portfolio_anchors, category_name=Portfolio Anchors 
+Jan 10 18:32:29 (I) Inserted/Updated: RICGX in category Portfolio Anchors 
+Jan 10 18:32:29 (I) Upserted stock: symbol=AIVSX, category_id=portfolio_anchors, category_name=Portfolio Anchors 
+Jan 10 18:32:29 (I) Inserted/Updated: AIVSX in category Portfolio Anchors 
+Jan 10 18:32:29 (I) Upserted stock: symbol=RICEX, category_id=portfolio_anchors, category_name=Portfolio Anchors 
+Jan 10 18:32:29 (I) Inserted/Updated: RICEX in category Portfolio Anchors 
+Jan 10 18:32:29 (I) Upserted stock: symbol=CICAX, category_id=portfolio_anchors, category_name=Portfolio Anchors 
+Jan 10 18:32:29 (I) Inserted/Updated: CICAX in category Portfolio Anchors 
+Jan 10 18:32:29 (I) Upserted stock: symbol=ICAFX, category_id=portfolio_anchors, category_name=Portfolio Anchors 
+Jan 10 18:32:29 (I) Inserted/Updated: ICAFX in category Portfolio Anchors 
+Jan 10 18:32:29 (I) Upserted stock: symbol=RICHX, category_id=portfolio_anchors, category_name=Portfolio Anchors 
+Jan 10 18:32:29 (I) Inserted/Updated: RICHX in category Portfolio Anchors 
+Jan 10 18:32:29 (I) Upserted stock: symbol=RICFX, category_id=portfolio_anchors, category_name=Portfolio Anchors 
+Jan 10 18:32:29 (I) Inserted/Updated: RICFX in category Portfolio Anchors 
+Jan 10 18:32:29 (I) Upserted stock: symbol=FAOOX, category_id=portfolio_anchors, category_name=Portfolio Anchors 
+Jan 10 18:32:29 (I) Inserted/Updated: FAOOX in category Portfolio Anchors 
+Jan 10 18:32:29 (I) Upserted stock: symbol=FCIAX, category_id=portfolio_anchors, category_name=Portfolio Anchors 
+Jan 10 18:32:29 (I) Inserted/Updated: FCIAX in category Portfolio Anchors 
+Jan 10 18:32:29 (I) Upserted stock: symbol=FCTDX, category_id=portfolio_anchors, category_name=Portfolio Anchors 
+Jan 10 18:32:29 (I) Inserted/Updated: FCTDX in category Portfolio Anchors 
+Jan 10 18:32:29 (I) Upserted stock: symbol=SWPPX, category_id=portfolio_anchors, category_name=Portfolio Anchors 
+Jan 10 18:32:29 (I) Inserted/Updated: SWPPX in category Portfolio Anchors 
+Jan 10 18:32:29 (I) Upserted stock: symbol=FSKAX, category_id=portfolio_anchors, category_name=Portfolio Anchors 
+Jan 10 18:32:29 (I) Inserted/Updated: FSKAX in category Portfolio Anchors 
+Jan 10 18:32:29 (I) Upserted stock: symbol=FSAKX, category_id=portfolio_anchors, category_name=Portfolio Anchors 
+Jan 10 18:32:29 (I) Inserted/Updated: FSAKX in category Portfolio Anchors 
+Jan 10 18:32:29 (I) Upserted stock: symbol=VLACX, category_id=portfolio_anchors, category_name=Portfolio Anchors 
+Jan 10 18:32:29 (I) Inserted/Updated: VLACX in category Portfolio Anchors 
+Jan 10 18:32:29 (I) Upserted stock: symbol=VLCAX, category_id=portfolio_anchors, category_name=Portfolio Anchors 
+Jan 10 18:32:29 (I) Inserted/Updated: VLCAX in category Portfolio Anchors 
+Jan 10 18:32:29 (I) Upserted stock: symbol=VLISX, category_id=portfolio_anchors, category_name=Portfolio Anchors 
+Jan 10 18:32:29 (I) Inserted/Updated: VLISX in category Portfolio Anchors 
+Jan 10 18:32:29 (I) Upserted stock: symbol=TIEIX, category_id=portfolio_anchors, category_name=Portfolio Anchors 
+Jan 10 18:32:29 (I) Inserted/Updated: TIEIX in category Portfolio Anchors 
+Jan 10 18:32:29 (I) Upserted stock: symbol=BSPSX, category_id=portfolio_anchors, category_name=Portfolio Anchors 
+Jan 10 18:32:29 (I) Inserted/Updated: BSPSX in category Portfolio Anchors 
+Jan 10 18:32:29 (I) Upserted stock: symbol=WFSPX, category_id=portfolio_anchors, category_name=Portfolio Anchors 
+Jan 10 18:32:29 (I) Inserted/Updated: WFSPX in category Portfolio Anchors 
+Jan 10 18:32:29 (I) Upserted stock: symbol=BSPAX, category_id=portfolio_anchors, category_name=Portfolio Anchors 
+Jan 10 18:32:29 (I) Inserted/Updated: BSPAX in category Portfolio Anchors 
+Jan 10 18:32:29 (I) Upserted stock: symbol=BSPIX, category_id=portfolio_anchors, category_name=Portfolio Anchors 
+Jan 10 18:32:29 (I) Inserted/Updated: BSPIX in category Portfolio Anchors 
+Jan 10 18:32:29 (I) Upserted stock: symbol=BSPGX, category_id=portfolio_anchors, category_name=Portfolio Anchors 
+Jan 10 18:32:29 (I) Inserted/Updated: BSPGX in category Portfolio Anchors 
+Jan 10 18:32:29 (I) Upserted stock: symbol=PRUIX, category_id=portfolio_anchors, category_name=Portfolio Anchors 
+Jan 10 18:32:29 (I) Inserted/Updated: PRUIX in category Portfolio Anchors 
+Jan 10 18:32:29 (I) Upserted stock: symbol=PREIX, category_id=portfolio_anchors, category_name=Portfolio Anchors 
+Jan 10 18:32:29 (I) Inserted/Updated: PREIX in category Portfolio Anchors 
+Jan 10 18:32:29 (I) Upserted stock: symbol=TRHZX, category_id=portfolio_anchors, category_name=Portfolio Anchors 
+Jan 10 18:32:29 (I) Inserted/Updated: TRHZX in category Portfolio Anchors 
+Jan 10 18:32:29 (I) Upserted stock: symbol=CUSUX, category_id=portfolio_anchors, category_name=Portfolio Anchors 
+Jan 10 18:32:29 (I) Inserted/Updated: CUSUX in category Portfolio Anchors 
+Jan 10 18:32:29 (I) Upserted stock: symbol=VFTAX, category_id=portfolio_anchors, category_name=Portfolio Anchors 
+Jan 10 18:32:29 (I) Inserted/Updated: VFTAX in category Portfolio Anchors 
+Jan 10 18:32:29 (I) Upserted stock: symbol=VFTNX, category_id=portfolio_anchors, category_name=Portfolio Anchors 
+Jan 10 18:32:29 (I) Inserted/Updated: VFTNX in category Portfolio Anchors 
+Jan 10 18:32:29 (I) Upserted stock: symbol=FGLGX, category_id=portfolio_anchors, category_name=Portfolio Anchors 
+Jan 10 18:32:29 (I) Inserted/Updated: FGLGX in category Portfolio Anchors 
+Jan 10 18:32:29 (I) Upserted stock: symbol=SNXFX, category_id=portfolio_anchors, category_name=Portfolio Anchors 
+Jan 10 18:32:29 (I) Inserted/Updated: SNXFX in category Portfolio Anchors 
+Jan 10 18:32:29 (I) Upserted stock: symbol=VGIAX, category_id=portfolio_anchors, category_name=Portfolio Anchors 
+Jan 10 18:32:29 (I) Inserted/Updated: VGIAX in category Portfolio Anchors 
+Jan 10 18:32:29 (I) Upserted stock: symbol=VQNPX, category_id=portfolio_anchors, category_name=Portfolio Anchors 
+Jan 10 18:32:29 (I) Inserted/Updated: VQNPX in category Portfolio Anchors 
+Jan 10 18:32:30 (I) Upserted stock: symbol=FLCPX, category_id=portfolio_anchors, category_name=Portfolio Anchors 
+Jan 10 18:32:30 (I) Inserted/Updated: FLCPX in category Portfolio Anchors 
+Jan 10 18:32:30 (I) Upserted stock: symbol=NOSIX, category_id=portfolio_anchors, category_name=Portfolio Anchors 
+Jan 10 18:32:30 (I) Inserted/Updated: NOSIX in category Portfolio Anchors 
+Jan 10 18:32:30 (I) Upserted stock: symbol=SMGEX, category_id=portfolio_anchors, category_name=Portfolio Anchors 
+Jan 10 18:32:30 (I) Inserted/Updated: SMGEX in category Portfolio Anchors 
+Jan 10 18:32:30 (I) Upserted stock: symbol=CCCRX, category_id=portfolio_anchors, category_name=Portfolio Anchors 
+Jan 10 18:32:30 (I) Inserted/Updated: CCCRX in category Portfolio Anchors 
+Jan 10 18:32:30 (I) Upserted stock: symbol=LCCAX, category_id=portfolio_anchors, category_name=Portfolio Anchors 
+Jan 10 18:32:30 (I) Inserted/Updated: LCCAX in category Portfolio Anchors 
+Jan 10 18:32:30 (I) Upserted stock: symbol=COFYX, category_id=portfolio_anchors, category_name=Portfolio Anchors 
+Jan 10 18:32:30 (I) Inserted/Updated: COFYX in category Portfolio Anchors 
+Jan 10 18:32:30 (I) Upserted stock: symbol=COFRX, category_id=portfolio_anchors, category_name=Portfolio Anchors 
+Jan 10 18:32:30 (I) Inserted/Updated: COFRX in category Portfolio Anchors 
+Jan 10 18:32:30 (I) Upserted stock: symbol=SMGIX, category_id=portfolio_anchors, category_name=Portfolio Anchors 
+Jan 10 18:32:30 (I) Inserted/Updated: SMGIX in category Portfolio Anchors 
+Jan 10 18:32:30 (I) Upserted stock: symbol=RRCOX, category_id=portfolio_anchors, category_name=Portfolio Anchors 
+Jan 10 18:32:30 (I) Inserted/Updated: RRCOX in category Portfolio Anchors 
+Jan 10 18:32:30 (I) Upserted stock: symbol=PCUZX, category_id=portfolio_anchors, category_name=Portfolio Anchors 
+Jan 10 18:32:30 (I) Inserted/Updated: PCUZX in category Portfolio Anchors 
+Jan 10 18:32:30 (I) Upserted stock: symbol=PACOX, category_id=portfolio_anchors, category_name=Portfolio Anchors 
+Jan 10 18:32:30 (I) Inserted/Updated: PACOX in category Portfolio Anchors 
+Jan 10 18:32:30 (I) Upserted stock: symbol=PCCOX, category_id=portfolio_anchors, category_name=Portfolio Anchors 
+Jan 10 18:32:30 (I) Inserted/Updated: PCCOX in category Portfolio Anchors 
+Jan 10 18:32:30 (I) Upserted stock: symbol=PRCOX, category_id=portfolio_anchors, category_name=Portfolio Anchors 
+Jan 10 18:32:30 (I) Inserted/Updated: PRCOX in category Portfolio Anchors 
+Jan 10 18:32:30 (I) Upserted stock: symbol=USSPX, category_id=portfolio_anchors, category_name=Portfolio Anchors 
+Jan 10 18:32:30 (I) Inserted/Updated: USSPX in category Portfolio Anchors 
+Jan 10 18:32:30 (I) Upserted stock: symbol=USPRX, category_id=portfolio_anchors, category_name=Portfolio Anchors 
+Jan 10 18:32:30 (I) Inserted/Updated: USPRX in category Portfolio Anchors 
+Jan 10 18:32:30 (I) Upserted stock: symbol=SSEYX, category_id=portfolio_anchors, category_name=Portfolio Anchors 
+Jan 10 18:32:30 (I) Inserted/Updated: SSEYX in category Portfolio Anchors 
+Jan 10 18:32:30 (I) Upserted stock: symbol=DFUSX, category_id=portfolio_anchors, category_name=Portfolio Anchors 
+Jan 10 18:32:30 (I) Inserted/Updated: DFUSX in category Portfolio Anchors 
+Jan 10 18:32:30 (I) Upserted stock: symbol=FNILX, category_id=portfolio_anchors, category_name=Portfolio Anchors 
+Jan 10 18:32:30 (I) Inserted/Updated: FNILX in category Portfolio Anchors 
+Jan 10 18:32:30 (I) Upserted stock: symbol=TISAX, category_id=portfolio_anchors, category_name=Portfolio Anchors 
+Jan 10 18:32:30 (I) Inserted/Updated: TISAX in category Portfolio Anchors 
+Jan 10 18:32:30 (I) Upserted stock: symbol=TRSPX, category_id=portfolio_anchors, category_name=Portfolio Anchors 
+Jan 10 18:32:30 (I) Inserted/Updated: TRSPX in category Portfolio Anchors 
+Jan 10 18:32:30 (I) Upserted stock: symbol=TISPX, category_id=portfolio_anchors, category_name=Portfolio Anchors 
+Jan 10 18:32:30 (I) Inserted/Updated: TISPX in category Portfolio Anchors 
+Jan 10 18:32:30 (I) Upserted stock: symbol=HLEIX, category_id=portfolio_anchors, category_name=Portfolio Anchors 
+Jan 10 18:32:30 (I) Inserted/Updated: HLEIX in category Portfolio Anchors 
+Jan 10 18:32:30 (I) Upserted stock: symbol=OGEAX, category_id=portfolio_anchors, category_name=Portfolio Anchors 
+Jan 10 18:32:30 (I) Inserted/Updated: OGEAX in category Portfolio Anchors 
+Jan 10 18:32:30 (I) Upserted stock: symbol=OGFAX, category_id=portfolio_anchors, category_name=Portfolio Anchors 
+Jan 10 18:32:30 (I) Inserted/Updated: OGFAX in category Portfolio Anchors 
+Jan 10 18:32:30 (I) Upserted stock: symbol=PYODX, category_id=portfolio_anchors, category_name=Portfolio Anchors 
+Jan 10 18:32:30 (I) Inserted/Updated: PYODX in category Portfolio Anchors 
+Jan 10 18:32:30 (I) Upserted stock: symbol=PIODX, category_id=portfolio_anchors, category_name=Portfolio Anchors 
+Jan 10 18:32:30 (I) Inserted/Updated: PIODX in category Portfolio Anchors 
+Jan 10 18:32:30 (I) Upserted stock: symbol=PIORX, category_id=portfolio_anchors, category_name=Portfolio Anchors 
+Jan 10 18:32:30 (I) Inserted/Updated: PIORX in category Portfolio Anchors 
+Jan 10 18:32:30 (I) Upserted stock: symbol=PLFPX, category_id=portfolio_anchors, category_name=Portfolio Anchors 
+Jan 10 18:32:30 (I) Inserted/Updated: PLFPX in category Portfolio Anchors 
+Jan 10 18:32:30 (I) Upserted stock: symbol=VRNIX, category_id=portfolio_anchors, category_name=Portfolio Anchors 
+Jan 10 18:32:30 (I) Inserted/Updated: VRNIX in category Portfolio Anchors 
+Jan 10 18:32:30 (I) Upserted stock: symbol=DFSIX, category_id=portfolio_anchors, category_name=Portfolio Anchors 
+Jan 10 18:32:30 (I) Inserted/Updated: DFSIX in category Portfolio Anchors 
+Jan 10 18:32:30 (I) Upserted stock: symbol=VSTIX, category_id=portfolio_anchors, category_name=Portfolio Anchors 
+Jan 10 18:32:30 (I) Inserted/Updated: VSTIX in category Portfolio Anchors 
+Jan 10 18:32:30 (I) Upserted stock: symbol=VMCTX, category_id=portfolio_anchors, category_name=Portfolio Anchors 
+Jan 10 18:32:30 (I) Inserted/Updated: VMCTX in category Portfolio Anchors 
+Jan 10 18:32:30 (I) Upserted stock: symbol=TGIWX, category_id=portfolio_anchors, category_name=Portfolio Anchors 
+Jan 10 18:32:30 (I) Inserted/Updated: TGIWX in category Portfolio Anchors 
+Jan 10 18:32:30 (I) Upserted stock: symbol=TIIRX, category_id=portfolio_anchors, category_name=Portfolio Anchors 
+Jan 10 18:32:30 (I) Inserted/Updated: TIIRX in category Portfolio Anchors 
+Jan 10 18:32:30 (I) Upserted stock: symbol=TRPGX, category_id=portfolio_anchors, category_name=Portfolio Anchors 
+Jan 10 18:32:30 (I) Inserted/Updated: TRPGX in category Portfolio Anchors 
+Jan 10 18:32:30 (I) Upserted stock: symbol=TRGIX, category_id=portfolio_anchors, category_name=Portfolio Anchors 
+Jan 10 18:32:30 (I) Inserted/Updated: TRGIX in category Portfolio Anchors 
+Jan 10 18:32:30 (I) Upserted stock: symbol=TGIHX, category_id=portfolio_anchors, category_name=Portfolio Anchors 
+Jan 10 18:32:30 (I) Inserted/Updated: TGIHX in category Portfolio Anchors 
+Jan 10 18:32:30 (I) Upserted stock: symbol=TIGRX, category_id=portfolio_anchors, category_name=Portfolio Anchors 
+Jan 10 18:32:30 (I) Inserted/Updated: TIGRX in category Portfolio Anchors 
+Jan 10 18:32:30 (I) Upserted stock: symbol=MXKWX, category_id=portfolio_anchors, category_name=Portfolio Anchors 
+Jan 10 18:32:30 (I) Inserted/Updated: MXKWX in category Portfolio Anchors 
+Jan 10 18:32:30 (I) Upserted stock: symbol=CSXAX, category_id=portfolio_anchors, category_name=Portfolio Anchors 
+Jan 10 18:32:30 (I) Inserted/Updated: CSXAX in category Portfolio Anchors 
+Jan 10 18:32:30 (I) Upserted stock: symbol=CSXRX, category_id=portfolio_anchors, category_name=Portfolio Anchors 
+Jan 10 18:32:30 (I) Inserted/Updated: CSXRX in category Portfolio Anchors 
+Jan 10 18:32:30 (I) Upserted stock: symbol=CISIX, category_id=portfolio_anchors, category_name=Portfolio Anchors 
+Jan 10 18:32:30 (I) Inserted/Updated: CISIX in category Portfolio Anchors 
+Jan 10 18:32:30 (I) Upserted stock: symbol=SSAQX, category_id=portfolio_anchors, category_name=Portfolio Anchors 
+Jan 10 18:32:30 (I) Inserted/Updated: SSAQX in category Portfolio Anchors 
+Jan 10 18:32:31 (I) Upserted stock: symbol=FDFIX, category_id=portfolio_anchors, category_name=Portfolio Anchors 
+Jan 10 18:32:31 (I) Inserted/Updated: FDFIX in category Portfolio Anchors 
+Jan 10 18:32:31 (I) Upserted stock: symbol=PMYAX, category_id=portfolio_anchors, category_name=Portfolio Anchors 
+Jan 10 18:32:31 (I) Inserted/Updated: PMYAX in category Portfolio Anchors 
+Jan 10 18:32:31 (I) Upserted stock: symbol=PMYCX, category_id=portfolio_anchors, category_name=Portfolio Anchors 
+Jan 10 18:32:31 (I) Inserted/Updated: PMYCX in category Portfolio Anchors 
+Jan 10 18:32:31 (I) Upserted stock: symbol=PMYTX, category_id=portfolio_anchors, category_name=Portfolio Anchors 
+Jan 10 18:32:31 (I) Inserted/Updated: PMYTX in category Portfolio Anchors 
+Jan 10 18:32:31 (I) Upserted stock: symbol=PMYZX, category_id=portfolio_anchors, category_name=Portfolio Anchors 
+Jan 10 18:32:31 (I) Inserted/Updated: PMYZX in category Portfolio Anchors 
+Jan 10 18:32:31 (I) Upserted stock: symbol=PMYYX, category_id=portfolio_anchors, category_name=Portfolio Anchors 
+Jan 10 18:32:31 (I) Inserted/Updated: PMYYX in category Portfolio Anchors 
+Jan 10 18:32:31 (I) Upserted stock: symbol=PMYBX, category_id=portfolio_anchors, category_name=Portfolio Anchors 
+Jan 10 18:32:31 (I) Inserted/Updated: PMYBX in category Portfolio Anchors 
+Jan 10 18:32:31 (I) Upserted stock: symbol=FMILX, category_id=portfolio_anchors, category_name=Portfolio Anchors 
+Jan 10 18:32:31 (I) Inserted/Updated: FMILX in category Portfolio Anchors 
+Jan 10 18:32:31 (I) Upserted stock: symbol=FDEIX, category_id=portfolio_anchors, category_name=Portfolio Anchors 
+Jan 10 18:32:31 (I) Inserted/Updated: FDEIX in category Portfolio Anchors 
+Jan 10 18:32:31 (I) Upserted stock: symbol=FDETX, category_id=portfolio_anchors, category_name=Portfolio Anchors 
+Jan 10 18:32:31 (I) Inserted/Updated: FDETX in category Portfolio Anchors 
+Jan 10 18:32:31 (I) Upserted stock: symbol=PCAOX, category_id=portfolio_anchors, category_name=Portfolio Anchors 
+Jan 10 18:32:31 (I) Inserted/Updated: PCAOX in category Portfolio Anchors 
+Jan 10 18:32:31 (I) Upserted stock: symbol=CMNWX, category_id=portfolio_anchors, category_name=Portfolio Anchors 
+Jan 10 18:32:31 (I) Inserted/Updated: CMNWX in category Portfolio Anchors 
+Jan 10 18:32:31 (I) Upserted stock: symbol=PWCIX, category_id=portfolio_anchors, category_name=Portfolio Anchors 
+Jan 10 18:32:31 (I) Inserted/Updated: PWCIX in category Portfolio Anchors 
+Jan 10 18:32:31 (I) Upserted stock: symbol=PCAQX, category_id=portfolio_anchors, category_name=Portfolio Anchors 
+Jan 10 18:32:31 (I) Inserted/Updated: PCAQX in category Portfolio Anchors 
+Jan 10 18:32:31 (I) Upserted stock: symbol=FITLX, category_id=portfolio_anchors, category_name=Portfolio Anchors 
+Jan 10 18:32:31 (I) Inserted/Updated: FITLX in category Portfolio Anchors 
+Jan 10 18:32:31 (I) Upserted stock: symbol=SPINX, category_id=portfolio_anchors, category_name=Portfolio Anchors 
+Jan 10 18:32:31 (I) Inserted/Updated: SPINX in category Portfolio Anchors 
+Jan 10 18:32:31 (I) Upserted stock: symbol=INGIX, category_id=portfolio_anchors, category_name=Portfolio Anchors 
+Jan 10 18:32:31 (I) Inserted/Updated: INGIX in category Portfolio Anchors 
+Jan 10 18:32:31 (I) Upserted stock: symbol=ISJBX, category_id=portfolio_anchors, category_name=Portfolio Anchors 
+Jan 10 18:32:31 (I) Inserted/Updated: ISJBX in category Portfolio Anchors 
+Jan 10 18:32:31 (I) Upserted stock: symbol=FSPSX, category_id=conservative_foreign_funds, category_name=Conservative Foreign Funds 
+Jan 10 18:32:31 (I) Inserted/Updated: FSPSX in category Conservative Foreign Funds 
+Jan 10 18:32:31 (I) Upserted stock: symbol=GSIQX, category_id=conservative_foreign_funds, category_name=Conservative Foreign Funds 
+Jan 10 18:32:31 (I) Inserted/Updated: GSIQX in category Conservative Foreign Funds 
+Jan 10 18:32:31 (I) Upserted stock: symbol=GSIYX, category_id=conservative_foreign_funds, category_name=Conservative Foreign Funds 
+Jan 10 18:32:31 (I) Inserted/Updated: GSIYX in category Conservative Foreign Funds 
+Jan 10 18:32:31 (I) Upserted stock: symbol=GSIMX, category_id=conservative_foreign_funds, category_name=Conservative Foreign Funds 
+Jan 10 18:32:31 (I) Inserted/Updated: GSIMX in category Conservative Foreign Funds 
+Jan 10 18:32:31 (I) Upserted stock: symbol=GGIPX, category_id=conservative_foreign_funds, category_name=Conservative Foreign Funds 
+Jan 10 18:32:31 (I) Inserted/Updated: GGIPX in category Conservative Foreign Funds 
+Jan 10 18:32:31 (I) Upserted stock: symbol=GSINX, category_id=conservative_foreign_funds, category_name=Conservative Foreign Funds 
+Jan 10 18:32:31 (I) Inserted/Updated: GSINX in category Conservative Foreign Funds 
+Jan 10 18:32:31 (I) Upserted stock: symbol=GSIHX, category_id=conservative_foreign_funds, category_name=Conservative Foreign Funds 
+Jan 10 18:32:31 (I) Inserted/Updated: GSIHX in category Conservative Foreign Funds 
+Jan 10 18:32:31 (I) Upserted stock: symbol=GSILX, category_id=conservative_foreign_funds, category_name=Conservative Foreign Funds 
+Jan 10 18:32:31 (I) Inserted/Updated: GSILX in category Conservative Foreign Funds 
+Jan 10 18:32:31 (I) Upserted stock: symbol=FUSIX, category_id=conservative_foreign_funds, category_name=Conservative Foreign Funds 
+Jan 10 18:32:31 (I) Inserted/Updated: FUSIX in category Conservative Foreign Funds 
+Jan 10 18:32:31 (I) Upserted stock: symbol=TCIEX, category_id=conservative_foreign_funds, category_name=Conservative Foreign Funds 
+Jan 10 18:32:31 (I) Inserted/Updated: TCIEX in category Conservative Foreign Funds 
+Jan 10 18:32:31 (I) Upserted stock: symbol=MINGX, category_id=conservative_foreign_funds, category_name=Conservative Foreign Funds 
+Jan 10 18:32:31 (I) Inserted/Updated: MINGX in category Conservative Foreign Funds 
+Jan 10 18:32:31 (I) Upserted stock: symbol=MINIX, category_id=conservative_foreign_funds, category_name=Conservative Foreign Funds 
+Jan 10 18:32:31 (I) Inserted/Updated: MINIX in category Conservative Foreign Funds 
+Jan 10 18:32:31 (I) Upserted stock: symbol=MINRX, category_id=conservative_foreign_funds, category_name=Conservative Foreign Funds 
+Jan 10 18:32:31 (I) Inserted/Updated: MINRX in category Conservative Foreign Funds 
+Jan 10 18:32:31 (I) Upserted stock: symbol=MINHX, category_id=conservative_foreign_funds, category_name=Conservative Foreign Funds 
+Jan 10 18:32:31 (I) Inserted/Updated: MINHX in category Conservative Foreign Funds 
+Jan 10 18:32:31 (I) Upserted stock: symbol=MGICX, category_id=conservative_foreign_funds, category_name=Conservative Foreign Funds 
+Jan 10 18:32:31 (I) Inserted/Updated: MGICX in category Conservative Foreign Funds 
+Jan 10 18:32:31 (I) Upserted stock: symbol=MGIAX, category_id=conservative_foreign_funds, category_name=Conservative Foreign Funds 
+Jan 10 18:32:31 (I) Inserted/Updated: MGIAX in category Conservative Foreign Funds 
+Jan 10 18:32:31 (I) Upserted stock: symbol=MGIBX, category_id=conservative_foreign_funds, category_name=Conservative Foreign Funds 
+Jan 10 18:32:31 (I) Inserted/Updated: MGIBX in category Conservative Foreign Funds 
+Jan 10 18:32:31 (I) Upserted stock: symbol=MINJX, category_id=conservative_foreign_funds, category_name=Conservative Foreign Funds 
+Jan 10 18:32:31 (I) Inserted/Updated: MINJX in category Conservative Foreign Funds 
+Jan 10 18:32:31 (I) Upserted stock: symbol=MINFX, category_id=conservative_foreign_funds, category_name=Conservative Foreign Funds 
+Jan 10 18:32:31 (I) Inserted/Updated: MINFX in category Conservative Foreign Funds 
+Jan 10 18:32:31 (I) Upserted stock: symbol=FIGSX, category_id=conservative_foreign_funds, category_name=Conservative Foreign Funds 
+Jan 10 18:32:31 (I) Inserted/Updated: FIGSX in category Conservative Foreign Funds 
+Jan 10 18:32:31 (I) Upserted stock: symbol=TRIGX, category_id=conservative_foreign_funds, category_name=Conservative Foreign Funds 
+Jan 10 18:32:31 (I) Inserted/Updated: TRIGX in category Conservative Foreign Funds 
+Jan 10 18:32:31 (I) Upserted stock: symbol=PAIGX, category_id=conservative_foreign_funds, category_name=Conservative Foreign Funds 
+Jan 10 18:32:31 (I) Inserted/Updated: PAIGX in category Conservative Foreign Funds 
+Jan 10 18:32:31 (I) Upserted stock: symbol=FDIKX, category_id=conservative_foreign_funds, category_name=Conservative Foreign Funds 
+Jan 10 18:32:31 (I) Inserted/Updated: FDIKX in category Conservative Foreign Funds 
+Jan 10 18:32:31 (I) Upserted stock: symbol=FCPCX, category_id=conservative_foreign_funds, category_name=Conservative Foreign Funds 
+Jan 10 18:32:31 (I) Inserted/Updated: FCPCX in category Conservative Foreign Funds 
+Jan 10 18:32:31 (I) Upserted stock: symbol=FIATX, category_id=conservative_foreign_funds, category_name=Conservative Foreign Funds 
+Jan 10 18:32:31 (I) Inserted/Updated: FIATX in category Conservative Foreign Funds 
+Jan 10 18:32:31 (I) Upserted stock: symbol=FCPAX, category_id=conservative_foreign_funds, category_name=Conservative Foreign Funds 
+Jan 10 18:32:31 (I) Inserted/Updated: FCPAX in category Conservative Foreign Funds 
+Jan 10 18:32:31 (I) Upserted stock: symbol=FCPIX, category_id=conservative_foreign_funds, category_name=Conservative Foreign Funds 
+Jan 10 18:32:31 (I) Inserted/Updated: FCPIX in category Conservative Foreign Funds 
+Jan 10 18:32:31 (I) Upserted stock: symbol=FIDZX, category_id=conservative_foreign_funds, category_name=Conservative Foreign Funds 
+Jan 10 18:32:31 (I) Inserted/Updated: FIDZX in category Conservative Foreign Funds 
+Jan 10 18:32:31 (I) Upserted stock: symbol=FIIIX, category_id=conservative_foreign_funds, category_name=Conservative Foreign Funds 
+Jan 10 18:32:31 (I) Inserted/Updated: FIIIX in category Conservative Foreign Funds 
+Jan 10 18:32:31 (I) Upserted stock: symbol=FITGX, category_id=conservative_foreign_funds, category_name=Conservative Foreign Funds 
+Jan 10 18:32:31 (I) Inserted/Updated: FITGX in category Conservative Foreign Funds 
+Jan 10 18:32:31 (I) Upserted stock: symbol=FZAJX, category_id=conservative_foreign_funds, category_name=Conservative Foreign Funds 
+Jan 10 18:32:31 (I) Inserted/Updated: FZAJX in category Conservative Foreign Funds 
+Jan 10 18:32:31 (I) Upserted stock: symbol=FIAGX, category_id=conservative_foreign_funds, category_name=Conservative Foreign Funds 
+Jan 10 18:32:31 (I) Inserted/Updated: FIAGX in category Conservative Foreign Funds 
+Jan 10 18:32:31 (I) Upserted stock: symbol=FIGFX, category_id=conservative_foreign_funds, category_name=Conservative Foreign Funds 
+Jan 10 18:32:31 (I) Inserted/Updated: FIGFX in category Conservative Foreign Funds 
+Jan 10 18:32:32 (I) Upserted stock: symbol=FOSKX, category_id=conservative_foreign_funds, category_name=Conservative Foreign Funds 
+Jan 10 18:32:32 (I) Inserted/Updated: FOSKX in category Conservative Foreign Funds 
+Jan 10 18:32:32 (I) Upserted stock: symbol=FOSFX, category_id=conservative_foreign_funds, category_name=Conservative Foreign Funds 
+Jan 10 18:32:32 (I) Inserted/Updated: FOSFX in category Conservative Foreign Funds 
+Jan 10 18:32:32 (I) Upserted stock: symbol=DFALX, category_id=conservative_foreign_funds, category_name=Conservative Foreign Funds 
+Jan 10 18:32:32 (I) Inserted/Updated: DFALX in category Conservative Foreign Funds 
+Jan 10 18:32:32 (I) Upserted stock: symbol=DISRX, category_id=conservative_foreign_funds, category_name=Conservative Foreign Funds 
+Jan 10 18:32:32 (I) Inserted/Updated: DISRX in category Conservative Foreign Funds 
+Jan 10 18:32:32 (I) Upserted stock: symbol=DISYX, category_id=conservative_foreign_funds, category_name=Conservative Foreign Funds 
+Jan 10 18:32:32 (I) Inserted/Updated: DISYX in category Conservative Foreign Funds 
+Jan 10 18:32:32 (I) Upserted stock: symbol=TRZKX, category_id=conservative_foreign_funds, category_name=Conservative Foreign Funds 
+Jan 10 18:32:32 (I) Inserted/Updated: TRZKX in category Conservative Foreign Funds 
+Jan 10 18:32:32 (I) Upserted stock: symbol=TIDDX, category_id=conservative_foreign_funds, category_name=Conservative Foreign Funds 
+Jan 10 18:32:32 (I) Inserted/Updated: TIDDX in category Conservative Foreign Funds 
+Jan 10 18:32:32 (I) Upserted stock: symbol=PRIDX, category_id=conservative_foreign_funds, category_name=Conservative Foreign Funds 
+Jan 10 18:32:32 (I) Inserted/Updated: PRIDX in category Conservative Foreign Funds 
+Jan 10 18:32:32 (I) Upserted stock: symbol=FISMX, category_id=conservative_foreign_funds, category_name=Conservative Foreign Funds 
+Jan 10 18:32:32 (I) Inserted/Updated: FISMX in category Conservative Foreign Funds 
+Jan 10 18:32:32 (I) Upserted stock: symbol=FIXIX, category_id=conservative_foreign_funds, category_name=Conservative Foreign Funds 
+Jan 10 18:32:32 (I) Inserted/Updated: FIXIX in category Conservative Foreign Funds 
+Jan 10 18:32:32 (I) Upserted stock: symbol=FIASX, category_id=conservative_foreign_funds, category_name=Conservative Foreign Funds 
+Jan 10 18:32:32 (I) Inserted/Updated: FIASX in category Conservative Foreign Funds 
+Jan 10 18:32:32 (I) Upserted stock: symbol=FICSX, category_id=conservative_foreign_funds, category_name=Conservative Foreign Funds 
+Jan 10 18:32:32 (I) Inserted/Updated: FICSX in category Conservative Foreign Funds 
+Jan 10 18:32:32 (I) Upserted stock: symbol=FIQIX, category_id=conservative_foreign_funds, category_name=Conservative Foreign Funds 
+Jan 10 18:32:32 (I) Inserted/Updated: FIQIX in category Conservative Foreign Funds 
+Jan 10 18:32:32 (I) Upserted stock: symbol=FTISX, category_id=conservative_foreign_funds, category_name=Conservative Foreign Funds 
+Jan 10 18:32:32 (I) Inserted/Updated: FTISX in category Conservative Foreign Funds 
+Jan 10 18:32:32 (I) Upserted stock: symbol=FMIYX, category_id=conservative_foreign_funds, category_name=Conservative Foreign Funds 
+Jan 10 18:32:32 (I) Inserted/Updated: FMIYX in category Conservative Foreign Funds 
+Jan 10 18:32:32 (I) Upserted stock: symbol=FMIJX, category_id=conservative_foreign_funds, category_name=Conservative Foreign Funds 
+Jan 10 18:32:32 (I) Inserted/Updated: FMIJX in category Conservative Foreign Funds 
+Jan 10 18:32:32 (I) Upserted stock: symbol=FKIDX, category_id=conservative_foreign_funds, category_name=Conservative Foreign Funds 
+Jan 10 18:32:32 (I) Inserted/Updated: FKIDX in category Conservative Foreign Funds 
+Jan 10 18:32:32 (I) Upserted stock: symbol=GIRLX, category_id=conservative_foreign_funds, category_name=Conservative Foreign Funds 
+Jan 10 18:32:32 (I) Inserted/Updated: GIRLX in category Conservative Foreign Funds 
+Jan 10 18:32:32 (I) Upserted stock: symbol=GICAX, category_id=conservative_foreign_funds, category_name=Conservative Foreign Funds 
+Jan 10 18:32:32 (I) Inserted/Updated: GICAX in category Conservative Foreign Funds 
+Jan 10 18:32:32 (I) Upserted stock: symbol=GICIX, category_id=conservative_foreign_funds, category_name=Conservative Foreign Funds 
+Jan 10 18:32:32 (I) Inserted/Updated: GICIX in category Conservative Foreign Funds 
+Jan 10 18:32:32 (I) Upserted stock: symbol=FSTSX, category_id=conservative_foreign_funds, category_name=Conservative Foreign Funds 
+Jan 10 18:32:32 (I) Inserted/Updated: FSTSX in category Conservative Foreign Funds 
+Jan 10 18:32:32 (I) Upserted stock: symbol=FIVFX, category_id=conservative_foreign_funds, category_name=Conservative Foreign Funds 
+Jan 10 18:32:32 (I) Inserted/Updated: FIVFX in category Conservative Foreign Funds 
+Jan 10 18:32:32 (I) Upserted stock: symbol=DFVQX, category_id=conservative_foreign_funds, category_name=Conservative Foreign Funds 
+Jan 10 18:32:32 (I) Inserted/Updated: DFVQX in category Conservative Foreign Funds 
+Jan 10 18:32:32 (I) Upserted stock: symbol=JDIVX, category_id=conservative_foreign_funds, category_name=Conservative Foreign Funds 
+Jan 10 18:32:32 (I) Inserted/Updated: JDIVX in category Conservative Foreign Funds 
+Jan 10 18:32:32 (I) Upserted stock: symbol=JDIUX, category_id=conservative_foreign_funds, category_name=Conservative Foreign Funds 
+Jan 10 18:32:32 (I) Inserted/Updated: JDIUX in category Conservative Foreign Funds 
+Jan 10 18:32:32 (I) Upserted stock: symbol=PIUHX, category_id=conservative_foreign_funds, category_name=Conservative Foreign Funds 
+Jan 10 18:32:32 (I) Inserted/Updated: PIUHX in category Conservative Foreign Funds 
+Jan 10 18:32:32 (I) Upserted stock: symbol=PISIX, category_id=conservative_foreign_funds, category_name=Conservative Foreign Funds 
+Jan 10 18:32:32 (I) Inserted/Updated: PISIX in category Conservative Foreign Funds 
+Jan 10 18:32:32 (I) Upserted stock: symbol=PISNX, category_id=conservative_foreign_funds, category_name=Conservative Foreign Funds 
+Jan 10 18:32:32 (I) Inserted/Updated: PISNX in category Conservative Foreign Funds 
+Jan 10 18:32:32 (I) Upserted stock: symbol=PIPAX, category_id=conservative_foreign_funds, category_name=Conservative Foreign Funds 
+Jan 10 18:32:32 (I) Inserted/Updated: PIPAX in category Conservative Foreign Funds 
+Jan 10 18:32:32 (I) Upserted stock: symbol=PIPCX, category_id=conservative_foreign_funds, category_name=Conservative Foreign Funds 
+Jan 10 18:32:32 (I) Inserted/Updated: PIPCX in category Conservative Foreign Funds 
+Jan 10 18:32:32 (I) Upserted stock: symbol=SFNNX, category_id=conservative_foreign_funds, category_name=Conservative Foreign Funds 
+Jan 10 18:32:32 (I) Inserted/Updated: SFNNX in category Conservative Foreign Funds 
+Jan 10 18:32:32 (I) Upserted stock: symbol=BROAX, category_id=conservative_foreign_funds, category_name=Conservative Foreign Funds 
+Jan 10 18:32:32 (I) Inserted/Updated: BROAX in category Conservative Foreign Funds 
+Jan 10 18:32:32 (I) Upserted stock: symbol=BGORX, category_id=conservative_foreign_funds, category_name=Conservative Foreign Funds 
+Jan 10 18:32:32 (I) Inserted/Updated: BGORX in category Conservative Foreign Funds 
+Jan 10 18:32:32 (I) Upserted stock: symbol=BROKX, category_id=conservative_foreign_funds, category_name=Conservative Foreign Funds 
+Jan 10 18:32:32 (I) Inserted/Updated: BROKX in category Conservative Foreign Funds 
+Jan 10 18:32:32 (I) Upserted stock: symbol=BROIX, category_id=conservative_foreign_funds, category_name=Conservative Foreign Funds 
+Jan 10 18:32:32 (I) Inserted/Updated: BROIX in category Conservative Foreign Funds 
+Jan 10 18:32:32 (I) Upserted stock: symbol=GCIIX, category_id=conservative_foreign_funds, category_name=Conservative Foreign Funds 
+Jan 10 18:32:32 (I) Inserted/Updated: GCIIX in category Conservative Foreign Funds 
+Jan 10 18:32:32 (I) Upserted stock: symbol=GCITX, category_id=conservative_foreign_funds, category_name=Conservative Foreign Funds 
+Jan 10 18:32:32 (I) Inserted/Updated: GCITX in category Conservative Foreign Funds 
+Jan 10 18:32:32 (I) Upserted stock: symbol=GCIAX, category_id=conservative_foreign_funds, category_name=Conservative Foreign Funds 
+Jan 10 18:32:32 (I) Inserted/Updated: GCIAX in category Conservative Foreign Funds 
+Jan 10 18:32:32 (I) Upserted stock: symbol=GCISX, category_id=conservative_foreign_funds, category_name=Conservative Foreign Funds 
+Jan 10 18:32:32 (I) Inserted/Updated: GCISX in category Conservative Foreign Funds 
+Jan 10 18:32:32 (I) Upserted stock: symbol=GCIRX, category_id=conservative_foreign_funds, category_name=Conservative Foreign Funds 
+Jan 10 18:32:32 (I) Inserted/Updated: GCIRX in category Conservative Foreign Funds 
+Jan 10 18:32:32 (I) Upserted stock: symbol=FAPCX, category_id=conservative_foreign_funds, category_name=Conservative Foreign Funds 
+Jan 10 18:32:32 (I) Inserted/Updated: FAPCX in category Conservative Foreign Funds 
+Jan 10 18:32:32 (I) Upserted stock: symbol=TSOPX, category_id=conservative_foreign_funds, category_name=Conservative Foreign Funds 
+Jan 10 18:32:32 (I) Inserted/Updated: TSOPX in category Conservative Foreign Funds 
+Jan 10 18:32:33 (I) Upserted stock: symbol=TSOHX, category_id=conservative_foreign_funds, category_name=Conservative Foreign Funds 
+Jan 10 18:32:33 (I) Inserted/Updated: TSOHX in category Conservative Foreign Funds 
+Jan 10 18:32:33 (I) Upserted stock: symbol=TSONX, category_id=conservative_foreign_funds, category_name=Conservative Foreign Funds 
+Jan 10 18:32:33 (I) Inserted/Updated: TSONX in category Conservative Foreign Funds 
+Jan 10 18:32:33 (I) Upserted stock: symbol=FIVPX, category_id=conservative_foreign_funds, category_name=Conservative Foreign Funds 
+Jan 10 18:32:33 (I) Inserted/Updated: FIVPX in category Conservative Foreign Funds 
+Jan 10 18:32:33 (I) Upserted stock: symbol=FIVMX, category_id=conservative_foreign_funds, category_name=Conservative Foreign Funds 
+Jan 10 18:32:33 (I) Inserted/Updated: FIVMX in category Conservative Foreign Funds 
+Jan 10 18:32:33 (I) Upserted stock: symbol=FZABX, category_id=conservative_foreign_funds, category_name=Conservative Foreign Funds 
+Jan 10 18:32:33 (I) Inserted/Updated: FZABX in category Conservative Foreign Funds 
+Jan 10 18:32:33 (I) Upserted stock: symbol=FOPCX, category_id=conservative_foreign_funds, category_name=Conservative Foreign Funds 
+Jan 10 18:32:33 (I) Inserted/Updated: FOPCX in category Conservative Foreign Funds 
+Jan 10 18:32:33 (I) Upserted stock: symbol=FOPAX, category_id=conservative_foreign_funds, category_name=Conservative Foreign Funds 
+Jan 10 18:32:33 (I) Inserted/Updated: FOPAX in category Conservative Foreign Funds 
+Jan 10 18:32:33 (I) Upserted stock: symbol=FOPIX, category_id=conservative_foreign_funds, category_name=Conservative Foreign Funds 
+Jan 10 18:32:33 (I) Inserted/Updated: FOPIX in category Conservative Foreign Funds 
+Jan 10 18:32:33 (I) Upserted stock: symbol=FOPTX, category_id=conservative_foreign_funds, category_name=Conservative Foreign Funds 
+Jan 10 18:32:33 (I) Inserted/Updated: FOPTX in category Conservative Foreign Funds 
+Jan 10 18:32:33 (I) Upserted stock: symbol=FIQJX, category_id=conservative_foreign_funds, category_name=Conservative Foreign Funds 
+Jan 10 18:32:33 (I) Inserted/Updated: FIQJX in category Conservative Foreign Funds 
+Jan 10 18:32:33 (I) Upserted stock: symbol=FSCOX, category_id=conservative_foreign_funds, category_name=Conservative Foreign Funds 
+Jan 10 18:32:33 (I) Inserted/Updated: FSCOX in category Conservative Foreign Funds 
+Jan 10 18:32:33 (I) Upserted stock: symbol=MXIVX, category_id=conservative_foreign_funds, category_name=Conservative Foreign Funds 
+Jan 10 18:32:33 (I) Inserted/Updated: MXIVX in category Conservative Foreign Funds 
+Jan 10 18:32:33 (I) Upserted stock: symbol=TAISX, category_id=conservative_foreign_funds, category_name=Conservative Foreign Funds 
+Jan 10 18:32:33 (I) Inserted/Updated: TAISX in category Conservative Foreign Funds 
+Jan 10 18:32:33 (I) Upserted stock: symbol=TIISX, category_id=conservative_foreign_funds, category_name=Conservative Foreign Funds 
+Jan 10 18:32:33 (I) Inserted/Updated: TIISX in category Conservative Foreign Funds 
+Jan 10 18:32:33 (I) Upserted stock: symbol=TAIWX, category_id=conservative_foreign_funds, category_name=Conservative Foreign Funds 
+Jan 10 18:32:33 (I) Inserted/Updated: TAIWX in category Conservative Foreign Funds 
+Jan 10 18:32:33 (I) Upserted stock: symbol=GGCPX, category_id=conservative_foreign_funds, category_name=Conservative Foreign Funds 
+Jan 10 18:32:33 (I) Inserted/Updated: GGCPX in category Conservative Foreign Funds 
+Jan 10 18:32:33 (I) Upserted stock: symbol=GHTMX, category_id=conservative_foreign_funds, category_name=Conservative Foreign Funds 
+Jan 10 18:32:33 (I) Inserted/Updated: GHTMX in category Conservative Foreign Funds 
+Jan 10 18:32:33 (I) Upserted stock: symbol=GATMX, category_id=conservative_foreign_funds, category_name=Conservative Foreign Funds 
+Jan 10 18:32:33 (I) Inserted/Updated: GATMX in category Conservative Foreign Funds 
+Jan 10 18:32:33 (I) Upserted stock: symbol=GHTRX, category_id=conservative_foreign_funds, category_name=Conservative Foreign Funds 
+Jan 10 18:32:33 (I) Inserted/Updated: GHTRX in category Conservative Foreign Funds 
+Jan 10 18:32:33 (I) Upserted stock: symbol=GCTMX, category_id=conservative_foreign_funds, category_name=Conservative Foreign Funds 
+Jan 10 18:32:33 (I) Inserted/Updated: GCTMX in category Conservative Foreign Funds 
+Jan 10 18:32:33 (I) Upserted stock: symbol=GITRX, category_id=conservative_foreign_funds, category_name=Conservative Foreign Funds 
+Jan 10 18:32:33 (I) Inserted/Updated: GITRX in category Conservative Foreign Funds 
+Jan 10 18:32:33 (I) Upserted stock: symbol=BUFIX, category_id=conservative_foreign_funds, category_name=Conservative Foreign Funds 
+Jan 10 18:32:33 (I) Inserted/Updated: BUFIX in category Conservative Foreign Funds 
+Jan 10 18:32:33 (I) Upserted stock: symbol=BUIIX, category_id=conservative_foreign_funds, category_name=Conservative Foreign Funds 
+Jan 10 18:32:33 (I) Inserted/Updated: BUIIX in category Conservative Foreign Funds 
+Jan 10 18:32:33 (I) Upserted stock: symbol=INVYX, category_id=conservative_foreign_funds, category_name=Conservative Foreign Funds 
+Jan 10 18:32:33 (I) Inserted/Updated: INVYX in category Conservative Foreign Funds 
+Jan 10 18:32:33 (I) Upserted stock: symbol=PIIFX, category_id=conservative_foreign_funds, category_name=Conservative Foreign Funds 
+Jan 10 18:32:33 (I) Inserted/Updated: PIIFX in category Conservative Foreign Funds 
+Jan 10 18:32:33 (I) Fetched and processed 861 stock symbols. 
+Jan 10 18:32:33 (I) Database connection closed. 
+Jan 10 18:32:33 (I) ################### Main End !! ####################### 

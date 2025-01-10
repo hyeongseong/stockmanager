@@ -1,3 +1,11 @@
 node_modules/
 .env
 *.log
+# Ignore log files
+*.log
+
+# Ignore database files
+*.db
+
+# Ignore node_modules folder
+node_modules/
