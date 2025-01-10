@@ -30,7 +30,7 @@ class LoggerService {
                 }),
                 new winston.transports.File({
                     level: 'silly',
-                    filename: path.join(LoggerService.LOG_FOLDER, config.get('logger.name')),
+                    filename: path.join(LoggerService.LOG_FOLDER, `${config.get('logger.name')}.log`),
                     maxsize: LoggerService.ONE_MB,
                     maxFiles: 5,
                     tailable: true,
@@ -38,7 +38,7 @@ class LoggerService {
                 }),
                 new winston.transports.DailyRotateFile({
                     level: 'info',
-                    filename: path.join(LoggerService.LOG_FOLDER, config.get('logger.name')),
+                    filename: path.join(LoggerService.LOG_FOLDER, `${config.get('logger.name')}-%DATE%.log`),
                     datePattern: 'YYYY-MM-DD',
                     format: winston.format.combine(winston.format.timestamp({ format: LoggerService.timestamp }), winston.format.printf(LoggerService.formatter)),
                 }),
@@ -87,7 +87,7 @@ class LoggerService {
         }));
         LoggerService.logger.add(new winston.transports.File({
             level: 'silly',
-            filename: path.join(LoggerService.LOG_FOLDER, filename),
+            filename: path.join(LoggerService.LOG_FOLDER, `${filename}.log`),
             maxsize: LoggerService.ONE_MB,
             maxFiles: 5,
             tailable: true,
@@ -95,7 +95,7 @@ class LoggerService {
         }));
         LoggerService.logger.add(new winston.transports.DailyRotateFile({
             level: 'info',
-            filename: path.join(LoggerService.LOG_FOLDER, filename),
+            filename: path.join(LoggerService.LOG_FOLDER, `${filename}-%DATE%.log`),
             datePattern: 'YYYY-MM-DD',
             format: winston.format.combine(winston.format.timestamp({ format: LoggerService.timestamp }), winston.format.printf(LoggerService.formatter)),
         }));
