@@ -7,5 +7,6 @@ node_modules/
 # Ignore database files
 *.db
 
-# Ignore node_modules folder
+# Ignore node_modules, log folder
 node_modules/
+log/
