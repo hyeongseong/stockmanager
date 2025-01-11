@@ -12,3 +12,5 @@ log/
 
 # Ignore all files in the dist folder
 dist/
+
+dist/*.js

@@ -30,6 +30,7 @@ export class DBService {
             await this.db.exec(`DROP TABLE IF EXISTS stocks;`);
             await this.db.exec(`DROP TABLE IF EXISTS assetProfile;`);
             await this.db.exec(`DROP TABLE IF EXISTS recommendation_trend;`);
+            await this.db.exec(`DROP TABLE IF EXISTS cashflow_statement_history;`);
             // Create `stocks` table
             await this.db.exec(`
                 CREATE TABLE IF NOT EXISTS stocks (
@@ -88,6 +89,27 @@ export class DBService {
                     strongSell INTEGER,
                     last_updated DATETIME DEFAULT CURRENT_TIMESTAMP,
                     FOREIGN KEY(symbol) REFERENCES stocks(symbol) ON DELETE CASCADE
+                )
+            `);
+            await this.db.exec(`
+                CREATE TABLE IF NOT EXISTS cashflow_statement_history (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    symbol TEXT NOT NULL,
+                    endDate TEXT NOT NULL,
+                    netIncome INTEGER,
+                    last_updated DATETIME DEFAULT CURRENT_TIMESTAMP,
+                    FOREIGN KEY(symbol) REFERENCES stocks(symbol) ON DELETE CASCADE
+                )
+            `);
+            // Create `index_trend` table
+            await this.db.exec(`
+                CREATE TABLE IF NOT EXISTS index_trend (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    symbol TEXT NOT NULL,
+                    period TEXT NOT NULL,
+                    growth REAL,
+                    last_updated DATETIME DEFAULT CURRENT_TIMESTAMP,
+                    UNIQUE(symbol, period) -- 중복 삽입 방지
                 )
             `);
             logger.info('Database initialized and tables created.');
@@ -203,6 +225,58 @@ export class DBService {
         }
         catch (error) {
             logger.error(`Failed to upsert recommendation trend for symbol: ${symbol}`);
+            logger.error(error);
+            throw error;
+        }
+    }
+    async upsertCashflowStatementHistory(symbol, cashflowStatements) {
+        var _a, _b;
+        const query = `
+            INSERT INTO cashflow_statement_history (
+                symbol, endDate, netIncome, last_updated
+            )
+            VALUES (?, ?, ?, CURRENT_TIMESTAMP)
+        `;
+        try {
+            // Insert each cash flow statement into the table
+            for (const statement of cashflowStatements) {
+                await this.db.run(query, [
+                    symbol,
+                    ((_a = statement.endDate) === null || _a === void 0 ? void 0 : _a.fmt) || null,
+                    ((_b = statement.netIncome) === null || _b === void 0 ? void 0 : _b.raw) || null,
+                ]);
+            }
+            logger.info(`Upserted cashflow statement history for symbol: ${symbol}`);
+        }
+        catch (error) {
+            logger.error(`Failed to upsert cashflow statement history for symbol: ${symbol}`);
+            logger.error(error);
+            throw error;
+        }
+    }
+    async upsertIndexTrend(symbol, estimates) {
+        const query = `
+            INSERT INTO index_trend (
+                symbol, period, growth, last_updated
+            )
+            VALUES (?, ?, ?, CURRENT_TIMESTAMP)
+            ON CONFLICT(symbol, period) DO UPDATE SET
+                growth = excluded.growth,
+                last_updated = CURRENT_TIMESTAMP
+        `;
+        try {
+            // Insert or update each estimate into the table
+            for (const estimate of estimates) {
+                await this.db.run(query, [
+                    symbol,
+                    estimate.period,
+                    estimate.growth || null,
+                ]);
+            }
+            logger.info(`Upserted index trend for symbol: ${symbol}`);
+        }
+        catch (error) {
+            logger.error(`Failed to upsert index trend for symbol: ${symbol}`);
             logger.error(error);
             throw error;
         }

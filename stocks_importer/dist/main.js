@@ -4,6 +4,7 @@ import logger from './services/LoggerService.js';
 import { DBService } from './services/DBService.js';
 class Main {
     static async main() {
+        var _a, _b;
         logger.info('################### Main Start !! #######################');
         // Suppress Yahoo Finance API notices
         yahooFinance.suppressNotices(['yahooSurvey']);
@@ -42,6 +43,24 @@ class Main {
                     }
                     else {
                         logger.warn(`No recommendation trend data found for symbol: ${stock.symbol}`);
+                    }
+                    // Extract the cashflowStatementHistory if it exists
+                    const cashflowStatementHistory = (_a = stockInfo === null || stockInfo === void 0 ? void 0 : stockInfo.cashflowStatementHistory) === null || _a === void 0 ? void 0 : _a.cashflowStatements;
+                    if (cashflowStatementHistory) {
+                        await dbService.upsertCashflowStatementHistory(stock.symbol, cashflowStatementHistory);
+                        logger.info(`Upserted cashflow statement history for symbol: ${stock.symbol}`);
+                    }
+                    else {
+                        logger.warn(`No cashflow statement history data found for symbol: ${stock.symbol}`);
+                    }
+                    // Extract the indexTrend if it exists
+                    const indexTrend = (_b = stockInfo === null || stockInfo === void 0 ? void 0 : stockInfo.indexTrend) === null || _b === void 0 ? void 0 : _b.estimates;
+                    if (indexTrend) {
+                        await dbService.upsertIndexTrend(stock.symbol, indexTrend);
+                        logger.info(`Upserted index trend for symbol: ${stock.symbol}`);
+                    }
+                    else {
+                        logger.warn(`No index trend data found for symbol: ${stock.symbol}`);
                     }
                 }
                 catch (error) {

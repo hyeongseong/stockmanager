@@ -56,6 +56,24 @@ class Main {
                         logger.warn(`No recommendation trend data found for symbol: ${stock.symbol}`);
                     }
 
+                    // Extract the cashflowStatementHistory if it exists
+                    const cashflowStatementHistory = stockInfo?.cashflowStatementHistory?.cashflowStatements;
+
+                    if (cashflowStatementHistory) {
+                        await dbService.upsertCashflowStatementHistory(stock.symbol, cashflowStatementHistory);
+                        logger.info(`Upserted cashflow statement history for symbol: ${stock.symbol}`);
+                    } else {
+                        logger.warn(`No cashflow statement history data found for symbol: ${stock.symbol}`);
+                    }
+
+                    // Extract the indexTrend if it exists
+                    const indexTrend = stockInfo?.indexTrend?.estimates;
+                    if (indexTrend) {
+                        await dbService.upsertIndexTrend(stock.symbol, indexTrend);
+                        logger.info(`Upserted index trend for symbol: ${stock.symbol}`);
+                    } else {
+                        logger.warn(`No index trend data found for symbol: ${stock.symbol}`);
+                    }
 
                 } catch (error) {
                     logger.error(`Failed to fetch or upsert asset profile for symbol: ${stock.symbol}. Error: ${error}`);
