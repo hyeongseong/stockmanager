@@ -32,8 +32,9 @@ export class DBService {
 
         try {
             // Drop existing tables
-            await this.db.exec(`DROP TABLE IF EXISTS assetProfile;`);
             await this.db.exec(`DROP TABLE IF EXISTS stocks;`);
+            await this.db.exec(`DROP TABLE IF EXISTS assetProfile;`);
+            await this.db.exec(`DROP TABLE IF EXISTS recommendation_trend;`);
 
             // Create `stocks` table
             await this.db.exec(`
@@ -78,6 +79,21 @@ export class DBService {
                     irWebsite TEXT,
                     maxAge INTEGER,
                     last_updated DATETIME DEFAULT CURRENT_TIMESTAMP,
+                    FOREIGN KEY(symbol) REFERENCES stocks(symbol) ON DELETE CASCADE
+                )
+            `);
+
+            // Create `recommendation_trend` table
+            await this.db.exec(`
+                CREATE TABLE IF NOT EXISTS recommendation_trend (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    symbol TEXT NOT NULL,
+                    period TEXT NOT NULL,
+                    strongBuy INTEGER,
+                    buy INTEGER,
+                    hold INTEGER,
+                    sell INTEGER,
+                    strongSell INTEGER,
                     FOREIGN KEY(symbol) REFERENCES stocks(symbol) ON DELETE CASCADE
                 )
             `);
@@ -168,6 +184,35 @@ export class DBService {
             } else {
                 logger.error(`Unknown error: ${JSON.stringify(error)}`);
             }
+            throw error;
+        }
+    }
+
+    public async upsertRecommendationTrend(symbol: string, trend: any[]): Promise<void> {
+        const query = `
+            INSERT INTO recommendation_trend (
+                symbol, period, strongBuy, buy, hold, sell, strongSell
+            )
+            VALUES (?, ?, ?, ?, ?, ?, ?)
+        `;
+
+        try {
+            await this.db.run("DELETE FROM recommendation_trend WHERE symbol = ?", [symbol]);
+
+            for (const item of trend) {
+                await this.db.run(query, [
+                    symbol,
+                    item.period,
+                    item.strongBuy,
+                    item.buy,
+                    item.hold,
+                    item.sell,
+                    item.strongSell
+                ]);
+            }
+        } catch (error) {
+            logger.error(`Failed to upsert recommendation trend for symbol: ${symbol}`);
+            logger.error(error);
             throw error;
         }
     }

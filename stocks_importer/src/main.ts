@@ -45,6 +45,19 @@ class Main {
                     } else {
                         logger.warn(`No asset profile found for symbol: ${stock.symbol}`);
                     }
+
+                    // Extract the recommendationTrend if it exists
+                    const recommendationTrend = stockInfo?.recommendationTrend;
+
+                    if (recommendationTrend?.trend) {
+                        await dbService.upsertRecommendationTrend(stock.symbol, recommendationTrend.trend);
+                        logger.info(`Upserted recommendation trend for symbol: ${stock.symbol}`);
+                    } else {
+                        logger.warn(`No recommendation trend data found for symbol: ${stock.symbol}`);
+                    }
+
+
+
                 } catch (error) {
                     logger.error(`Failed to fetch or upsert asset profile for symbol: ${stock.symbol}. Error: ${error}`);
                 }
