@@ -86,6 +86,7 @@ export class DBService {
                     hold INTEGER,
                     sell INTEGER,
                     strongSell INTEGER,
+                    last_updated DATETIME DEFAULT CURRENT_TIMESTAMP,
                     FOREIGN KEY(symbol) REFERENCES stocks(symbol) ON DELETE CASCADE
                 )
             `);
@@ -180,12 +181,14 @@ export class DBService {
     async upsertRecommendationTrend(symbol, trend) {
         const query = `
             INSERT INTO recommendation_trend (
-                symbol, period, strongBuy, buy, hold, sell, strongSell
+                symbol, period, strongBuy, buy, hold, sell, strongSell, last_updated
             )
-            VALUES (?, ?, ?, ?, ?, ?, ?)
+            VALUES (?, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)
         `;
         try {
+            // Delete existing rows for the symbol before inserting new data
             await this.db.run("DELETE FROM recommendation_trend WHERE symbol = ?", [symbol]);
+            // Insert each trend item into the table
             for (const item of trend) {
                 await this.db.run(query, [
                     symbol,

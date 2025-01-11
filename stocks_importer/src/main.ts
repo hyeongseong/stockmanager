@@ -57,7 +57,6 @@ class Main {
                     }
 
 
-
                 } catch (error) {
                     logger.error(`Failed to fetch or upsert asset profile for symbol: ${stock.symbol}. Error: ${error}`);
                 }
