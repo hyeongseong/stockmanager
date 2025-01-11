@@ -17,13 +17,13 @@ export const SCR_IDS = {
 
 export type ScrId = typeof SCR_IDS[keyof typeof SCR_IDS];
 
-export class StockSymbolScannerService {
+export class StockScannerService {
 
     /**
- * Fetches all stock symbols for the given region across all categories in `SCR_IDS`.
- * @param region - The region to fetch stocks for.
- * @returns A list of stock objects with `symbol`, `categoryId`, and `categoryName`.
- */
+     * Fetches all stock symbols for the given region across all categories in `SCR_IDS`.
+     * @param region - The region to fetch stocks for.
+     * @returns A list of stock objects with `symbol`, `categoryId`, and `categoryName`.
+     */
     public async fetchStocksAll(): Promise<{ symbol: string; categoryId: string; categoryName: string }[]> {
         const allStocks: { symbol: string; categoryId: string; categoryName: string }[] = [];
 
@@ -43,6 +43,55 @@ export class StockSymbolScannerService {
         }
 
         return allStocks;
+    }
+
+
+    public async fetchStockDetails(symbol: string): Promise<any> {
+        try {
+            return await yahooFinance.quoteSummary(
+                symbol,
+                {
+                    modules: [
+                        "assetProfile",
+                        "recommendationTrend",
+                        "cashflowStatementHistory",
+                        "indexTrend",
+                        "defaultKeyStatistics",
+                        "industryTrend",
+                        "quoteType",
+                        "incomeStatementHistory",
+                        "fundOwnership",
+                        "summaryDetail",
+                        "insiderHolders",
+                        "calendarEvents",
+                        "upgradeDowngradeHistory",
+                        "price",
+                        "balanceSheetHistory",
+                        "earningsTrend",
+                        /*"secFilings",*/
+                        "institutionOwnership",
+                        "majorHoldersBreakdown",
+                        "balanceSheetHistoryQuarterly",
+                        "earningsHistory",
+                        "majorDirectHolders",
+                        "summaryProfile",
+                        "netSharePurchaseActivity",
+                        "insiderTransactions",
+                        "sectorTrend",
+                        "incomeStatementHistoryQuarterly",
+                        "cashflowStatementHistoryQuarterly",
+                        "earnings",
+                        "financialData",
+                    ]
+                },
+                {
+                    validateResult: false,
+                }
+            );
+        } catch (error) {
+            logger.error(error);
+            return null;
+        }
     }
 
     private async fetchStocks(scrId: ScrId): Promise<string[]> {

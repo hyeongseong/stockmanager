@@ -106,5 +106,5 @@ async function fetchAllModules(symbol) {
         console.error('################### Error !! #######################:');
     }
 }
-initializeDatabase();
+//initializeDatabase();
 fetchAllModules('AAPL');

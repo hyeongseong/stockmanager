@@ -115,6 +115,6 @@ async function fetchAllModules(symbol: string): Promise<void> {
     }
 }
 
-initializeDatabase();
+//initializeDatabase();
 
 fetchAllModules('AAPL');

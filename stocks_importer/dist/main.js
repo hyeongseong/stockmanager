@@ -1,28 +1,51 @@
 import yahooFinance from 'yahoo-finance2';
-import { StockSymbolScannerService } from './services/StockSymbolScannerService.js';
-import LoggerService from './services/LoggerService.js';
+import { StockScannerService } from './services/StockScannerService.js';
+import logger from './services/LoggerService.js';
 import { DBService } from './services/DBService.js';
 class Main {
     static async main() {
-        LoggerService.info('################### Main Start !! #######################');
+        logger.info('################### Main Start !! #######################');
         // Suppress Yahoo Finance API notices
         yahooFinance.suppressNotices(['yahooSurvey']);
-        const stockService = new StockSymbolScannerService();
+        const stockScannerService = new StockScannerService();
         const dbService = new DBService();
         await dbService.initialize();
         try {
-            const allStocks = await stockService.fetchStocksAll();
+            // Step 1. Fetch all the list of symbols from yahoo finance API
+            //const allStocks = await stockScannerService.fetchStocksAll();
+            const allStocks = [{ symbol: 'AAPL', categoryId: '', categoryName: '' }];
+            // ex)
+            // { "symbol": "WBA", "categoryId": "day_gainers", "categoryName": "Day Gainers" }
+            // Step 2 : insert the basic information into DB
+            // for (const stock of allStocks) {
+            //     await dbService.upsertSymbolAndCategory(stock.symbol, stock.categoryId, stock.categoryName);
+            //     logger.info(`Inserted/Updated: ${stock.symbol} in category ${stock.categoryName}`);
+            // }
+            // step 3: Call the Yahoo Finance API to retrieve detailed information for each stock
             for (const stock of allStocks) {
-                await dbService.upsertCategory(stock.symbol, stock.categoryId, stock.categoryName);
-                LoggerService.info(`Inserted/Updated: ${stock.symbol} in category ${stock.categoryName}`);
+                try {
+                    const stockInfo = await stockScannerService.fetchStockDetails(stock.symbol);
+                    // Extract the assetProfile if it exists
+                    const assetProfile = stockInfo === null || stockInfo === void 0 ? void 0 : stockInfo.assetProfile;
+                    if (assetProfile) {
+                        await dbService.upsertAssetProfile(stock.symbol, assetProfile);
+                        logger.info(`Upserted asset profile for symbol: ${stock.symbol}`);
+                    }
+                    else {
+                        logger.warn(`No asset profile found for symbol: ${stock.symbol}`);
+                    }
+                }
+                catch (error) {
+                    logger.error(`Failed to fetch or upsert asset profile for symbol: ${stock.symbol}. Error: ${error}`);
+                }
             }
-            LoggerService.info(`Fetched and processed ${allStocks.length} stock symbols.`);
+            logger.info(`Fetched and processed ${allStocks.length} stock symbols.`);
         }
         catch (error) {
-            LoggerService.error(`Error during fetchStocksAll: ${error}`);
+            logger.error(`Error during fetchStocksAll: ${error}`);
         }
         await dbService.close();
-        LoggerService.info('################### Main End !! #######################');
+        logger.info('################### Main End !! #######################');
     }
 }
 Main.main();
