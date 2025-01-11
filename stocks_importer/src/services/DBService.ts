@@ -38,7 +38,7 @@ export class DBService {
             await this.db.exec(`DROP TABLE IF EXISTS cashflow_statement_history;`);
             await this.db.exec(`DROP TABLE IF EXISTS default_key_statistics;`);
             await this.db.exec(`DROP TABLE IF EXISTS income_statement_history;`);
-
+            await this.db.exec(`DROP TABLE IF EXISTS fund_ownership;`);
 
             // Create `stocks` table
             await this.db.exec(`
@@ -206,6 +206,29 @@ export class DBService {
                 )
             `);
 
+            // Create `fund_ownership` table
+            await this.db.exec(`
+                CREATE TABLE IF NOT EXISTS fund_ownership (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    symbol TEXT NOT NULL,
+                    reportDate_raw INTEGER,
+                    reportDate_fmt TEXT,
+                    organization TEXT,
+                    pctHeld_raw REAL,
+                    pctHeld_fmt TEXT,
+                    position_raw INTEGER,
+                    position_fmt TEXT,
+                    position_longFmt TEXT,
+                    value_raw INTEGER,
+                    value_fmt TEXT,
+                    value_longFmt TEXT,
+                    pctChange_raw REAL,
+                    pctChange_fmt TEXT,
+                    last_updated DATETIME DEFAULT CURRENT_TIMESTAMP,
+                    FOREIGN KEY(symbol) REFERENCES stocks(symbol) ON DELETE CASCADE,
+                    UNIQUE(symbol, reportDate_raw, organization)
+                )
+            `);
             logger.info('Database initialized and tables created.');
         } catch (error) {
             logger.error('Failed to initialize database or create tables.');
@@ -558,7 +581,60 @@ export class DBService {
         }
     }
 
+    public async upsertFundOwnership(symbol: string, ownershipList: any[]): Promise<void> {
+        const query = `
+            INSERT INTO fund_ownership (
+                symbol, reportDate_raw, reportDate_fmt, organization,
+                pctHeld_raw, pctHeld_fmt,
+                position_raw, position_fmt, position_longFmt,
+                value_raw, value_fmt, value_longFmt,
+                pctChange_raw, pctChange_fmt, last_updated
+            )
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)
+            ON CONFLICT(symbol, reportDate_raw, organization) DO UPDATE SET
+                reportDate_fmt = excluded.reportDate_fmt,
+                pctHeld_raw = excluded.pctHeld_raw,
+                pctHeld_fmt = excluded.pctHeld_fmt,
+                position_raw = excluded.position_raw,
+                position_fmt = excluded.position_fmt,
+                position_longFmt = excluded.position_longFmt,
+                value_raw = excluded.value_raw,
+                value_fmt = excluded.value_fmt,
+                value_longFmt = excluded.value_longFmt,
+                pctChange_raw = excluded.pctChange_raw,
+                pctChange_fmt = excluded.pctChange_fmt,
+                last_updated = CURRENT_TIMESTAMP
+        `;
 
+        try {
+            for (const ownership of ownershipList) {
+                await this.db.run(query, [
+                    symbol,
+                    ownership.reportDate?.raw || null,
+                    ownership.reportDate?.fmt || null,
+                    ownership.organization || null,
+
+                    ownership.pctHeld?.raw || null,
+                    ownership.pctHeld?.fmt || null,
+
+                    ownership.position?.raw || null,
+                    ownership.position?.fmt || null,
+                    ownership.position?.longFmt || null,
+
+                    ownership.value?.raw || null,
+                    ownership.value?.fmt || null,
+                    ownership.value?.longFmt || null,
+
+                    ownership.pctChange?.raw || null,
+                    ownership.pctChange?.fmt || null,
+                ]);
+            }
+        } catch (error) {
+            logger.error(`Failed to upsert fund ownership data for symbol: ${symbol}`);
+            logger.error(error);
+            throw error;
+        }
+    }
 
     public async close(): Promise<void> {
         try {

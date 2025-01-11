@@ -90,6 +90,15 @@ class Main {
                     } else {
                         logger.warn(`No income statement history data found for symbol: ${stock.symbol}`);
                     }
+
+                    // Extract the fundOwnership if it exists
+                    const fundOwnership = stockInfo?.fundOwnership?.ownershipList;
+                    if (fundOwnership) {
+                        await dbService.upsertFundOwnership(stock.symbol, fundOwnership);
+                        logger.info(`Upserted fund ownership for symbol: ${stock.symbol}`);
+                    } else {
+                        logger.warn(`No fund ownership data found for symbol: ${stock.symbol}`);
+                    }
                 } catch (error) {
                     logger.error(`Failed to fetch or upsert asset profile for symbol: ${stock.symbol}. Error: ${error}`);
                 }
