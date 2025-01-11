@@ -39,6 +39,7 @@ export class DBService {
             await this.db.exec(`DROP TABLE IF EXISTS default_key_statistics;`);
             await this.db.exec(`DROP TABLE IF EXISTS income_statement_history;`);
             await this.db.exec(`DROP TABLE IF EXISTS fund_ownership;`);
+            await this.db.exec(`DROP TABLE IF EXISTS summary_detail;`);
 
             // Create `stocks` table
             await this.db.exec(`
@@ -229,6 +230,50 @@ export class DBService {
                     UNIQUE(symbol, reportDate_raw, organization)
                 )
             `);
+
+            await this.db.exec(`
+                CREATE TABLE IF NOT EXISTS summary_detail (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    symbol TEXT NOT NULL UNIQUE,
+                    priceHint INTEGER,
+                    previousClose REAL,
+                    open REAL,
+                    dayLow REAL,
+                    dayHigh REAL,
+                    regularMarketPreviousClose REAL,
+                    regularMarketOpen REAL,
+                    regularMarketDayLow REAL,
+                    regularMarketDayHigh REAL,
+                    dividendRate REAL,
+                    dividendYield REAL,
+                    exDividendDate INTEGER,
+                    payoutRatio REAL,
+                    fiveYearAvgDividendYield REAL,
+                    beta REAL,
+                    trailingPE REAL,
+                    forwardPE REAL,
+                    volume INTEGER,
+                    regularMarketVolume INTEGER,
+                    averageVolume INTEGER,
+                    averageVolume10days INTEGER,
+                    averageDailyVolume10Day INTEGER,
+                    bid REAL,
+                    ask REAL,
+                    bidSize INTEGER,
+                    askSize INTEGER,
+                    marketCap INTEGER,
+                    fiftyTwoWeekLow REAL,
+                    fiftyTwoWeekHigh REAL,
+                    priceToSalesTrailing12Months REAL,
+                    fiftyDayAverage REAL,
+                    twoHundredDayAverage REAL,
+                    trailingAnnualDividendRate REAL,
+                    trailingAnnualDividendYield REAL,
+                    currency TEXT,
+                    last_updated DATETIME DEFAULT CURRENT_TIMESTAMP
+                )
+            `);
+
             logger.info('Database initialized and tables created.');
         } catch (error) {
             logger.error('Failed to initialize database or create tables.');
@@ -632,6 +677,134 @@ export class DBService {
         } catch (error) {
             logger.error(`Failed to upsert fund ownership data for symbol: ${symbol}`);
             logger.error(error);
+            throw error;
+        }
+    }
+
+    public async upsertSummaryDetail(symbol: string, summaryDetail: any): Promise<void> {
+        const query = `
+            INSERT INTO summary_detail (
+                symbol,
+                priceHint,
+                previousClose,
+                open,
+                dayLow,
+                dayHigh,
+                regularMarketPreviousClose,
+                regularMarketOpen,
+                regularMarketDayLow,
+                regularMarketDayHigh,
+                dividendRate,
+                dividendYield,
+                exDividendDate,
+                payoutRatio,
+                fiveYearAvgDividendYield,
+                beta,
+                trailingPE,
+                forwardPE,
+                volume,
+                regularMarketVolume,
+                averageVolume,
+                averageVolume10days,
+                averageDailyVolume10Day,
+                bid,
+                ask,
+                bidSize,
+                askSize,
+                marketCap,
+                fiftyTwoWeekLow,
+                fiftyTwoWeekHigh,
+                priceToSalesTrailing12Months,
+                fiftyDayAverage,
+                twoHundredDayAverage,
+                trailingAnnualDividendRate,
+                trailingAnnualDividendYield,
+                currency
+            )
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            ON CONFLICT(symbol) DO UPDATE SET
+                priceHint = excluded.priceHint,
+                previousClose = excluded.previousClose,
+                open = excluded.open,
+                dayLow = excluded.dayLow,
+                dayHigh = excluded.dayHigh,
+                regularMarketPreviousClose = excluded.regularMarketPreviousClose,
+                regularMarketOpen = excluded.regularMarketOpen,
+                regularMarketDayLow = excluded.regularMarketDayLow,
+                regularMarketDayHigh = excluded.regularMarketDayHigh,
+                dividendRate = excluded.dividendRate,
+                dividendYield = excluded.dividendYield,
+                exDividendDate = excluded.exDividendDate,
+                payoutRatio = excluded.payoutRatio,
+                fiveYearAvgDividendYield = excluded.fiveYearAvgDividendYield,
+                beta = excluded.beta,
+                trailingPE = excluded.trailingPE,
+                forwardPE = excluded.forwardPE,
+                volume = excluded.volume,
+                regularMarketVolume = excluded.regularMarketVolume,
+                averageVolume = excluded.averageVolume,
+                averageVolume10days = excluded.averageVolume10days,
+                averageDailyVolume10Day = excluded.averageDailyVolume10Day,
+                bid = excluded.bid,
+                ask = excluded.ask,
+                bidSize = excluded.bidSize,
+                askSize = excluded.askSize,
+                marketCap = excluded.marketCap,
+                fiftyTwoWeekLow = excluded.fiftyTwoWeekLow,
+                fiftyTwoWeekHigh = excluded.fiftyTwoWeekHigh,
+                priceToSalesTrailing12Months = excluded.priceToSalesTrailing12Months,
+                fiftyDayAverage = excluded.fiftyDayAverage,
+                twoHundredDayAverage = excluded.twoHundredDayAverage,
+                trailingAnnualDividendRate = excluded.trailingAnnualDividendRate,
+                trailingAnnualDividendYield = excluded.trailingAnnualDividendYield,
+                currency = excluded.currency,
+                last_updated = CURRENT_TIMESTAMP
+        `;
+
+        const params = [
+            symbol,
+            summaryDetail.priceHint || null,
+            summaryDetail.previousClose || null,
+            summaryDetail.open || null,
+            summaryDetail.dayLow || null,
+            summaryDetail.dayHigh || null,
+            summaryDetail.regularMarketPreviousClose || null,
+            summaryDetail.regularMarketOpen || null,
+            summaryDetail.regularMarketDayLow || null,
+            summaryDetail.regularMarketDayHigh || null,
+            summaryDetail.dividendRate || null,
+            summaryDetail.dividendYield || null,
+            summaryDetail.exDividendDate || null,
+            summaryDetail.payoutRatio || null,
+            summaryDetail.fiveYearAvgDividendYield || null,
+            summaryDetail.beta || null,
+            summaryDetail.trailingPE || null,
+            summaryDetail.forwardPE || null,
+            summaryDetail.volume || null,
+            summaryDetail.regularMarketVolume || null,
+            summaryDetail.averageVolume || null,
+            summaryDetail.averageVolume10days || null,
+            summaryDetail.averageDailyVolume10Day || null,
+            summaryDetail.bid || null,
+            summaryDetail.ask || null,
+            summaryDetail.bidSize || null,
+            summaryDetail.askSize || null,
+            summaryDetail.marketCap || null,
+            summaryDetail.fiftyTwoWeekLow || null,
+            summaryDetail.fiftyTwoWeekHigh || null,
+            summaryDetail.priceToSalesTrailing12Months || null,
+            summaryDetail.fiftyDayAverage || null,
+            summaryDetail.twoHundredDayAverage || null,
+            summaryDetail.trailingAnnualDividendRate || null,
+            summaryDetail.trailingAnnualDividendYield || null,
+            summaryDetail.currency || null,
+        ];
+
+        try {
+            await this.db.run(query, ...params);
+        } catch (error) {
+            logger.error(`Failed to upsert summary detail for symbol: ${symbol}`);
+            logger.error(`Error: ${error instanceof Error ? error.message : JSON.stringify(error)}`);
             throw error;
         }
     }

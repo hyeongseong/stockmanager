@@ -99,6 +99,15 @@ class Main {
                     } else {
                         logger.warn(`No fund ownership data found for symbol: ${stock.symbol}`);
                     }
+
+                    // Extract and upsert `summaryDetail`
+                    const summaryDetail = stockInfo?.summaryDetail;
+                    if (summaryDetail) {
+                        await dbService.upsertSummaryDetail(stock.symbol, summaryDetail);
+                        logger.info(`Upserted summary detail for symbol: ${stock.symbol}`);
+                    } else {
+                        logger.warn(`No summary detail data found for symbol: ${stock.symbol}`);
+                    }
                 } catch (error) {
                     logger.error(`Failed to fetch or upsert asset profile for symbol: ${stock.symbol}. Error: ${error}`);
                 }
