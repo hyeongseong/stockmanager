@@ -48,7 +48,6 @@ class Main {
 
                     // Extract the recommendationTrend if it exists
                     const recommendationTrend = stockInfo?.recommendationTrend;
-
                     if (recommendationTrend?.trend) {
                         await dbService.upsertRecommendationTrend(stock.symbol, recommendationTrend.trend);
                         logger.info(`Upserted recommendation trend for symbol: ${stock.symbol}`);
@@ -58,7 +57,6 @@ class Main {
 
                     // Extract the cashflowStatementHistory if it exists
                     const cashflowStatementHistory = stockInfo?.cashflowStatementHistory?.cashflowStatements;
-
                     if (cashflowStatementHistory) {
                         await dbService.upsertCashflowStatementHistory(stock.symbol, cashflowStatementHistory);
                         logger.info(`Upserted cashflow statement history for symbol: ${stock.symbol}`);
@@ -84,7 +82,14 @@ class Main {
                         logger.warn(`No default key statistics data found for symbol: ${stock.symbol}`);
                     }
 
-
+                    // Extract the incomeStatementHistory if it exists
+                    const incomeStatementHistory = stockInfo?.incomeStatementHistory?.incomeStatementHistory;
+                    if (incomeStatementHistory) {
+                        await dbService.upsertIncomeStatementHistory(stock.symbol, incomeStatementHistory);
+                        logger.info(`Upserted income statement history for symbol: ${stock.symbol}`);
+                    } else {
+                        logger.warn(`No income statement history data found for symbol: ${stock.symbol}`);
+                    }
                 } catch (error) {
                     logger.error(`Failed to fetch or upsert asset profile for symbol: ${stock.symbol}. Error: ${error}`);
                 }

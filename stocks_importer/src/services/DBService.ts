@@ -37,6 +37,8 @@ export class DBService {
             await this.db.exec(`DROP TABLE IF EXISTS recommendation_trend;`);
             await this.db.exec(`DROP TABLE IF EXISTS cashflow_statement_history;`);
             await this.db.exec(`DROP TABLE IF EXISTS default_key_statistics;`);
+            await this.db.exec(`DROP TABLE IF EXISTS income_statement_history;`);
+
 
             // Create `stocks` table
             await this.db.exec(`
@@ -106,10 +108,14 @@ export class DBService {
                 CREATE TABLE IF NOT EXISTS cashflow_statement_history (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
                     symbol TEXT NOT NULL,
-                    endDate TEXT NOT NULL,
-                    netIncome INTEGER,
+                    endDate_raw INTEGER,
+                    endDate_fmt TEXT,
+                    netIncome_raw INTEGER,
+                    netIncome_fmt TEXT,
+                    netIncome_longFmt TEXT,
                     last_updated DATETIME DEFAULT CURRENT_TIMESTAMP,
-                    FOREIGN KEY(symbol) REFERENCES stocks(symbol) ON DELETE CASCADE
+                    FOREIGN KEY(symbol) REFERENCES stocks(symbol) ON DELETE CASCADE,
+                    UNIQUE(symbol, endDate_raw) -- 중복 삽입 방지
                 )
             `);
 
@@ -166,6 +172,37 @@ export class DBService {
                     lastDividendDate INTEGER,
                     last_updated DATETIME DEFAULT CURRENT_TIMESTAMP,
                     FOREIGN KEY(symbol) REFERENCES stocks(symbol) ON DELETE CASCADE
+                )
+            `);
+
+            // Create `income_statement_history` table
+            await this.db.exec(`
+                CREATE TABLE IF NOT EXISTS income_statement_history (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    symbol TEXT NOT NULL,
+                    endDate_raw INTEGER,
+                    endDate_fmt TEXT,
+                    totalRevenue_raw INTEGER,
+                    totalRevenue_fmt TEXT,
+                    totalRevenue_longFmt TEXT,
+                    costOfRevenue_raw INTEGER,
+                    costOfRevenue_fmt TEXT,
+                    costOfRevenue_longFmt TEXT,
+                    grossProfit_raw INTEGER,
+                    grossProfit_fmt TEXT,
+                    grossProfit_longFmt TEXT,
+                    ebit_raw INTEGER,
+                    ebit_fmt TEXT,
+                    ebit_longFmt TEXT,
+                    incomeTaxExpense_raw INTEGER,
+                    incomeTaxExpense_fmt TEXT,
+                    incomeTaxExpense_longFmt TEXT,
+                    netIncome_raw INTEGER,
+                    netIncome_fmt TEXT,
+                    netIncome_longFmt TEXT,
+                    last_updated DATETIME DEFAULT CURRENT_TIMESTAMP,
+                    FOREIGN KEY(symbol) REFERENCES stocks(symbol) ON DELETE CASCADE,
+                    UNIQUE(symbol, endDate_raw) -- 중복 삽입 방지
                 )
             `);
 
@@ -293,21 +330,30 @@ export class DBService {
     public async upsertCashflowStatementHistory(symbol: string, cashflowStatements: any[]): Promise<void> {
         const query = `
             INSERT INTO cashflow_statement_history (
-                symbol, endDate, netIncome, last_updated
+                symbol, endDate_raw, endDate_fmt,
+                netIncome_raw, netIncome_fmt, netIncome_longFmt, last_updated
             )
-            VALUES (?, ?, ?, CURRENT_TIMESTAMP)
+            VALUES (?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)
+            ON CONFLICT(symbol, endDate_raw) DO UPDATE SET
+                endDate_fmt = excluded.endDate_fmt,
+                netIncome_raw = excluded.netIncome_raw,
+                netIncome_fmt = excluded.netIncome_fmt,
+                netIncome_longFmt = excluded.netIncome_longFmt,
+                last_updated = CURRENT_TIMESTAMP
         `;
 
         try {
-            // Insert each cash flow statement into the table
             for (const statement of cashflowStatements) {
                 await this.db.run(query, [
                     symbol,
+                    statement.endDate?.raw || null,
                     statement.endDate?.fmt || null,
+
                     statement.netIncome?.raw || null,
+                    statement.netIncome?.fmt || null,
+                    statement.netIncome?.longFmt || null,
                 ]);
             }
-            logger.info(`Upserted cashflow statement history for symbol: ${symbol}`);
         } catch (error) {
             logger.error(`Failed to upsert cashflow statement history for symbol: ${symbol}`);
             logger.error(error);
@@ -335,7 +381,6 @@ export class DBService {
                     estimate.growth || null,
                 ]);
             }
-            logger.info(`Upserted index trend for symbol: ${symbol}`);
         } catch (error) {
             logger.error(`Failed to upsert index trend for symbol: ${symbol}`);
             logger.error(error);
@@ -432,13 +477,88 @@ export class DBService {
 
         try {
             await this.db.run(query, ...params);
-            logger.info(`Upserted default key statistics for symbol: ${symbol}`);
         } catch (error) {
             logger.error(`Failed to upsert default key statistics for symbol: ${symbol}`);
             logger.error(error);
             throw error;
         }
     }
+
+    public async upsertIncomeStatementHistory(symbol: string, statements: any[]): Promise<void> {
+        const query = `
+            INSERT INTO income_statement_history (
+                symbol, endDate_raw, endDate_fmt,
+                totalRevenue_raw, totalRevenue_fmt, totalRevenue_longFmt,
+                costOfRevenue_raw, costOfRevenue_fmt, costOfRevenue_longFmt,
+                grossProfit_raw, grossProfit_fmt, grossProfit_longFmt,
+                ebit_raw, ebit_fmt, ebit_longFmt,
+                incomeTaxExpense_raw, incomeTaxExpense_fmt, incomeTaxExpense_longFmt,
+                netIncome_raw, netIncome_fmt, netIncome_longFmt, last_updated
+            )
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)
+            ON CONFLICT(symbol, endDate_raw) DO UPDATE SET
+                endDate_fmt = excluded.endDate_fmt,
+                totalRevenue_raw = excluded.totalRevenue_raw,
+                totalRevenue_fmt = excluded.totalRevenue_fmt,
+                totalRevenue_longFmt = excluded.totalRevenue_longFmt,
+                costOfRevenue_raw = excluded.costOfRevenue_raw,
+                costOfRevenue_fmt = excluded.costOfRevenue_fmt,
+                costOfRevenue_longFmt = excluded.costOfRevenue_longFmt,
+                grossProfit_raw = excluded.grossProfit_raw,
+                grossProfit_fmt = excluded.grossProfit_fmt,
+                grossProfit_longFmt = excluded.grossProfit_longFmt,
+                ebit_raw = excluded.ebit_raw,
+                ebit_fmt = excluded.ebit_fmt,
+                ebit_longFmt = excluded.ebit_longFmt,
+                incomeTaxExpense_raw = excluded.incomeTaxExpense_raw,
+                incomeTaxExpense_fmt = excluded.incomeTaxExpense_fmt,
+                incomeTaxExpense_longFmt = excluded.incomeTaxExpense_longFmt,
+                netIncome_raw = excluded.netIncome_raw,
+                netIncome_fmt = excluded.netIncome_fmt,
+                netIncome_longFmt = excluded.netIncome_longFmt,
+                last_updated = CURRENT_TIMESTAMP
+        `;
+
+        try {
+            for (const statement of statements) {
+                await this.db.run(query, [
+                    symbol,
+                    statement.endDate?.raw || null,
+                    statement.endDate?.fmt || null,
+
+                    statement.totalRevenue?.raw || null,
+                    statement.totalRevenue?.fmt || null,
+                    statement.totalRevenue?.longFmt || null,
+
+                    statement.costOfRevenue?.raw || null,
+                    statement.costOfRevenue?.fmt || null,
+                    statement.costOfRevenue?.longFmt || null,
+
+                    statement.grossProfit?.raw || null,
+                    statement.grossProfit?.fmt || null,
+                    statement.grossProfit?.longFmt || null,
+
+                    statement.ebit?.raw || null,
+                    statement.ebit?.fmt || null,
+                    statement.ebit?.longFmt || null,
+
+                    statement.incomeTaxExpense?.raw || null,
+                    statement.incomeTaxExpense?.fmt || null,
+                    statement.incomeTaxExpense?.longFmt || null,
+
+                    statement.netIncome?.raw || null,
+                    statement.netIncome?.fmt || null,
+                    statement.netIncome?.longFmt || null,
+                ]);
+            }
+        } catch (error) {
+            logger.error(`Failed to upsert income statement history for symbol: ${symbol}`);
+            logger.error(error);
+            throw error;
+        }
+    }
+
+
 
     public async close(): Promise<void> {
         try {
