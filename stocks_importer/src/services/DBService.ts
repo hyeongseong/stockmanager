@@ -40,6 +40,7 @@ export class DBService {
             await this.db.exec(`DROP TABLE IF EXISTS income_statement_history;`);
             await this.db.exec(`DROP TABLE IF EXISTS fund_ownership;`);
             await this.db.exec(`DROP TABLE IF EXISTS summary_detail;`);
+            await this.db.exec(`DROP TABLE IF EXISTS insider_holders;`);
 
             // Create `stocks` table
             await this.db.exec(`
@@ -231,6 +232,7 @@ export class DBService {
                 )
             `);
 
+            // Create `summary_detail` table
             await this.db.exec(`
                 CREATE TABLE IF NOT EXISTS summary_detail (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -271,6 +273,33 @@ export class DBService {
                     trailingAnnualDividendYield REAL,
                     currency TEXT,
                     last_updated DATETIME DEFAULT CURRENT_TIMESTAMP
+                )
+            `);
+
+            // Create `insider_holders` table
+            await this.db.exec(`
+                CREATE TABLE IF NOT EXISTS insider_holders (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    symbol TEXT NOT NULL,
+                    name TEXT NOT NULL,
+                    relation TEXT,
+                    url TEXT,
+                    transactionDescription TEXT,
+                    latestTransDate_raw INTEGER,
+                    latestTransDate_fmt TEXT,
+                    positionDirect_raw INTEGER,
+                    positionDirect_fmt TEXT,
+                    positionDirect_longFmt TEXT,
+                    positionDirectDate_raw INTEGER,
+                    positionDirectDate_fmt TEXT,
+                    positionIndirect_raw INTEGER,
+                    positionIndirect_fmt TEXT,
+                    positionIndirect_longFmt TEXT,
+                    positionIndirectDate_raw INTEGER,
+                    positionIndirectDate_fmt TEXT,
+                    last_updated DATETIME DEFAULT CURRENT_TIMESTAMP,
+                    FOREIGN KEY(symbol) REFERENCES stocks(symbol) ON DELETE CASCADE,
+                    UNIQUE(symbol, name, relation)
                 )
             `);
 
@@ -804,6 +833,65 @@ export class DBService {
             await this.db.run(query, ...params);
         } catch (error) {
             logger.error(`Failed to upsert summary detail for symbol: ${symbol}`);
+            logger.error(`Error: ${error instanceof Error ? error.message : JSON.stringify(error)}`);
+            throw error;
+        }
+    }
+
+    public async upsertInsiderHolders(symbol: string, insiderHolders: any[]): Promise<void> {
+        const query = `
+            INSERT INTO insider_holders (
+                symbol, name, relation, url, transactionDescription,
+                latestTransDate_raw, latestTransDate_fmt,
+                positionDirect_raw, positionDirect_fmt, positionDirect_longFmt,
+                positionDirectDate_raw, positionDirectDate_fmt,
+                positionIndirect_raw, positionIndirect_fmt, positionIndirect_longFmt,
+                positionIndirectDate_raw, positionIndirectDate_fmt,
+                last_updated
+            )
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)
+            ON CONFLICT(symbol, name, relation) DO UPDATE SET
+                url = excluded.url,
+                transactionDescription = excluded.transactionDescription,
+                latestTransDate_raw = excluded.latestTransDate_raw,
+                latestTransDate_fmt = excluded.latestTransDate_fmt,
+                positionDirect_raw = excluded.positionDirect_raw,
+                positionDirect_fmt = excluded.positionDirect_fmt,
+                positionDirect_longFmt = excluded.positionDirect_longFmt,
+                positionDirectDate_raw = excluded.positionDirectDate_raw,
+                positionDirectDate_fmt = excluded.positionDirectDate_fmt,
+                positionIndirect_raw = excluded.positionIndirect_raw,
+                positionIndirect_fmt = excluded.positionIndirect_fmt,
+                positionIndirect_longFmt = excluded.positionIndirect_longFmt,
+                positionIndirectDate_raw = excluded.positionIndirectDate_raw,
+                positionIndirectDate_fmt = excluded.positionIndirectDate_fmt,
+                last_updated = CURRENT_TIMESTAMP
+        `;
+
+        try {
+            for (const holder of insiderHolders) {
+                await this.db.run(query, [
+                    symbol,
+                    holder.name || null,
+                    holder.relation || null,
+                    holder.url || null,
+                    holder.transactionDescription || null,
+                    holder.latestTransDate?.raw || null,
+                    holder.latestTransDate?.fmt || null,
+                    holder.positionDirect?.raw || null,
+                    holder.positionDirect?.fmt || null,
+                    holder.positionDirect?.longFmt || null,
+                    holder.positionDirectDate?.raw || null,
+                    holder.positionDirectDate?.fmt || null,
+                    holder.positionIndirect?.raw || null,
+                    holder.positionIndirect?.fmt || null,
+                    holder.positionIndirect?.longFmt || null,
+                    holder.positionIndirectDate?.raw || null,
+                    holder.positionIndirectDate?.fmt || null,
+                ]);
+            }
+        } catch (error) {
+            logger.error(`Failed to upsert insider holders for symbol: ${symbol}`);
             logger.error(`Error: ${error instanceof Error ? error.message : JSON.stringify(error)}`);
             throw error;
         }

@@ -108,6 +108,16 @@ class Main {
                     } else {
                         logger.warn(`No summary detail data found for symbol: ${stock.symbol}`);
                     }
+
+                    // Extract and upsert insiderHolders
+                    const insiderHolders = stockInfo?.insiderHolders?.holders;
+                    if (insiderHolders) {
+                        await dbService.upsertInsiderHolders(stock.symbol, insiderHolders);
+                        logger.info(`Upserted insider holders for symbol: ${stock.symbol}`);
+                    } else {
+                        logger.warn(`No insider holders data found for symbol: ${stock.symbol}`);
+                    }
+
                 } catch (error) {
                     logger.error(`Failed to fetch or upsert asset profile for symbol: ${stock.symbol}. Error: ${error}`);
                 }
