@@ -43,6 +43,7 @@ export class DBService {
             await this.db.exec(`DROP TABLE IF EXISTS insider_holders;`);
             await this.db.exec(`DROP TABLE IF EXISTS calendar_events;`);
             await this.db.exec(`DROP TABLE IF EXISTS upgrade_downgrade_history;`);
+            await this.db.exec(`DROP TABLE IF EXISTS price;`);
 
             // Create `stocks` table
             await this.db.exec(`
@@ -339,6 +340,49 @@ export class DBService {
                     last_updated DATETIME DEFAULT CURRENT_TIMESTAMP,
                     FOREIGN KEY(symbol) REFERENCES stocks(symbol) ON DELETE CASCADE,
                     UNIQUE(symbol, epochGradeDate, firm)
+                )
+            `);
+
+            // Create `price` table
+            await this.db.exec(`
+                CREATE TABLE IF NOT EXISTS price (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    symbol TEXT NOT NULL UNIQUE, -- symbol을 UNIQUE로 설정
+                    preMarketSource TEXT,
+                    postMarketChangePercent REAL,
+                    postMarketChange REAL,
+                    postMarketTime INTEGER,
+                    postMarketPrice REAL,
+                    postMarketSource TEXT,
+                    regularMarketChangePercent REAL,
+                    regularMarketChange REAL,
+                    regularMarketTime INTEGER,
+                    priceHint INTEGER,
+                    regularMarketPrice REAL,
+                    regularMarketDayHigh REAL,
+                    regularMarketDayLow REAL,
+                    regularMarketVolume INTEGER,
+                    averageDailyVolume10Day INTEGER,
+                    averageDailyVolume3Month INTEGER,
+                    regularMarketPreviousClose REAL,
+                    regularMarketSource TEXT,
+                    regularMarketOpen REAL,
+                    exchange TEXT,
+                    exchangeName TEXT,
+                    exchangeDataDelayedBy INTEGER,
+                    marketState TEXT,
+                    quoteType TEXT,
+                    shortName TEXT,
+                    longName TEXT,
+                    currency TEXT,
+                    quoteSourceName TEXT,
+                    currencySymbol TEXT,
+                    fromCurrency TEXT,
+                    toCurrency TEXT,
+                    lastMarket TEXT,
+                    marketCap INTEGER,
+                    last_updated DATETIME DEFAULT CURRENT_TIMESTAMP,
+                    FOREIGN KEY(symbol) REFERENCES stocks(symbol) ON DELETE CASCADE
                 )
             `);
 
@@ -1030,7 +1074,130 @@ export class DBService {
         }
     }
 
+    public async upsertPrice(symbol: string, priceData: any): Promise<void> {
+        const query = `
+            INSERT INTO price (
+                symbol,
+                preMarketSource,
+                postMarketChangePercent,
+                postMarketChange,
+                postMarketTime,
+                postMarketPrice,
+                postMarketSource,
+                regularMarketChangePercent,
+                regularMarketChange,
+                regularMarketTime,
+                priceHint,
+                regularMarketPrice,
+                regularMarketDayHigh,
+                regularMarketDayLow,
+                regularMarketVolume,
+                averageDailyVolume10Day,
+                averageDailyVolume3Month,
+                regularMarketPreviousClose,
+                regularMarketSource,
+                regularMarketOpen,
+                exchange,
+                exchangeName,
+                exchangeDataDelayedBy,
+                marketState,
+                quoteType,
+                shortName,
+                longName,
+                currency,
+                quoteSourceName,
+                currencySymbol,
+                fromCurrency,
+                toCurrency,
+                lastMarket,
+                marketCap,
+                last_updated
+            )
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)
+            ON CONFLICT(symbol) DO UPDATE SET
+                preMarketSource = excluded.preMarketSource,
+                postMarketChangePercent = excluded.postMarketChangePercent,
+                postMarketChange = excluded.postMarketChange,
+                postMarketTime = excluded.postMarketTime,
+                postMarketPrice = excluded.postMarketPrice,
+                postMarketSource = excluded.postMarketSource,
+                regularMarketChangePercent = excluded.regularMarketChangePercent,
+                regularMarketChange = excluded.regularMarketChange,
+                regularMarketTime = excluded.regularMarketTime,
+                priceHint = excluded.priceHint,
+                regularMarketPrice = excluded.regularMarketPrice,
+                regularMarketDayHigh = excluded.regularMarketDayHigh,
+                regularMarketDayLow = excluded.regularMarketDayLow,
+                regularMarketVolume = excluded.regularMarketVolume,
+                averageDailyVolume10Day = excluded.averageDailyVolume10Day,
+                averageDailyVolume3Month = excluded.averageDailyVolume3Month,
+                regularMarketPreviousClose = excluded.regularMarketPreviousClose,
+                regularMarketSource = excluded.regularMarketSource,
+                regularMarketOpen = excluded.regularMarketOpen,
+                exchange = excluded.exchange,
+                exchangeName = excluded.exchangeName,
+                exchangeDataDelayedBy = excluded.exchangeDataDelayedBy,
+                marketState = excluded.marketState,
+                quoteType = excluded.quoteType,
+                shortName = excluded.shortName,
+                longName = excluded.longName,
+                currency = excluded.currency,
+                quoteSourceName = excluded.quoteSourceName,
+                currencySymbol = excluded.currencySymbol,
+                fromCurrency = excluded.fromCurrency,
+                toCurrency = excluded.toCurrency,
+                lastMarket = excluded.lastMarket,
+                marketCap = excluded.marketCap,
+                last_updated = CURRENT_TIMESTAMP
+        `;
 
+        const params = [
+            symbol,
+            priceData.preMarketSource || null,
+            priceData.postMarketChangePercent || null,
+            priceData.postMarketChange || null,
+            priceData.postMarketTime || null,
+            priceData.postMarketPrice || null,
+            priceData.postMarketSource || null,
+            priceData.regularMarketChangePercent || null,
+            priceData.regularMarketChange || null,
+            priceData.regularMarketTime || null,
+            priceData.priceHint || null,
+            priceData.regularMarketPrice || null,
+            priceData.regularMarketDayHigh || null,
+            priceData.regularMarketDayLow || null,
+            priceData.regularMarketVolume || null,
+            priceData.averageDailyVolume10Day || null,
+            priceData.averageDailyVolume3Month || null,
+            priceData.regularMarketPreviousClose || null,
+            priceData.regularMarketSource || null,
+            priceData.regularMarketOpen || null,
+            priceData.exchange || null,
+            priceData.exchangeName || null,
+            priceData.exchangeDataDelayedBy || null,
+            priceData.marketState || null,
+            priceData.quoteType || null,
+            priceData.shortName || null,
+            priceData.longName || null,
+            priceData.currency || null,
+            priceData.quoteSourceName || null,
+            priceData.currencySymbol || null,
+            priceData.fromCurrency || null,
+            priceData.toCurrency || null,
+            priceData.lastMarket || null,
+            priceData.marketCap || null,
+        ];
+
+        try {
+            await this.db.run(query, ...params);
+        } catch (error) {
+            logger.error(`Failed to upsert price data for symbol: ${symbol}`);
+            logger.error(`Query: ${query}`);
+            logger.error(`Parameters: ${JSON.stringify(params, null, 2)}`);
+            logger.error(`Error: ${error instanceof Error ? error.message : JSON.stringify(error)}`);
+            throw error;
+        }
+    }
 
     public async close(): Promise<void> {
         try {

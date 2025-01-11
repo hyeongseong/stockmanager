@@ -136,7 +136,14 @@ class Main {
                         logger.warn(`No upgrade/downgrade history data found for symbol: ${stock.symbol}`);
                     }
 
-
+                    // Extract and upsert price
+                    const price = stockInfo?.price;
+                    if (price) {
+                        await dbService.upsertPrice(stock.symbol, price);
+                        logger.info(`Upserted price data for symbol: ${stock.symbol}`);
+                    } else {
+                        logger.warn(`No price data found for symbol: ${stock.symbol}`);
+                    }
                 } catch (error) {
                     logger.error(`Failed to fetch or upsert asset profile for symbol: ${stock.symbol}. Error: ${error}`);
                 }
