@@ -118,6 +118,25 @@ class Main {
                         logger.warn(`No insider holders data found for symbol: ${stock.symbol}`);
                     }
 
+                    // Extract and upsert calendarEvents
+                    const calendarEvents = stockInfo?.calendarEvents;
+                    if (calendarEvents) {
+                        await dbService.upsertCalendarEvents(stock.symbol, calendarEvents);
+                        logger.info(`Upserted calendar events for symbol: ${stock.symbol}`);
+                    } else {
+                        logger.warn(`No calendar events data found for symbol: ${stock.symbol}`);
+                    }
+
+                    // Extract and upsert upgradeDowngradeHistory
+                    const upgradeDowngradeHistory = stockInfo?.upgradeDowngradeHistory?.history;
+                    if (upgradeDowngradeHistory) {
+                        await dbService.upsertUpgradeDowngradeHistory(stock.symbol, upgradeDowngradeHistory);
+                        logger.info(`Upserted upgrade/downgrade history for symbol: ${stock.symbol}`);
+                    } else {
+                        logger.warn(`No upgrade/downgrade history data found for symbol: ${stock.symbol}`);
+                    }
+
+
                 } catch (error) {
                     logger.error(`Failed to fetch or upsert asset profile for symbol: ${stock.symbol}. Error: ${error}`);
                 }

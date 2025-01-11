@@ -41,6 +41,8 @@ export class DBService {
             await this.db.exec(`DROP TABLE IF EXISTS fund_ownership;`);
             await this.db.exec(`DROP TABLE IF EXISTS summary_detail;`);
             await this.db.exec(`DROP TABLE IF EXISTS insider_holders;`);
+            await this.db.exec(`DROP TABLE IF EXISTS calendar_events;`);
+            await this.db.exec(`DROP TABLE IF EXISTS upgrade_downgrade_history;`);
 
             // Create `stocks` table
             await this.db.exec(`
@@ -300,6 +302,43 @@ export class DBService {
                     last_updated DATETIME DEFAULT CURRENT_TIMESTAMP,
                     FOREIGN KEY(symbol) REFERENCES stocks(symbol) ON DELETE CASCADE,
                     UNIQUE(symbol, name, relation)
+                )
+            `);
+
+            // Create `calendar_events` table
+            await this.db.exec(`
+                CREATE TABLE IF NOT EXISTS calendar_events (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    symbol TEXT NOT NULL,
+                    earningsDate_raw INTEGER,
+                    earningsCallDate_raw INTEGER,
+                    isEarningsDateEstimate INTEGER,
+                    earningsAverage REAL,
+                    earningsLow REAL,
+                    earningsHigh REAL,
+                    revenueAverage INTEGER,
+                    revenueLow INTEGER,
+                    revenueHigh INTEGER,
+                    exDividendDate INTEGER,
+                    dividendDate INTEGER,
+                    last_updated DATETIME DEFAULT CURRENT_TIMESTAMP,
+                    UNIQUE(symbol, earningsDate_raw)
+                );
+            `);
+
+            // Create `upgrade_downgrade_history` table
+            await this.db.exec(`
+                CREATE TABLE IF NOT EXISTS upgrade_downgrade_history (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    symbol TEXT NOT NULL,
+                    epochGradeDate INTEGER NOT NULL,
+                    firm TEXT NOT NULL,
+                    toGrade TEXT,
+                    fromGrade TEXT,
+                    action TEXT NOT NULL,
+                    last_updated DATETIME DEFAULT CURRENT_TIMESTAMP,
+                    FOREIGN KEY(symbol) REFERENCES stocks(symbol) ON DELETE CASCADE,
+                    UNIQUE(symbol, epochGradeDate, firm)
                 )
             `);
 
@@ -896,6 +935,102 @@ export class DBService {
             throw error;
         }
     }
+
+    public async upsertCalendarEvents(symbol: string, calendarEvents: any): Promise<void> {
+        const earnings = calendarEvents.earnings || {};
+        const query = `
+            INSERT INTO calendar_events (
+                symbol,
+                earningsDate_raw,
+                earningsCallDate_raw,
+                isEarningsDateEstimate,
+                earningsAverage,
+                earningsLow,
+                earningsHigh,
+                revenueAverage,
+                revenueLow,
+                revenueHigh,
+                exDividendDate,
+                dividendDate,
+                last_updated
+            )
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)
+            ON CONFLICT(symbol, earningsDate_raw) DO UPDATE SET
+                earningsCallDate_raw = excluded.earningsCallDate_raw,
+                isEarningsDateEstimate = excluded.isEarningsDateEstimate,
+                earningsAverage = excluded.earningsAverage,
+                earningsLow = excluded.earningsLow,
+                earningsHigh = excluded.earningsHigh,
+                revenueAverage = excluded.revenueAverage,
+                revenueLow = excluded.revenueLow,
+                revenueHigh = excluded.revenueHigh,
+                exDividendDate = excluded.exDividendDate,
+                dividendDate = excluded.dividendDate,
+                last_updated = CURRENT_TIMESTAMP
+        `;
+
+        const params = [
+            symbol,
+            earnings.earningsDate?.[0] || null,
+            earnings.earningsCallDate?.[0] || null,
+            earnings.isEarningsDateEstimate ? 1 : 0,
+            earnings.earningsAverage || null,
+            earnings.earningsLow || null,
+            earnings.earningsHigh || null,
+            earnings.revenueAverage || null,
+            earnings.revenueLow || null,
+            earnings.revenueHigh || null,
+            calendarEvents.exDividendDate || null,
+            calendarEvents.dividendDate || null,
+        ];
+
+        try {
+            await this.db.run(query, ...params);
+        } catch (error) {
+            logger.error(`Failed to upsert calendar events for symbol: ${symbol}`);
+            logger.error(`Query: ${query}`);
+            logger.error(`Parameters: ${JSON.stringify(params, null, 2)}`);
+            logger.error(`Error: ${error instanceof Error ? error.message : JSON.stringify(error)}`);
+            throw error;
+        }
+    }
+
+    public async upsertUpgradeDowngradeHistory(symbol: string, history: any[]): Promise<void> {
+        const query = `
+            INSERT INTO upgrade_downgrade_history (
+                symbol, epochGradeDate, firm, toGrade, fromGrade, action, last_updated
+            )
+            VALUES (?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)
+            ON CONFLICT(symbol, epochGradeDate, firm) DO UPDATE SET
+                toGrade = excluded.toGrade,
+                fromGrade = excluded.fromGrade,
+                action = excluded.action,
+                last_updated = CURRENT_TIMESTAMP
+        `;
+
+        try {
+            for (const record of history) {
+                // 기본값 설정
+                const toGrade = record.toGrade || null;
+                const fromGrade = record.fromGrade || null;
+
+                await this.db.run(query, [
+                    symbol,
+                    record.epochGradeDate || null,
+                    record.firm || null,
+                    toGrade,
+                    fromGrade,
+                    record.action || null,
+                ]);
+            }
+        } catch (error) {
+            logger.error(`Failed to upsert upgrade/downgrade history for symbol: ${symbol}`);
+            logger.error(error);
+            throw error;
+        }
+    }
+
+
 
     public async close(): Promise<void> {
         try {
