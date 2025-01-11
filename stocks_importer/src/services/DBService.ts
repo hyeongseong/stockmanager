@@ -36,6 +36,7 @@ export class DBService {
             await this.db.exec(`DROP TABLE IF EXISTS assetProfile;`);
             await this.db.exec(`DROP TABLE IF EXISTS recommendation_trend;`);
             await this.db.exec(`DROP TABLE IF EXISTS cashflow_statement_history;`);
+            await this.db.exec(`DROP TABLE IF EXISTS default_key_statistics;`);
 
             // Create `stocks` table
             await this.db.exec(`
@@ -124,6 +125,49 @@ export class DBService {
                 )
             `);
 
+            // Create `default_key_statistics` table
+            await this.db.exec(`
+                CREATE TABLE IF NOT EXISTS default_key_statistics (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    symbol TEXT NOT NULL UNIQUE, -- symbol에 UNIQUE 제약 조건 추가
+                    priceHint INTEGER,
+                    enterpriseValue INTEGER,
+                    forwardPE REAL,
+                    profitMargins REAL,
+                    floatShares INTEGER,
+                    sharesOutstanding INTEGER,
+                    sharesShort INTEGER,
+                    sharesShortPriorMonth INTEGER,
+                    sharesShortPreviousMonthDate INTEGER,
+                    dateShortInterest INTEGER,
+                    sharesPercentSharesOut REAL,
+                    heldPercentInsiders REAL,
+                    heldPercentInstitutions REAL,
+                    shortRatio REAL,
+                    shortPercentOfFloat REAL,
+                    beta REAL,
+                    impliedSharesOutstanding INTEGER,
+                    bookValue REAL,
+                    priceToBook REAL,
+                    lastFiscalYearEnd INTEGER,
+                    nextFiscalYearEnd INTEGER,
+                    mostRecentQuarter INTEGER,
+                    earningsQuarterlyGrowth REAL,
+                    netIncomeToCommon INTEGER,
+                    trailingEps REAL,
+                    forwardEps REAL,
+                    lastSplitFactor TEXT,
+                    lastSplitDate INTEGER,
+                    enterpriseToRevenue REAL,
+                    enterpriseToEbitda REAL,
+                    change52Week REAL,
+                    sandP52WeekChange REAL,
+                    lastDividendValue REAL,
+                    lastDividendDate INTEGER,
+                    last_updated DATETIME DEFAULT CURRENT_TIMESTAMP,
+                    FOREIGN KEY(symbol) REFERENCES stocks(symbol) ON DELETE CASCADE
+                )
+            `);
 
             logger.info('Database initialized and tables created.');
         } catch (error) {
@@ -299,7 +343,102 @@ export class DBService {
         }
     }
 
+    public async upsertDefaultKeyStatistics(symbol: string, stats: any): Promise<void> {
+        const query = `
+            INSERT INTO default_key_statistics (
+                symbol, priceHint, enterpriseValue, forwardPE, profitMargins, floatShares, sharesOutstanding,
+                sharesShort, sharesShortPriorMonth, sharesShortPreviousMonthDate, dateShortInterest, sharesPercentSharesOut,
+                heldPercentInsiders, heldPercentInstitutions, shortRatio, shortPercentOfFloat, beta, impliedSharesOutstanding,
+                bookValue, priceToBook, lastFiscalYearEnd, nextFiscalYearEnd, mostRecentQuarter, earningsQuarterlyGrowth,
+                netIncomeToCommon, trailingEps, forwardEps, lastSplitFactor, lastSplitDate, enterpriseToRevenue,
+                enterpriseToEbitda, change52Week, sandP52WeekChange, lastDividendValue, lastDividendDate, last_updated
+            )
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)
+            ON CONFLICT(symbol) DO UPDATE SET
+                priceHint = excluded.priceHint,
+                enterpriseValue = excluded.enterpriseValue,
+                forwardPE = excluded.forwardPE,
+                profitMargins = excluded.profitMargins,
+                floatShares = excluded.floatShares,
+                sharesOutstanding = excluded.sharesOutstanding,
+                sharesShort = excluded.sharesShort,
+                sharesShortPriorMonth = excluded.sharesShortPriorMonth,
+                sharesShortPreviousMonthDate = excluded.sharesShortPreviousMonthDate,
+                dateShortInterest = excluded.dateShortInterest,
+                sharesPercentSharesOut = excluded.sharesPercentSharesOut,
+                heldPercentInsiders = excluded.heldPercentInsiders,
+                heldPercentInstitutions = excluded.heldPercentInstitutions,
+                shortRatio = excluded.shortRatio,
+                shortPercentOfFloat = excluded.shortPercentOfFloat,
+                beta = excluded.beta,
+                impliedSharesOutstanding = excluded.impliedSharesOutstanding,
+                bookValue = excluded.bookValue,
+                priceToBook = excluded.priceToBook,
+                lastFiscalYearEnd = excluded.lastFiscalYearEnd,
+                nextFiscalYearEnd = excluded.nextFiscalYearEnd,
+                mostRecentQuarter = excluded.mostRecentQuarter,
+                earningsQuarterlyGrowth = excluded.earningsQuarterlyGrowth,
+                netIncomeToCommon = excluded.netIncomeToCommon,
+                trailingEps = excluded.trailingEps,
+                forwardEps = excluded.forwardEps,
+                lastSplitFactor = excluded.lastSplitFactor,
+                lastSplitDate = excluded.lastSplitDate,
+                enterpriseToRevenue = excluded.enterpriseToRevenue,
+                enterpriseToEbitda = excluded.enterpriseToEbitda,
+                change52Week = excluded.change52Week,
+                sandP52WeekChange = excluded.sandP52WeekChange,
+                lastDividendValue = excluded.lastDividendValue,
+                lastDividendDate = excluded.lastDividendDate,
+                last_updated = CURRENT_TIMESTAMP
+        `;
 
+        const params = [
+            symbol,
+            stats.priceHint,
+            stats.enterpriseValue,
+            stats.forwardPE,
+            stats.profitMargins,
+            stats.floatShares,
+            stats.sharesOutstanding,
+            stats.sharesShort,
+            stats.sharesShortPriorMonth,
+            stats.sharesShortPreviousMonthDate,
+            stats.dateShortInterest,
+            stats.sharesPercentSharesOut,
+            stats.heldPercentInsiders,
+            stats.heldPercentInstitutions,
+            stats.shortRatio,
+            stats.shortPercentOfFloat,
+            stats.beta,
+            stats.impliedSharesOutstanding,
+            stats.bookValue,
+            stats.priceToBook,
+            stats.lastFiscalYearEnd,
+            stats.nextFiscalYearEnd,
+            stats.mostRecentQuarter,
+            stats.earningsQuarterlyGrowth,
+            stats.netIncomeToCommon,
+            stats.trailingEps,
+            stats.forwardEps,
+            stats.lastSplitFactor,
+            stats.lastSplitDate,
+            stats.enterpriseToRevenue,
+            stats.enterpriseToEbitda,
+            stats["52WeekChange"],
+            stats.SandP52WeekChange,
+            stats.lastDividendValue,
+            stats.lastDividendDate
+        ];
+
+        try {
+            await this.db.run(query, ...params);
+            logger.info(`Upserted default key statistics for symbol: ${symbol}`);
+        } catch (error) {
+            logger.error(`Failed to upsert default key statistics for symbol: ${symbol}`);
+            logger.error(error);
+            throw error;
+        }
+    }
 
     public async close(): Promise<void> {
         try {

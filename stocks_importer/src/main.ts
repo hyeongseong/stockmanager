@@ -75,6 +75,16 @@ class Main {
                         logger.warn(`No index trend data found for symbol: ${stock.symbol}`);
                     }
 
+                    // Extract the defaultKeyStatistics if it exists
+                    const defaultKeyStatistics = stockInfo?.defaultKeyStatistics;
+                    if (defaultKeyStatistics) {
+                        await dbService.upsertDefaultKeyStatistics(stock.symbol, defaultKeyStatistics);
+                        logger.info(`Upserted default key statistics for symbol: ${stock.symbol}`);
+                    } else {
+                        logger.warn(`No default key statistics data found for symbol: ${stock.symbol}`);
+                    }
+
+
                 } catch (error) {
                     logger.error(`Failed to fetch or upsert asset profile for symbol: ${stock.symbol}. Error: ${error}`);
                 }
