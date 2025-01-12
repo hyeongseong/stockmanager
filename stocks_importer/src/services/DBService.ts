@@ -44,6 +44,8 @@ export class DBService {
             await this.db.exec(`DROP TABLE IF EXISTS calendar_events;`);
             await this.db.exec(`DROP TABLE IF EXISTS upgrade_downgrade_history;`);
             await this.db.exec(`DROP TABLE IF EXISTS price;`);
+            await this.db.exec(`DROP TABLE IF EXISTS balance_sheet_history;`);
+            await this.db.exec(`DROP TABLE IF EXISTS earnings_trend;`);
 
             // Create `stocks` table
             await this.db.exec(`
@@ -385,6 +387,46 @@ export class DBService {
                     FOREIGN KEY(symbol) REFERENCES stocks(symbol) ON DELETE CASCADE
                 )
             `);
+
+            // Create `balance_sheet_history` table
+            await this.db.exec(`
+                CREATE TABLE IF NOT EXISTS balance_sheet_history (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    symbol TEXT NOT NULL,
+                    endDate_raw INTEGER NOT NULL,
+                    endDate_fmt TEXT,
+                    last_updated DATETIME DEFAULT CURRENT_TIMESTAMP,
+                    UNIQUE(symbol, endDate_raw), -- 중복 삽입 방지
+                    FOREIGN KEY(symbol) REFERENCES stocks(symbol) ON DELETE CASCADE
+                )
+            `);
+
+            // Create `earnings_trend` table
+            await this.db.exec(`
+                CREATE TABLE IF NOT EXISTS earnings_trend (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    symbol TEXT NOT NULL,
+                    period TEXT NOT NULL,
+                    endDate TEXT,
+                    growth REAL,
+                    earnings_avg REAL,
+                    earnings_low REAL,
+                    earnings_high REAL,
+                    yearAgoEps REAL,
+                    earnings_analysts INTEGER,
+                    earnings_growth REAL,
+                    revenue_avg INTEGER,
+                    revenue_low INTEGER,
+                    revenue_high INTEGER,
+                    yearAgoRevenue INTEGER,
+                    revenue_analysts INTEGER,
+                    revenue_growth REAL,
+                    last_updated DATETIME DEFAULT CURRENT_TIMESTAMP,
+                    UNIQUE(symbol, period), -- 중복 삽입 방지
+                    FOREIGN KEY(symbol) REFERENCES stocks(symbol) ON DELETE CASCADE
+                )
+            `);
+
 
             logger.info('Database initialized and tables created.');
         } catch (error) {
@@ -1194,6 +1236,106 @@ export class DBService {
             logger.error(`Failed to upsert price data for symbol: ${symbol}`);
             logger.error(`Query: ${query}`);
             logger.error(`Parameters: ${JSON.stringify(params, null, 2)}`);
+            logger.error(`Error: ${error instanceof Error ? error.message : JSON.stringify(error)}`);
+            throw error;
+        }
+    }
+
+    public async upsertBalanceSheetHistory(symbol: string, balanceSheetStatements: any[]): Promise<void> {
+        const query = `
+            INSERT INTO balance_sheet_history (
+                symbol,
+                endDate_raw,
+                endDate_fmt,
+                last_updated
+            )
+            VALUES (?, ?, ?, CURRENT_TIMESTAMP)
+            ON CONFLICT(symbol, endDate_raw) DO UPDATE SET
+                endDate_fmt = excluded.endDate_fmt,
+                last_updated = CURRENT_TIMESTAMP
+        `;
+
+        try {
+            for (const statement of balanceSheetStatements) {
+                await this.db.run(query, [
+                    symbol,
+                    statement.endDate?.raw || null,
+                    statement.endDate?.fmt || null
+                ]);
+            }
+        } catch (error) {
+            logger.error(`Failed to upsert balance sheet history for symbol: ${symbol}`);
+            logger.error(`Error: ${error instanceof Error ? error.message : JSON.stringify(error)}`);
+            throw error;
+        }
+    }
+
+    public async upsertEarningsTrend(symbol: string, trends: any[]): Promise<void> {
+        const query = `
+            INSERT INTO earnings_trend (
+                symbol,
+                period,
+                endDate,
+                growth,
+                earnings_avg,
+                earnings_low,
+                earnings_high,
+                yearAgoEps,
+                earnings_analysts,
+                earnings_growth,
+                revenue_avg,
+                revenue_low,
+                revenue_high,
+                yearAgoRevenue,
+                revenue_analysts,
+                revenue_growth,
+                last_updated
+            )
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)
+            ON CONFLICT(symbol, period) DO UPDATE SET
+                endDate = excluded.endDate,
+                growth = excluded.growth,
+                earnings_avg = excluded.earnings_avg,
+                earnings_low = excluded.earnings_low,
+                earnings_high = excluded.earnings_high,
+                yearAgoEps = excluded.yearAgoEps,
+                earnings_analysts = excluded.earnings_analysts,
+                earnings_growth = excluded.earnings_growth,
+                revenue_avg = excluded.revenue_avg,
+                revenue_low = excluded.revenue_low,
+                revenue_high = excluded.revenue_high,
+                yearAgoRevenue = excluded.yearAgoRevenue,
+                revenue_analysts = excluded.revenue_analysts,
+                revenue_growth = excluded.revenue_growth,
+                last_updated = CURRENT_TIMESTAMP
+        `;
+
+        try {
+            for (const trend of trends) {
+                const earningsEstimate = trend.earningsEstimate || {};
+                const revenueEstimate = trend.revenueEstimate || {};
+
+                await this.db.run(query, [
+                    symbol,
+                    trend.period || null,
+                    trend.endDate || null,
+                    trend.growth?.raw || null,
+                    earningsEstimate.avg?.raw || null,
+                    earningsEstimate.low?.raw || null,
+                    earningsEstimate.high?.raw || null,
+                    earningsEstimate.yearAgoEps?.raw || null,
+                    earningsEstimate.numberOfAnalysts?.raw || null,
+                    earningsEstimate.growth?.raw || null,
+                    revenueEstimate.avg?.raw || null,
+                    revenueEstimate.low?.raw || null,
+                    revenueEstimate.high?.raw || null,
+                    revenueEstimate.yearAgoRevenue?.raw || null,
+                    revenueEstimate.numberOfAnalysts?.raw || null,
+                    revenueEstimate.growth?.raw || null,
+                ]);
+            }
+        } catch (error) {
+            logger.error(`Failed to upsert earnings trend for symbol: ${symbol}`);
             logger.error(`Error: ${error instanceof Error ? error.message : JSON.stringify(error)}`);
             throw error;
         }

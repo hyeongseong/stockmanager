@@ -144,6 +144,24 @@ class Main {
                     } else {
                         logger.warn(`No price data found for symbol: ${stock.symbol}`);
                     }
+
+                    // Extract and upsert balanceSheetHistory
+                    const balanceSheetHistory = stockInfo?.balanceSheetHistory?.balanceSheetStatements;
+                    if (balanceSheetHistory) {
+                        await dbService.upsertBalanceSheetHistory(stock.symbol, balanceSheetHistory);
+                        logger.info(`Upserted balance sheet history for symbol: ${stock.symbol}`);
+                    } else {
+                        logger.warn(`No balance sheet history data found for symbol: ${stock.symbol}`);
+                    }
+
+                    // Extract and upsert earningsTrend
+                    const earningsTrend = stockInfo?.earningsTrend?.trend;
+                    if (earningsTrend) {
+                        await dbService.upsertEarningsTrend(stock.symbol, earningsTrend);
+                        logger.info(`Upserted earnings trend for symbol: ${stock.symbol}`);
+                    } else {
+                        logger.warn(`No earnings trend data found for symbol: ${stock.symbol}`);
+                    }
                 } catch (error) {
                     logger.error(`Failed to fetch or upsert asset profile for symbol: ${stock.symbol}. Error: ${error}`);
                 }
