@@ -49,6 +49,8 @@ export class DBService {
             await this.db.exec(`DROP TABLE IF EXISTS institution_ownership;`);
             await this.db.exec(`DROP TABLE IF EXISTS major_holders_breakdown;`);
             await this.db.exec(`DROP TABLE IF EXISTS balance_sheet_history_quarterly;`);
+            await this.db.exec(`DROP TABLE IF EXISTS earnings_history;`);
+            await this.db.exec(`DROP TABLE IF EXISTS major_direct_holders;`);
 
             // Create `stocks` table
             await this.db.exec(`
@@ -478,6 +480,43 @@ export class DBService {
                     last_updated DATETIME DEFAULT CURRENT_TIMESTAMP,
                     FOREIGN KEY(symbol) REFERENCES stocks(symbol) ON DELETE CASCADE,
                     UNIQUE(symbol, endDate_raw) -- 중복 삽입 방지
+                )
+            `);
+
+            // Create `earnings_history` table
+            await this.db.exec(`
+                CREATE TABLE IF NOT EXISTS earnings_history (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    symbol TEXT NOT NULL,
+                    quarter_raw INTEGER NOT NULL,
+                    quarter_fmt TEXT NOT NULL,
+                    epsActual_raw REAL,
+                    epsActual_fmt TEXT,
+                    epsEstimate_raw REAL,
+                    epsEstimate_fmt TEXT,
+                    epsDifference_raw REAL,
+                    epsDifference_fmt TEXT,
+                    surprisePercent_raw REAL,
+                    surprisePercent_fmt TEXT,
+                    currency TEXT,
+                    period TEXT,
+                    maxAge INTEGER,
+                    last_updated DATETIME DEFAULT CURRENT_TIMESTAMP,
+                    FOREIGN KEY(symbol) REFERENCES stocks(symbol) ON DELETE CASCADE,
+                    UNIQUE(symbol, quarter_raw) -- 중복 삽입 방지
+                )
+            `);
+
+            // Create `major_direct_holders` table
+            await this.db.exec(`
+                CREATE TABLE IF NOT EXISTS major_direct_holders (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    symbol TEXT NOT NULL,
+                    maxAge INTEGER,
+                    holders TEXT, -- JSON 데이터로 저장
+                    last_updated DATETIME DEFAULT CURRENT_TIMESTAMP,
+                    FOREIGN KEY(symbol) REFERENCES stocks(symbol) ON DELETE CASCADE,
+                    UNIQUE(symbol) -- 중복 삽입 방지
                 )
             `);
 
@@ -1488,6 +1527,84 @@ export class DBService {
             throw error;
         }
     }
+
+    public async upsertEarningsHistory(symbol: string, earningsHistory: any[]): Promise<void> {
+        const query = `
+            INSERT INTO earnings_history (
+                symbol, quarter_raw, quarter_fmt, epsActual_raw, epsActual_fmt,
+                epsEstimate_raw, epsEstimate_fmt, epsDifference_raw, epsDifference_fmt,
+                surprisePercent_raw, surprisePercent_fmt, currency, period, maxAge, last_updated
+            )
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)
+            ON CONFLICT(symbol, quarter_raw) DO UPDATE SET
+                quarter_fmt = excluded.quarter_fmt,
+                epsActual_raw = excluded.epsActual_raw,
+                epsActual_fmt = excluded.epsActual_fmt,
+                epsEstimate_raw = excluded.epsEstimate_raw,
+                epsEstimate_fmt = excluded.epsEstimate_fmt,
+                epsDifference_raw = excluded.epsDifference_raw,
+                epsDifference_fmt = excluded.epsDifference_fmt,
+                surprisePercent_raw = excluded.surprisePercent_raw,
+                surprisePercent_fmt = excluded.surprisePercent_fmt,
+                currency = excluded.currency,
+                period = excluded.period,
+                maxAge = excluded.maxAge,
+                last_updated = CURRENT_TIMESTAMP
+        `;
+
+        try {
+            for (const history of earningsHistory) {
+                await this.db.run(query, [
+                    symbol,
+                    history.quarter?.raw || null,
+                    history.quarter?.fmt || null,
+                    history.epsActual?.raw || null,
+                    history.epsActual?.fmt || null,
+                    history.epsEstimate?.raw || null,
+                    history.epsEstimate?.fmt || null,
+                    history.epsDifference?.raw || null,
+                    history.epsDifference?.fmt || null,
+                    history.surprisePercent?.raw || null,
+                    history.surprisePercent?.fmt || null,
+                    history.currency || null,
+                    history.period || null,
+                    history.maxAge || null,
+                ]);
+            }
+        } catch (error) {
+            logger.error(`Failed to upsert earnings history for symbol: ${symbol}`);
+            logger.error(`Error: ${error instanceof Error ? error.message : JSON.stringify(error)}`);
+            throw error;
+        }
+    }
+
+    public async upsertMajorDirectHolders(symbol: string, majorDirectHolders: any): Promise<void> {
+        const holdersJson = JSON.stringify(majorDirectHolders.holders || []);
+
+        const query = `
+            INSERT INTO major_direct_holders (
+                symbol, maxAge, holders, last_updated
+            )
+            VALUES (?, ?, ?, CURRENT_TIMESTAMP)
+            ON CONFLICT(symbol) DO UPDATE SET
+                maxAge = excluded.maxAge,
+                holders = excluded.holders,
+                last_updated = CURRENT_TIMESTAMP
+        `;
+
+        try {
+            await this.db.run(query, [
+                symbol,
+                majorDirectHolders.maxAge || null,
+                holdersJson
+            ]);
+        } catch (error) {
+            logger.error(`Failed to upsert major direct holders for symbol: ${symbol}`);
+            logger.error(`Error: ${error instanceof Error ? error.message : JSON.stringify(error)}`);
+            throw error;
+        }
+    }
+
 
     public async upsertBalanceSheetHistoryQuarterly(symbol: string, balanceSheetStatements: any[]): Promise<void> {
         const query = `

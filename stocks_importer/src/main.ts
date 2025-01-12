@@ -190,6 +190,25 @@ class Main {
                         logger.warn(`No balance sheet history quarterly data found for symbol: ${stock.symbol}`);
                     }
 
+                    // Extract and upsert earningsHistory
+                    const earningsHistory = stockInfo?.earningsHistory?.history;
+                    if (earningsHistory) {
+                        await dbService.upsertEarningsHistory(stock.symbol, earningsHistory);
+                        logger.info(`Upserted earnings history for symbol: ${stock.symbol}`);
+                    } else {
+                        logger.warn(`No earnings history data found for symbol: ${stock.symbol}`);
+                    }
+
+                    // Extract and upsert majorDirectHolders
+                    const majorDirectHolders = stockInfo?.majorDirectHolders;
+                    if (majorDirectHolders) {
+                        await dbService.upsertMajorDirectHolders(stock.symbol, majorDirectHolders);
+                        logger.info(`Upserted major direct holders for symbol: ${stock.symbol}`);
+                    } else {
+                        logger.warn(`No major direct holders data found for symbol: ${stock.symbol}`);
+                    }
+
+
                 } catch (error) {
                     logger.error(`Failed to fetch or upsert asset profile for symbol: ${stock.symbol}. Error: ${error}`);
                 }
