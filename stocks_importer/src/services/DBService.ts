@@ -54,6 +54,7 @@ export class DBService {
             await this.db.exec(`DROP TABLE IF EXISTS summary_profile;`);
             await this.db.exec(`DROP TABLE IF EXISTS net_share_purchase_activity;`);
             await this.db.exec(`DROP TABLE IF EXISTS insider_transactions;`);
+            await this.db.exec(`DROP TABLE IF EXISTS sector_trend;`);
 
             // Create `stocks` table
             await this.db.exec(`
@@ -592,6 +593,17 @@ export class DBService {
                     maxAge INTEGER,
                     last_updated DATETIME DEFAULT CURRENT_TIMESTAMP,
                     FOREIGN KEY(symbol) REFERENCES stocks(symbol) ON DELETE CASCADE
+                )
+            `);
+
+            // Create `sector_trend` table
+            await this.db.exec(`
+                CREATE TABLE IF NOT EXISTS sector_trend (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    symbol TEXT,
+                    maxAge INTEGER,
+                    estimate TEXT,
+                    last_updated DATETIME DEFAULT CURRENT_TIMESTAMP
                 )
             `);
 
@@ -1891,6 +1903,48 @@ export class DBService {
             await Promise.all(insertPromises);
         } catch (error) {
             logger.error(`Failed to upsert insider transactions for symbol: ${symbol}`);
+            logger.error(`Error: ${error instanceof Error ? error.message : JSON.stringify(error)}`);
+            throw error;
+        }
+    }
+
+    public async upsertSectorTrend(symbol: string | null, sectorTrend: { maxAge?: number; estimates: any[] }): Promise<void> {
+        const query = `
+            INSERT INTO sector_trend (
+                symbol,
+                maxAge,
+                estimate,
+                last_updated
+            )
+            VALUES (?, ?, ?, CURRENT_TIMESTAMP)
+        `;
+
+        try {
+            const maxAge = sectorTrend?.maxAge || null;
+            const estimates: any[] = sectorTrend?.estimates || []; // 타입 명시
+
+            const insertPromises = estimates.map((estimate: any) => {
+                const params = [
+                    symbol,
+                    maxAge,
+                    JSON.stringify(estimate),
+                ];
+                return this.db.run(query, ...params);
+            });
+
+            // If there are no estimates, insert a single record with null estimate
+            if (estimates.length === 0) {
+                const params = [
+                    symbol,
+                    maxAge,
+                    null,
+                ];
+                await this.db.run(query, ...params);
+            } else {
+                await Promise.all(insertPromises);
+            }
+        } catch (error) {
+            logger.error(`Failed to upsert sector trend for symbol: ${symbol || 'null'}`);
             logger.error(`Error: ${error instanceof Error ? error.message : JSON.stringify(error)}`);
             throw error;
         }

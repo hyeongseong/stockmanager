@@ -235,6 +235,16 @@ class Main {
                         logger.warn(`No insider transactions data found for symbol: ${stock.symbol}`);
                     }
 
+                    // Extract and upsert sectorTrend
+                    const sectorTrend = stockInfo?.sectorTrend;
+                    if (sectorTrend) {
+                        await dbService.upsertSectorTrend(stock.symbol, sectorTrend);
+                        logger.info(`Upserted sector trend for symbol: ${stock.symbol || 'null'}`);
+                    } else {
+                        logger.warn(`No sector trend data found for symbol: ${stock.symbol || 'null'}`);
+                    }
+
+
                 } catch (error) {
                     logger.error(`Failed to fetch or upsert asset profile for symbol: ${stock.symbol}. Error: ${error}`);
                 }
