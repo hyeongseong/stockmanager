@@ -47,6 +47,8 @@ export class DBService {
             await this.db.exec(`DROP TABLE IF EXISTS balance_sheet_history;`);
             await this.db.exec(`DROP TABLE IF EXISTS earnings_trend;`);
             await this.db.exec(`DROP TABLE IF EXISTS institution_ownership;`);
+            await this.db.exec(`DROP TABLE IF EXISTS major_holders_breakdown;`);
+            await this.db.exec(`DROP TABLE IF EXISTS balance_sheet_history_quarterly;`);
 
             // Create `stocks` table
             await this.db.exec(`
@@ -451,6 +453,34 @@ export class DBService {
                     UNIQUE(symbol, reportDate_raw, organization) -- 중복 삽입 방지
                 )
             `);
+
+            // Create `major_holders_breakdown` table
+            await this.db.exec(`
+                CREATE TABLE IF NOT EXISTS major_holders_breakdown (
+                    symbol TEXT PRIMARY KEY,
+                    insidersPercentHeld REAL,
+                    institutionsPercentHeld REAL,
+                    institutionsFloatPercentHeld REAL,
+                    institutionsCount INTEGER,
+                    last_updated DATETIME DEFAULT CURRENT_TIMESTAMP,
+                    FOREIGN KEY(symbol) REFERENCES stocks(symbol) ON DELETE CASCADE
+                )
+            `);
+
+            // Create `balance_sheet_history_quarterly` table
+            await this.db.exec(`
+                CREATE TABLE IF NOT EXISTS balance_sheet_history_quarterly (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    symbol TEXT NOT NULL,
+                    endDate_raw INTEGER NOT NULL,
+                    endDate_fmt TEXT NOT NULL,
+                    maxAge INTEGER,
+                    last_updated DATETIME DEFAULT CURRENT_TIMESTAMP,
+                    FOREIGN KEY(symbol) REFERENCES stocks(symbol) ON DELETE CASCADE,
+                    UNIQUE(symbol, endDate_raw) -- 중복 삽입 방지
+                )
+            `);
+
 
             logger.info('Database initialized and tables created.');
         } catch (error) {
@@ -1420,6 +1450,68 @@ export class DBService {
             }
         } catch (error) {
             logger.error(`Failed to upsert institution ownership for symbol: ${symbol}`);
+            logger.error(`Error: ${error instanceof Error ? error.message : JSON.stringify(error)}`);
+            throw error;
+        }
+    }
+
+    public async upsertMajorHoldersBreakdown(symbol: string, breakdown: any): Promise<void> {
+        const query = `
+            INSERT INTO major_holders_breakdown (
+                symbol,
+                insidersPercentHeld,
+                institutionsPercentHeld,
+                institutionsFloatPercentHeld,
+                institutionsCount,
+                last_updated
+            )
+            VALUES (?, ?, ?, ?, ?, CURRENT_TIMESTAMP)
+            ON CONFLICT(symbol) DO UPDATE SET
+                insidersPercentHeld = excluded.insidersPercentHeld,
+                institutionsPercentHeld = excluded.institutionsPercentHeld,
+                institutionsFloatPercentHeld = excluded.institutionsFloatPercentHeld,
+                institutionsCount = excluded.institutionsCount,
+                last_updated = CURRENT_TIMESTAMP
+        `;
+
+        try {
+            await this.db.run(query, [
+                symbol,
+                breakdown.insidersPercentHeld || null,
+                breakdown.institutionsPercentHeld || null,
+                breakdown.institutionsFloatPercentHeld || null,
+                breakdown.institutionsCount || null,
+            ]);
+        } catch (error) {
+            logger.error(`Failed to upsert major holders breakdown for symbol: ${symbol}`);
+            logger.error(`Error: ${error instanceof Error ? error.message : JSON.stringify(error)}`);
+            throw error;
+        }
+    }
+
+    public async upsertBalanceSheetHistoryQuarterly(symbol: string, balanceSheetStatements: any[]): Promise<void> {
+        const query = `
+            INSERT INTO balance_sheet_history_quarterly (
+                symbol, endDate_raw, endDate_fmt, maxAge, last_updated
+            )
+            VALUES (?, ?, ?, ?, CURRENT_TIMESTAMP)
+            ON CONFLICT(symbol, endDate_raw) DO UPDATE SET
+                endDate_fmt = excluded.endDate_fmt,
+                maxAge = excluded.maxAge,
+                last_updated = CURRENT_TIMESTAMP
+        `;
+
+        try {
+            for (const statement of balanceSheetStatements) {
+                await this.db.run(query, [
+                    symbol,
+                    statement.endDate?.raw || null,
+                    statement.endDate?.fmt || null,
+                    statement.maxAge || null,
+                ]);
+            }
+        } catch (error) {
+            logger.error(`Failed to upsert balance sheet history quarterly for symbol: ${symbol}`);
             logger.error(`Error: ${error instanceof Error ? error.message : JSON.stringify(error)}`);
             throw error;
         }

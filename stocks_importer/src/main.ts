@@ -172,6 +172,24 @@ class Main {
                         logger.warn(`No institution ownership data found for symbol: ${stock.symbol}`);
                     }
 
+                    // Extract and upsert majorHoldersBreakdown
+                    const majorHoldersBreakdown = stockInfo?.majorHoldersBreakdown;
+                    if (majorHoldersBreakdown) {
+                        await dbService.upsertMajorHoldersBreakdown(stock.symbol, majorHoldersBreakdown);
+                        logger.info(`Upserted major holders breakdown for symbol: ${stock.symbol}`);
+                    } else {
+                        logger.warn(`No major holders breakdown data found for symbol: ${stock.symbol}`);
+                    }
+
+                    // Extract and upsert balanceSheetHistoryQuarterly
+                    const balanceSheetHistoryQuarterly = stockInfo?.balanceSheetHistoryQuarterly?.balanceSheetStatements;
+                    if (balanceSheetHistoryQuarterly) {
+                        await dbService.upsertBalanceSheetHistoryQuarterly(stock.symbol, balanceSheetHistoryQuarterly);
+                        logger.info(`Upserted balance sheet history quarterly for symbol: ${stock.symbol}`);
+                    } else {
+                        logger.warn(`No balance sheet history quarterly data found for symbol: ${stock.symbol}`);
+                    }
+
                 } catch (error) {
                     logger.error(`Failed to fetch or upsert asset profile for symbol: ${stock.symbol}. Error: ${error}`);
                 }
