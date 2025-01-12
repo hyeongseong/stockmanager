@@ -208,6 +208,32 @@ class Main {
                         logger.warn(`No major direct holders data found for symbol: ${stock.symbol}`);
                     }
 
+                    // Extract and upsert summaryProfile
+                    const summaryProfile = stockInfo?.summaryProfile;
+                    if (summaryProfile) {
+                        await dbService.upsertSummaryProfile(stock.symbol, summaryProfile);
+                        logger.info(`Upserted summary profile for symbol: ${stock.symbol}`);
+                    } else {
+                        logger.warn(`No summary profile data found for symbol: ${stock.symbol}`);
+                    }
+
+                    // Extract and upsert netSharePurchaseActivity
+                    const netSharePurchaseActivity = stockInfo?.netSharePurchaseActivity;
+                    if (netSharePurchaseActivity) {
+                        await dbService.upsertNetSharePurchaseActivity(stock.symbol, netSharePurchaseActivity);
+                        logger.info(`Upserted net share purchase activity for symbol: ${stock.symbol}`);
+                    } else {
+                        logger.warn(`No net share purchase activity data found for symbol: ${stock.symbol}`);
+                    }
+
+                    // Extract and upsert insiderTransactions
+                    const insiderTransactions = stockInfo?.insiderTransactions?.transactions;
+                    if (insiderTransactions && insiderTransactions.length > 0) {
+                        await dbService.upsertInsiderTransactions(stock.symbol, insiderTransactions);
+                        logger.info(`Upserted insider transactions for symbol: ${stock.symbol}`);
+                    } else {
+                        logger.warn(`No insider transactions data found for symbol: ${stock.symbol}`);
+                    }
 
                 } catch (error) {
                     logger.error(`Failed to fetch or upsert asset profile for symbol: ${stock.symbol}. Error: ${error}`);

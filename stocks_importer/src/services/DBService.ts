@@ -51,6 +51,9 @@ export class DBService {
             await this.db.exec(`DROP TABLE IF EXISTS balance_sheet_history_quarterly;`);
             await this.db.exec(`DROP TABLE IF EXISTS earnings_history;`);
             await this.db.exec(`DROP TABLE IF EXISTS major_direct_holders;`);
+            await this.db.exec(`DROP TABLE IF EXISTS summary_profile;`);
+            await this.db.exec(`DROP TABLE IF EXISTS net_share_purchase_activity;`);
+            await this.db.exec(`DROP TABLE IF EXISTS insider_transactions;`);
 
             // Create `stocks` table
             await this.db.exec(`
@@ -520,6 +523,77 @@ export class DBService {
                 )
             `);
 
+            // Create `summary_profile` table
+            await this.db.exec(`
+                CREATE TABLE IF NOT EXISTS summary_profile (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    symbol TEXT NOT NULL UNIQUE,
+                    address1 TEXT,
+                    city TEXT,
+                    state TEXT,
+                    zip TEXT,
+                    country TEXT,
+                    phone TEXT,
+                    website TEXT,
+                    industry TEXT,
+                    industryKey TEXT,
+                    industryDisp TEXT,
+                    sector TEXT,
+                    sectorKey TEXT,
+                    sectorDisp TEXT,
+                    longBusinessSummary TEXT,
+                    fullTimeEmployees INTEGER,
+                    companyOfficers TEXT, -- JSON 형태로 저장
+                    irWebsite TEXT,
+                    maxAge INTEGER,
+                    last_updated DATETIME DEFAULT CURRENT_TIMESTAMP,
+                    FOREIGN KEY(symbol) REFERENCES stocks(symbol) ON DELETE CASCADE
+                )
+            `);
+
+            // Create `net_share_purchase_activity` table
+            await this.db.exec(`
+                CREATE TABLE IF NOT EXISTS net_share_purchase_activity (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    symbol TEXT NOT NULL UNIQUE,
+                    maxAge INTEGER,
+                    period TEXT,
+                    buyInfoCount INTEGER,
+                    buyInfoShares INTEGER,
+                    buyPercentInsiderShares REAL,
+                    sellInfoCount INTEGER,
+                    sellInfoShares INTEGER,
+                    sellPercentInsiderShares REAL,
+                    netInfoCount INTEGER,
+                    netInfoShares INTEGER,
+                    netPercentInsiderShares REAL,
+                    totalInsiderShares INTEGER,
+                    last_updated DATETIME DEFAULT CURRENT_TIMESTAMP,
+                    FOREIGN KEY(symbol) REFERENCES stocks(symbol) ON DELETE CASCADE
+                )
+            `);
+
+            // Create `insider_transactions` table
+            await this.db.exec(`
+                CREATE TABLE IF NOT EXISTS insider_transactions (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    symbol TEXT NOT NULL,
+                    shares_raw INTEGER,
+                    shares_fmt TEXT,
+                    shares_longFmt TEXT,
+                    value_raw INTEGER,
+                    value_fmt TEXT,
+                    value_longFmt TEXT,
+                    filerName TEXT,
+                    filerRelation TEXT,
+                    transactionText TEXT,
+                    ownership TEXT,
+                    startDate INTEGER,
+                    maxAge INTEGER,
+                    last_updated DATETIME DEFAULT CURRENT_TIMESTAMP,
+                    FOREIGN KEY(symbol) REFERENCES stocks(symbol) ON DELETE CASCADE
+                )
+            `);
 
             logger.info('Database initialized and tables created.');
         } catch (error) {
@@ -1528,6 +1602,34 @@ export class DBService {
         }
     }
 
+    public async upsertBalanceSheetHistoryQuarterly(symbol: string, balanceSheetStatements: any[]): Promise<void> {
+        const query = `
+            INSERT INTO balance_sheet_history_quarterly (
+                symbol, endDate_raw, endDate_fmt, maxAge, last_updated
+            )
+            VALUES (?, ?, ?, ?, CURRENT_TIMESTAMP)
+            ON CONFLICT(symbol, endDate_raw) DO UPDATE SET
+                endDate_fmt = excluded.endDate_fmt,
+                maxAge = excluded.maxAge,
+                last_updated = CURRENT_TIMESTAMP
+        `;
+
+        try {
+            for (const statement of balanceSheetStatements) {
+                await this.db.run(query, [
+                    symbol,
+                    statement.endDate?.raw || null,
+                    statement.endDate?.fmt || null,
+                    statement.maxAge || null,
+                ]);
+            }
+        } catch (error) {
+            logger.error(`Failed to upsert balance sheet history quarterly for symbol: ${symbol}`);
+            logger.error(`Error: ${error instanceof Error ? error.message : JSON.stringify(error)}`);
+            throw error;
+        }
+    }
+
     public async upsertEarningsHistory(symbol: string, earningsHistory: any[]): Promise<void> {
         const query = `
             INSERT INTO earnings_history (
@@ -1605,30 +1707,190 @@ export class DBService {
         }
     }
 
+    public async upsertSummaryProfile(symbol: string, summaryProfile: any): Promise<void> {
+        const companyOfficersJson = JSON.stringify(summaryProfile.companyOfficers || []);
 
-    public async upsertBalanceSheetHistoryQuarterly(symbol: string, balanceSheetStatements: any[]): Promise<void> {
         const query = `
-            INSERT INTO balance_sheet_history_quarterly (
-                symbol, endDate_raw, endDate_fmt, maxAge, last_updated
+            INSERT INTO summary_profile (
+                symbol,
+                address1,
+                city,
+                state,
+                zip,
+                country,
+                phone,
+                website,
+                industry,
+                industryKey,
+                industryDisp,
+                sector,
+                sectorKey,
+                sectorDisp,
+                longBusinessSummary,
+                fullTimeEmployees,
+                companyOfficers,
+                irWebsite,
+                maxAge,
+                last_updated
             )
-            VALUES (?, ?, ?, ?, CURRENT_TIMESTAMP)
-            ON CONFLICT(symbol, endDate_raw) DO UPDATE SET
-                endDate_fmt = excluded.endDate_fmt,
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)
+            ON CONFLICT(symbol) DO UPDATE SET
+                address1 = excluded.address1,
+                city = excluded.city,
+                state = excluded.state,
+                zip = excluded.zip,
+                country = excluded.country,
+                phone = excluded.phone,
+                website = excluded.website,
+                industry = excluded.industry,
+                industryKey = excluded.industryKey,
+                industryDisp = excluded.industryDisp,
+                sector = excluded.sector,
+                sectorKey = excluded.sectorKey,
+                sectorDisp = excluded.sectorDisp,
+                longBusinessSummary = excluded.longBusinessSummary,
+                fullTimeEmployees = excluded.fullTimeEmployees,
+                companyOfficers = excluded.companyOfficers,
+                irWebsite = excluded.irWebsite,
                 maxAge = excluded.maxAge,
                 last_updated = CURRENT_TIMESTAMP
         `;
 
+        const params = [
+            symbol,
+            summaryProfile.address1 || null,
+            summaryProfile.city || null,
+            summaryProfile.state || null,
+            summaryProfile.zip || null,
+            summaryProfile.country || null,
+            summaryProfile.phone || null,
+            summaryProfile.website || null,
+            summaryProfile.industry || null,
+            summaryProfile.industryKey || null,
+            summaryProfile.industryDisp || null,
+            summaryProfile.sector || null,
+            summaryProfile.sectorKey || null,
+            summaryProfile.sectorDisp || null,
+            summaryProfile.longBusinessSummary || null,
+            summaryProfile.fullTimeEmployees || null,
+            companyOfficersJson,
+            summaryProfile.irWebsite || null,
+            summaryProfile.maxAge || null
+        ];
+
         try {
-            for (const statement of balanceSheetStatements) {
-                await this.db.run(query, [
-                    symbol,
-                    statement.endDate?.raw || null,
-                    statement.endDate?.fmt || null,
-                    statement.maxAge || null,
-                ]);
-            }
+            await this.db.run(query, ...params);
         } catch (error) {
-            logger.error(`Failed to upsert balance sheet history quarterly for symbol: ${symbol}`);
+            logger.error(`Failed to upsert summary profile for symbol: ${symbol}`);
+            logger.error(`Error: ${error instanceof Error ? error.message : JSON.stringify(error)}`);
+            throw error;
+        }
+    }
+
+    public async upsertNetSharePurchaseActivity(symbol: string, activity: any): Promise<void> {
+        const query = `
+            INSERT INTO net_share_purchase_activity (
+                symbol,
+                maxAge,
+                period,
+                buyInfoCount,
+                buyInfoShares,
+                buyPercentInsiderShares,
+                sellInfoCount,
+                sellInfoShares,
+                sellPercentInsiderShares,
+                netInfoCount,
+                netInfoShares,
+                netPercentInsiderShares,
+                totalInsiderShares,
+                last_updated
+            )
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)
+            ON CONFLICT(symbol) DO UPDATE SET
+                maxAge = excluded.maxAge,
+                period = excluded.period,
+                buyInfoCount = excluded.buyInfoCount,
+                buyInfoShares = excluded.buyInfoShares,
+                buyPercentInsiderShares = excluded.buyPercentInsiderShares,
+                sellInfoCount = excluded.sellInfoCount,
+                sellInfoShares = excluded.sellInfoShares,
+                sellPercentInsiderShares = excluded.sellPercentInsiderShares,
+                netInfoCount = excluded.netInfoCount,
+                netInfoShares = excluded.netInfoShares,
+                netPercentInsiderShares = excluded.netPercentInsiderShares,
+                totalInsiderShares = excluded.totalInsiderShares,
+                last_updated = CURRENT_TIMESTAMP
+        `;
+
+        const params = [
+            symbol,
+            activity.maxAge || null,
+            activity.period || null,
+            activity.buyInfoCount || null,
+            activity.buyInfoShares || null,
+            activity.buyPercentInsiderShares || null,
+            activity.sellInfoCount || null,
+            activity.sellInfoShares || null,
+            activity.sellPercentInsiderShares || null,
+            activity.netInfoCount || null,
+            activity.netInfoShares || null,
+            activity.netPercentInsiderShares || null,
+            activity.totalInsiderShares || null,
+        ];
+
+        try {
+            await this.db.run(query, ...params);
+        } catch (error) {
+            logger.error(`Failed to upsert net share purchase activity for symbol: ${symbol}`);
+            logger.error(`Error: ${error instanceof Error ? error.message : JSON.stringify(error)}`);
+            throw error;
+        }
+    }
+
+    public async upsertInsiderTransactions(symbol: string, transactions: any[]): Promise<void> {
+        const query = `
+            INSERT INTO insider_transactions (
+                symbol,
+                shares_raw,
+                shares_fmt,
+                shares_longFmt,
+                value_raw,
+                value_fmt,
+                value_longFmt,
+                filerName,
+                filerRelation,
+                transactionText,
+                ownership,
+                startDate,
+                maxAge,
+                last_updated
+            )
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)
+        `;
+
+        try {
+            const insertPromises = transactions.map(transaction => {
+                const params = [
+                    symbol,
+                    transaction.shares?.raw || null,
+                    transaction.shares?.fmt || null,
+                    transaction.shares?.longFmt || null,
+                    transaction.value?.raw || null,
+                    transaction.value?.fmt || null,
+                    transaction.value?.longFmt || null,
+                    transaction.filerName || null,
+                    transaction.filerRelation || null,
+                    transaction.transactionText || null,
+                    transaction.ownership || null,
+                    transaction.startDate?.raw || null,
+                    transaction.maxAge || null,
+                ];
+                return this.db.run(query, ...params);
+            });
+
+            await Promise.all(insertPromises);
+        } catch (error) {
+            logger.error(`Failed to upsert insider transactions for symbol: ${symbol}`);
             logger.error(`Error: ${error instanceof Error ? error.message : JSON.stringify(error)}`);
             throw error;
         }
