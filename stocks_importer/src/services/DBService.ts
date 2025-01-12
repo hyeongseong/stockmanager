@@ -46,6 +46,7 @@ export class DBService {
             await this.db.exec(`DROP TABLE IF EXISTS price;`);
             await this.db.exec(`DROP TABLE IF EXISTS balance_sheet_history;`);
             await this.db.exec(`DROP TABLE IF EXISTS earnings_trend;`);
+            await this.db.exec(`DROP TABLE IF EXISTS institution_ownership;`);
 
             // Create `stocks` table
             await this.db.exec(`
@@ -427,6 +428,29 @@ export class DBService {
                 )
             `);
 
+            // Create `institution_ownership` table
+            await this.db.exec(`
+                CREATE TABLE IF NOT EXISTS institution_ownership (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    symbol TEXT NOT NULL,
+                    reportDate_raw INTEGER,
+                    reportDate_fmt TEXT,
+                    organization TEXT NOT NULL,
+                    pctHeld_raw REAL,
+                    pctHeld_fmt TEXT,
+                    position_raw INTEGER,
+                    position_fmt TEXT,
+                    position_longFmt TEXT,
+                    value_raw INTEGER,
+                    value_fmt TEXT,
+                    value_longFmt TEXT,
+                    pctChange_raw REAL,
+                    pctChange_fmt TEXT,
+                    last_updated DATETIME DEFAULT CURRENT_TIMESTAMP,
+                    FOREIGN KEY(symbol) REFERENCES stocks(symbol) ON DELETE CASCADE,
+                    UNIQUE(symbol, reportDate_raw, organization) -- 중복 삽입 방지
+                )
+            `);
 
             logger.info('Database initialized and tables created.');
         } catch (error) {
@@ -1340,6 +1364,67 @@ export class DBService {
             throw error;
         }
     }
+
+    public async upsertInstitutionOwnership(symbol: string, ownershipList: any[]): Promise<void> {
+        const query = `
+            INSERT INTO institution_ownership (
+                symbol,
+                reportDate_raw,
+                reportDate_fmt,
+                organization,
+                pctHeld_raw,
+                pctHeld_fmt,
+                position_raw,
+                position_fmt,
+                position_longFmt,
+                value_raw,
+                value_fmt,
+                value_longFmt,
+                pctChange_raw,
+                pctChange_fmt,
+                last_updated
+            )
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)
+            ON CONFLICT(symbol, reportDate_raw, organization) DO UPDATE SET
+                pctHeld_raw = excluded.pctHeld_raw,
+                pctHeld_fmt = excluded.pctHeld_fmt,
+                position_raw = excluded.position_raw,
+                position_fmt = excluded.position_fmt,
+                position_longFmt = excluded.position_longFmt,
+                value_raw = excluded.value_raw,
+                value_fmt = excluded.value_fmt,
+                value_longFmt = excluded.value_longFmt,
+                pctChange_raw = excluded.pctChange_raw,
+                pctChange_fmt = excluded.pctChange_fmt,
+                last_updated = CURRENT_TIMESTAMP
+        `;
+
+        try {
+            for (const ownership of ownershipList) {
+                await this.db.run(query, [
+                    symbol,
+                    ownership.reportDate?.raw || null,
+                    ownership.reportDate?.fmt || null,
+                    ownership.organization || null,
+                    ownership.pctHeld?.raw || null,
+                    ownership.pctHeld?.fmt || null,
+                    ownership.position?.raw || null,
+                    ownership.position?.fmt || null,
+                    ownership.position?.longFmt || null,
+                    ownership.value?.raw || null,
+                    ownership.value?.fmt || null,
+                    ownership.value?.longFmt || null,
+                    ownership.pctChange?.raw || null,
+                    ownership.pctChange?.fmt || null,
+                ]);
+            }
+        } catch (error) {
+            logger.error(`Failed to upsert institution ownership for symbol: ${symbol}`);
+            logger.error(`Error: ${error instanceof Error ? error.message : JSON.stringify(error)}`);
+            throw error;
+        }
+    }
+
 
     public async close(): Promise<void> {
         try {

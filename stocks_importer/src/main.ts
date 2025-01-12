@@ -162,6 +162,16 @@ class Main {
                     } else {
                         logger.warn(`No earnings trend data found for symbol: ${stock.symbol}`);
                     }
+
+                    // Extract and upsert institutionOwnership
+                    const institutionOwnership = stockInfo?.institutionOwnership?.ownershipList;
+                    if (institutionOwnership) {
+                        await dbService.upsertInstitutionOwnership(stock.symbol, institutionOwnership);
+                        logger.info(`Upserted institution ownership for symbol: ${stock.symbol}`);
+                    } else {
+                        logger.warn(`No institution ownership data found for symbol: ${stock.symbol}`);
+                    }
+
                 } catch (error) {
                     logger.error(`Failed to fetch or upsert asset profile for symbol: ${stock.symbol}. Error: ${error}`);
                 }
