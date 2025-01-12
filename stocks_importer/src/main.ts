@@ -261,6 +261,83 @@ class Main {
                     } else {
                         logger.warn(`No cashflow statement history quarterly data found for symbol: ${stock.symbol}`);
                     }
+
+                    // Extract and upsert `earnings` data
+                    const earnings = stockInfo?.earnings;
+                    if (earnings) {
+                        const earningsChart = earnings.earningsChart || {};
+                        const financialsChart = earnings.financialsChart || {};
+
+                        // Upsert quarterly earnings data
+                        if (earningsChart.quarterly) {
+                            const quarterlyEarnings = earningsChart.quarterly.map((q: any) => ({
+                                symbol: stock.symbol,
+                                date: q.date,
+                                actual: q.actual,
+                                estimate: q.estimate,
+                            }));
+                            await dbService.upsertEarningsChart(stock.symbol, quarterlyEarnings); // Match with DB function name
+                            logger.info(`Upserted quarterly earnings chart for symbol: ${stock.symbol}`);
+                        } else {
+                            logger.warn(`No quarterly earnings data found for symbol: ${stock.symbol}`);
+                        }
+
+                        // Upsert yearly financial data
+                        if (financialsChart.yearly) {
+                            const yearlyFinancials = financialsChart.yearly.map((y: any) => ({
+                                symbol: stock.symbol,
+                                date: y.date,
+                                revenue: y.revenue,
+                                earnings: y.earnings,
+                            }));
+
+                            await dbService.upsertFinancialChartYearly(stock.symbol, yearlyFinancials);
+                            logger.info(`Upserted yearly financial chart for symbol: ${stock.symbol}`);
+                        } else {
+                            logger.warn(`No yearly financial data found for symbol: ${stock.symbol}`);
+                        }
+
+                        // Upsert quarterly financial data
+                        if (financialsChart.quarterly) {
+                            const quarterlyFinancials = financialsChart.quarterly.map((q: any) => ({
+                                symbol: stock.symbol,
+                                date: q.date,
+                                revenue: q.revenue,
+                                earnings: q.earnings,
+                            }));
+                            await dbService.upsertFinancialChartQuarterly(stock.symbol, quarterlyFinancials); // Match with DB function name
+                            logger.info(`Upserted quarterly financial chart for symbol: ${stock.symbol}`);
+                        } else {
+                            logger.warn(`No quarterly financial data found for symbol: ${stock.symbol}`);
+                        }
+
+                        // Upsert current quarter estimate data
+                        const currentEstimate = {
+                            symbol: stock.symbol,
+                            estimate: earningsChart.currentQuarterEstimate || null,
+                            date: earningsChart.currentQuarterEstimateDate || null,
+                            year: earningsChart.currentQuarterEstimateYear || null,
+                        };
+                        await dbService.upsertCurrentQuarterEstimate(currentEstimate); // Match with DB function name
+                        logger.info(`Upserted current quarter estimate for symbol: ${stock.symbol}`);
+                    } else {
+                        logger.warn(`No earnings data found for symbol: ${stock.symbol}`);
+                    }
+
+                    const financialData = stockInfo?.financialData;
+                    if (financialData) {
+                        try {
+                            await dbService.upsertFinancialData(stock.symbol, financialData);
+                            logger.info(`Upserted financial data for symbol: ${stock.symbol}`);
+                        } catch (error) {
+                            logger.error(`Failed to upsert financial data for symbol: ${stock.symbol}`);
+                            logger.error(`Data: ${JSON.stringify(financialData, null, 2)}`);
+                            logger.error(error);
+                        }
+                    } else {
+                        logger.warn(`No financial data found for symbol: ${stock.symbol}`);
+                    }
+
                 } catch (error) {
                     logger.error(`Failed to fetch or upsert asset profile for symbol: ${stock.symbol}. Error: ${error}`);
                 }

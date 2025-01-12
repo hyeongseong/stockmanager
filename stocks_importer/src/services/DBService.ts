@@ -57,6 +57,12 @@ export class DBService {
             await this.db.exec(`DROP TABLE IF EXISTS sector_trend;`);
             await this.db.exec(`DROP TABLE IF EXISTS income_statement_history_quarterly;`);
             await this.db.exec(`DROP TABLE IF EXISTS cashflow_statement_history_quarterly;`);
+            await this.db.exec(`DROP TABLE IF EXISTS earnings_chart;`);
+            await this.db.exec(`DROP TABLE IF EXISTS current_quarter_estimate;`);
+            await this.db.exec(`DROP TABLE IF EXISTS earnings_date;`);
+            await this.db.exec(`DROP TABLE IF EXISTS financial_chart_yearly;`);
+            await this.db.exec(`DROP TABLE IF EXISTS financial_chart_quarterly;`);
+            await this.db.exec(`DROP TABLE IF EXISTS financial_data;`);
 
             // Create `stocks` table
             await this.db.exec(`
@@ -633,6 +639,89 @@ export class DBService {
                     net_income_fmt TEXT,
                     net_income_long_fmt TEXT,
                     PRIMARY KEY (symbol, end_date)
+                );
+            `);
+
+            // Create tables for earnings part
+            await this.db.exec(`
+                CREATE TABLE IF NOT EXISTS earnings_chart (
+                    symbol TEXT NOT NULL,
+                    date TEXT NOT NULL,
+                    actual REAL,
+                    estimate REAL,
+                    last_updated DATETIME DEFAULT CURRENT_TIMESTAMP,
+                    PRIMARY KEY (symbol, date)
+                );
+
+                CREATE TABLE IF NOT EXISTS current_quarter_estimate (
+                    symbol TEXT NOT NULL PRIMARY KEY,
+                    current_estimate REAL,
+                    estimate_date TEXT,
+                    estimate_year INTEGER,
+                    last_updated DATETIME DEFAULT CURRENT_TIMESTAMP
+                );
+
+                CREATE TABLE IF NOT EXISTS earnings_date (
+                    symbol TEXT NOT NULL PRIMARY KEY,
+                    earnings_date INTEGER,
+                    is_estimate INTEGER,
+                    last_updated DATETIME DEFAULT CURRENT_TIMESTAMP
+                );
+
+                CREATE TABLE IF NOT EXISTS financial_chart_yearly (
+                    symbol TEXT NOT NULL,
+                    date TEXT,
+                    revenue INTEGER,
+                    earnings INTEGER,
+                    last_updated DATETIME DEFAULT CURRENT_TIMESTAMP,
+                    PRIMARY KEY (symbol, date)
+                );
+
+                CREATE TABLE IF NOT EXISTS financial_chart_quarterly (
+                    symbol TEXT NOT NULL,
+                    date TEXT,
+                    revenue INTEGER,
+                    earnings INTEGER,
+                    last_updated DATETIME DEFAULT CURRENT_TIMESTAMP,
+                    PRIMARY KEY (symbol, date)
+                );
+            `);
+
+            // Create `financialData` table
+            await this.db.exec(`
+                CREATE TABLE IF NOT EXISTS financial_data (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    symbol TEXT NOT NULL,
+                    current_price REAL,
+                    target_high_price REAL,
+                    target_low_price REAL,
+                    target_mean_price REAL,
+                    target_median_price REAL,
+                    recommendation_mean REAL,
+                    recommendation_key TEXT,
+                    number_of_analyst_opinions INTEGER,
+                    total_cash INTEGER,
+                    total_cash_per_share REAL,
+                    ebitda INTEGER,
+                    total_debt INTEGER,
+                    quick_ratio REAL,
+                    current_ratio REAL,
+                    total_revenue INTEGER,
+                    debt_to_equity REAL,
+                    revenue_per_share REAL,
+                    return_on_assets REAL,
+                    return_on_equity REAL,
+                    free_cashflow INTEGER,
+                    operating_cashflow INTEGER,
+                    earnings_growth REAL,
+                    revenue_growth REAL,
+                    gross_margins REAL,
+                    ebitda_margins REAL,
+                    operating_margins REAL,
+                    profit_margins REAL,
+                    financial_currency TEXT,
+                    last_updated DATETIME DEFAULT CURRENT_TIMESTAMP,
+                    UNIQUE(symbol) -- Ensure only one entry per symbol
                 );
             `);
 
@@ -2104,6 +2193,246 @@ export class DBService {
             throw error;
         }
     }
+
+    public async upsertEarningsChart(symbol: string, quarterlyEarnings: any[]): Promise<void> {
+        const query = `
+            INSERT INTO earnings_chart (
+                symbol, date, actual, estimate, last_updated
+            )
+            VALUES (?, ?, ?, ?, CURRENT_TIMESTAMP)
+            ON CONFLICT(symbol, date) DO UPDATE SET
+                actual = excluded.actual,
+                estimate = excluded.estimate,
+                last_updated = CURRENT_TIMESTAMP;
+        `;
+
+        try {
+            for (const earnings of quarterlyEarnings) {
+                await this.db.run(query, [
+                    symbol,
+                    earnings.date,
+                    earnings.actual || null,
+                    earnings.estimate || null
+                ]);
+            }
+        } catch (error) {
+            logger.error(`Failed to upsert earnings chart for symbol: ${symbol}`);
+            logger.error(`Error: ${error instanceof Error ? error.message : JSON.stringify(error)}`);
+            throw error;
+        }
+    }
+
+    public async upsertCurrentQuarterEstimate(estimate: { symbol: string; estimate: number | null; date: string | null; year: number | null }): Promise<void> {
+        const query = `
+            INSERT INTO current_quarter_estimate (
+                symbol, current_estimate, estimate_date, estimate_year, last_updated
+            )
+            VALUES (?, ?, ?, ?, CURRENT_TIMESTAMP)
+            ON CONFLICT(symbol) DO UPDATE SET
+                current_estimate = excluded.current_estimate,
+                estimate_date = excluded.estimate_date,
+                estimate_year = excluded.estimate_year,
+                last_updated = CURRENT_TIMESTAMP
+        `;
+
+        const params = [
+            estimate.symbol,
+            estimate.estimate,
+            estimate.date,
+            estimate.year,
+        ];
+
+        try {
+            await this.db.run(query, ...params);
+        } catch (error) {
+            logger.error(`Failed to upsert current quarter estimate for symbol: ${estimate.symbol}`);
+            logger.error(`Error: ${error instanceof Error ? error.message : JSON.stringify(error)}`);
+            throw error;
+        }
+    }
+
+    public async upsertEarningsDate(symbol: string, earningsDate: any): Promise<void> {
+        const query = `
+            INSERT INTO earnings_date (
+                symbol, earnings_date, is_estimate, last_updated
+            )
+            VALUES (?, ?, ?, CURRENT_TIMESTAMP)
+            ON CONFLICT(symbol) DO UPDATE SET
+                earnings_date = excluded.earnings_date,
+                is_estimate = excluded.is_estimate,
+                last_updated = CURRENT_TIMESTAMP;
+        `;
+
+        try {
+            await this.db.run(query, [
+                symbol,
+                earningsDate.earningsDate,
+                earningsDate.isEstimate ? 1 : 0
+            ]);
+        } catch (error) {
+            logger.error(`Failed to upsert earnings date for symbol: ${symbol}`);
+            logger.error(error);
+            throw error;
+        }
+    }
+
+    public async upsertFinancialChartYearly(symbol: string, yearlyData: any[]): Promise<void> {
+        const query = `
+            INSERT INTO financial_chart_yearly (
+                symbol, date, revenue, earnings, last_updated
+            )
+            VALUES (?, ?, ?, ?, CURRENT_TIMESTAMP)
+            ON CONFLICT(symbol, date) DO UPDATE SET
+                revenue = excluded.revenue,
+                earnings = excluded.earnings,
+                last_updated = CURRENT_TIMESTAMP;
+        `;
+
+        try {
+            // Validate and process each year's data
+            for (const data of yearlyData) {
+                const date = data.date;
+                const revenue = data.revenue || null;
+                const earnings = data.earnings || null;
+
+                try {
+                    await this.db.run(query, [symbol, date, revenue, earnings]);
+                    logger.info(`Upserted financial chart yearly record for symbol: ${symbol}, date: ${date}`);
+                } catch (insertError) {
+                    logger.error(`Failed to upsert record for symbol: ${symbol}, date: ${date}`);
+                    logger.error(`Data: ${JSON.stringify(data)}`);
+                    logger.error(`Error: ${insertError instanceof Error ? insertError.message : JSON.stringify(insertError)}`);
+                }
+            }
+        } catch (error) {
+            logger.error(`Failed to process financial chart yearly data for symbol: ${symbol}`);
+            logger.error(`Data: ${JSON.stringify(yearlyData, null, 2)}`);
+            logger.error(`Error: ${error instanceof Error ? error.message : JSON.stringify(error)}`);
+            throw error;
+        }
+    }
+
+    public async upsertFinancialChartQuarterly(symbol: string, quarterlyData: any[]): Promise<void> {
+        const query = `
+            INSERT INTO financial_chart_quarterly (
+                symbol, date, revenue, earnings, last_updated
+            )
+            VALUES (?, ?, ?, ?, CURRENT_TIMESTAMP)
+            ON CONFLICT(symbol, date) DO UPDATE SET
+                revenue = excluded.revenue,
+                earnings = excluded.earnings,
+                last_updated = CURRENT_TIMESTAMP;
+        `;
+
+        try {
+            // Validate and process each quarter's data
+            for (const data of quarterlyData) {
+                const date = data.date; // Extract the date
+                const revenue = data.revenue || null; // Default to null if missing
+                const earnings = data.earnings || null; // Default to null if missing
+
+                try {
+                    await this.db.run(query, [symbol, date, revenue, earnings]);
+                    logger.info(`Upserted financial chart quarterly record for symbol: ${symbol}, date: ${date}`);
+                } catch (insertError) {
+                    logger.error(`Failed to upsert record for symbol: ${symbol}, date: ${date}`);
+                    logger.error(`Data: ${JSON.stringify(data)}`);
+                    logger.error(`Error: ${insertError instanceof Error ? insertError.message : JSON.stringify(insertError)}`);
+                }
+            }
+        } catch (error) {
+            logger.error(`Failed to process financial chart quarterly data for symbol: ${symbol}`);
+            logger.error(`Data: ${JSON.stringify(quarterlyData, null, 2)}`);
+            logger.error(`Error: ${error instanceof Error ? error.message : JSON.stringify(error)}`);
+            throw error;
+        }
+    }
+
+    public async upsertFinancialData(symbol: string, financialData: any): Promise<void> {
+        const query = `
+            INSERT INTO financial_data (
+                symbol, current_price, target_high_price, target_low_price, target_mean_price,
+                target_median_price, recommendation_mean, recommendation_key, number_of_analyst_opinions,
+                total_cash, total_cash_per_share, ebitda, total_debt, quick_ratio, current_ratio,
+                total_revenue, debt_to_equity, revenue_per_share, return_on_assets, return_on_equity,
+                free_cashflow, operating_cashflow, earnings_growth, revenue_growth, gross_margins,
+                ebitda_margins, operating_margins, profit_margins, financial_currency, last_updated
+            )
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)
+            ON CONFLICT(symbol) DO UPDATE SET
+                current_price = excluded.current_price,
+                target_high_price = excluded.target_high_price,
+                target_low_price = excluded.target_low_price,
+                target_mean_price = excluded.target_mean_price,
+                target_median_price = excluded.target_median_price,
+                recommendation_mean = excluded.recommendation_mean,
+                recommendation_key = excluded.recommendation_key,
+                number_of_analyst_opinions = excluded.number_of_analyst_opinions,
+                total_cash = excluded.total_cash,
+                total_cash_per_share = excluded.total_cash_per_share,
+                ebitda = excluded.ebitda,
+                total_debt = excluded.total_debt,
+                quick_ratio = excluded.quick_ratio,
+                current_ratio = excluded.current_ratio,
+                total_revenue = excluded.total_revenue,
+                debt_to_equity = excluded.debt_to_equity,
+                revenue_per_share = excluded.revenue_per_share,
+                return_on_assets = excluded.return_on_assets,
+                return_on_equity = excluded.return_on_equity,
+                free_cashflow = excluded.free_cashflow,
+                operating_cashflow = excluded.operating_cashflow,
+                earnings_growth = excluded.earnings_growth,
+                revenue_growth = excluded.revenue_growth,
+                gross_margins = excluded.gross_margins,
+                ebitda_margins = excluded.ebitda_margins,
+                operating_margins = excluded.operating_margins,
+                profit_margins = excluded.profit_margins,
+                financial_currency = excluded.financial_currency,
+                last_updated = CURRENT_TIMESTAMP;
+        `;
+
+        const params = [
+            symbol,
+            financialData.currentPrice || null,
+            financialData.targetHighPrice || null,
+            financialData.targetLowPrice || null,
+            financialData.targetMeanPrice || null,
+            financialData.targetMedianPrice || null,
+            financialData.recommendationMean || null,
+            financialData.recommendationKey || null,
+            financialData.numberOfAnalystOpinions || null,
+            financialData.totalCash || null,
+            financialData.totalCashPerShare || null,
+            financialData.ebitda || null,
+            financialData.totalDebt || null,
+            financialData.quickRatio || null,
+            financialData.currentRatio || null,
+            financialData.totalRevenue || null,
+            financialData.debtToEquity || null,
+            financialData.revenuePerShare || null,
+            financialData.returnOnAssets || null,
+            financialData.returnOnEquity || null,
+            financialData.freeCashflow || null,
+            financialData.operatingCashflow || null,
+            financialData.earningsGrowth || null,
+            financialData.revenueGrowth || null,
+            financialData.grossMargins || null,
+            financialData.ebitdaMargins || null,
+            financialData.operatingMargins || null,
+            financialData.profitMargins || null,
+            financialData.financialCurrency || null,
+        ];
+
+        try {
+            await this.db.run(query, ...params);
+        } catch (error) {
+            logger.error(`Failed to upsert financial data for symbol: ${symbol}`);
+            logger.error(`Error: ${error instanceof Error ? error.message : JSON.stringify(error)}`);
+            throw error;
+        }
+    }
+
+
 
     public async close(): Promise<void> {
         try {
