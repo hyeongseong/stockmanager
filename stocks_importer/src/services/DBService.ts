@@ -55,6 +55,8 @@ export class DBService {
             await this.db.exec(`DROP TABLE IF EXISTS net_share_purchase_activity;`);
             await this.db.exec(`DROP TABLE IF EXISTS insider_transactions;`);
             await this.db.exec(`DROP TABLE IF EXISTS sector_trend;`);
+            await this.db.exec(`DROP TABLE IF EXISTS income_statement_history_quarterly;`);
+            await this.db.exec(`DROP TABLE IF EXISTS cashflow_statement_history_quarterly;`);
 
             // Create `stocks` table
             await this.db.exec(`
@@ -605,6 +607,33 @@ export class DBService {
                     estimate TEXT,
                     last_updated DATETIME DEFAULT CURRENT_TIMESTAMP
                 )
+            `);
+
+            // Create `income_statement_history_quarterly` table
+            await this.db.exec(`
+                CREATE TABLE IF NOT EXISTS income_statement_history_quarterly (
+                    symbol TEXT NOT NULL,
+                    endDate_raw INTEGER NOT NULL,
+                    totalRevenue_raw INTEGER,
+                    totalRevenue_fmt TEXT,
+                    totalRevenue_longFmt TEXT,
+                    netIncome_raw INTEGER,
+                    netIncome_fmt TEXT,
+                    netIncome_longFmt TEXT,
+                    PRIMARY KEY (symbol, endDate_raw)
+                );
+            `);
+
+            // Create `cashflow_statement_history_quarterly` table
+            await this.db.exec(`
+                CREATE TABLE IF NOT EXISTS cashflow_statement_history_quarterly (
+                    symbol TEXT NOT NULL,
+                    end_date INTEGER NOT NULL,
+                    net_income_raw INTEGER,
+                    net_income_fmt TEXT,
+                    net_income_long_fmt TEXT,
+                    PRIMARY KEY (symbol, end_date)
+                );
             `);
 
             logger.info('Database initialized and tables created.');
@@ -1950,6 +1979,131 @@ export class DBService {
         }
     }
 
+    public async upsertIncomeStatementHistoryQuarterly(
+        symbol: string,
+        incomeStatementHistoryQuarterly: { incomeStatementHistory: any[]; maxAge?: number }
+    ): Promise<void> {
+        const query = `
+            INSERT INTO income_statement_history_quarterly (
+                symbol,
+                endDate_raw,
+                endDate_fmt,
+                totalRevenue_raw,
+                totalRevenue_fmt,
+                totalRevenue_longFmt,
+                costOfRevenue_raw,
+                costOfRevenue_fmt,
+                costOfRevenue_longFmt,
+                grossProfit_raw,
+                grossProfit_fmt,
+                grossProfit_longFmt,
+                ebit_raw,
+                ebit_fmt,
+                ebit_longFmt,
+                incomeTaxExpense_raw,
+                incomeTaxExpense_fmt,
+                incomeTaxExpense_longFmt,
+                netIncome_raw,
+                netIncome_fmt,
+                netIncome_longFmt,
+                last_updated
+            )
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)
+            ON CONFLICT(symbol, endDate_raw) DO UPDATE SET
+                totalRevenue_raw = excluded.totalRevenue_raw,
+                totalRevenue_fmt = excluded.totalRevenue_fmt,
+                totalRevenue_longFmt = excluded.totalRevenue_longFmt,
+                costOfRevenue_raw = excluded.costOfRevenue_raw,
+                costOfRevenue_fmt = excluded.costOfRevenue_fmt,
+                costOfRevenue_longFmt = excluded.costOfRevenue_longFmt,
+                grossProfit_raw = excluded.grossProfit_raw,
+                grossProfit_fmt = excluded.grossProfit_fmt,
+                grossProfit_longFmt = excluded.grossProfit_longFmt,
+                ebit_raw = excluded.ebit_raw,
+                ebit_fmt = excluded.ebit_fmt,
+                ebit_longFmt = excluded.ebit_longFmt,
+                incomeTaxExpense_raw = excluded.incomeTaxExpense_raw,
+                incomeTaxExpense_fmt = excluded.incomeTaxExpense_fmt,
+                incomeTaxExpense_longFmt = excluded.incomeTaxExpense_longFmt,
+                netIncome_raw = excluded.netIncome_raw,
+                netIncome_fmt = excluded.netIncome_fmt,
+                netIncome_longFmt = excluded.netIncome_longFmt,
+                last_updated = CURRENT_TIMESTAMP;
+        `;
+
+        try {
+            const incomeStatements = incomeStatementHistoryQuarterly.incomeStatementHistory || [];
+
+            for (const statement of incomeStatements) {
+                const params = [
+                    symbol,
+                    statement.endDate?.raw || null,
+                    statement.endDate?.fmt || null,
+
+                    statement.totalRevenue?.raw || null,
+                    statement.totalRevenue?.fmt || null,
+                    statement.totalRevenue?.longFmt || null,
+
+                    statement.costOfRevenue?.raw || null,
+                    statement.costOfRevenue?.fmt || null,
+                    statement.costOfRevenue?.longFmt || null,
+
+                    statement.grossProfit?.raw || null,
+                    statement.grossProfit?.fmt || null,
+                    statement.grossProfit?.longFmt || null,
+
+                    statement.ebit?.raw || null,
+                    statement.ebit?.fmt || null,
+                    statement.ebit?.longFmt || null,
+
+                    statement.incomeTaxExpense?.raw || null,
+                    statement.incomeTaxExpense?.fmt || null,
+                    statement.incomeTaxExpense?.longFmt || null,
+
+                    statement.netIncome?.raw || null,
+                    statement.netIncome?.fmt || null,
+                    statement.netIncome?.longFmt || null,
+                ];
+
+                await this.db.run(query, params);
+            }
+        } catch (error) {
+            logger.error(`Failed to upsert income statement history quarterly for symbol: ${symbol}`);
+            logger.error(error instanceof Error ? error.message : JSON.stringify(error));
+            throw error;
+        }
+    }
+
+    public async upsertCashflowStatementHistoryQuarterly(symbol: string, cashflowStatements: any[]): Promise<void> {
+        const query = `
+            INSERT INTO cashflow_statement_history_quarterly (
+                symbol, end_date, net_income_raw, net_income_fmt, net_income_long_fmt
+            )
+            VALUES (?, ?, ?, ?, ?)
+            ON CONFLICT(symbol, end_date) DO UPDATE SET
+                net_income_raw = excluded.net_income_raw,
+                net_income_fmt = excluded.net_income_fmt,
+                net_income_long_fmt = excluded.net_income_long_fmt
+        `;
+
+        try {
+            for (const statement of cashflowStatements) {
+                const params = [
+                    symbol,
+                    statement?.endDate?.raw || null,
+                    statement?.netIncome?.raw || null,
+                    statement?.netIncome?.fmt || null,
+                    statement?.netIncome?.longFmt || null,
+                ];
+
+                await this.db.run(query, params);
+            }
+        } catch (error) {
+            logger.error(`Failed to upsert cashflow statement history quarterly for symbol: ${symbol}`);
+            logger.error(error instanceof Error ? error.message : JSON.stringify(error));
+            throw error;
+        }
+    }
 
     public async close(): Promise<void> {
         try {

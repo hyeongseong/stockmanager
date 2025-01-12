@@ -244,7 +244,23 @@ class Main {
                         logger.warn(`No sector trend data found for symbol: ${stock.symbol || 'null'}`);
                     }
 
+                    // Extract `incomeStatementHistoryQuarterly` and upsert to DB
+                    const incomeStatementHistoryQuarterly = stockInfo?.incomeStatementHistoryQuarterly?.incomeStatementHistory;
+                    if (incomeStatementHistoryQuarterly) {
+                        await dbService.upsertIncomeStatementHistoryQuarterly(stock.symbol, incomeStatementHistoryQuarterly);
+                        logger.info(`Upserted income statement history quarterly for symbol: ${stock.symbol}`);
+                    } else {
+                        logger.warn(`No income statement history quarterly data found for symbol: ${stock.symbol}`);
+                    }
 
+                    // Extract `cashflowStatementHistoryQuarterly` and upsert to DB
+                    const cashflowStatementHistoryQuarterly = stockInfo?.cashflowStatementHistoryQuarterly?.cashflowStatements;
+                    if (cashflowStatementHistoryQuarterly) {
+                        await dbService.upsertCashflowStatementHistoryQuarterly(stock.symbol, cashflowStatementHistoryQuarterly);
+                        logger.info(`Upserted cashflow statement history quarterly for symbol: ${stock.symbol}`);
+                    } else {
+                        logger.warn(`No cashflow statement history quarterly data found for symbol: ${stock.symbol}`);
+                    }
                 } catch (error) {
                     logger.error(`Failed to fetch or upsert asset profile for symbol: ${stock.symbol}. Error: ${error}`);
                 }
