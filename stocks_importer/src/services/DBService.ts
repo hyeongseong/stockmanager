@@ -31,38 +31,8 @@ export class DBService {
         });
 
         try {
-            // Drop existing tables
-            await this.db.exec(`DROP TABLE IF EXISTS stocks;`);
-            await this.db.exec(`DROP TABLE IF EXISTS assetProfile;`);
-            await this.db.exec(`DROP TABLE IF EXISTS recommendation_trend;`);
-            await this.db.exec(`DROP TABLE IF EXISTS cashflow_statement_history;`);
-            await this.db.exec(`DROP TABLE IF EXISTS default_key_statistics;`);
-            await this.db.exec(`DROP TABLE IF EXISTS income_statement_history;`);
-            await this.db.exec(`DROP TABLE IF EXISTS fund_ownership;`);
-            await this.db.exec(`DROP TABLE IF EXISTS summary_detail;`);
-            await this.db.exec(`DROP TABLE IF EXISTS insider_holders;`);
-            await this.db.exec(`DROP TABLE IF EXISTS calendar_events;`);
-            await this.db.exec(`DROP TABLE IF EXISTS upgrade_downgrade_history;`);
-            await this.db.exec(`DROP TABLE IF EXISTS price;`);
-            await this.db.exec(`DROP TABLE IF EXISTS balance_sheet_history;`);
-            await this.db.exec(`DROP TABLE IF EXISTS earnings_trend;`);
-            await this.db.exec(`DROP TABLE IF EXISTS institution_ownership;`);
-            await this.db.exec(`DROP TABLE IF EXISTS major_holders_breakdown;`);
-            await this.db.exec(`DROP TABLE IF EXISTS balance_sheet_history_quarterly;`);
-            await this.db.exec(`DROP TABLE IF EXISTS earnings_history;`);
-            await this.db.exec(`DROP TABLE IF EXISTS major_direct_holders;`);
-            await this.db.exec(`DROP TABLE IF EXISTS summary_profile;`);
-            await this.db.exec(`DROP TABLE IF EXISTS net_share_purchase_activity;`);
-            await this.db.exec(`DROP TABLE IF EXISTS insider_transactions;`);
-            await this.db.exec(`DROP TABLE IF EXISTS sector_trend;`);
-            await this.db.exec(`DROP TABLE IF EXISTS income_statement_history_quarterly;`);
-            await this.db.exec(`DROP TABLE IF EXISTS cashflow_statement_history_quarterly;`);
-            await this.db.exec(`DROP TABLE IF EXISTS earnings_chart;`);
-            await this.db.exec(`DROP TABLE IF EXISTS current_quarter_estimate;`);
-            await this.db.exec(`DROP TABLE IF EXISTS earnings_date;`);
-            await this.db.exec(`DROP TABLE IF EXISTS financial_chart_yearly;`);
-            await this.db.exec(`DROP TABLE IF EXISTS financial_chart_quarterly;`);
-            await this.db.exec(`DROP TABLE IF EXISTS financial_data;`);
+            // Drop all tables
+            await this.dropTables();
 
             // Create `stocks` table
             await this.db.exec(`
@@ -96,7 +66,7 @@ export class DBService {
                     sectorDisp TEXT,
                     longBusinessSummary TEXT,
                     fullTimeEmployees INTEGER,
-                    companyOfficers TEXT, -- JSON data
+                    companyOfficers TEXT,
                     auditRisk INTEGER,
                     boardRisk INTEGER,
                     compensationRisk INTEGER,
@@ -114,7 +84,6 @@ export class DBService {
             // Create `recommendation_trend` table
             await this.db.exec(`
                 CREATE TABLE IF NOT EXISTS recommendation_trend (
-                    id INTEGER PRIMARY KEY AUTOINCREMENT,
                     symbol TEXT NOT NULL,
                     period TEXT NOT NULL,
                     strongBuy INTEGER,
@@ -123,6 +92,7 @@ export class DBService {
                     sell INTEGER,
                     strongSell INTEGER,
                     last_updated DATETIME DEFAULT CURRENT_TIMESTAMP,
+                    PRIMARY KEY (symbol, period),
                     FOREIGN KEY(symbol) REFERENCES stocks(symbol) ON DELETE CASCADE
                 )
             `);
@@ -130,36 +100,33 @@ export class DBService {
             // Create `cashflow_statement_history` table
             await this.db.exec(`
                 CREATE TABLE IF NOT EXISTS cashflow_statement_history (
-                    id INTEGER PRIMARY KEY AUTOINCREMENT,
                     symbol TEXT NOT NULL,
-                    endDate_raw INTEGER,
+                    endDate_raw INTEGER NOT NULL,
                     endDate_fmt TEXT,
                     netIncome_raw INTEGER,
                     netIncome_fmt TEXT,
                     netIncome_longFmt TEXT,
                     last_updated DATETIME DEFAULT CURRENT_TIMESTAMP,
                     FOREIGN KEY(symbol) REFERENCES stocks(symbol) ON DELETE CASCADE,
-                    UNIQUE(symbol, endDate_raw) -- 중복 삽입 방지
+                    PRIMARY KEY(symbol, endDate_raw)
                 )
             `);
 
             // Create `index_trend` table
             await this.db.exec(`
                 CREATE TABLE IF NOT EXISTS index_trend (
-                    id INTEGER PRIMARY KEY AUTOINCREMENT,
                     symbol TEXT NOT NULL,
                     period TEXT NOT NULL,
                     growth REAL,
                     last_updated DATETIME DEFAULT CURRENT_TIMESTAMP,
-                    UNIQUE(symbol, period) -- 중복 삽입 방지
+                    PRIMARY KEY (symbol, period)
                 )
             `);
 
             // Create `default_key_statistics` table
             await this.db.exec(`
                 CREATE TABLE IF NOT EXISTS default_key_statistics (
-                    id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    symbol TEXT NOT NULL UNIQUE, -- symbol에 UNIQUE 제약 조건 추가
+                    symbol TEXT PRIMARY KEY,
                     priceHint INTEGER,
                     enterpriseValue INTEGER,
                     forwardPE REAL,
@@ -202,9 +169,8 @@ export class DBService {
             // Create `income_statement_history` table
             await this.db.exec(`
                 CREATE TABLE IF NOT EXISTS income_statement_history (
-                    id INTEGER PRIMARY KEY AUTOINCREMENT,
                     symbol TEXT NOT NULL,
-                    endDate_raw INTEGER,
+                    endDate_raw INTEGER NOT NULL,
                     endDate_fmt TEXT,
                     totalRevenue_raw INTEGER,
                     totalRevenue_fmt TEXT,
@@ -225,15 +191,14 @@ export class DBService {
                     netIncome_fmt TEXT,
                     netIncome_longFmt TEXT,
                     last_updated DATETIME DEFAULT CURRENT_TIMESTAMP,
-                    FOREIGN KEY(symbol) REFERENCES stocks(symbol) ON DELETE CASCADE,
-                    UNIQUE(symbol, endDate_raw) -- 중복 삽입 방지
+                    PRIMARY KEY (symbol, endDate_raw),
+                    FOREIGN KEY(symbol) REFERENCES stocks(symbol) ON DELETE CASCADE
                 )
             `);
 
             // Create `fund_ownership` table
             await this.db.exec(`
                 CREATE TABLE IF NOT EXISTS fund_ownership (
-                    id INTEGER PRIMARY KEY AUTOINCREMENT,
                     symbol TEXT NOT NULL,
                     reportDate_raw INTEGER,
                     reportDate_fmt TEXT,
@@ -250,15 +215,14 @@ export class DBService {
                     pctChange_fmt TEXT,
                     last_updated DATETIME DEFAULT CURRENT_TIMESTAMP,
                     FOREIGN KEY(symbol) REFERENCES stocks(symbol) ON DELETE CASCADE,
-                    UNIQUE(symbol, reportDate_raw, organization)
+                    PRIMARY KEY(symbol, reportDate_raw, organization)
                 )
             `);
 
             // Create `summary_detail` table
             await this.db.exec(`
                 CREATE TABLE IF NOT EXISTS summary_detail (
-                    id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    symbol TEXT NOT NULL UNIQUE,
+                    symbol TEXT PRIMARY KEY,
                     priceHint INTEGER,
                     previousClose REAL,
                     open REAL,
@@ -301,10 +265,9 @@ export class DBService {
             // Create `insider_holders` table
             await this.db.exec(`
                 CREATE TABLE IF NOT EXISTS insider_holders (
-                    id INTEGER PRIMARY KEY AUTOINCREMENT,
                     symbol TEXT NOT NULL,
                     name TEXT NOT NULL,
-                    relation TEXT,
+                    relation TEXT NOT NULL,
                     url TEXT,
                     transactionDescription TEXT,
                     latestTransDate_raw INTEGER,
@@ -321,14 +284,13 @@ export class DBService {
                     positionIndirectDate_fmt TEXT,
                     last_updated DATETIME DEFAULT CURRENT_TIMESTAMP,
                     FOREIGN KEY(symbol) REFERENCES stocks(symbol) ON DELETE CASCADE,
-                    UNIQUE(symbol, name, relation)
+                    PRIMARY KEY(symbol, name, relation)
                 )
             `);
 
             // Create `calendar_events` table
             await this.db.exec(`
                 CREATE TABLE IF NOT EXISTS calendar_events (
-                    id INTEGER PRIMARY KEY AUTOINCREMENT,
                     symbol TEXT NOT NULL,
                     earningsDate_raw INTEGER,
                     earningsCallDate_raw INTEGER,
@@ -349,7 +311,6 @@ export class DBService {
             // Create `upgrade_downgrade_history` table
             await this.db.exec(`
                 CREATE TABLE IF NOT EXISTS upgrade_downgrade_history (
-                    id INTEGER PRIMARY KEY AUTOINCREMENT,
                     symbol TEXT NOT NULL,
                     epochGradeDate INTEGER NOT NULL,
                     firm TEXT NOT NULL,
@@ -365,8 +326,7 @@ export class DBService {
             // Create `price` table
             await this.db.exec(`
                 CREATE TABLE IF NOT EXISTS price (
-                    id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    symbol TEXT NOT NULL UNIQUE, -- symbol을 UNIQUE로 설정
+                    symbol TEXT PRIMARY KEY,
                     preMarketSource TEXT,
                     postMarketChangePercent REAL,
                     postMarketChange REAL,
@@ -408,20 +368,18 @@ export class DBService {
             // Create `balance_sheet_history` table
             await this.db.exec(`
                 CREATE TABLE IF NOT EXISTS balance_sheet_history (
-                    id INTEGER PRIMARY KEY AUTOINCREMENT,
                     symbol TEXT NOT NULL,
                     endDate_raw INTEGER NOT NULL,
                     endDate_fmt TEXT,
                     last_updated DATETIME DEFAULT CURRENT_TIMESTAMP,
-                    UNIQUE(symbol, endDate_raw), -- 중복 삽입 방지
-                    FOREIGN KEY(symbol) REFERENCES stocks(symbol) ON DELETE CASCADE
+                    FOREIGN KEY(symbol) REFERENCES stocks(symbol) ON DELETE CASCADE,
+                    PRIMARY KEY(symbol, endDate_raw)
                 )
             `);
 
             // Create `earnings_trend` table
             await this.db.exec(`
                 CREATE TABLE IF NOT EXISTS earnings_trend (
-                    id INTEGER PRIMARY KEY AUTOINCREMENT,
                     symbol TEXT NOT NULL,
                     period TEXT NOT NULL,
                     endDate TEXT,
@@ -439,7 +397,7 @@ export class DBService {
                     revenue_analysts INTEGER,
                     revenue_growth REAL,
                     last_updated DATETIME DEFAULT CURRENT_TIMESTAMP,
-                    UNIQUE(symbol, period), -- 중복 삽입 방지
+                    PRIMARY KEY (symbol, period),
                     FOREIGN KEY(symbol) REFERENCES stocks(symbol) ON DELETE CASCADE
                 )
             `);
@@ -447,7 +405,6 @@ export class DBService {
             // Create `institution_ownership` table
             await this.db.exec(`
                 CREATE TABLE IF NOT EXISTS institution_ownership (
-                    id INTEGER PRIMARY KEY AUTOINCREMENT,
                     symbol TEXT NOT NULL,
                     reportDate_raw INTEGER,
                     reportDate_fmt TEXT,
@@ -463,8 +420,8 @@ export class DBService {
                     pctChange_raw REAL,
                     pctChange_fmt TEXT,
                     last_updated DATETIME DEFAULT CURRENT_TIMESTAMP,
-                    FOREIGN KEY(symbol) REFERENCES stocks(symbol) ON DELETE CASCADE,
-                    UNIQUE(symbol, reportDate_raw, organization) -- 중복 삽입 방지
+                    PRIMARY KEY(symbol, reportDate_raw, organization),
+                    FOREIGN KEY(symbol) REFERENCES stocks(symbol) ON DELETE CASCADE
                 )
             `);
 
@@ -484,21 +441,19 @@ export class DBService {
             // Create `balance_sheet_history_quarterly` table
             await this.db.exec(`
                 CREATE TABLE IF NOT EXISTS balance_sheet_history_quarterly (
-                    id INTEGER PRIMARY KEY AUTOINCREMENT,
                     symbol TEXT NOT NULL,
                     endDate_raw INTEGER NOT NULL,
                     endDate_fmt TEXT NOT NULL,
                     maxAge INTEGER,
                     last_updated DATETIME DEFAULT CURRENT_TIMESTAMP,
                     FOREIGN KEY(symbol) REFERENCES stocks(symbol) ON DELETE CASCADE,
-                    UNIQUE(symbol, endDate_raw) -- 중복 삽입 방지
+                    PRIMARY KEY (symbol, endDate_raw)
                 )
             `);
 
             // Create `earnings_history` table
             await this.db.exec(`
                 CREATE TABLE IF NOT EXISTS earnings_history (
-                    id INTEGER PRIMARY KEY AUTOINCREMENT,
                     symbol TEXT NOT NULL,
                     quarter_raw INTEGER NOT NULL,
                     quarter_fmt TEXT NOT NULL,
@@ -515,28 +470,25 @@ export class DBService {
                     maxAge INTEGER,
                     last_updated DATETIME DEFAULT CURRENT_TIMESTAMP,
                     FOREIGN KEY(symbol) REFERENCES stocks(symbol) ON DELETE CASCADE,
-                    UNIQUE(symbol, quarter_raw) -- 중복 삽입 방지
+                    PRIMARY KEY(symbol, quarter_raw)
                 )
             `);
 
             // Create `major_direct_holders` table
             await this.db.exec(`
                 CREATE TABLE IF NOT EXISTS major_direct_holders (
-                    id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    symbol TEXT NOT NULL,
+                    symbol TEXT NOT NULL PRIMARY KEY,
                     maxAge INTEGER,
                     holders TEXT, -- JSON 데이터로 저장
                     last_updated DATETIME DEFAULT CURRENT_TIMESTAMP,
-                    FOREIGN KEY(symbol) REFERENCES stocks(symbol) ON DELETE CASCADE,
-                    UNIQUE(symbol) -- 중복 삽입 방지
+                    FOREIGN KEY(symbol) REFERENCES stocks(symbol) ON DELETE CASCADE
                 )
             `);
 
             // Create `summary_profile` table
             await this.db.exec(`
                 CREATE TABLE IF NOT EXISTS summary_profile (
-                    id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    symbol TEXT NOT NULL UNIQUE,
+                    symbol TEXT PRIMARY KEY,
                     address1 TEXT,
                     city TEXT,
                     state TEXT,
@@ -552,7 +504,7 @@ export class DBService {
                     sectorDisp TEXT,
                     longBusinessSummary TEXT,
                     fullTimeEmployees INTEGER,
-                    companyOfficers TEXT, -- JSON 형태로 저장
+                    companyOfficers TEXT,
                     irWebsite TEXT,
                     maxAge INTEGER,
                     last_updated DATETIME DEFAULT CURRENT_TIMESTAMP,
@@ -563,8 +515,7 @@ export class DBService {
             // Create `net_share_purchase_activity` table
             await this.db.exec(`
                 CREATE TABLE IF NOT EXISTS net_share_purchase_activity (
-                    id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    symbol TEXT NOT NULL UNIQUE,
+                    symbol TEXT PRIMARY KEY,
                     maxAge INTEGER,
                     period TEXT,
                     buyInfoCount INTEGER,
@@ -585,30 +536,29 @@ export class DBService {
             // Create `insider_transactions` table
             await this.db.exec(`
                 CREATE TABLE IF NOT EXISTS insider_transactions (
-                    id INTEGER PRIMARY KEY AUTOINCREMENT,
                     symbol TEXT NOT NULL,
-                    shares_raw INTEGER,
+                    filerName TEXT NOT NULL,
+                    startDate INTEGER NOT NULL,
+                    shares_raw INTEGER NOT NULL,
                     shares_fmt TEXT,
                     shares_longFmt TEXT,
                     value_raw INTEGER,
                     value_fmt TEXT,
                     value_longFmt TEXT,
-                    filerName TEXT,
                     filerRelation TEXT,
                     transactionText TEXT,
                     ownership TEXT,
-                    startDate INTEGER,
                     maxAge INTEGER,
                     last_updated DATETIME DEFAULT CURRENT_TIMESTAMP,
-                    FOREIGN KEY(symbol) REFERENCES stocks(symbol) ON DELETE CASCADE
-                )
+                    FOREIGN KEY(symbol) REFERENCES stocks(symbol) ON DELETE CASCADE,
+                    PRIMARY KEY(symbol, filerName, startDate)
+                );
             `);
 
             // Create `sector_trend` table
             await this.db.exec(`
                 CREATE TABLE IF NOT EXISTS sector_trend (
-                    id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    symbol TEXT,
+                    symbol TEXT NOT NULL PRIMARY KEY,
                     maxAge INTEGER,
                     estimate TEXT,
                     last_updated DATETIME DEFAULT CURRENT_TIMESTAMP
@@ -690,8 +640,7 @@ export class DBService {
             // Create `financialData` table
             await this.db.exec(`
                 CREATE TABLE IF NOT EXISTS financial_data (
-                    id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    symbol TEXT NOT NULL,
+                    symbol TEXT PRIMARY KEY,
                     current_price REAL,
                     target_high_price REAL,
                     target_low_price REAL,
@@ -711,6 +660,7 @@ export class DBService {
                     revenue_per_share REAL,
                     return_on_assets REAL,
                     return_on_equity REAL,
+                    gross_profits INTEGER,
                     free_cashflow INTEGER,
                     operating_cashflow INTEGER,
                     earnings_growth REAL,
@@ -720,14 +670,64 @@ export class DBService {
                     operating_margins REAL,
                     profit_margins REAL,
                     financial_currency TEXT,
-                    last_updated DATETIME DEFAULT CURRENT_TIMESTAMP,
-                    UNIQUE(symbol) -- Ensure only one entry per symbol
+                    last_updated DATETIME DEFAULT CURRENT_TIMESTAMP
                 );
             `);
 
             logger.info('Database initialized and tables created.');
         } catch (error) {
             logger.error('Failed to initialize database or create tables.');
+            logger.error(error);
+            throw error;
+        }
+    }
+
+    /**
+     * Drops all tables from the database.
+     */
+    public async dropTables(): Promise<void> {
+        try {
+            const tables = [
+                'stocks',
+                'assetProfile',
+                'recommendation_trend',
+                'cashflow_statement_history',
+                'default_key_statistics',
+                'income_statement_history',
+                'fund_ownership',
+                'summary_detail',
+                'insider_holders',
+                'calendar_events',
+                'upgrade_downgrade_history',
+                'price',
+                'balance_sheet_history',
+                'earnings_trend',
+                'institution_ownership',
+                'major_holders_breakdown',
+                'balance_sheet_history_quarterly',
+                'earnings_history',
+                'major_direct_holders',
+                'summary_profile',
+                'net_share_purchase_activity',
+                'insider_transactions',
+                'sector_trend',
+                'income_statement_history_quarterly',
+                'cashflow_statement_history_quarterly',
+                'earnings_chart',
+                'current_quarter_estimate',
+                'earnings_date',
+                'financial_chart_yearly',
+                'financial_chart_quarterly',
+                'financial_data'
+            ];
+
+            for (const table of tables) {
+                await this.db.exec(`DROP TABLE IF EXISTS ${table};`);
+            }
+
+            logger.info('All tables have been dropped successfully.');
+        } catch (error) {
+            logger.error('Failed to drop tables.');
             logger.error(error);
             throw error;
         }
@@ -821,22 +821,26 @@ export class DBService {
                 symbol, period, strongBuy, buy, hold, sell, strongSell, last_updated
             )
             VALUES (?, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)
+            ON CONFLICT(symbol, period) DO UPDATE SET
+                strongBuy = excluded.strongBuy,
+                buy = excluded.buy,
+                hold = excluded.hold,
+                sell = excluded.sell,
+                strongSell = excluded.strongSell,
+                last_updated = CURRENT_TIMESTAMP
         `;
 
         try {
-            // Delete existing rows for the symbol before inserting new data
-            await this.db.run("DELETE FROM recommendation_trend WHERE symbol = ?", [symbol]);
-
-            // Insert each trend item into the table
+            // Insert or update each trend item
             for (const item of trend) {
                 await this.db.run(query, [
                     symbol,
                     item.period,
-                    item.strongBuy,
-                    item.buy,
-                    item.hold,
-                    item.sell,
-                    item.strongSell
+                    item.strongBuy || null,
+                    item.buy || null,
+                    item.hold || null,
+                    item.sell || null,
+                    item.strongSell || null,
                 ]);
             }
         } catch (error) {
@@ -863,19 +867,19 @@ export class DBService {
 
         try {
             for (const statement of cashflowStatements) {
-                await this.db.run(query, [
+                const params = [
                     symbol,
                     statement.endDate?.raw || null,
                     statement.endDate?.fmt || null,
-
                     statement.netIncome?.raw || null,
                     statement.netIncome?.fmt || null,
                     statement.netIncome?.longFmt || null,
-                ]);
+                ];
+                await this.db.run(query, params);
             }
         } catch (error) {
             logger.error(`Failed to upsert cashflow statement history for symbol: ${symbol}`);
-            logger.error(error);
+            logger.error(`Error: ${error instanceof Error ? error.message : JSON.stringify(error)}`);
             throw error;
         }
     }
@@ -894,15 +898,16 @@ export class DBService {
         try {
             // Insert or update each estimate into the table
             for (const estimate of estimates) {
-                await this.db.run(query, [
+                const params = [
                     symbol,
                     estimate.period,
                     estimate.growth || null,
-                ]);
+                ];
+                await this.db.run(query, params);
             }
         } catch (error) {
             logger.error(`Failed to upsert index trend for symbol: ${symbol}`);
-            logger.error(error);
+            logger.error(error instanceof Error ? error.message : JSON.stringify(error));
             throw error;
         }
     }
@@ -958,47 +963,47 @@ export class DBService {
 
         const params = [
             symbol,
-            stats.priceHint,
-            stats.enterpriseValue,
-            stats.forwardPE,
-            stats.profitMargins,
-            stats.floatShares,
-            stats.sharesOutstanding,
-            stats.sharesShort,
-            stats.sharesShortPriorMonth,
-            stats.sharesShortPreviousMonthDate,
-            stats.dateShortInterest,
-            stats.sharesPercentSharesOut,
-            stats.heldPercentInsiders,
-            stats.heldPercentInstitutions,
-            stats.shortRatio,
-            stats.shortPercentOfFloat,
-            stats.beta,
-            stats.impliedSharesOutstanding,
-            stats.bookValue,
-            stats.priceToBook,
-            stats.lastFiscalYearEnd,
-            stats.nextFiscalYearEnd,
-            stats.mostRecentQuarter,
-            stats.earningsQuarterlyGrowth,
-            stats.netIncomeToCommon,
-            stats.trailingEps,
-            stats.forwardEps,
-            stats.lastSplitFactor,
-            stats.lastSplitDate,
-            stats.enterpriseToRevenue,
-            stats.enterpriseToEbitda,
-            stats["52WeekChange"],
-            stats.SandP52WeekChange,
-            stats.lastDividendValue,
-            stats.lastDividendDate
+            stats.priceHint || null,
+            stats.enterpriseValue || null,
+            stats.forwardPE || null,
+            stats.profitMargins || null,
+            stats.floatShares || null,
+            stats.sharesOutstanding || null,
+            stats.sharesShort || null,
+            stats.sharesShortPriorMonth || null,
+            stats.sharesShortPreviousMonthDate || null,
+            stats.dateShortInterest || null,
+            stats.sharesPercentSharesOut || null,
+            stats.heldPercentInsiders || null,
+            stats.heldPercentInstitutions || null,
+            stats.shortRatio || null,
+            stats.shortPercentOfFloat || null,
+            stats.beta || null,
+            stats.impliedSharesOutstanding || null,
+            stats.bookValue || null,
+            stats.priceToBook || null,
+            stats.lastFiscalYearEnd || null,
+            stats.nextFiscalYearEnd || null,
+            stats.mostRecentQuarter || null,
+            stats.earningsQuarterlyGrowth || null,
+            stats.netIncomeToCommon || null,
+            stats.trailingEps || null,
+            stats.forwardEps || null,
+            stats.lastSplitFactor || null,
+            stats.lastSplitDate || null,
+            stats.enterpriseToRevenue || null,
+            stats.enterpriseToEbitda || null,
+            stats["52WeekChange"] || null,
+            stats.SandP52WeekChange || null,
+            stats.lastDividendValue || null,
+            stats.lastDividendDate || null,
         ];
 
         try {
             await this.db.run(query, ...params);
         } catch (error) {
             logger.error(`Failed to upsert default key statistics for symbol: ${symbol}`);
-            logger.error(error);
+            logger.error(error instanceof Error ? error.message : error);
             throw error;
         }
     }
@@ -1072,7 +1077,7 @@ export class DBService {
             }
         } catch (error) {
             logger.error(`Failed to upsert income statement history for symbol: ${symbol}`);
-            logger.error(error);
+            logger.error(error instanceof Error ? error.message : JSON.stringify(error));
             throw error;
         }
     }
@@ -1104,7 +1109,7 @@ export class DBService {
 
         try {
             for (const ownership of ownershipList) {
-                await this.db.run(query, [
+                const params = [
                     symbol,
                     ownership.reportDate?.raw || null,
                     ownership.reportDate?.fmt || null,
@@ -1123,11 +1128,13 @@ export class DBService {
 
                     ownership.pctChange?.raw || null,
                     ownership.pctChange?.fmt || null,
-                ]);
+                ];
+
+                await this.db.run(query, params);
             }
         } catch (error) {
             logger.error(`Failed to upsert fund ownership data for symbol: ${symbol}`);
-            logger.error(error);
+            logger.error(error instanceof Error ? error.message : JSON.stringify(error));
             throw error;
         }
     }
@@ -1393,22 +1400,20 @@ export class DBService {
 
         try {
             for (const record of history) {
-                // 기본값 설정
-                const toGrade = record.toGrade || null;
-                const fromGrade = record.fromGrade || null;
-
-                await this.db.run(query, [
+                const params = [
                     symbol,
                     record.epochGradeDate || null,
                     record.firm || null,
-                    toGrade,
-                    fromGrade,
-                    record.action || null,
-                ]);
+                    record.toGrade || null,
+                    record.fromGrade || null,
+                    record.action || null
+                ];
+
+                await this.db.run(query, params);
             }
         } catch (error) {
             logger.error(`Failed to upsert upgrade/downgrade history for symbol: ${symbol}`);
-            logger.error(error);
+            logger.error(`Error: ${error instanceof Error ? error.message : JSON.stringify(error)}`);
             throw error;
         }
     }
@@ -1554,10 +1559,19 @@ export class DBService {
 
         try {
             for (const statement of balanceSheetStatements) {
+                const endDateRaw = statement.endDate?.raw || null;
+                const endDateFmt = statement.endDate?.fmt || null;
+
+                // Ensure endDate_raw is not null since it's part of UNIQUE constraint
+                if (endDateRaw === null) {
+                    logger.warn(`Skipping balance sheet statement with null endDate for symbol: ${symbol}`);
+                    continue;
+                }
+
                 await this.db.run(query, [
                     symbol,
-                    statement.endDate?.raw || null,
-                    statement.endDate?.fmt || null
+                    endDateRaw,
+                    endDateFmt
                 ]);
             }
         } catch (error) {
@@ -1659,6 +1673,7 @@ export class DBService {
             )
             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)
             ON CONFLICT(symbol, reportDate_raw, organization) DO UPDATE SET
+                reportDate_fmt = excluded.reportDate_fmt,
                 pctHeld_raw = excluded.pctHeld_raw,
                 pctHeld_fmt = excluded.pctHeld_fmt,
                 position_raw = excluded.position_raw,
@@ -1825,12 +1840,14 @@ export class DBService {
         `;
 
         try {
+            // 데이터를 테이블에 삽입하거나 업데이트
             await this.db.run(query, [
                 symbol,
                 majorDirectHolders.maxAge || null,
                 holdersJson
             ]);
         } catch (error) {
+            // 에러 로깅
             logger.error(`Failed to upsert major direct holders for symbol: ${symbol}`);
             logger.error(`Error: ${error instanceof Error ? error.message : JSON.stringify(error)}`);
             throw error;
@@ -1905,7 +1922,7 @@ export class DBService {
             summaryProfile.fullTimeEmployees || null,
             companyOfficersJson,
             summaryProfile.irWebsite || null,
-            summaryProfile.maxAge || null
+            summaryProfile.maxAge || null,
         ];
 
         try {
@@ -1981,38 +1998,50 @@ export class DBService {
         const query = `
             INSERT INTO insider_transactions (
                 symbol,
+                filerName,
+                startDate,
                 shares_raw,
                 shares_fmt,
                 shares_longFmt,
                 value_raw,
                 value_fmt,
                 value_longFmt,
-                filerName,
                 filerRelation,
                 transactionText,
                 ownership,
-                startDate,
                 maxAge,
                 last_updated
             )
             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)
+            ON CONFLICT(symbol, filerName, startDate) DO UPDATE SET
+                shares_raw = excluded.shares_raw,
+                shares_fmt = excluded.shares_fmt,
+                shares_longFmt = excluded.shares_longFmt,
+                value_raw = excluded.value_raw,
+                value_fmt = excluded.value_fmt,
+                value_longFmt = excluded.value_longFmt,
+                filerRelation = excluded.filerRelation,
+                transactionText = excluded.transactionText,
+                ownership = excluded.ownership,
+                maxAge = excluded.maxAge,
+                last_updated = CURRENT_TIMESTAMP
         `;
 
         try {
             const insertPromises = transactions.map(transaction => {
                 const params = [
                     symbol,
+                    transaction.filerName || null,
+                    transaction.startDate?.raw || null,
                     transaction.shares?.raw || null,
                     transaction.shares?.fmt || null,
                     transaction.shares?.longFmt || null,
                     transaction.value?.raw || null,
                     transaction.value?.fmt || null,
                     transaction.value?.longFmt || null,
-                    transaction.filerName || null,
                     transaction.filerRelation || null,
                     transaction.transactionText || null,
                     transaction.ownership || null,
-                    transaction.startDate?.raw || null,
                     transaction.maxAge || null,
                 ];
                 return this.db.run(query, ...params);
@@ -2355,10 +2384,10 @@ export class DBService {
                 target_median_price, recommendation_mean, recommendation_key, number_of_analyst_opinions,
                 total_cash, total_cash_per_share, ebitda, total_debt, quick_ratio, current_ratio,
                 total_revenue, debt_to_equity, revenue_per_share, return_on_assets, return_on_equity,
-                free_cashflow, operating_cashflow, earnings_growth, revenue_growth, gross_margins,
-                ebitda_margins, operating_margins, profit_margins, financial_currency, last_updated
+                gross_profits, free_cashflow, operating_cashflow, earnings_growth, revenue_growth, gross_margins,
+                ebitda_margins, operating_margins, profit_margins, financial_currency
             )
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             ON CONFLICT(symbol) DO UPDATE SET
                 current_price = excluded.current_price,
                 target_high_price = excluded.target_high_price,
@@ -2379,6 +2408,7 @@ export class DBService {
                 revenue_per_share = excluded.revenue_per_share,
                 return_on_assets = excluded.return_on_assets,
                 return_on_equity = excluded.return_on_equity,
+                gross_profits = excluded.gross_profits,
                 free_cashflow = excluded.free_cashflow,
                 operating_cashflow = excluded.operating_cashflow,
                 earnings_growth = excluded.earnings_growth,
@@ -2393,46 +2423,47 @@ export class DBService {
 
         const params = [
             symbol,
-            financialData.currentPrice || null,
-            financialData.targetHighPrice || null,
-            financialData.targetLowPrice || null,
-            financialData.targetMeanPrice || null,
-            financialData.targetMedianPrice || null,
-            financialData.recommendationMean || null,
-            financialData.recommendationKey || null,
-            financialData.numberOfAnalystOpinions || null,
-            financialData.totalCash || null,
-            financialData.totalCashPerShare || null,
-            financialData.ebitda || null,
-            financialData.totalDebt || null,
-            financialData.quickRatio || null,
-            financialData.currentRatio || null,
-            financialData.totalRevenue || null,
-            financialData.debtToEquity || null,
-            financialData.revenuePerShare || null,
-            financialData.returnOnAssets || null,
-            financialData.returnOnEquity || null,
-            financialData.freeCashflow || null,
-            financialData.operatingCashflow || null,
-            financialData.earningsGrowth || null,
-            financialData.revenueGrowth || null,
-            financialData.grossMargins || null,
-            financialData.ebitdaMargins || null,
-            financialData.operatingMargins || null,
-            financialData.profitMargins || null,
-            financialData.financialCurrency || null,
+            financialData.currentPrice ?? null,
+            financialData.targetHighPrice ?? null,
+            financialData.targetLowPrice ?? null,
+            financialData.targetMeanPrice ?? null,
+            financialData.targetMedianPrice ?? null,
+            financialData.recommendationMean ?? null,
+            financialData.recommendationKey ?? null,
+            financialData.numberOfAnalystOpinions ?? null,
+            financialData.totalCash ?? null,
+            financialData.totalCashPerShare ?? null,
+            financialData.ebitda ?? null,
+            financialData.totalDebt ?? null,
+            financialData.quickRatio ?? null,
+            financialData.currentRatio ?? null,
+            financialData.totalRevenue ?? null,
+            financialData.debtToEquity ?? null,
+            financialData.revenuePerShare ?? null,
+            financialData.returnOnAssets ?? null,
+            financialData.returnOnEquity ?? null,
+            financialData.grossProfits ?? null,
+            financialData.freeCashflow ?? null,
+            financialData.operatingCashflow ?? null,
+            financialData.earningsGrowth ?? null,
+            financialData.revenueGrowth ?? null,
+            financialData.grossMargins ?? null,
+            financialData.ebitdaMargins ?? null,
+            financialData.operatingMargins ?? null,
+            financialData.profitMargins ?? null,
+            financialData.financialCurrency ?? null,
         ];
 
         try {
             await this.db.run(query, ...params);
         } catch (error) {
             logger.error(`Failed to upsert financial data for symbol: ${symbol}`);
+            logger.error(`Query: ${query}`);
+            logger.error(`Parameters: ${JSON.stringify(params, null, 2)}`);
             logger.error(`Error: ${error instanceof Error ? error.message : JSON.stringify(error)}`);
             throw error;
         }
     }
-
-
 
     public async close(): Promise<void> {
         try {
