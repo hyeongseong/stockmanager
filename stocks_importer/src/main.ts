@@ -1,9 +1,50 @@
+import fs from 'fs';
+import path from 'path';
 import yahooFinance from 'yahoo-finance2';
 import { StockScannerService } from './services/StockScannerService.js';
 import logger from './services/LoggerService.js';
 import { DBService } from './services/DBService.js';
 
 class Main {
+    static async loadWatchlists(baseFolder: string) {
+        const watchlist = [];
+
+        try {
+            const categories = fs.readdirSync(baseFolder, { withFileTypes: true })
+                .filter(dirent => dirent.isDirectory())
+                .map(dirent => dirent.name);
+
+            for (const category of categories) {
+                const categoryFolder = path.join(baseFolder, category);
+                const filePath = path.join(categoryFolder, 'data.json');
+
+                if (fs.existsSync(filePath)) {
+                    try {
+                        const data = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+
+                        if (data.watchlist && Array.isArray(data.watchlist)) {
+                            for (const symbol of data.watchlist) {
+                                watchlist.push({
+                                    symbol,
+                                    categoryId: category,
+                                    categoryName: category.replace(/_/g, ' ')
+                                });
+                            }
+                        }
+                    } catch (error) {
+                        logger.error(`Failed to load or parse JSON from ${filePath}:`, error);
+                    }
+                } else {
+                    logger.warn(`File not found: ${filePath}`);
+                }
+            }
+        } catch (error) {
+            logger.error(`Failed to read categories from ${baseFolder}:`, error);
+        }
+
+        return watchlist;
+    }
+
     public static async main(): Promise<void> {
         logger.info('################### Main Start !! #######################');
 
@@ -15,24 +56,21 @@ class Main {
         await dbService.initialize();
 
         try {
-            // Step 1. Fetch all the list of symbols from yahoo finance API
-            //const allStocks = await stockScannerService.fetchStocksAll();
+            // Step 1. Fetch watchlist
+            const watchlist = await this.loadWatchlists('./watchlist');
 
-            const allStocks = [{ symbol: 'AAPL', categoryId: '', categoryName: '' }];
+            // Step 2. Fetch all the list of symbols from yahoo finance API
+            const fetchedStocks = await stockScannerService.fetchStocksAll();
+            const allStocks = [...watchlist, ...fetchedStocks]; // [{ symbol: 'AAPL', categoryId: '', categoryName: '' }];
 
-            // ex)
-            // { "symbol": "WBA", "categoryId": "day_gainers", "categoryName": "Day Gainers" }
+            // Step 3 : Insert the basic information into DB
+            for (const stock of allStocks) {
+                await dbService.upsertStock(stock.symbol, stock.categoryId, stock.categoryName);
 
-            // Step 2 : insert the basic information into DB
-            // for (const stock of allStocks) {
-            //     await dbService.upsertSymbolAndCategory(stock.symbol, stock.categoryId, stock.categoryName);
+                logger.info(`Inserted/Updated: ${stock.symbol} in category ${stock.categoryName}`);
+            }
 
-            //     logger.info(`Inserted/Updated: ${stock.symbol} in category ${stock.categoryName}`);
-            // }
-
-
-
-            // step 3: Call the Yahoo Finance API to retrieve detailed information for each stock
+            // step 4: Call the Yahoo Finance API to retrieve detailed information for each stock
             for (const stock of allStocks) {
                 try {
                     const stockInfo = await stockScannerService.fetchStockDetails(stock.symbol);
@@ -333,6 +371,7 @@ class Main {
                             logger.error(`Failed to upsert financial data for symbol: ${stock.symbol}`);
                             logger.error(`Data: ${JSON.stringify(financialData, null, 2)}`);
                             logger.error(error);
+                            process.exit(1);
                         }
                     } else {
                         logger.warn(`No financial data found for symbol: ${stock.symbol}`);
@@ -347,6 +386,7 @@ class Main {
             logger.info(`Fetched and processed ${allStocks.length} stock symbols.`);
         } catch (error) {
             logger.error(`Error during fetchStocksAll: ${error}`);
+            process.exit(1);
         }
 
         await dbService.close();

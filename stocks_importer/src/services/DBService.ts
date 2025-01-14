@@ -757,6 +757,32 @@ export class DBService {
         }
     }
 
+    public async upsertStock(symbol: string, categoryId: string, categoryName: string): Promise<void> {
+        const query = `
+            INSERT INTO stocks (
+                symbol, category_id, category_name, last_updated
+            )
+            VALUES (?, ?, ?, CURRENT_TIMESTAMP)
+            ON CONFLICT(symbol) DO UPDATE SET
+                category_id = excluded.category_id,
+                category_name = excluded.category_name,
+                last_updated = CURRENT_TIMESTAMP
+        `;
+
+        try {
+            const params = [
+                symbol,
+                categoryId,
+                categoryName
+            ];
+            await this.db.run(query, params);
+        } catch (error) {
+            logger.error(`Failed to upsert stock for symbol: ${symbol}`);
+            logger.error(error instanceof Error ? error.message : JSON.stringify(error));
+            throw error;
+        }
+    }
+
     public async upsertAssetProfile(symbol: string, assetProfile: any): Promise<void> {
         const companyOfficersJson = JSON.stringify(assetProfile.companyOfficers);
 
