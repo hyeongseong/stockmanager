@@ -73,6 +73,9 @@ class Main {
             // step 4: Call the Yahoo Finance API to retrieve detailed information for each stock
             for (const stock of allStocks) {
                 try {
+                    const delay = Math.floor(Math.random() * 6000) + 5000; // Random delay between 5 and 10 seconds
+                    await new Promise(resolve => setTimeout(resolve, delay));
+
                     const stockInfo = await stockScannerService.fetchStockDetails(stock.symbol);
 
                     // Extract the assetProfile if it exists

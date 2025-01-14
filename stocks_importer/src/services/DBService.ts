@@ -32,7 +32,7 @@ export class DBService {
 
         try {
             // Drop all tables
-            await this.dropTables();
+            //await this.dropTables();
 
             // Create `stocks` table
             await this.db.exec(`
