@@ -37,20 +37,21 @@ export class DBService {
             // Create `stocks` table
             await this.db.exec(`
                 CREATE TABLE IF NOT EXISTS stocks (
-                    symbol TEXT PRIMARY KEY,
+                    symbol TEXT NOT NULL,
                     company_name TEXT,
                     category_id TEXT NOT NULL,
                     category_name TEXT NOT NULL,
                     market_price REAL,
                     market_cap INTEGER,
-                    last_updated DATETIME DEFAULT CURRENT_TIMESTAMP
+                    last_updated DATETIME DEFAULT CURRENT_TIMESTAMP,
+                    PRIMARY KEY (symbol)
                 )
             `);
 
             // Create `assetProfile` table
             await this.db.exec(`
                 CREATE TABLE IF NOT EXISTS assetProfile (
-                    symbol TEXT PRIMARY KEY,
+                    symbol TEXT NOT NULL,
                     address1 TEXT,
                     city TEXT,
                     state TEXT,
@@ -77,6 +78,7 @@ export class DBService {
                     irWebsite TEXT,
                     maxAge INTEGER,
                     last_updated DATETIME DEFAULT CURRENT_TIMESTAMP,
+                    PRIMARY KEY (symbol),
                     FOREIGN KEY(symbol) REFERENCES stocks(symbol) ON DELETE CASCADE
                 )
             `);
@@ -107,8 +109,8 @@ export class DBService {
                     netIncome_fmt TEXT,
                     netIncome_longFmt TEXT,
                     last_updated DATETIME DEFAULT CURRENT_TIMESTAMP,
-                    FOREIGN KEY(symbol) REFERENCES stocks(symbol) ON DELETE CASCADE,
-                    PRIMARY KEY(symbol, endDate_raw)
+                    PRIMARY KEY(symbol, endDate_raw),
+                    FOREIGN KEY(symbol) REFERENCES stocks(symbol) ON DELETE CASCADE
                 )
             `);
 
@@ -119,14 +121,15 @@ export class DBService {
                     period TEXT NOT NULL,
                     growth REAL,
                     last_updated DATETIME DEFAULT CURRENT_TIMESTAMP,
-                    PRIMARY KEY (symbol, period)
+                    PRIMARY KEY (symbol, period),
+                    FOREIGN KEY (symbol) REFERENCES stocks(symbol) ON DELETE CASCADE
                 )
             `);
 
             // Create `default_key_statistics` table
             await this.db.exec(`
                 CREATE TABLE IF NOT EXISTS default_key_statistics (
-                    symbol TEXT PRIMARY KEY,
+                    symbol TEXT NOT NULL,
                     priceHint INTEGER,
                     enterpriseValue INTEGER,
                     forwardPE REAL,
@@ -162,6 +165,7 @@ export class DBService {
                     lastDividendValue REAL,
                     lastDividendDate INTEGER,
                     last_updated DATETIME DEFAULT CURRENT_TIMESTAMP,
+                    PRIMARY KEY (symbol),
                     FOREIGN KEY(symbol) REFERENCES stocks(symbol) ON DELETE CASCADE
                 )
             `);
@@ -214,15 +218,15 @@ export class DBService {
                     pctChange_raw REAL,
                     pctChange_fmt TEXT,
                     last_updated DATETIME DEFAULT CURRENT_TIMESTAMP,
-                    FOREIGN KEY(symbol) REFERENCES stocks(symbol) ON DELETE CASCADE,
-                    PRIMARY KEY(symbol, reportDate_raw, organization)
+                    PRIMARY KEY(symbol, reportDate_raw, organization),
+                    FOREIGN KEY(symbol) REFERENCES stocks(symbol) ON DELETE CASCADE
                 )
             `);
 
             // Create `summary_detail` table
             await this.db.exec(`
                 CREATE TABLE IF NOT EXISTS summary_detail (
-                    symbol TEXT PRIMARY KEY,
+                    symbol TEXT NOT NULL,
                     priceHint INTEGER,
                     previousClose REAL,
                     open REAL,
@@ -258,7 +262,9 @@ export class DBService {
                     trailingAnnualDividendRate REAL,
                     trailingAnnualDividendYield REAL,
                     currency TEXT,
-                    last_updated DATETIME DEFAULT CURRENT_TIMESTAMP
+                    last_updated DATETIME DEFAULT CURRENT_TIMESTAMP,
+                    PRIMARY KEY(symbol),
+                    FOREIGN KEY (symbol) REFERENCES stocks(symbol) ON DELETE CASCADE
                 )
             `);
 
@@ -283,8 +289,8 @@ export class DBService {
                     positionIndirectDate_raw INTEGER,
                     positionIndirectDate_fmt TEXT,
                     last_updated DATETIME DEFAULT CURRENT_TIMESTAMP,
-                    FOREIGN KEY(symbol) REFERENCES stocks(symbol) ON DELETE CASCADE,
-                    PRIMARY KEY(symbol, name, relation)
+                    PRIMARY KEY(symbol, name, relation),
+                    FOREIGN KEY(symbol) REFERENCES stocks(symbol) ON DELETE CASCADE
                 )
             `);
 
@@ -292,7 +298,7 @@ export class DBService {
             await this.db.exec(`
                 CREATE TABLE IF NOT EXISTS calendar_events (
                     symbol TEXT NOT NULL,
-                    earningsDate_raw INTEGER,
+                    earningsDate_raw INTEGER NOT NULL,
                     earningsCallDate_raw INTEGER,
                     isEarningsDateEstimate INTEGER,
                     earningsAverage REAL,
@@ -304,7 +310,8 @@ export class DBService {
                     exDividendDate INTEGER,
                     dividendDate INTEGER,
                     last_updated DATETIME DEFAULT CURRENT_TIMESTAMP,
-                    UNIQUE(symbol, earningsDate_raw)
+                    PRIMARY KEY (symbol, earningsDate_raw),
+                    FOREIGN KEY (symbol) REFERENCES stocks(symbol) ON DELETE CASCADE
                 );
             `);
 
@@ -318,15 +325,15 @@ export class DBService {
                     fromGrade TEXT,
                     action TEXT NOT NULL,
                     last_updated DATETIME DEFAULT CURRENT_TIMESTAMP,
-                    FOREIGN KEY(symbol) REFERENCES stocks(symbol) ON DELETE CASCADE,
-                    UNIQUE(symbol, epochGradeDate, firm)
+                    PRIMARY KEY(symbol, epochGradeDate, firm),
+                    FOREIGN KEY(symbol) REFERENCES stocks(symbol) ON DELETE CASCADE
                 )
             `);
 
             // Create `price` table
             await this.db.exec(`
                 CREATE TABLE IF NOT EXISTS price (
-                    symbol TEXT PRIMARY KEY,
+                    symbol TEXT NOT NULL,
                     preMarketSource TEXT,
                     postMarketChangePercent REAL,
                     postMarketChange REAL,
@@ -361,6 +368,7 @@ export class DBService {
                     lastMarket TEXT,
                     marketCap INTEGER,
                     last_updated DATETIME DEFAULT CURRENT_TIMESTAMP,
+                    PRIMARY KEY(symbol),
                     FOREIGN KEY(symbol) REFERENCES stocks(symbol) ON DELETE CASCADE
                 )
             `);
@@ -372,8 +380,8 @@ export class DBService {
                     endDate_raw INTEGER NOT NULL,
                     endDate_fmt TEXT,
                     last_updated DATETIME DEFAULT CURRENT_TIMESTAMP,
-                    FOREIGN KEY(symbol) REFERENCES stocks(symbol) ON DELETE CASCADE,
-                    PRIMARY KEY(symbol, endDate_raw)
+                    PRIMARY KEY(symbol, endDate_raw),
+                    FOREIGN KEY(symbol) REFERENCES stocks(symbol) ON DELETE CASCADE
                 )
             `);
 
@@ -428,12 +436,13 @@ export class DBService {
             // Create `major_holders_breakdown` table
             await this.db.exec(`
                 CREATE TABLE IF NOT EXISTS major_holders_breakdown (
-                    symbol TEXT PRIMARY KEY,
+                    symbol TEXT NOT NULL,
                     insidersPercentHeld REAL,
                     institutionsPercentHeld REAL,
                     institutionsFloatPercentHeld REAL,
                     institutionsCount INTEGER,
                     last_updated DATETIME DEFAULT CURRENT_TIMESTAMP,
+                    PRIMARY KEY (symbol),
                     FOREIGN KEY(symbol) REFERENCES stocks(symbol) ON DELETE CASCADE
                 )
             `);
@@ -446,8 +455,8 @@ export class DBService {
                     endDate_fmt TEXT NOT NULL,
                     maxAge INTEGER,
                     last_updated DATETIME DEFAULT CURRENT_TIMESTAMP,
-                    FOREIGN KEY(symbol) REFERENCES stocks(symbol) ON DELETE CASCADE,
-                    PRIMARY KEY (symbol, endDate_raw)
+                    PRIMARY KEY (symbol, endDate_raw),
+                    FOREIGN KEY(symbol) REFERENCES stocks(symbol) ON DELETE CASCADE
                 )
             `);
 
@@ -469,18 +478,19 @@ export class DBService {
                     period TEXT,
                     maxAge INTEGER,
                     last_updated DATETIME DEFAULT CURRENT_TIMESTAMP,
-                    FOREIGN KEY(symbol) REFERENCES stocks(symbol) ON DELETE CASCADE,
-                    PRIMARY KEY(symbol, quarter_raw)
+                    PRIMARY KEY(symbol, quarter_raw),
+                    FOREIGN KEY(symbol) REFERENCES stocks(symbol) ON DELETE CASCADE
                 )
             `);
 
             // Create `major_direct_holders` table
             await this.db.exec(`
                 CREATE TABLE IF NOT EXISTS major_direct_holders (
-                    symbol TEXT NOT NULL PRIMARY KEY,
+                    symbol TEXT NOT NULL,
                     maxAge INTEGER,
-                    holders TEXT, -- JSON 데이터로 저장
+                    holders TEXT,
                     last_updated DATETIME DEFAULT CURRENT_TIMESTAMP,
+                    PRIMARY KEY(symbol),
                     FOREIGN KEY(symbol) REFERENCES stocks(symbol) ON DELETE CASCADE
                 )
             `);
@@ -488,7 +498,7 @@ export class DBService {
             // Create `summary_profile` table
             await this.db.exec(`
                 CREATE TABLE IF NOT EXISTS summary_profile (
-                    symbol TEXT PRIMARY KEY,
+                    symbol TEXT NOT NULL,
                     address1 TEXT,
                     city TEXT,
                     state TEXT,
@@ -508,6 +518,7 @@ export class DBService {
                     irWebsite TEXT,
                     maxAge INTEGER,
                     last_updated DATETIME DEFAULT CURRENT_TIMESTAMP,
+                    PRIMARY KEY(symbol),
                     FOREIGN KEY(symbol) REFERENCES stocks(symbol) ON DELETE CASCADE
                 )
             `);
@@ -515,7 +526,7 @@ export class DBService {
             // Create `net_share_purchase_activity` table
             await this.db.exec(`
                 CREATE TABLE IF NOT EXISTS net_share_purchase_activity (
-                    symbol TEXT PRIMARY KEY,
+                    symbol TEXT NOT NULL,
                     maxAge INTEGER,
                     period TEXT,
                     buyInfoCount INTEGER,
@@ -529,6 +540,7 @@ export class DBService {
                     netPercentInsiderShares REAL,
                     totalInsiderShares INTEGER,
                     last_updated DATETIME DEFAULT CURRENT_TIMESTAMP,
+                    PRIMARY KEY(symbol),
                     FOREIGN KEY(symbol) REFERENCES stocks(symbol) ON DELETE CASCADE
                 )
             `);
@@ -550,18 +562,20 @@ export class DBService {
                     ownership TEXT,
                     maxAge INTEGER,
                     last_updated DATETIME DEFAULT CURRENT_TIMESTAMP,
-                    FOREIGN KEY(symbol) REFERENCES stocks(symbol) ON DELETE CASCADE,
-                    PRIMARY KEY(symbol, filerName, startDate)
+                    PRIMARY KEY(symbol, filerName, startDate),
+                    FOREIGN KEY(symbol) REFERENCES stocks(symbol) ON DELETE CASCADE
                 );
             `);
 
             // Create `sector_trend` table
             await this.db.exec(`
                 CREATE TABLE IF NOT EXISTS sector_trend (
-                    symbol TEXT NOT NULL PRIMARY KEY,
+                    symbol TEXT NOT NULL,
                     maxAge INTEGER,
                     estimate TEXT,
-                    last_updated DATETIME DEFAULT CURRENT_TIMESTAMP
+                    last_updated DATETIME DEFAULT CURRENT_TIMESTAMP,
+                    PRIMARY KEY(symbol),
+                    FOREIGN KEY(symbol) REFERENCES stocks(symbol) ON DELETE CASCADE
                 )
             `);
 
@@ -576,7 +590,8 @@ export class DBService {
                     netIncome_raw INTEGER,
                     netIncome_fmt TEXT,
                     netIncome_longFmt TEXT,
-                    PRIMARY KEY (symbol, endDate_raw)
+                    PRIMARY KEY (symbol, endDate_raw),
+                    FOREIGN KEY(symbol) REFERENCES stocks(symbol) ON DELETE CASCADE
                 );
             `);
 
@@ -588,7 +603,8 @@ export class DBService {
                     net_income_raw INTEGER,
                     net_income_fmt TEXT,
                     net_income_long_fmt TEXT,
-                    PRIMARY KEY (symbol, end_date)
+                    PRIMARY KEY (symbol, end_date),
+                    FOREIGN KEY(symbol) REFERENCES stocks(symbol) ON DELETE CASCADE
                 );
             `);
 
@@ -600,7 +616,8 @@ export class DBService {
                     actual REAL,
                     estimate REAL,
                     last_updated DATETIME DEFAULT CURRENT_TIMESTAMP,
-                    PRIMARY KEY (symbol, date)
+                    PRIMARY KEY (symbol, date),
+                    FOREIGN KEY(symbol) REFERENCES stocks(symbol) ON DELETE CASCADE
                 );
 
                 CREATE TABLE IF NOT EXISTS current_quarter_estimate (
@@ -608,14 +625,17 @@ export class DBService {
                     current_estimate REAL,
                     estimate_date TEXT,
                     estimate_year INTEGER,
-                    last_updated DATETIME DEFAULT CURRENT_TIMESTAMP
+                    last_updated DATETIME DEFAULT CURRENT_TIMESTAMP,
+                    FOREIGN KEY(symbol) REFERENCES stocks(symbol) ON DELETE CASCADE
                 );
 
                 CREATE TABLE IF NOT EXISTS earnings_date (
-                    symbol TEXT NOT NULL PRIMARY KEY,
+                    symbol TEXT NOT NULL,
                     earnings_date INTEGER,
                     is_estimate INTEGER,
-                    last_updated DATETIME DEFAULT CURRENT_TIMESTAMP
+                    last_updated DATETIME DEFAULT CURRENT_TIMESTAMP,
+                    PRIMARY KEY(symbol),
+                    FOREIGN KEY(symbol) REFERENCES stocks(symbol) ON DELETE CASCADE
                 );
 
                 CREATE TABLE IF NOT EXISTS financial_chart_yearly (
@@ -624,7 +644,8 @@ export class DBService {
                     revenue INTEGER,
                     earnings INTEGER,
                     last_updated DATETIME DEFAULT CURRENT_TIMESTAMP,
-                    PRIMARY KEY (symbol, date)
+                    PRIMARY KEY (symbol, date),
+                    FOREIGN KEY(symbol) REFERENCES stocks(symbol) ON DELETE CASCADE
                 );
 
                 CREATE TABLE IF NOT EXISTS financial_chart_quarterly (
@@ -633,14 +654,15 @@ export class DBService {
                     revenue INTEGER,
                     earnings INTEGER,
                     last_updated DATETIME DEFAULT CURRENT_TIMESTAMP,
-                    PRIMARY KEY (symbol, date)
+                    PRIMARY KEY (symbol, date),
+                    FOREIGN KEY(symbol) REFERENCES stocks(symbol) ON DELETE CASCADE
                 );
             `);
 
             // Create `financialData` table
             await this.db.exec(`
                 CREATE TABLE IF NOT EXISTS financial_data (
-                    symbol TEXT PRIMARY KEY,
+                    symbol TEXT NOT NULL,
                     current_price REAL,
                     target_high_price REAL,
                     target_low_price REAL,
@@ -670,7 +692,9 @@ export class DBService {
                     operating_margins REAL,
                     profit_margins REAL,
                     financial_currency TEXT,
-                    last_updated DATETIME DEFAULT CURRENT_TIMESTAMP
+                    last_updated DATETIME DEFAULT CURRENT_TIMESTAMP,
+                    PRIMARY KEY(symbol),
+                    FOREIGN KEY(symbol) REFERENCES stocks(symbol) ON DELETE CASCADE
                 );
             `);
 
