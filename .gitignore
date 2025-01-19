@@ -1,5 +1,4 @@
 .env
-.db-journal
 
 # Ignore log files
 *.log
@@ -10,6 +9,7 @@
 # Ignore node_modules, log folder
 node_modules/
 log/
+resources/*.db-journal
 
 # Ignore all files in the dist folder
 dist/

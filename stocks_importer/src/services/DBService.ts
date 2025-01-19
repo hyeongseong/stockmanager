@@ -298,7 +298,7 @@ export class DBService {
             await this.db.exec(`
                 CREATE TABLE IF NOT EXISTS calendar_events (
                     symbol TEXT NOT NULL,
-                    earningsDate_raw INTEGER NOT NULL,
+                    earningsDate_raw INTEGER,
                     earningsCallDate_raw INTEGER,
                     isEarningsDateEstimate INTEGER,
                     earningsAverage REAL,
@@ -310,7 +310,7 @@ export class DBService {
                     exDividendDate INTEGER,
                     dividendDate INTEGER,
                     last_updated DATETIME DEFAULT CURRENT_TIMESTAMP,
-                    PRIMARY KEY (symbol, earningsDate_raw),
+                    PRIMARY KEY (symbol),
                     FOREIGN KEY (symbol) REFERENCES stocks(symbol) ON DELETE CASCADE
                 );
             `);
@@ -1396,7 +1396,7 @@ export class DBService {
                 last_updated
             )
             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)
-            ON CONFLICT(symbol, earningsDate_raw) DO UPDATE SET
+            ON CONFLICT(symbol) DO UPDATE SET
                 earningsCallDate_raw = excluded.earningsCallDate_raw,
                 isEarningsDateEstimate = excluded.isEarningsDateEstimate,
                 earningsAverage = excluded.earningsAverage,
