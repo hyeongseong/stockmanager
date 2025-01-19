@@ -621,11 +621,12 @@ export class DBService {
                 );
 
                 CREATE TABLE IF NOT EXISTS current_quarter_estimate (
-                    symbol TEXT NOT NULL PRIMARY KEY,
+                    symbol TEXT NOT NULL,
                     current_estimate REAL,
                     estimate_date TEXT,
                     estimate_year INTEGER,
                     last_updated DATETIME DEFAULT CURRENT_TIMESTAMP,
+                    PRIMARY KEY(symbol),
                     FOREIGN KEY(symbol) REFERENCES stocks(symbol) ON DELETE CASCADE
                 );
 
@@ -2114,11 +2115,16 @@ export class DBService {
                 last_updated
             )
             VALUES (?, ?, ?, CURRENT_TIMESTAMP)
+            ON CONFLICT(symbol)
+            DO UPDATE SET
+                maxAge = excluded.maxAge,
+                estimate = excluded.estimate,
+                last_updated = CURRENT_TIMESTAMP
         `;
 
         try {
             const maxAge = sectorTrend?.maxAge || null;
-            const estimates: any[] = sectorTrend?.estimates || []; // 타입 명시
+            const estimates: any[] = sectorTrend?.estimates || [];
 
             const insertPromises = estimates.map((estimate: any) => {
                 const params = [
@@ -2129,7 +2135,7 @@ export class DBService {
                 return this.db.run(query, ...params);
             });
 
-            // If there are no estimates, insert a single record with null estimate
+            // If there are no estimates, insert or update a single record with null estimate
             if (estimates.length === 0) {
                 const params = [
                     symbol,
