@@ -1,4 +1,5 @@
 .env
+.db-journal
 
 # Ignore log files
 *.log
