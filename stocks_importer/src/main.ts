@@ -62,7 +62,7 @@ class Main {
             // Step 2. Fetch all the list of symbols from yahoo finance API
             const fetchedStocks = await stockScannerService.fetchStocksAll();
             const allStocks = [...watchlist, ...fetchedStocks];
-            //const allStocks = [{ symbol: 'CRSP', categoryId: '', categoryName: '' }];
+            //const allStocks = [{ symbol: 'GOOG', categoryId: '', categoryName: '' }];
 
             // Step 3 : Insert the basic information into DB
             for (const stock of allStocks) {

@@ -320,12 +320,12 @@ export class DBService {
                 CREATE TABLE IF NOT EXISTS upgrade_downgrade_history (
                     symbol TEXT NOT NULL,
                     epochGradeDate INTEGER NOT NULL,
-                    firm TEXT NOT NULL,
+                    firm TEXT,
                     toGrade TEXT,
                     fromGrade TEXT,
                     action TEXT NOT NULL,
                     last_updated DATETIME DEFAULT CURRENT_TIMESTAMP,
-                    PRIMARY KEY(symbol, epochGradeDate, firm),
+                    PRIMARY KEY(symbol, epochGradeDate, firm, toGrade, fromGrade, action),
                     FOREIGN KEY(symbol) REFERENCES stocks(symbol) ON DELETE CASCADE
                 )
             `);
@@ -1442,7 +1442,7 @@ export class DBService {
                 symbol, epochGradeDate, firm, toGrade, fromGrade, action, last_updated
             )
             VALUES (?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)
-            ON CONFLICT(symbol, epochGradeDate, firm) DO UPDATE SET
+            ON CONFLICT(symbol, epochGradeDate, firm, toGrade, fromGrade, action) DO UPDATE SET
                 toGrade = excluded.toGrade,
                 fromGrade = excluded.fromGrade,
                 action = excluded.action,
