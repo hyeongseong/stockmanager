@@ -8,10 +8,10 @@
 
 # Ignore node_modules, log folder
 node_modules/
+watchlist/
 log/
 resources/*.db-journal
 
 # Ignore all files in the dist folder
 dist/
-
 dist/*.js
